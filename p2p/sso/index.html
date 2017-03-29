@@ -51,7 +51,7 @@
                         <ul class="dropdown-menu">
                             
 <li >
-    <a href="../overview/">overview</a>
+    <a href="../overview/">Overview</a>
 </li>
                             
 <li class="active">
@@ -146,6 +146,58 @@
 <h1 id="single-sign-on-sso">Single-Sign-On (SSO)</h1>
 <h2 id="windows-authentication">Windows Authentication</h2>
 <h2 id="saml2">SAML2</h2>
+<p>PROACTIS P2P has built in support for SSO using the industry standard SAML2 protocol.</p>
+<p>1 First generate (or obtain) a certificate and provide the public part of this to your identity provider
+2 With in your website's customer folder create a file called saml.config.   This should be based on the following template.</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;SAMLConfiguration xmlns=&quot;urn:componentspace:SAML:2.0:configuration&quot;&gt;
+   &lt;ServiceProvider Name=&quot;service-provider-name&quot;
+                    AssertionConsumerServiceUrl=&quot;~/SystemLogon/AssertionConsumerService&quot;
+                    LocalCertificateFile=&quot;path-to-local-certificate-file&quot;
+                    LocalCertificatePassword=&quot;local-certificate-password&quot;/&gt;
+ 
+ 
+   &lt;!-- ADFS --&gt;
+   &lt;PartnerIdentityProviders&gt;
+      &lt;PartnerIdentityProvider Name=&quot;partner-identity-provider-name&quot;
+                Description=&quot;PROACTIS AD&quot;
+                               SignAuthnRequest=&quot;false&quot;
+                               WantSAMLResponseSigned=&quot;false&quot;
+                               WantAssertionSigned=&quot;true&quot;
+                               WantAssertionEncrypted=&quot;true&quot;
+                               PartnerCertificateFile=&quot;path-to-partner-certificate-file&quot;
+                               ClockSkew=&quot;00:03:00&quot;
+                               SingleSignOnServiceUrl=&quot;single-sign-on-service-url&quot;/&gt;
+   &lt;/PartnerIdentityProviders&gt;
+ 
+&lt;/SAMLConfiguration&gt;
+</code></pre>
+
+<p>3 Add the following settings to your application.configuration file</p>
+<pre><code class="xml">&lt;Setting Name=&quot;SSOAttributeName&quot;&gt;NameID&lt;/Setting&gt;
+</code></pre>
+
+<p>The name of the attribute containing the user identifier in the attributes list returned from the ADFS server.
+If not specified then no attribute lookup is made and user identification is based on the “username” returned from the ADFS server.
+ </p>
+<pre><code class="xml">&lt;Setting Name=&quot;SSOAttributeNameMask&quot;&gt;&lt;/Setting&gt;
+</code></pre>
+
+<p>An optional mask to be applied to the above user identifier value.
+ </p>
+<pre><code class="xml">&lt;Setting Name=&quot;SSOMatchP2PUserOnEmailAddress&quot;&gt;False&lt;/Setting&gt;
+</code></pre>
+
+<p>By default, P2P searches the database Users table to find a user whose “LoginID” matches the identifier value returned from the ADFS server.
+This optional setting will cause the lookup to be made on “EmailAddress” rather than “LoginID”
+ </p>
+<pre><code class="xml">&lt;Setting Name=&quot;SSODatabaseTitle&quot;&gt;&lt;/Setting&gt;
+</code></pre>
+
+<p>An optional setting that only applies when a user who is already logged into a 3rd party system, initiates a logon to P2P via SSO. In this scenario, the user is not 
+presented with a logon page. If the user has access to multiple databases, then this setting specifies the database title (in the database xml file) to log into.
+If this setting is not present, P2P will select the default database in the databases xml file (or the first database if no default).
+Obviously if only one database is available, then this setting is unnecessary.</p>
 <h2 id="custom">Custom</h2></div>
         </div>
 
