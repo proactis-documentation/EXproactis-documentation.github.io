@@ -149,7 +149,7 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="p2p-single-sign-on-sso">P2P Single-Sign-On (SSO)</h1>
-<p>By default PROACTIS expects the user's to enter their username and password in order to login into PROACTIS P2P.   This document lists the possible ways in which PROACTIS P2P can be configured to allow users to authenticate using Single-Sign-On.</p>
+<p>By default PROACTIS expects the users to enter their username and password in order to login into PROACTIS P2P.   This document lists the possible ways in which PROACTIS P2P can be configured to allow users to authenticate using Single-Sign-On.</p>
 <h3 id="notes">Notes</h3>
 <p>If you wish your users to use a combination of PROACTIS and SSO logins then add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</p>
 <pre><code class="xml">&lt;Setting Name=&quot;AllowPROACTISLogins&quot;&gt;True&lt;/Setting&gt;
@@ -157,24 +157,30 @@
 
 <h2 id="windows-authentication">Windows Authentication</h2>
 <p>If your PROACTIS P2P server is on the same domain as your users then the system can be configured so that they are automatically signed on without the need for them to re-enter their username and password.</p>
-<ol>
+<ul>
 <li>
 <p>Do this is IIS</p>
 </li>
 <li>
 <p>Add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</p>
 </li>
-</ol>
+</ul>
 <pre><code class="xml">&lt;Setting Name=&quot;AuthenticationMethod&quot;&gt;WINDOWS&lt;/Setting&gt;
 </code></pre>
 
-<ol>
+<ul>
 <li>Set the <strong>NTLogon</strong> flag to True against the users,  and ensure that their usernames are in the format DOMAIN\Username.  <em>For example PROACTIS\DavidBetteridge</em></li>
-</ol>
+</ul>
 <h2 id="saml2">SAML2</h2>
 <p>PROACTIS P2P has built in support for SSO using the industry standard SAML2 protocol.</p>
-<p>1 First generate (or obtain) a certificate and provide the public part of this to your identity provider
-2 With in your website's customer folder create a file called saml.config.   This should be based on the following template.</p>
+<ul>
+<li>
+<p>First generate (or obtain) a certificate and provide the public part of this to your identity provider.</p>
+</li>
+<li>
+<p>With in your website's customer folder create a file called saml.config.   This should be based on the following template.</p>
+</li>
+</ul>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;SAMLConfiguration xmlns=&quot;urn:componentspace:SAML:2.0:configuration&quot;&gt;
    &lt;ServiceProvider Name=&quot;service-provider-name&quot;
@@ -199,7 +205,9 @@
 &lt;/SAMLConfiguration&gt;
 </code></pre>
 
-<p>3 Add the following settings to your application.configuration file</p>
+<ul>
+<li>Add the following settings to your application.configuration file</li>
+</ul>
 <pre><code class="xml">&lt;Setting Name=&quot;SSOAttributeName&quot;&gt;NameID&lt;/Setting&gt;
 </code></pre>
 
