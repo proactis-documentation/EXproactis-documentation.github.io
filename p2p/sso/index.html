@@ -144,6 +144,7 @@
             <li><a href="#windows-authentication">Windows Authentication</a></li>
             <li><a href="#saml2">SAML2</a></li>
             <li><a href="#external">External</a></li>
+            <li><a href="#bespoke">Bespoke</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -158,12 +159,14 @@
 <h2 id="windows-authentication">Windows Authentication</h2>
 <p>If your PROACTIS P2P server is on the same domain as your users then the system can be configured so that they are automatically signed on without the need for them to re-enter their username and password.</p>
 <ul>
-<li>
-<p>Do this in IIS??</p>
-</li>
-<li>
-<p>Add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</p>
-</li>
+<li>Ensure that Windows Authentication is enabled in IIS for your PROACTIS website</li>
+</ul>
+<p>It must first be installed as part of the <strong>Web Server</strong> role. 
+<img alt="alt text" src="../../img/p2p/sso/iis_feature.JPG" title="ServerRole" /></p>
+<p>And then enabled in the authentication section of your website
+<img alt="alt text" src="../../img/p2p/sso/iis_config.JPG" title="Config" /></p>
+<ul>
+<li>Add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</li>
 </ul>
 <pre><code class="xml">&lt;Setting Name=&quot;AuthenticationMethod&quot;&gt;WINDOWS&lt;/Setting&gt;
 </code></pre>
@@ -266,7 +269,9 @@ Obviously if only one database is available, then this setting is unnecessary.</
 <p>See the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/SSO/PROACTIS.ExampleApplications.ExternalLogin">PROACTIS.ExampleApplications.ExternalLogin</a> example application for a complete sample implementation.</p>
 <p><strong>Notes</strong>
 - In order to login using the external DLL,  the user must have their NTLogon property set to True
-- Failed login attempts aren't recorded</p></div>
+- Failed login attempts aren't recorded</p>
+<h2 id="bespoke">Bespoke</h2>
+<p>It is also possible to provide your users with a completely custom login process,  including replacing the login screen and adding the ability to automatically create users the first time they connect.</p></div>
         </div>
 
         <footer class="col-md-12">
