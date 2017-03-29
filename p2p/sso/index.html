@@ -149,7 +149,6 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#p2p-single-sign-on-sso">P2P Single-Sign-On (SSO)</a></li>
-            <li><a href="#notes">Notes</a></li>
             <li><a href="#windows-authentication">Windows Authentication</a></li>
             <li><a href="#saml2">SAML2</a></li>
             <li><a href="#external">External</a></li>
@@ -160,11 +159,12 @@
 
 <h1 id="p2p-single-sign-on-sso">P2P Single-Sign-On (SSO)</h1>
 <p>By default PROACTIS expects the users to enter their username and password in order to login into PROACTIS P2P.   This document lists the possible ways in which PROACTIS P2P can be configured to allow users to authenticate using Single-Sign-On.</p>
-<h3 id="notes">Notes</h3>
-<p>If you wish your users to use a combination of PROACTIS and SSO logins then add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</p>
+<p>!!! Notes
+If you wish your users to use a combination of PROACTIS and SSO logins then add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</p>
 <pre><code class="xml">&lt;Setting Name=&quot;AllowPROACTISLogins&quot;&gt;True&lt;/Setting&gt;
 </code></pre>
 
+<hr />
 <h2 id="windows-authentication">Windows Authentication</h2>
 <p>If your PROACTIS P2P server is on the same domain as your users then the system can be configured so that they are automatically signed on without the need for them to re-enter their username and password.</p>
 <ul>
@@ -174,7 +174,7 @@
 <p><img alt="alt text" src="../../img/p2p/sso/iis_feature.JPG" title="ServerRole" /></p>
 <p>And then enabled in the authentication section of your website</p>
 <p><img alt="alt text" src="../../img/p2p/sso/iis_config.JPG" title="Config" /></p>
-<p><strong>Note</strong>
+<p>!!! Note
 If some of your users aren't on your domain,  then leave anonymous authentication enabled for them.</p>
 <ul>
 <li>Add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</li>
@@ -185,6 +185,7 @@ If some of your users aren't on your domain,  then leave anonymous authenticatio
 <ul>
 <li>Set the <strong>NTLogon</strong> flag to True against the users,  and ensure that their usernames are in the format DOMAIN\Username.  <em>For example PROACTIS\DavidBetteridge</em></li>
 </ul>
+<hr />
 <h2 id="saml2">SAML2</h2>
 <p>PROACTIS P2P has built in support for SSO using the industry standard <a href="https://en.wikipedia.org/wiki/SAML_2.0">SAML2</a> protocol.</p>
 <ul>
@@ -251,6 +252,7 @@ This optional setting will cause the lookup to be made on “EmailAddress” rat
 presented with a logon page. If the user has access to multiple databases, then this setting specifies the database title (in the database xml file) to log into.
 If this setting is not present, P2P will select the default database in the databases xml file (or the first database if no default).
 Obviously if only one database is available, then this setting is unnecessary.</p>
+<hr />
 <h2 id="external">External</h2>
 <p>By default PROACTIS P2P validates the username and password entered by the user against the record in the <strong>dsdba.Users</strong> table.   It is however possible to customise PROACTIS so that users are validated against an external userstore such as LDAP.</p>
 <p>The following steps should be followed in order to create an external validation DLL.</p>
