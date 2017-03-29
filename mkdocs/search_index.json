@@ -47,7 +47,7 @@
         },
         {
             "location": "/apf/overview/",
-            "text": "Overview\n\n\nThe Accelerated Payments Facility (APF) is a self-contained \u201cmicro service\u201d which sits between a number of systems as shown in the diagram below.\n\n\n\nP2P to APF\n\n\nFinance System to Payments Server\n\n\nThis document can be used along with the sample C# program:\n\n\nPROACTIS.AcceleratedPayments.Web.ExampleBuyerAPIClient\n\n\nThis document is only concerned with the integrations between the Finance System and the Payments Server.\nCurrently there is only one integration between these two systems which is the flow of supplier details from the finance system to the payment server.\n\u2003\n\n\nAuthentication\n\n\nAll API calls require the username and password be supplied in a base64 encoded format in the Authorisation header of the request.\nIn C# the code for doing this would look like the following:\n\n\ncredentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(USER + \":\" + PASSWORD));\nclient.DefaultRequestHeaders.Add(\"Authorization\", \"Basic \" + credentials);\n\n\n\n\nFor example\n\n\nIf the details are incorrect then the site will respond with a 401 error\n\n\nFrom https://en.wikipedia.org/wiki/Basic_access_authentication\nWhen the user agent wants to send the server authentication credentials it may use the Authorization field.\nThe Authorization field is constructed as follows: \n1.  The username and password are combined with a single colon.\n\n\nFinance System to APF\n\n\nAPF to 3rd Party Portal",
+            "text": "Overview\n\n\nThe Accelerated Payments Facility (APF) is a self-contained \u201cmicro service\u201d which sits between a number of systems as shown in the diagram below.\n\n\n\nGlossary\n\n\n\n\nAPF \u2013 Accelerated Payments Facility.   This is the central piece of software provided by PROACTIS\n\n\nP2P \u2013 Purchase-To-Pay system.  This can be either PROACTIS own P2P system or an alternative system provided by a 3rd party such as Coda.\n\n\nKDM \u2013 Key Decision Maker.  The responsible party for the supplier\n\n\nAML \u2013 Anti-money laundering checks.\n\n\nApplication. The request created by the supplier to have their invoices paid as soon as possible.  Each application contains one or more invoices.\n\n\nPayment \u2013 Internally within the APF module invoices are referred to as Payments\n\n\ns2c \u2013Source-To-Contract.  The supplier portal provided by PROACTIS.  Also known as Supplier Network.\n\n\n\n\nReadership\n\n\nThis document is aimed at developers who have been tasked with integrating their own supplier Portal system with APF.\nIt would be advisable to be familiar with the general APF process before reading this document.\n\n\nIntellectual Property\n\n\nThis document contains information related to certain products and services which is proprietary to PROACTIS Group Limited and must not be disclosed, in whole or in part, to any third party.  Notably, all Intellectual property related to the deployment of the Accelerated Payment Facility is to the benefit of and remains the property of PROACTIS Group Limited.\n\n\nImportant Notes\n\n\nIt should be noted that the PROACTIS APF product is still under active development and changes may be made as a result of testing (either internally or externally).",
             "title": "p2p to apf"
         },
         {
@@ -56,33 +56,28 @@
             "title": "Overview"
         },
         {
-            "location": "/apf/overview/#p2p-to-apf",
-            "text": "",
-            "title": "P2P to APF"
+            "location": "/apf/overview/#glossary",
+            "text": "APF \u2013 Accelerated Payments Facility.   This is the central piece of software provided by PROACTIS  P2P \u2013 Purchase-To-Pay system.  This can be either PROACTIS own P2P system or an alternative system provided by a 3rd party such as Coda.  KDM \u2013 Key Decision Maker.  The responsible party for the supplier  AML \u2013 Anti-money laundering checks.  Application. The request created by the supplier to have their invoices paid as soon as possible.  Each application contains one or more invoices.  Payment \u2013 Internally within the APF module invoices are referred to as Payments  s2c \u2013Source-To-Contract.  The supplier portal provided by PROACTIS.  Also known as Supplier Network.",
+            "title": "Glossary"
         },
         {
-            "location": "/apf/overview/#finance-system-to-payments-server",
-            "text": "This document can be used along with the sample C# program:  PROACTIS.AcceleratedPayments.Web.ExampleBuyerAPIClient  This document is only concerned with the integrations between the Finance System and the Payments Server.\nCurrently there is only one integration between these two systems which is the flow of supplier details from the finance system to the payment server.",
-            "title": "Finance System to Payments Server"
+            "location": "/apf/overview/#readership",
+            "text": "This document is aimed at developers who have been tasked with integrating their own supplier Portal system with APF.\nIt would be advisable to be familiar with the general APF process before reading this document.",
+            "title": "Readership"
         },
         {
-            "location": "/apf/overview/#authentication",
-            "text": "All API calls require the username and password be supplied in a base64 encoded format in the Authorisation header of the request.\nIn C# the code for doing this would look like the following:  credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(USER + \":\" + PASSWORD));\nclient.DefaultRequestHeaders.Add(\"Authorization\", \"Basic \" + credentials);  For example  If the details are incorrect then the site will respond with a 401 error  From https://en.wikipedia.org/wiki/Basic_access_authentication\nWhen the user agent wants to send the server authentication credentials it may use the Authorization field.\nThe Authorization field is constructed as follows: \n1.  The username and password are combined with a single colon.",
-            "title": "Authentication"
+            "location": "/apf/overview/#intellectual-property",
+            "text": "This document contains information related to certain products and services which is proprietary to PROACTIS Group Limited and must not be disclosed, in whole or in part, to any third party.  Notably, all Intellectual property related to the deployment of the Accelerated Payment Facility is to the benefit of and remains the property of PROACTIS Group Limited.",
+            "title": "Intellectual Property"
         },
         {
-            "location": "/apf/overview/#finance-system-to-apf",
-            "text": "",
-            "title": "Finance System to APF"
-        },
-        {
-            "location": "/apf/overview/#apf-to-3rd-party-portal",
-            "text": "",
-            "title": "APF to 3rd Party Portal"
+            "location": "/apf/overview/#important-notes",
+            "text": "It should be noted that the PROACTIS APF product is still under active development and changes may be made as a result of testing (either internally or externally).",
+            "title": "Important Notes"
         },
         {
             "location": "/apf/overview/",
-            "text": "Overview\n\n\nThe Accelerated Payments Facility (APF) is a self-contained \u201cmicro service\u201d which sits between a number of systems as shown in the diagram below.\n\n\n\nP2P to APF\n\n\nFinance System to Payments Server\n\n\nThis document can be used along with the sample C# program:\n\n\nPROACTIS.AcceleratedPayments.Web.ExampleBuyerAPIClient\n\n\nThis document is only concerned with the integrations between the Finance System and the Payments Server.\nCurrently there is only one integration between these two systems which is the flow of supplier details from the finance system to the payment server.\n\u2003\n\n\nAuthentication\n\n\nAll API calls require the username and password be supplied in a base64 encoded format in the Authorisation header of the request.\nIn C# the code for doing this would look like the following:\n\n\ncredentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(USER + \":\" + PASSWORD));\nclient.DefaultRequestHeaders.Add(\"Authorization\", \"Basic \" + credentials);\n\n\n\n\nFor example\n\n\nIf the details are incorrect then the site will respond with a 401 error\n\n\nFrom https://en.wikipedia.org/wiki/Basic_access_authentication\nWhen the user agent wants to send the server authentication credentials it may use the Authorization field.\nThe Authorization field is constructed as follows: \n1.  The username and password are combined with a single colon.\n\n\nFinance System to APF\n\n\nAPF to 3rd Party Portal",
+            "text": "Overview\n\n\nThe Accelerated Payments Facility (APF) is a self-contained \u201cmicro service\u201d which sits between a number of systems as shown in the diagram below.\n\n\n\nGlossary\n\n\n\n\nAPF \u2013 Accelerated Payments Facility.   This is the central piece of software provided by PROACTIS\n\n\nP2P \u2013 Purchase-To-Pay system.  This can be either PROACTIS own P2P system or an alternative system provided by a 3rd party such as Coda.\n\n\nKDM \u2013 Key Decision Maker.  The responsible party for the supplier\n\n\nAML \u2013 Anti-money laundering checks.\n\n\nApplication. The request created by the supplier to have their invoices paid as soon as possible.  Each application contains one or more invoices.\n\n\nPayment \u2013 Internally within the APF module invoices are referred to as Payments\n\n\ns2c \u2013Source-To-Contract.  The supplier portal provided by PROACTIS.  Also known as Supplier Network.\n\n\n\n\nReadership\n\n\nThis document is aimed at developers who have been tasked with integrating their own supplier Portal system with APF.\nIt would be advisable to be familiar with the general APF process before reading this document.\n\n\nIntellectual Property\n\n\nThis document contains information related to certain products and services which is proprietary to PROACTIS Group Limited and must not be disclosed, in whole or in part, to any third party.  Notably, all Intellectual property related to the deployment of the Accelerated Payment Facility is to the benefit of and remains the property of PROACTIS Group Limited.\n\n\nImportant Notes\n\n\nIt should be noted that the PROACTIS APF product is still under active development and changes may be made as a result of testing (either internally or externally).",
             "title": "Finance System to Payments Server"
         },
         {
@@ -91,29 +86,24 @@
             "title": "Overview"
         },
         {
-            "location": "/apf/overview/#p2p-to-apf",
-            "text": "",
-            "title": "P2P to APF"
+            "location": "/apf/overview/#glossary",
+            "text": "APF \u2013 Accelerated Payments Facility.   This is the central piece of software provided by PROACTIS  P2P \u2013 Purchase-To-Pay system.  This can be either PROACTIS own P2P system or an alternative system provided by a 3rd party such as Coda.  KDM \u2013 Key Decision Maker.  The responsible party for the supplier  AML \u2013 Anti-money laundering checks.  Application. The request created by the supplier to have their invoices paid as soon as possible.  Each application contains one or more invoices.  Payment \u2013 Internally within the APF module invoices are referred to as Payments  s2c \u2013Source-To-Contract.  The supplier portal provided by PROACTIS.  Also known as Supplier Network.",
+            "title": "Glossary"
         },
         {
-            "location": "/apf/overview/#finance-system-to-payments-server",
-            "text": "This document can be used along with the sample C# program:  PROACTIS.AcceleratedPayments.Web.ExampleBuyerAPIClient  This document is only concerned with the integrations between the Finance System and the Payments Server.\nCurrently there is only one integration between these two systems which is the flow of supplier details from the finance system to the payment server.",
-            "title": "Finance System to Payments Server"
+            "location": "/apf/overview/#readership",
+            "text": "This document is aimed at developers who have been tasked with integrating their own supplier Portal system with APF.\nIt would be advisable to be familiar with the general APF process before reading this document.",
+            "title": "Readership"
         },
         {
-            "location": "/apf/overview/#authentication",
-            "text": "All API calls require the username and password be supplied in a base64 encoded format in the Authorisation header of the request.\nIn C# the code for doing this would look like the following:  credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(USER + \":\" + PASSWORD));\nclient.DefaultRequestHeaders.Add(\"Authorization\", \"Basic \" + credentials);  For example  If the details are incorrect then the site will respond with a 401 error  From https://en.wikipedia.org/wiki/Basic_access_authentication\nWhen the user agent wants to send the server authentication credentials it may use the Authorization field.\nThe Authorization field is constructed as follows: \n1.  The username and password are combined with a single colon.",
-            "title": "Authentication"
+            "location": "/apf/overview/#intellectual-property",
+            "text": "This document contains information related to certain products and services which is proprietary to PROACTIS Group Limited and must not be disclosed, in whole or in part, to any third party.  Notably, all Intellectual property related to the deployment of the Accelerated Payment Facility is to the benefit of and remains the property of PROACTIS Group Limited.",
+            "title": "Intellectual Property"
         },
         {
-            "location": "/apf/overview/#finance-system-to-apf",
-            "text": "",
-            "title": "Finance System to APF"
-        },
-        {
-            "location": "/apf/overview/#apf-to-3rd-party-portal",
-            "text": "",
-            "title": "APF to 3rd Party Portal"
+            "location": "/apf/overview/#important-notes",
+            "text": "It should be noted that the PROACTIS APF product is still under active development and changes may be made as a result of testing (either internally or externally).",
+            "title": "Important Notes"
         },
         {
             "location": "/about/",
