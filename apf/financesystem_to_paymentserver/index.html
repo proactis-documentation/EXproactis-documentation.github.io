@@ -121,14 +121,15 @@ client.DefaultRequestHeaders.Add(&quot;Authorization&quot;, &quot;Basic &quot; +
 
 <p>For example</p>
 <p>If the details are incorrect then the site will respond with a 401 error</p>
-<p>From https://en.wikipedia.org/wiki/Basic_access_authentication
+<p>From <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">https://en.wikipedia.org/wiki/Basic_access_authentication</a>
 When the user agent wants to send the server authentication credentials it may use the Authorization field.
 The Authorization field is constructed as follows: 
-1.  The username and password are combined with a single colon.
-2.  The resulting string is encoded into an octet sequence. 
-3.  The resulting string is encoded using a variant of Base64. 
-4.  The authorization method and a space i.e. "Basic " is then put before the encoded string.
-For example, if the browser uses Aladdin as the username and OpenSesame as the password, then the field's value is the base64-encoding of Aladdin:OpenSesame, or QWxhZGRpbjpPcGVuU2VzYW1l. 
+1 The username and password are combined with a single colon.<br />
+2 The resulting string is encoded into an octet sequence. <br />
+3 The resulting string is encoded using a variant of Base64. <br />
+4 The authorization method and a space i.e. "Basic " is then put before the encoded string.<br />
+For example, if the browser uses Aladdin as the username and OpenSesame as the password, then the field's value is the b</p>
+<p>ase64-encoding of Aladdin:OpenSesame, or QWxhZGRpbjpPcGVuU2VzYW1l. 
 Then the Authorization header will appear as:
 Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l</p></div>
         </div>
