@@ -11,14 +11,29 @@
             "title": "Overview"
         },
         {
-            "location": "/p2p/overview/",
-            "text": "Overview\n\n\nP2P",
+            "location": "/p2p/sso/",
+            "text": "Single-Sign-On (SSO)\n\n\nWindows Authentication\n\n\nSAML2\n\n\nCustom",
             "title": "Single Sign On (SSO)"
         },
         {
-            "location": "/p2p/overview/#overview",
-            "text": "P2P",
-            "title": "Overview"
+            "location": "/p2p/sso/#single-sign-on-sso",
+            "text": "",
+            "title": "Single-Sign-On (SSO)"
+        },
+        {
+            "location": "/p2p/sso/#windows-authentication",
+            "text": "",
+            "title": "Windows Authentication"
+        },
+        {
+            "location": "/p2p/sso/#saml2",
+            "text": "",
+            "title": "SAML2"
+        },
+        {
+            "location": "/p2p/sso/#custom",
+            "text": "",
+            "title": "Custom"
         },
         {
             "location": "/p2p/overview/",
