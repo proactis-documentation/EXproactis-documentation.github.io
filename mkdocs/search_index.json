@@ -1,6 +1,16 @@
 {
     "docs": [
         {
+            "location": "/welcome/",
+            "text": "Welcome\n\n\nThis site provides technical documentation for the PROACTIS suite of applications.",
+            "title": "PROACTIS"
+        },
+        {
+            "location": "/welcome/#welcome",
+            "text": "This site provides technical documentation for the PROACTIS suite of applications.",
+            "title": "Welcome"
+        },
+        {
             "location": "/p2p/Placeholder/",
             "text": "Placeholder text",
             "title": "Overview"
