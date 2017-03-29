@@ -159,10 +159,17 @@
 
 <h1 id="p2p-single-sign-on-sso">P2P Single-Sign-On (SSO)</h1>
 <p>By default PROACTIS expects the users to enter their username and password in order to login into PROACTIS P2P.   This document lists the possible ways in which PROACTIS P2P can be configured to allow users to authenticate using Single-Sign-On.</p>
-<p>!!! Notes
-    If you wish your users to use a combination of PROACTIS and SSO logins then add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.
-    <code>xml
-    &lt;Setting Name="AllowPROACTISLogins"&gt;True&lt;/Setting&gt;</code></p>
+<p>!!! Note</p>
+<pre><code>If you are installing Python on Windows, be sure to check the box to have
+Python added to your PATH if the installer offers such an option (it's
+normally off by default).
+</code></pre>
+<p>!!! Note</p>
+<pre><code>If you wish your users to use a combination of PROACTIS and SSO logins then add the following setting to the __ApplicationConfiguration.xml__ file.
+```xml
+&lt;Setting Name="AllowPROACTISLogins"&gt;True&lt;/Setting&gt;
+```
+</code></pre>
 <hr />
 <h2 id="windows-authentication">Windows Authentication</h2>
 <p>If your PROACTIS P2P server is on the same domain as your users then the system can be configured so that they are automatically signed on without the need for them to re-enter their username and password.</p>
@@ -175,11 +182,12 @@
 <p><img alt="alt text" src="../../img/p2p/sso/iis_config.JPG" title="Config" /></p>
 <p>!!! Note
     If some of your users aren't on your domain,  then leave anonymous authentication enabled for them.</p>
-<pre><code>+ Add the following setting to the __ApplicationConfiguration.xml__ file.
-```xml
-&lt;Setting Name="AuthenticationMethod"&gt;WINDOWS&lt;/Setting&gt;
-```
+<ul>
+<li>Add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</li>
+</ul>
+<pre><code class="xml">&lt;Setting Name=&quot;AuthenticationMethod&quot;&gt;WINDOWS&lt;/Setting&gt;
 </code></pre>
+
 <ul>
 <li>Set the <strong>NTLogon</strong> flag to True against the users,  and ensure that their usernames are in the format DOMAIN\Username.  <em>For example PROACTIS\DavidBetteridge</em></li>
 </ul>
