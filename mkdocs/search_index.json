@@ -2,13 +2,18 @@
     "docs": [
         {
             "location": "/welcome/",
-            "text": "Welcome\n\n\nThis site provides technical documentation for the PROACTIS suite of applications.",
+            "text": "Welcome\n\n\nThis site provides technical documentation for the PROACTIS suite of applications.\n\n\nIntellectual Property\n\n\nThis document contains information related to certain products and services which is proprietary to PROACTIS Group Limited. Notably, all Intellectual property related to the deployment of the PROACTIS Suite of applications is to the benefit of and remains the property of PROACTIS Group Limited.",
             "title": "PROACTIS"
         },
         {
             "location": "/welcome/#welcome",
             "text": "This site provides technical documentation for the PROACTIS suite of applications.",
             "title": "Welcome"
+        },
+        {
+            "location": "/welcome/#intellectual-property",
+            "text": "This document contains information related to certain products and services which is proprietary to PROACTIS Group Limited. Notably, all Intellectual property related to the deployment of the PROACTIS Suite of applications is to the benefit of and remains the property of PROACTIS Group Limited.",
+            "title": "Intellectual Property"
         },
         {
             "location": "/p2p/Placeholder/",
