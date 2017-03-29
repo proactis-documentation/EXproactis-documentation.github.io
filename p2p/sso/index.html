@@ -135,7 +135,7 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#single-sign-on-sso">Single-Sign-On (SSO)</a></li>
+        <li class="main active"><a href="#p2p-single-sign-on-sso">P2P Single-Sign-On (SSO)</a></li>
             <li><a href="#windows-authentication">Windows Authentication</a></li>
             <li><a href="#saml2">SAML2</a></li>
             <li><a href="#custom">Custom</a></li>
@@ -143,8 +143,20 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="single-sign-on-sso">Single-Sign-On (SSO)</h1>
+<h1 id="p2p-single-sign-on-sso">P2P Single-Sign-On (SSO)</h1>
 <h2 id="windows-authentication">Windows Authentication</h2>
+<p>If your PROACTIS P2P server is on the same domain as your users then the system can be configured so that they are automatically signed on without the need for them to re-enter their username and password.</p>
+<ol>
+<li>
+<p>Do this is IIS</p>
+</li>
+<li>
+<p>Add this to the application configuaration file</p>
+</li>
+<li>
+<p>Set the NTLogon flag to 1 against the users,  and ensure that their usernames are in the format DOMAIN\Username.  For example PROACTIS\DavidBetteridge</p>
+</li>
+</ol>
 <h2 id="saml2">SAML2</h2>
 <p>PROACTIS P2P has built in support for SSO using the industry standard SAML2 protocol.</p>
 <p>1 First generate (or obtain) a certificate and provide the public part of this to your identity provider
