@@ -165,6 +165,8 @@
 <p><img alt="alt text" src="../../img/p2p/sso/iis_feature.JPG" title="ServerRole" /></p>
 <p>And then enabled in the authentication section of your website</p>
 <p><img alt="alt text" src="../../img/p2p/sso/iis_config.JPG" title="Config" /></p>
+<p><strong>Note</strong>
+If some of your users aren't on your domain,  then leave anonymous authentication enabled for them.</p>
 <ul>
 <li>Add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</li>
 </ul>
@@ -175,14 +177,19 @@
 <li>Set the <strong>NTLogon</strong> flag to True against the users,  and ensure that their usernames are in the format DOMAIN\Username.  <em>For example PROACTIS\DavidBetteridge</em></li>
 </ul>
 <h2 id="saml2">SAML2</h2>
-<p>PROACTIS P2P has built in support for SSO using the industry standard SAML2 protocol.</p>
+<p>PROACTIS P2P has built in support for SSO using the industry standard <a href="https://en.wikipedia.org/wiki/SAML_2.0">SAML2</a> protocol.</p>
 <ul>
-<li>
-<p>First generate (or obtain) a certificate and provide the public part of this to your identity provider.</p>
-</li>
-<li>
-<p>With in your website's customer folder create a file called saml.config.   This should be based on the following template.</p>
-</li>
+<li>First generate (or obtain) a local certificate and provide the public part of this to your identity provider.</li>
+</ul>
+<pre><code class="batch">makecert -r -pe -n &quot;CN=your_cert_name&quot; -sky exchange -sv mycert.pvk mycert.cer
+
+Enter yourPassword for the subject key (3 times!)
+
+pvk2pfx.exe -pvk mycert.pvk -spc mycert.cer  -pi yourPassword -pfx mycert.pfx -po yourPassword
+</code></pre>
+
+<ul>
+<li>With in your website's customer folder create a file called <strong>saml.config</strong>.   This should be based on the following template.</li>
 </ul>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;SAMLConfiguration xmlns=&quot;urn:componentspace:SAML:2.0:configuration&quot;&gt;
