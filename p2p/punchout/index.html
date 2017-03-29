@@ -167,7 +167,7 @@ Unlike the previous versions it is now possible to configure the connections dir
 <p>Punch-out allows a user to jump from the PROACTIS website into a supplier’s shopping site.  Where they can browse a catalogue and add items to a shopping basket as per a normal ecommerce site.  Once they have finished browsing they click checkout and the items are then returned to PROACTIS as new lines on their current purchase order (or requisition).
 For the purposes of this document, the term punch-out does not include the ability to electronically export purchase orders to suppliers in cXML format.</p>
 <p>There are three methods of configuring punch-out:
-1.  Punch-thro. <br />
+1.  Punch+thro. <br />
 The buyer punches out to the supplier site via the PROACTIS s2c portal.  The details of the supplier site are configured within the s2c portal rather than within p2p.  This continues to work the same as on previous releases.</p>
 <ol>
 <li>Standard cxml punch-out 
@@ -185,36 +185,36 @@ Less commonly used in the UK, but PROACTIS also supports the OCI punch-out stand
 <p>The format of the cXML sent in the initial connection to the supplier’s site. (cXML only)</p>
 <p>By default PROACTIS uses an XSLT embedded within the product for generating the xml which is sent to the supplier.  It is possible to use your own xslt by creating a file within the plugins folder called PunchoutConnection_{supplierCode}.xslt.  Where {supplierCode} is the code of your supplier.
 The fields which are available to the XSLT are listed below.
--   Context
--   SessionID
--   SupplierCode
--   DepartmentCode
--   CompanyCode
--   TemplateLabel
--   LogonName
--   ActualName
--   FirstName
--   Surname
--   Email
--   ReturnURL
--   URL
--   BuyerCookie
--   PayloadID
--   Timestamp
--   PunchoutFromIdentity
--   PunchoutToIdentity
--   PunchoutSenderIdentity
--   PunchoutSenderSharedSecret
--   DeliveryAddressGUID
--   DeliveryAddressName
--   DeliveryAddressLine1
--   DeliveryAddressLine2
--   DeliveryAddressLine3
--   DeliveryAddressLine4
--   DeliveryCountry
--   DeliveryCounty
--   DeliveryPostcode
--   DeliveryPostTown
++   Context
++   SessionID
++   SupplierCode
++   DepartmentCode
++   CompanyCode
++   TemplateLabel
++   LogonName
++   ActualName
++   FirstName
++   Surname
++   Email
++   ReturnURL
++   URL
++   BuyerCookie
++   PayloadID
++   Timestamp
++   PunchoutFromIdentity
++   PunchoutToIdentity
++   PunchoutSenderIdentity
++   PunchoutSenderSharedSecret
++   DeliveryAddressGUID
++   DeliveryAddressName
++   DeliveryAddressLine1
++   DeliveryAddressLine2
++   DeliveryAddressLine3
++   DeliveryAddressLine4
++   DeliveryCountry
++   DeliveryCounty
++   DeliveryPostcode
++   DeliveryPostTown
  </p>
 <p>The processing of the basket returned from the supplier’s site (cxml and oci)
 When the basket is returned from the supplier by default it is transformed into the correct P2P format by using an XSLT embedded within the product.  This can be replaced by your own transform by creating a file in the plugins folder called <strong>ReturnedPunchoutBasket_{supplierCode}.xslt</strong> Where {supplierCode} is the code of your supplier.
@@ -253,19 +253,19 @@ This page should be placed in the Customer folder within the website.
 
 The default PunchoutReturned.aspx page looks for the basket xml in the following form fields:
 1.  XML
-2.  cxml-urlencode
-3.  cxml-urlencoded
-4.  cXML-base64
+2.  cxml+urlencode
+3.  cxml+urlencoded
+4.  cXML+base64
 5.  oracleCart
 6.  the first form field
 The default PunchoutReturnedOCI.aspx page looks for the basket xml in the form fields as follows.
--   The items are returned in arrays of fields.  Indexed from 1 onwards
--   First it checks there is a field called NEW_ITEM-DESCRIPTION[1].  If there isn’t then it assumes that no basket items were returned.
--   It then loops through all fields which are named in the format NEW_xxxxx[n] where xxxxx is the name of a property and n is the item number.
--   Each of these form fields are then added into the xml.  The result xml will have the following format:
++   The items are returned in arrays of fields.  Indexed from 1 onwards
++   First it checks there is a field called NEW_ITEM+DESCRIPTION[1].  If there isn’t then it assumes that no basket items were returned.
++   It then loops through all fields which are named in the format NEW_xxxxx[n] where xxxxx is the name of a property and n is the item number.
++   Each of these form fields are then added into the xml.  The result xml will have the following format:
 ```xml
 &lt;PurchaseOrder&gt;
-    &lt;line number=1 item-description=’red pen’ etc etc /&gt;
+    &lt;line number=1 item+description=’red pen’ etc etc /&gt;
 &lt;/PurchaseOrder&gt;
 </code></pre>
 
@@ -275,27 +275,27 @@ Unlike previous versions of PROACTIS it is now possible to configure marketplace
 <h3 id="configuration">Configuration</h3>
 <p>Using the “System Control” application choose the Marketplaces option from the Supplier Maintenance menu.  Add a New market place and complete both the Details and Punch-out sections.</p>
 <p>The following marketplace types (standards) are currently supported
--   CXML
--   PROACTIS EGS
--   Procserve
--   Science warehouse</p>
++   CXML
++   PROACTIS EGS
++   Procserve
++   Science warehouse</p>
 <p>The Supplier Code Mapped From field specifies how the supplier code in the returned basket is mapped back to the suppliers within PROACTIS.</p>
 <h3 id="customisation">Customisation</h3>
 <p>The xml used for the initial connection is generated using an xslt embedded within the product.  It is possible to provide your own xslt by creating a file in the plugins folder called MarketPlaceConnection_{marketPlaceName}.xslt.  Where {marketPlaceName} is the name of the configured marketplace.
 The fields passed into the xml are listed below:
--   DepartmentCode
--   CompanyCode
--   LogonName
--   Email
--   ReturnURL
--   URL
--   BuyerCookie
--   PayloadID
--   Timestamp
--   PunchoutFromIdentity
--   PunchoutToIdentity
--   PunchoutSenderIdentity
--   PunchoutSenderSharedSecret</p>
++   DepartmentCode
++   CompanyCode
++   LogonName
++   Email
++   ReturnURL
++   URL
++   BuyerCookie
++   PayloadID
++   Timestamp
++   PunchoutFromIdentity
++   PunchoutToIdentity
++   PunchoutSenderIdentity
++   PunchoutSenderSharedSecret</p>
 <p>When the basket is returned from the market place by default it is transformed into the correct format by using an XSLT embedded within the product.  It is possible to provide your own xslt by creating a file in the plugins folder called MarketPlaceResult_{marketPlaceName}.xslt.  Where {marketPlaceName} is the name of the configured marketplace.
 The xslt needs to generate xml in the following format</p>
 <pre><code class="xml">&lt;PurchaseOrder&gt;
@@ -325,7 +325,7 @@ The xslt needs to generate xml in the following format</p>
 <h1 id="egs-marketplaces">EGS Marketplaces</h1>
 <p>The EGS settings within the PROACTIS Connectivity snapin, do not refer to marketplace punch-out.  This are used to configure different functionality not covered by this document.</p>
 <h1 id="proxy-server">Proxy Server</h1>
-<p>Connections to both supplier punch-out, and marketplaces honour the proxy server settings held in the dsdba.ProxySettings table.
+<p>Connections to both supplier punch-out, and marketplaces honour the proxy server settings held in the <strong>dsdba.ProxySettings</strong> table.
 This can be configured using the System Control application.</p></div>
         </div>
 
