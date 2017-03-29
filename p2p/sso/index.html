@@ -142,7 +142,7 @@
         <li class="main active"><a href="#p2p-single-sign-on-sso">P2P Single-Sign-On (SSO)</a></li>
             <li><a href="#windows-authentication">Windows Authentication</a></li>
             <li><a href="#saml2">SAML2</a></li>
-            <li><a href="#custom">Custom</a></li>
+            <li><a href="#external">External</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -214,7 +214,36 @@ This optional setting will cause the lookup to be made on “EmailAddress” rat
 presented with a logon page. If the user has access to multiple databases, then this setting specifies the database title (in the database xml file) to log into.
 If this setting is not present, P2P will select the default database in the databases xml file (or the first database if no default).
 Obviously if only one database is available, then this setting is unnecessary.</p>
-<h2 id="custom">Custom</h2></div>
+<h2 id="external">External</h2>
+<p>By default PROACTIS P2P validates the username and password entered by the user against the record in the dsdba.Users table.   It is however possible to customise PROACTIS so that users are validated against an external userstore such as LDAP.</p>
+<p>The following steps should be followed in order to create an external validation DLL.</p>
+<ol>
+<li>
+<p>Create a new C# class library with a class called Services which implements the ILogin interface.  This interface can be found in the PROACTIS.P2P.grsCustInterfaces.DLL</p>
+</li>
+<li>
+<p>Decide if your login process will be called asynchronously or not and implement the UseAsynchronousImplementation as required.</p>
+</li>
+</ol>
+<pre><code class="C#">    public bool UseAsynchronousImplementation =&gt; false;
+</code></pre>
+
+<ol>
+<li>
+<p>Implement the Login (or LoginAsync) method with your custom validate code.  This method should return True for a successfully login and False for a failure.  For security reasons it is recommended that exceptions aren't thrown informing the user why the login failed.  For example the username does not exist.</p>
+</li>
+<li>
+<p>Compile your code,  and ensure that the resulting DLL is named <em>Login.DLL.   (</em> can be anything)</p>
+</li>
+<li>
+<p>Copy the DLL into your PROACTIS P2P/Plugins folder.</p>
+</li>
+<li>
+<p>Add the following setting into your applicationconfiguration.xml file.</p>
+</li>
+</ol>
+<pre><code class="xml">&lt;Setting Name=&quot;AuthenticationMethod&quot;&gt;EXTERNAL&lt;/Setting&gt;
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
