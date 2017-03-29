@@ -160,10 +160,9 @@
 <h1 id="p2p-single-sign-on-sso">P2P Single-Sign-On (SSO)</h1>
 <p>By default PROACTIS expects the users to enter their username and password in order to login into PROACTIS P2P.   This document lists the possible ways in which PROACTIS P2P can be configured to allow users to authenticate using Single-Sign-On.</p>
 <p>!!! Notes
-If you wish your users to use a combination of PROACTIS and SSO logins then add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</p>
-<pre><code class="xml">&lt;Setting Name=&quot;AllowPROACTISLogins&quot;&gt;True&lt;/Setting&gt;
-</code></pre>
-
+    If you wish your users to use a combination of PROACTIS and SSO logins then add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.
+    <code>xml
+    &lt;Setting Name="AllowPROACTISLogins"&gt;True&lt;/Setting&gt;</code></p>
 <hr />
 <h2 id="windows-authentication">Windows Authentication</h2>
 <p>If your PROACTIS P2P server is on the same domain as your users then the system can be configured so that they are automatically signed on without the need for them to re-enter their username and password.</p>
@@ -175,13 +174,12 @@ If you wish your users to use a combination of PROACTIS and SSO logins then add 
 <p>And then enabled in the authentication section of your website</p>
 <p><img alt="alt text" src="../../img/p2p/sso/iis_config.JPG" title="Config" /></p>
 <p>!!! Note
-If some of your users aren't on your domain,  then leave anonymous authentication enabled for them.</p>
-<ul>
-<li>Add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</li>
-</ul>
-<pre><code class="xml">&lt;Setting Name=&quot;AuthenticationMethod&quot;&gt;WINDOWS&lt;/Setting&gt;
+    If some of your users aren't on your domain,  then leave anonymous authentication enabled for them.</p>
+<pre><code>+ Add the following setting to the __ApplicationConfiguration.xml__ file.
+```xml
+&lt;Setting Name="AuthenticationMethod"&gt;WINDOWS&lt;/Setting&gt;
+```
 </code></pre>
-
 <ul>
 <li>Set the <strong>NTLogon</strong> flag to True against the users,  and ensure that their usernames are in the format DOMAIN\Username.  <em>For example PROACTIS\DavidBetteridge</em></li>
 </ul>
@@ -285,9 +283,10 @@ Obviously if only one database is available, then this setting is unnecessary.</
 </code></pre>
 
 <p>See the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/SSO/PROACTIS.ExampleApplications.ExternalLogin">PROACTIS.ExampleApplications.ExternalLogin</a> example application for a complete sample implementation.</p>
-<p><strong>Notes</strong>
-- In order to login using the external DLL,  the user must have their NTLogon property set to True
-- Failed login attempts aren't recorded</p>
+<p>!!! Notes
+    - In order to login using the external DLL,  the user must have their NTLogon property set to True
+    - Failed login attempts aren't recorded</p>
+<hr />
 <h2 id="bespoke">Bespoke</h2>
 <p>It is also possible to provide your users with a completely custom login process,  including replacing the login screen and adding the ability to automatically create users the first time they connect.</p></div>
         </div>
