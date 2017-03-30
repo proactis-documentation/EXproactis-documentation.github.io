@@ -150,7 +150,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#nominal-validation">Nominal Validation</a></li>
             <li><a href="#overview">Overview</a></li>
-            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#implementation-steps">Implementation Steps</a></li>
             <li><a href="#deployment">Deployment</a></li>
     </ul>
 </div></div>
@@ -163,7 +163,7 @@
 <p>In a lot of cases this can be configured using the <strong>Generic Nominal Validation</strong> snapin directly within the product.  This is the preferred approach as all the configuration is held within the database and the generic nominal validation module automatically provides extra features such as caching.</p>
 <p>If <strong>Generic Nominal Validation</strong> is not suitable for your needs then a custom DLL can be implemented providing you with complete control of the process.</p>
 <hr />
-<h2 id="getting-started">Getting Started</h2>
+<h2 id="implementation-steps">Implementation Steps</h2>
 <ul>
 <li>
 <p>Create a new C# Class Library project called xyzNominalCheck. ( <em>xyz</em> can be anything)</p>
@@ -230,7 +230,14 @@
 <p class="admonition-title">Warning</p>
 <p>The POXML argument is populated with an xml document based on a internal product structure which may change over time release to release.  It is recommended that you only extract information that you cannot obtain from elsewhere,  and also code defensively. </p>
 </div>
-<h3 id="errornominals">ErrorNominals</h3>
+<h3 id="error-nominals">Error Nominals</h3>
+<p>The xml for the returned invalid nominals takes a similar structure to the NominalsXML argument.  For example:</p>
+<pre><code class="xml">&lt;grs:Nominals xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
+   &lt;grs:Nominal grs:Coding=&quot;1720&quot; grs:Element1=&quot;1720&quot; grs:Element2=&quot;&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
+   &lt;grs:Nominal grs:Coding=&quot;4744.1100&quot; grs:Element1=&quot;4744&quot; grs:Element2=&quot;1100&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
+&lt;/grs:Nominals&gt;
+</code></pre>
+
 <hr />
 <h2 id="deployment">Deployment</h2>
 <p>You dll should be complied (and named xyzNominalCheck.dll) and then copied into your <strong>PROACTIS P2P/Plugins</strong>  (or <strong>Plugins/[database-title]</strong>) folder.</p></div>
