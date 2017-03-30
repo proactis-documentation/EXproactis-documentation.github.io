@@ -131,6 +131,41 @@
             "title": "Proxy Server"
         },
         {
+            "location": "/p2p/nominalvalidation/",
+            "text": "Nominal Validation\n\n\nOverview\n\n\nThe core PROACTIS P2P product includes the functionality for complex nominal rules to be defined using the concept of nominal groups.\n\n\nIn some situations there might be a requirement to also validate the nominal coding entered against a purchase order line against an external source,  such as a finance system.\n\n\nIn a lot of cases this can be configured using the \nGeneric Nominal Validation\n snapin directly within the product.  This is the preferred approach as all the configuration is held within the database and the generic nominal validation module automatically provides extra features such as caching.\n\n\nIf \nGeneric Nominal Validation\n is not suitable for your needs then a custom DLL can be implemented providing you with complete control of the process.\n\n\n\n\nGetting Started\n\n\n\n\n\n\nCreate a new C# Class Library project called xyzNominalCheck. ( \nxyz\n can be anything)\n\n\n\n\n\n\nAdd a reference to \nPurchasing Server\\bin\\PROACTIS.P2P.grsCustInterfaces.dll\n\n\n\n\n\n\nAdd a class called \nServices\n which implements the \ngrsCustInterfaces.INominals\n interface.\n\n\n\n\n\n\nWrite an implementation of the \ngrsCustInterfaces.INominals.NominalCheck\n method.\n\n\n\n\n\n\nbool grsCustInterfaces.INominals.NominalCheck(string NominalsXML, string POXML, ref string ErrorNominals)\n\n\n\n\nArguments\n\n\n\n\n\n\n\n\nArgument\n\n\nDirection\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nNominalsXML\n\n\nIn\n\n\nAn xml document containing the nominals which need to be validated.  This also includes details of the database,  company and user.\n\n\n\n\n\n\nPOXML\n\n\nIn\n\n\nAn xml document containing the entire purchase order to validate.  By default this argument is blank unless the company-wide setting is enabled.\n\n\n\n\n\n\nErrorNominals\n\n\nOut\n\n\nIf the nominals fail validation,  then you should return an xml document listing the failing nominals.\n\n\n\n\n\n\n\n\nReturn Value\n\n\nThe function should return True if all nominals are valid and False if one or more nominals are invalid.\n\n\nDeployment\n\n\nYou dll should be complied (and named xyzNominalCheck.dll) and then copied into your \nPROACTIS P2P/Plugins\n  (or \nPlugins/[database-title]\n) folder.",
+            "title": "Nominal Validation"
+        },
+        {
+            "location": "/p2p/nominalvalidation/#nominal-validation",
+            "text": "",
+            "title": "Nominal Validation"
+        },
+        {
+            "location": "/p2p/nominalvalidation/#overview",
+            "text": "The core PROACTIS P2P product includes the functionality for complex nominal rules to be defined using the concept of nominal groups.  In some situations there might be a requirement to also validate the nominal coding entered against a purchase order line against an external source,  such as a finance system.  In a lot of cases this can be configured using the  Generic Nominal Validation  snapin directly within the product.  This is the preferred approach as all the configuration is held within the database and the generic nominal validation module automatically provides extra features such as caching.  If  Generic Nominal Validation  is not suitable for your needs then a custom DLL can be implemented providing you with complete control of the process.",
+            "title": "Overview"
+        },
+        {
+            "location": "/p2p/nominalvalidation/#getting-started",
+            "text": "Create a new C# Class Library project called xyzNominalCheck. (  xyz  can be anything)    Add a reference to  Purchasing Server\\bin\\PROACTIS.P2P.grsCustInterfaces.dll    Add a class called  Services  which implements the  grsCustInterfaces.INominals  interface.    Write an implementation of the  grsCustInterfaces.INominals.NominalCheck  method.    bool grsCustInterfaces.INominals.NominalCheck(string NominalsXML, string POXML, ref string ErrorNominals)",
+            "title": "Getting Started"
+        },
+        {
+            "location": "/p2p/nominalvalidation/#arguments",
+            "text": "Argument  Direction  Description      NominalsXML  In  An xml document containing the nominals which need to be validated.  This also includes details of the database,  company and user.    POXML  In  An xml document containing the entire purchase order to validate.  By default this argument is blank unless the company-wide setting is enabled.    ErrorNominals  Out  If the nominals fail validation,  then you should return an xml document listing the failing nominals.",
+            "title": "Arguments"
+        },
+        {
+            "location": "/p2p/nominalvalidation/#return-value",
+            "text": "The function should return True if all nominals are valid and False if one or more nominals are invalid.",
+            "title": "Return Value"
+        },
+        {
+            "location": "/p2p/nominalvalidation/#deployment",
+            "text": "You dll should be complied (and named xyzNominalCheck.dll) and then copied into your  PROACTIS P2P/Plugins   (or  Plugins/[database-title] ) folder.",
+            "title": "Deployment"
+        },
+        {
             "location": "/placeholder/",
             "text": "Placeholder text",
             "title": "Invoice Posting"
@@ -139,11 +174,6 @@
             "location": "/placeholder/",
             "text": "Placeholder text",
             "title": "Budget Checking"
-        },
-        {
-            "location": "/placeholder/",
-            "text": "Placeholder text",
-            "title": "Nominal Validation"
         },
         {
             "location": "/placeholder/",
