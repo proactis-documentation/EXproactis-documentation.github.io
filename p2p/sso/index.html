@@ -326,8 +326,8 @@ Obviously if only one database is available, then this setting is unnecessary.</
 <p>See these <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/SSO/Bespoke">example pages</a> for a complete sample.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Upon exit form P2P, the browser will be redirected back to the custom login page with the following in the querystring <strong>action=logout</strong>. If the custom logon page uses automated logins then it must take notice of this parameter to not automatically log the user back in again</p>
 </div>
-<p>Upon exit form P2P, the browser will be redirected back to the custom login page with the following in the querystring “action=logout”. If the custom logon page uses automated logins then it must take notice of this parameter to not automatically log the user back in again</p>
 <h3 id="return-messages">Return Messages</h3>
 <p>Messages are return to the custom login page using the following query string format
 <code>InfoMessages=XXX&amp;AlertMessages=YYY&amp;ErrorMessages=ZZZ</code></p>
