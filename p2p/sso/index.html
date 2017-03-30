@@ -298,7 +298,41 @@ Obviously if only one database is available, then this setting is unnecessary.</
 </div>
 <hr />
 <h2 id="bespoke">Bespoke</h2>
-<p>It is also possible to provide your users with a completely custom login process,  including replacing the login screen and adding the ability to automatically create users the first time they connect.</p></div>
+<p>It is also possible to provide your users with a completely custom login process,  including replacing the login screen and adding the ability to automatically create users the first time they connect.</p>
+<p>The process is to :</p>
+<ul>
+<li>
+<p>Create a custom page in your website's customer folder called <strong>CustomLogin</strong></p>
+</li>
+<li>
+<p>Within that page collect any required details from the user and validate their credentials.</p>
+</li>
+<li>
+<p>If the user entered valid details then log them on by:</p>
+<ul>
+<li>First generating a unique token for them</li>
+<li>Then writing the token to the <strong>DSDBA.CustomLoginTokens</strong> table.</li>
+<li>Finally redirecting the user's browser to CustomLoginAsync within the main site.</li>
+</ul>
+</li>
+<li>
+<p>To enable your new page to be used,  the following settings should be added to the <strong>ApplicationConfiguration</strong> file.</p>
+</li>
+</ul>
+<pre><code class="xml">&lt;Setting Name=&quot;AuthenticationMethod&quot;&gt;CUSTOM&lt;/Setting&gt;
+&lt;Setting Name=&quot;CustomLoginURL&quot;&gt;https://sp-db01/custom/CustomLogin.aspx&lt;/Setting&gt;
+</code></pre>
+
+<p>See these <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/SSO/Bespoke">example pages</a> for a complete sample.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Upon exit form P2P, the browser will be redirected back to the custom login page with the following in the querystring “action=logout”. If the custom logon page uses automated logins then it must take notice of this parameter to not automatically log the user back in again</p>
+<h3 id="return-messages">Return Messages</h3>
+<p>Messages are return to the custom login page using the following query string format
+<code>InfoMessages=XXX&amp;AlertMessages=YYY&amp;ErrorMessages=ZZZ</code></p>
+<p>Where XXX, YYY and ZZZ are base64 encoded UNICODE strings. Each encoded string contains the messages concatenate with a “|” separator. (see sample app)
+These entries will only be in the querystring if there are messages to return.</p></div>
         </div>
 
         <footer class="col-md-12">

@@ -165,7 +165,7 @@
 
 <h1 id="punch-out-and-marketplaces-in-proactis">Punch-out and Marketplaces in PROACTIS</h1>
 <h2 id="overview">Overview</h2>
-<p>Punch-out allows a user to jump from the PROACTIS P2P website into a supplier’s shopping site.  Where they can browse a catalogue and add items to a shopping basket as per a normal ecommerce site.  Once they have finished browsing they click checkout and the items are then returned to PROACTIS as new lines on their current purchase order (or requisition).
+<p>Punch-out allows a user to jump from the PROACTIS P2P website into a supplier’s shopping site.  Where they can browse a catalogue and add items to a shopping basket as per a normal e-commerce site.  Once they have finished browsing they click checkout and the items are then returned to PROACTIS as new lines on their current purchase order (or requisition).
 For the purposes of this document, the term punch-out does not include the ability to electronically export purchase orders to suppliers in cXML format.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -174,7 +174,7 @@ Unlike the previous versions it is now possible to configure the connections dir
 </div>
 <hr />
 <h2 id="punch-thro">Punch-thro.</h2>
-<p>There are three different methods of configuring punch-out within the PROACTIS P2P product.   This first is referred to as punch-thro.  This is where the buyer connects to the suppliers punchout site via the PROACTIS S2C portal. </p>
+<p>There are three different methods of configuring punch-out within the PROACTIS P2P product.   This first is referred to as punch-thro.  This is where the buyer connects to the suppliers punch-out site via the PROACTIS S2C portal. </p>
 <p>As the details of the suppliers site are configured in the PROACTIS S2C Portal the only P2P settings required are as shown below</p>
 <ul>
 <li>Configure the connection to your PROACTIS S2C portal.  (<strong>Application</strong> -&gt; <strong>PROACTIS Connectivity</strong>)</li>
@@ -186,7 +186,7 @@ Unlike the previous versions it is now possible to configure the connections dir
 <p><img alt="alt text" src="../../img/p2p/punchout/thru-settings.bmp" title="cxml" /></p>
 <hr />
 <h2 id="cxml-punch-out">cXML punch-out</h2>
-<p>The majority of punch-outs follow the <a href="http://cxml.org/">cXML</a> standard.  This can be configured directly within the P2P product by completeing the following fields against a supplier.</p>
+<p>The majority of punch-outs follow the <a href="http://cxml.org/">cXML</a> standard.  This can be configured directly within the P2P product by completing the following fields against a supplier.</p>
 <p><img alt="alt text" src="../../img/p2p/punchout/cxml-settings.bmp" title="cxml" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -276,9 +276,9 @@ The XSLT must generate XML in the following format:</p>
 <p>The default <strong>PunchoutReturned.aspx</strong> page looks for the basket xml in the following form fields:</p>
 <ol>
 <li>XML</li>
-<li>cxml+urlencode</li>
-<li>cxml+urlencoded</li>
-<li>cXML+base64</li>
+<li>cxml-urlencode</li>
+<li>cxml-urlencoded</li>
+<li>cXML-base64</li>
 <li>oracleCart</li>
 <li>the first form field</li>
 </ol>
