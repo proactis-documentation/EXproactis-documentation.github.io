@@ -210,6 +210,21 @@
 </table>
 <h3 id="return-value">Return Value</h3>
 <p>The function should return True if all nominals are valid and False if one or more nominals are invalid.</p>
+<h3 id="sample-nominal-xml">Sample Nominal XML</h3>
+<pre><code class="xml">&lt;grs:NominalCheck&gt;
+    &lt;grs:Database grs:Server=&quot;Develop07&quot; grs:DatabaseName=&quot;PROACTISIII&quot;/&gt;
+
+    &lt;grs:General grs:UserGUID=&quot;{02E0D6D9-B655-11D5-91D6-000629864A98}&quot; grs:CompanyGUID=&quot;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&quot;/&gt;
+
+    &lt;grs:Nominals xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
+        &lt;grs:Nominal grs:Coding=&quot;1720&quot; grs:Element1=&quot;1720&quot; grs:Element2=&quot;&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
+
+        &lt;grs:Nominal grs:Coding=&quot;4744.1100&quot; grs:Element1=&quot;4744&quot; grs:Element2=&quot;1100&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
+    &lt;/grs:Nominals&gt;
+&lt;/grs:NominalCheck&gt;
+</code></pre>
+
+<hr />
 <h2 id="deployment">Deployment</h2>
 <p>You dll should be complied (and named xyzNominalCheck.dll) and then copied into your <strong>PROACTIS P2P/Plugins</strong>  (or <strong>Plugins/[database-title]</strong>) folder.</p></div>
         </div>
