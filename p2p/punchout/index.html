@@ -239,9 +239,9 @@ Unlike the previous versions it is now possible to configure the connections dir
 <li>DeliveryCountry</li>
 <li>DeliveryCounty</li>
 <li>DeliveryPostcode</li>
-<li>DeliveryPostTown
- </li>
+<li>DeliveryPostTown</li>
 </ul>
+<p>An example XSLT document is available <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Punchout/Connections">here</a>.</p>
 <h3 id="cxml-oci-returned-basket">cXML &amp; OCI Returned Basket</h3>
 <p>When the basket is returned from the supplier by default it is transformed into the correct P2P format by using an XSLT embedded within the product.  This can be replaced by your own transform by creating a file in the plugins folder called <strong>ReturnedPunchoutBasket_{supplierCode}.xslt</strong> Where <em>{supplierCode}</em> is the code of your supplier.
 The XSLT must generate XML in the following format:</p>
@@ -269,6 +269,7 @@ The XSLT must generate XML in the following format:</p>
 &lt;/PurchaseOrder&gt;
 </code></pre>
 
+<p>An example XSLT document is available <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Punchout/BasketResponses">here</a>.</p>
 <h3 id="custom-return-page">Custom Return Page</h3>
 <p>By default the supplier posts their basket back to either <strong>PunchoutReturned.aspx</strong> (for cxml) or <strong>PunchoutReturnedOCI.aspx</strong> (for oci).  It is however possible for you to provide your own page for processing the returned basket.  This is configured by completing the following field against the supplier record.</p>
 <p><img alt="alt text" src="../../img/p2p/punchout/custom-return.bmp" title="return" /></p>
