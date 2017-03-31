@@ -153,6 +153,7 @@
             <li><a href="#custom-dll">Custom DLL</a></li>
             <li><a href="#implementation">Implementation</a></li>
             <li><a href="#icustcommitcommitmentcheck">ICustCommit.CommitmentCheck</a></li>
+            <li><a href="#icustcommitcommitmentreport">ICustCommit.CommitmentReport</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -247,16 +248,90 @@ Given a set of nominal lines from a purchase order returns the total amount that
 &lt;grs:Currencies&gt;&lt;grs:Currency grs:CurrencyGUID=&quot;{2E67C438-9012-415B-AED4-8809F0012A78}&quot; grs:Status=&quot;H1&quot; grs:Symbol=&quot;£&quot; grs:DecimalPlaces=&quot;2&quot; /&gt;&lt;/grs:Currencies&gt;
 
 &lt;grs:NominalPeriods&gt;
-&lt;grs:NominalPeriod grs:Year=&quot;2017&quot; grs:Period=&quot;1&quot; grs:YearPeriodGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:Value=&quot;120.12&quot; grs:Home1Value=&quot;120.12&quot; grs:Home2Value=&quot;120.12&quot; grs:NonRecoverableTax=&quot;0&quot; grs:NonRecoverableTaxHome1=&quot;0&quot; grs:NonRecoverableTaxHome2=&quot;0&quot;&gt;
-&lt;grs:Nominal grs:Coding=&quot;SALES.CONF.MARKET&quot; grs:Element1=&quot;SALES&quot; grs:Element2=&quot;CONF&quot; grs:Element3=&quot;MARKET&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot;&gt;&lt;/grs:Nominal&gt;
-&lt;/grs:NominalPeriod&gt;
+    &lt;grs:NominalPeriod grs:Year=&quot;2017&quot; grs:Period=&quot;1&quot; grs:YearPeriodGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:Value=&quot;120.12&quot; 
+    grs:Home1Value=&quot;120.12&quot; grs:Home2Value=&quot;120.12&quot; grs:NonRecoverableTax=&quot;0&quot; grs:NonRecoverableTaxHome1=&quot;0&quot; grs:NonRecoverableTaxHome2=&quot;0&quot;&gt;
+        &lt;grs:Nominal grs:Coding=&quot;SALES.CONF.MARKET&quot; grs:Element1=&quot;SALES&quot; grs:Element2=&quot;CONF&quot; grs:Element3=&quot;MARKET&quot; grs:Element4=&quot;&quot; 
+        grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot;&gt;&lt;/grs:Nominal&gt;
+    &lt;/grs:NominalPeriod&gt;
 &lt;/grs:NominalPeriods&gt;
 
 &lt;/grs:CommitmentLookup&gt;
 </code></pre>
 
 <p>The <strong>NominalPeriods</strong> element is repeated for each nominal line on the purchase order.</p>
-<hr /></div>
+<hr />
+<h2 id="icustcommitcommitmentreport">ICustCommit.CommitmentReport</h2>
+<h3 id="arguments_1">Arguments</h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NominalsXML</td>
+<td>In</td>
+<td>An xml document containing the nominals which need to be budget checked.  This also includes details of the database,  company and user.</td>
+</tr>
+<tr>
+<td>POXML</td>
+<td>In</td>
+<td>An xml document containing the entire purchase order to check.  By default this argument is blank unless the company-wide setting is enabled.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value_1">Return Value</h3>
+<p>The function should return a table (in xml format) which describes the budget calculation for each line on the order.</p>
+<h3 id="nominals-xml_1">Nominals XML</h3>
+<p>Below is an example of the xml passed to the <strong>NominalsXML</strong> argument.</p>
+<pre><code class="xml">&lt;grs:CommitmentLookup xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
+&lt;grs:Database grs:Server=&quot;localhost&quot; grs:DatabaseName=&quot;PROACTIS&quot; /&gt;
+&lt;grs:General grs:UserGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:CompanyGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; /&gt;
+&lt;grs:Currencies&gt;&lt;grs:Currency grs:CurrencyGUID=&quot;{2E67C438-9012-415B-AED4-8809F0012A78}&quot; grs:Status=&quot;H1&quot; grs:Symbol=&quot;£&quot; grs:DecimalPlaces=&quot;2&quot; /&gt;&lt;/grs:Currencies&gt;
+
+&lt;grs:NominalPeriods&gt;
+    &lt;grs:NominalPeriod grs:Year=&quot;2017&quot; grs:Period=&quot;1&quot; grs:YearPeriodGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:Value=&quot;120.12&quot; 
+    grs:Home1Value=&quot;120.12&quot; grs:Home2Value=&quot;120.12&quot; grs:NonRecoverableTax=&quot;0&quot; grs:NonRecoverableTaxHome1=&quot;0&quot; grs:NonRecoverableTaxHome2=&quot;0&quot;&gt;
+        &lt;grs:Nominal grs:Coding=&quot;SALES.CONF.MARKET&quot; grs:Element1=&quot;SALES&quot; grs:Element2=&quot;CONF&quot; grs:Element3=&quot;MARKET&quot; grs:Element4=&quot;&quot; 
+        grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot;&gt;&lt;/grs:Nominal&gt;
+    &lt;/grs:NominalPeriod&gt;
+&lt;/grs:NominalPeriods&gt;
+
+&lt;/grs:CommitmentLookup&gt;
+</code></pre>
+
+<p>The <strong>NominalPeriods</strong> element is repeated for each nominal line on the purchase order.</p>
+<h3 id="returned-xml">Returned XML</h3>
+<p>The function needs to return XML with the following structure</p>
+<pre><code class="xml">&lt;grs:HeadedList xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
+
+&lt;grs:Headings&gt;
+    &lt;grs:Column Number='1' Type='' BudgetType=''&gt;Nominal Coding&lt;/grs:Column&gt;
+    &lt;grs:Column Number='2' Type='Currency' BudgetType='Budget'&gt;Budget For Year&lt;/grs:Column&gt;
+    &lt;grs:Column Number='3' Type='Currency' BudgetType='Cost'&gt;Spend To Date&lt;/grs:Column&gt;
+    &lt;grs:Column Number='4' Type='Currency' BudgetType='Cost'&gt;Accruals&lt;/grs:Column&gt;
+    &lt;grs:Column Number='5' Type='Currency' BudgetType='Cost'&gt;This Document&lt;/grs:Column&gt;
+    &lt;grs:Column Number='6' Type='Currency' BudgetType=''&gt;Remaining Budget&lt;/grs:Column&gt;
+    &lt;grs:Column Number='7' Type='Highlight' BudgetType=''&gt;Highlight&lt;/grs:Column&gt;
+&lt;/grs:Headings&gt;
+
+&lt;grs:Items&gt;
+    &lt;grs:Item GUID='{3A8D2AC2-6287-41DF-817A-F77B0551D80D}' &gt;
+        &lt;grs:Column Number='1' Type='Standard'&gt;SALES.CONF.MARKETING&lt;/grs:Column&gt;
+        &lt;grs:Column Number='2' CurrencySymbol='£' DecimalPlaces='0' Type='Currency'&gt;100000&lt;/grs:Column&gt;
+        &lt;grs:Column Number='3' CurrencySymbol='£' DecimalPlaces='0' Type='Currency'&gt;60000&lt;/grs:Column&gt;
+        &lt;grs:Column Number='4' CurrencySymbol='£' DecimalPlaces='0' Type='Currency' Hyperlink='/CommitmentReport.html'&gt;50000&lt;/grs:Column&gt;
+        &lt;grs:Column Number='5' CurrencySymbol='£' DecimalPlaces='0' Type='Currency'&gt;20000&lt;/grs:Column&gt;
+        &lt;grs:Column Number='6' CurrencySymbol='£' DecimalPlaces='0' Type='Currency'&gt;-10000&lt;/grs:Column&gt;
+        &lt;grs:Column Number='7' Type='Highlight'&gt;true&lt;/grs:Column&gt;
+    &lt;/grs:Item&gt;
+&lt;grs:Items&gt;
+
+&lt;/grs:HeadedList&gt;
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
