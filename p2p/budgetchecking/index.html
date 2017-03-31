@@ -8,7 +8,7 @@
         <meta name="author" content="David Betteridge">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Overview - Technical Documentation</title>
+        <title>Budget Checking - Technical Documentation</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -53,8 +53,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">P2P <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
-<li class="active">
-    <a href="./">Overview</a>
+<li >
+    <a href="../Placeholder/">Overview</a>
 </li>
                             
 <li >
@@ -69,8 +69,8 @@
     <a href="../nominalvalidation/">Nominal Validation</a>
 </li>
                             
-<li >
-    <a href="../budgetchecking/">Budget Checking</a>
+<li class="active">
+    <a href="./">Budget Checking</a>
 </li>
                             
 <li >
@@ -127,12 +127,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../..">
+                        <a rel="next" href="../nominalvalidation/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../sso/">
+                        <a rel="prev" href="../../placeholder/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -148,11 +148,51 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#budget-checking">Budget Checking</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#implementation">Implementation</a></li>
+            <li><a href="#process">Process</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>Placeholder text</p></div>
+<h1 id="budget-checking">Budget Checking</h1>
+<h2 id="overview">Overview</h2>
+<p>PROACTIS P2P allows budgets to be checking against an external source when a purchase order is being submitted.</p>
+<p>The preferred method is to configure budget checking using the <strong>Generic Budget Checking</strong> snapin and the module keeps all the settings in the P2P database and automatically provides additional functions such as caching.</p>
+<hr />
+<h2 id="implementation">Implementation</h2>
+<p>To write a custom budget checking DLL,  the following methods must be implemented.</p>
+<ul>
+<li><strong>CommitmentCheck</strong><br />
+Given a set of nominal lines from a purchase order returns False if at least one line on the order has failed budget checking</li>
+</ul>
+<p><strong>CommitmentReport</strong><br />
+Given a set of nominal lines from a purchase order returns a custom table showing the available funds calculation for each.  For example the table might have columns for Original Budget,  Spend To Date,  Accruals and Remaining Budget.</p>
+<p><strong>GetOverspend</strong>
+Given a set of nominal lines from a purchase order returns the total amount that the document exceeds the available budget.   This figure can be used in your authorisation workflow to route an document to the correct approver.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You are not required to implement the <strong>GetOverspend</strong> method but it is recommended.</p>
+</div>
+<hr />
+<h2 id="process">Process</h2>
+<ul>
+<li>
+<p>Create a new C# Class Library project called xyzBudgetChecking. ( <em>xyz</em> can be anything)</p>
+</li>
+<li>
+<p>Add a reference to <strong>Purchasing Server\bin\PROACTIS.P2P.grsCustInterfaces.dll</strong></p>
+</li>
+<li>
+<p>Add a class called <strong>Services</strong> which implements the <strong>grsCustInterfaces.IOverSpend</strong> and <strong>grsCustInterfaces.ICustCommit</strong> interface.</p>
+</li>
+<li>
+<p>Write an implementation of the <strong>grsCustInterfaces.INominals.NominalCheck</strong> method.</p>
+</li>
+</ul>
+<pre><code class="C#">bool grsCustInterfaces.INominals.NominalCheck(string NominalsXML, string POXML, ref string ErrorNominals)
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

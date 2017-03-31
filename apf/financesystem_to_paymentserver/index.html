@@ -8,7 +8,7 @@
         <meta name="author" content="David Betteridge">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Overview - Technical Documentation</title>
+        <title>Finance System to Payments Server - Technical Documentation</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -49,28 +49,28 @@
                     <li >
                         <a href="../..">PROACTIS</a>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">P2P <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
-<li class="active">
-    <a href="./">Overview</a>
+<li >
+    <a href="../../p2p/Placeholder/">Overview</a>
 </li>
                             
 <li >
-    <a href="../sso/">Single Sign On (SSO)</a>
+    <a href="../../p2p/sso/">Single Sign On (SSO)</a>
 </li>
                             
 <li >
-    <a href="../punchout/">PunchOut / Marketplaces</a>
+    <a href="../../p2p/punchout/">PunchOut / Marketplaces</a>
 </li>
                             
 <li >
-    <a href="../nominalvalidation/">Nominal Validation</a>
+    <a href="../../p2p/nominalvalidation/">Nominal Validation</a>
 </li>
                             
 <li >
-    <a href="../budgetchecking/">Budget Checking</a>
+    <a href="../../p2p/budgetchecking/">Budget Checking</a>
 </li>
                             
 <li >
@@ -95,20 +95,20 @@
                     <li >
                         <a href="../../placeholder/">Spend Analytics</a>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">APF <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
 <li >
-    <a href="../../apf/overview/">overview</a>
+    <a href="../overview/">overview</a>
 </li>
                             
 <li >
-    <a href="../../apf/overview/">p2p to apf</a>
+    <a href="../overview/">p2p to apf</a>
 </li>
                             
-<li >
-    <a href="../../apf/financesystem_to_paymentserver/">Finance System to Payments Server</a>
+<li class="active">
+    <a href="./">Finance System to Payments Server</a>
 </li>
                         </ul>
                     </li>
@@ -127,12 +127,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../..">
+                        <a rel="next" href="../overview/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../sso/">
+                        <a rel="prev" href="../../s2c/placeholder/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -148,11 +148,38 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#apf-finance-system-to-payments-server">APF Finance System to Payments Server</a></li>
+            <li><a href="#authentication">Authentication</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>Placeholder text</p></div>
+<h1 id="apf-finance-system-to-payments-server">APF Finance System to Payments Server</h1>
+<p>This document can be used along with the sample C# program:
+    <a href="https://github.com/proactis-documentation/exampleapplications">PROACTIS.AcceleratedPayments.Web.ExampleBuyerAPIClient</a></p>
+<p>This document is only concerned with the integrations between the Finance System and the Payments Server.
+Currently there is only one integration between these two systems which is the flow of supplier details from the finance system to the payment server.
+ </p>
+<h3 id="authentication">Authentication</h3>
+<p>All API calls require the username and password be supplied in a base64 encoded format in the Authorisation header of the request.
+In C# the code for doing this would look like the following:</p>
+<pre><code class="C#">credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(USER + &quot;:&quot; + PASSWORD));
+client.DefaultRequestHeaders.Add(&quot;Authorization&quot;, &quot;Basic &quot; + credentials);
+</code></pre>
+
+<p>For example</p>
+<p>If the details are incorrect then the site will respond with a 401 error</p>
+<p>From <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">https://en.wikipedia.org/wiki/Basic_access_authentication</a>
+When the user agent wants to send the server authentication credentials it may use the Authorization field.
+The Authorization field is constructed as follows: </p>
+<p>1 The username and password are combined with a single colon.<br />
+2 The resulting string is encoded into an octet sequence. <br />
+3 The resulting string is encoded using a variant of Base64. <br />
+4 The authorization method and a space i.e. "Basic " is then put before the encoded string.<br />
+For example, if the browser uses Aladdin as the username and OpenSesame as the password, then the field's value is the b</p>
+<p>ase64-encoding of Aladdin:OpenSesame, or QWxhZGRpbjpPcGVuU2VzYW1l. 
+Then the Authorization header will appear as:
+Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l</p></div>
         </div>
 
         <footer class="col-md-12">
