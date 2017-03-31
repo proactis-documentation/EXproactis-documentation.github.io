@@ -262,6 +262,10 @@ Given a set of nominal lines from a purchase order returns the total amount that
 </code></pre>
 
 <p>The <strong>NominalPeriods</strong> element is repeated for each nominal line on the purchase order.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The POXML argument is populated with an xml document based on a internal product structure which may change over time from release to release.  It is recommended that you only extract information that you cannot obtain from elsewhere,  and also code defensively. </p>
+</div>
 <hr />
 <h2 id="icustcommitcommitmentreport">ICustCommit.CommitmentReport</h2>
 <h3 id="arguments_1">Arguments</h3>
@@ -307,6 +311,10 @@ Given a set of nominal lines from a purchase order returns the total amount that
 </code></pre>
 
 <p>The <strong>NominalPeriods</strong> element is repeated for each nominal line on the purchase order.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The POXML argument is populated with an xml document based on a internal product structure which may change over time from release to release.  It is recommended that you only extract information that you cannot obtain from elsewhere,  and also code defensively. </p>
+</div>
 <h3 id="returned-xml">Returned XML</h3>
 <p>The function needs to return XML with the following structure</p>
 <pre><code class="xml">&lt;grs:HeadedList xmlns:grs='http://www.getrealsystems.com/xml/xml-ns'&gt;
@@ -399,6 +407,10 @@ Given a set of nominal lines from a purchase order returns the total amount that
 &lt;/grs:NominalPeriods&gt;
 </code></pre>
 
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The POXML argument is populated with an xml document based on a internal product structure which may change over time from release to release.  It is recommended that you only extract information that you cannot obtain from elsewhere,  and also code defensively. </p>
+</div>
 <hr />
 <h2 id="example">Example</h2>
 <p>See the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Budget%20Checking">example application</a> for a complete implementation.</p>
