@@ -154,6 +154,9 @@
             <li><a href="#implementation">Implementation</a></li>
             <li><a href="#icustcommitcommitmentcheck">ICustCommit.CommitmentCheck</a></li>
             <li><a href="#icustcommitcommitmentreport">ICustCommit.CommitmentReport</a></li>
+            <li><a href="#ioverspendgetoverspend">IOverSpend.GetOverspend</a></li>
+            <li><a href="#example">Example</a></li>
+            <li><a href="#deployment">Deployment</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -354,7 +357,52 @@ Given a set of nominal lines from a purchase order returns the total amount that
 </ul>
 </li>
 </ul>
-</div></div>
+</div>
+<h2 id="ioverspendgetoverspend">IOverSpend.GetOverspend</h2>
+<h3 id="arguments_2">Arguments</h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NominalsXML</td>
+<td>In</td>
+<td>An xml document containing the nominals which need to be budget checked.  This also includes details of the database,  company and user.</td>
+</tr>
+<tr>
+<td>POXML</td>
+<td>In</td>
+<td>An xml document containing the entire purchase order to check.  By default this argument is blank unless the company-wide setting is enabled.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="return-value_2">Return Value</h3>
+<p>The function should return the total amount (as a decimal) that the lines on the order exceed their budget.  For example if the first line exceeded by £10 and the second by £20 then you should return 30.</p>
+<h3 id="nominals-xml_2">Nominals XML</h3>
+<p>Below is an example of the xml passed to the <strong>NominalsXML</strong> argument.
+```xml
+<grs:CommitmentLookup xmlns:grs="http://www.getrealsystems.com/xml/xml-ns">
+<grs:Database grs:Server="localhost" grs:DatabaseName="PROACTIS" />
+<grs:General grs:UserGUID="{3A8D2AC2-6287-41DF-817A-F77B0551D80D}" grs:CompanyGUID="{3A8D2AC2-6287-41DF-817A-F77B0551D80D}" />
+<grs:Currencies><grs:Currency grs:CurrencyGUID="{2E67C438-9012-415B-AED4-8809F0012A78}" grs:Status="H1" grs:Symbol="£" grs:DecimalPlaces="2" /></grs:Currencies></p>
+<p><grs:NominalPeriods>
+    <grs:NominalPeriod grs:Year="2017" grs:Period="1" grs:YearPeriodGUID="{3A8D2AC2-6287-41DF-817A-F77B0551D80D}" grs:Value="120.12" 
+    grs:Home1Value="120.12" grs:Home2Value="120.12" grs:NonRecoverableTax="0" grs:NonRecoverableTaxHome1="0" grs:NonRecoverableTaxHome2="0">
+        <grs:Nominal grs:Coding="SALES.CONF.MARKET" grs:Element1="SALES" grs:Element2="CONF" grs:Element3="MARKET" grs:Element4="" 
+        grs:Element5="" grs:Element6="" grs:Element7="" grs:Element8=""></grs:Nominal>
+    </grs:NominalPeriod>
+</grs:NominalPeriods></p>
+<hr />
+<h2 id="example">Example</h2>
+<p>See the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Budget%20Checking">example application</a> for a complete implementation.</p>
+<hr />
+<h2 id="deployment">Deployment</h2>
+<p>You dll should be complied (and named xyzBudgetChecking.dll) and then copied into your <strong>PROACTIS P2P/Plugins</strong>  (or <strong>Plugins/[database-title]</strong>) folder.</p></div>
         </div>
 
         <footer class="col-md-12">
