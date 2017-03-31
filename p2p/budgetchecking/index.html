@@ -337,15 +337,15 @@ Given a set of nominal lines from a purchase order returns the total amount that
 <p class="admonition-title">Note</p>
 <ul>
 <li>
-<p>You need to define one grs:Column element for each column you wish to appear in the commitment report.</p>
+<p>You need to define one <strong>grs:Column</strong> element for each column you wish to appear in the commitment report.</p>
 <ul>
 <li>The grs:Number attribute should sequentially number the columns 1...</li>
 <li>The grs:Type attribute can be "" (blank),  Currency (for a monetary value) or Highlight (failure indicator)</li>
-<li>The grs:BudgetType columns is used by the budget graphic.  It can be "" (blank),  Budget or Cost</li>
+<li>The grs:BudgetType columns is used by the budget graphic.  It can be "" (blank),  Budget or Cost  </li>
 </ul>
 </li>
 <li>
-<p>You need to add one grs:Item for each line that you wish to appear on the report.  Within each <strong>Item<strong><em> element a </em>_Column</strong> element must be added for each column you defined in the </strong>Headings__ element.</p>
+<p>You need to add one <strong>grs:Item</strong> for each line that you wish to appear on the report.  Within each <strong>Item</strong> element a <strong>Column</strong> element must be added for each column you defined in the <strong>Headings</strong> element.</p>
 <ul>
 <li>The grs:Number attribute should match the number of the column.</li>
 <li>The grs:Type attribute can be "" (blank),  Currency (for a monetary value) or Highlight (failure indicator)</li>
