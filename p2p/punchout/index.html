@@ -8,7 +8,7 @@
         <meta name="author" content="David Betteridge">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Punchout / Marketplaces - Technical Documentation</title>
+        <title>PunchOut / Marketplaces - Technical Documentation</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -62,7 +62,7 @@
 </li>
                             
 <li class="active">
-    <a href="./">Punchout / Marketplaces</a>
+    <a href="./">PunchOut / Marketplaces</a>
 </li>
                             
 <li >
@@ -148,12 +148,12 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#punch-out">Punch-out</a></li>
+        <li class="main active"><a href="#punchout">PunchOut</a></li>
             <li><a href="#overview">Overview</a></li>
-            <li><a href="#punch-thro">Punch-thro.</a></li>
-            <li><a href="#cxml-punch-out">cXML punch-out</a></li>
-            <li><a href="#oci-punch-out">OCI punch-out</a></li>
-            <li><a href="#punch-out-customisations">Punch-out customisations</a></li>
+            <li><a href="#punchthro">PunchThro.</a></li>
+            <li><a href="#cxml-punchout">cXML PunchOut</a></li>
+            <li><a href="#oci-punchout">OCI PunchOut</a></li>
+            <li><a href="#punchout-customisations">PunchOut customisations</a></li>
         <li class="main "><a href="#market-place">Market Place</a></li>
             <li><a href="#configuration">Configuration</a></li>
             <li><a href="#customisation">Customisation</a></li>
@@ -163,30 +163,30 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="punch-out">Punch-out</h1>
+<h1 id="punchout">PunchOut</h1>
 <h2 id="overview">Overview</h2>
-<p>Punch-out allows a user to jump from the PROACTIS P2P website into a supplier’s shopping site.  Where they can browse a catalogue and add items to a shopping basket as per a normal e-commerce site.  Once they have finished browsing they click checkout and the items are then returned to PROACTIS as new lines on their current purchase order (or requisition).
-For the purposes of this document, the term punch-out does not include the ability to electronically export purchase orders to suppliers in cXML format.</p>
+<p>PunchOut allows a user to jump from the PROACTIS P2P website into a supplier’s shopping site.  Where they can browse a catalogue and add items to a shopping basket as per a normal e-commerce site.  Once they have finished browsing they click checkout and the items are then returned to PROACTIS as new lines on their current purchase order (or requisition).
+For the purposes of this document, the term PunchOut does not include the ability to electronically export purchase orders to suppliers in cXML format.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This document details how to configure connections to supplier punch-out sites and marketplaces in the latest release of PROACTIS P2P `17.
+<p>This document details how to configure connections to supplier PunchOut sites and marketplaces in the latest release of PROACTIS P2P `17.
 Unlike the previous versions it is now possible to configure the connections directly within the product.  Previously the setup action was carried out by a technical consultant which required the coding of bespoke webpages and sometimes DLLs for installation on the P2P server.</p>
 </div>
 <hr />
-<h2 id="punch-thro">Punch-thro.</h2>
-<p>There are three different methods of configuring punch-out within the PROACTIS P2P product.   This first is referred to as punch-thro.  This is where the buyer connects to the suppliers punch-out site via the PROACTIS S2C portal. </p>
+<h2 id="punchthro">PunchThro.</h2>
+<p>There are three different methods of configuring PunchOut within the PROACTIS P2P product.   This first is referred to as punch-thro.  This is where the buyer connects to the suppliers PunchOut site via the PROACTIS S2C portal. </p>
 <p>As the details of the suppliers site are configured in the PROACTIS S2C Portal the only P2P settings required are as shown below</p>
 <ul>
 <li>Configure the connection to your PROACTIS S2C portal.  (<strong>Application</strong> -&gt; <strong>PROACTIS Connectivity</strong>)</li>
 </ul>
 <p><img alt="alt text" src="../../img/p2p/punchout/s2c.bmp" title="cxml" /></p>
 <ul>
-<li>Enable the punchout via portal setting against the supplier.</li>
+<li>Enable the PunchOut via portal setting against the supplier.</li>
 </ul>
 <p><img alt="alt text" src="../../img/p2p/punchout/thru-settings.bmp" title="cxml" /></p>
 <hr />
-<h2 id="cxml-punch-out">cXML punch-out</h2>
-<p>The majority of punch-outs follow the <a href="http://cxml.org/">cXML</a> standard.  This can be configured directly within the P2P product by completing the following fields against a supplier.</p>
+<h2 id="cxml-punchout">cXML PunchOut</h2>
+<p>The majority of PunchOuts follow the <a href="http://cxml.org/">cXML</a> standard.  This can be configured directly within the P2P product by completing the following fields against a supplier.</p>
 <p><img alt="alt text" src="../../img/p2p/punchout/cxml-settings.bmp" title="cxml" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -196,16 +196,16 @@ Unlike the previous versions it is now possible to configure the connections dir
 </ul>
 </div>
 <hr />
-<h2 id="oci-punch-out">OCI punch-out</h2>
-<p>Less commonly used in the UK, but PROACTIS also supports the <a href="https://en.wikipedia.org/wiki/Open_Catalog_Interface">Open Catalog Interface</a> (OCI) punch-out standard.  Again this can be configured directly within the product by completing the following three fields.</p>
+<h2 id="oci-punchout">OCI PunchOut</h2>
+<p>Less commonly used in the UK, but PROACTIS also supports the <a href="https://en.wikipedia.org/wiki/Open_Catalog_Interface">Open Catalog Interface</a> (OCI) PunchOut standard.  Again this can be configured directly within the product by completing the following three fields.</p>
 <p><img alt="alt text" src="../../img/p2p/punchout/oci-settings.bmp" title="oci" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The supplier will normally provide you with their URL and your sender identity and secret.</p>
 </div>
 <hr />
-<h2 id="punch-out-customisations">Punch-out customisations</h2>
-<p>It is possible to customise punch-out at various points within the process:</p>
+<h2 id="punchout-customisations">PunchOut customisations</h2>
+<p>It is possible to customise PunchOut at various points within the process:</p>
 <h3 id="cxml-handshake">cXML Handshake</h3>
 <p>The format of the cXML sent in the initial connection to the supplier’s site is generated from an XML using an XSLT transformation.  By default PROACTIS uses an XSLT embedded within the product however it is possible to use your own xslt by creating a file within the plugins folder called <strong>PunchoutConnection_{supplierCode}.xslt</strong>.  Where <em>{supplierCode}</em> is the code of your supplier.</p>
 <p>The fields which are available to the XSLT are listed below.</p>
@@ -299,7 +299,7 @@ The XSLT must generate XML in the following format:</p>
 <p>PROACTIS P2P allows users to connect to a “market place” where they can then browse catalogues of one or more suppliers.  When they have finished browsing and click check-out then their returned basket is used to create one or more draft purchase orders (or requisitions) within PROACTIS.
 Unlike previous versions of PROACTIS it is now possible to configure marketplace connections directly within the product.</p>
 <h2 id="configuration">Configuration</h2>
-<p>Using the “System Control” application choose the Marketplaces option from the Supplier Maintenance menu.  Add a New market place and complete both the Details and Punch-out sections.</p>
+<p>Using the “System Control” application choose the Marketplaces option from the Supplier Maintenance menu.  Add a New market place and complete both the Details and PunchOut sections.</p>
 <p>The following marketplace types (standards) are currently supported:</p>
 <ul>
 <li>CXML</li>
@@ -353,9 +353,9 @@ The xslt needs to generate xml in the following format</p>
 </code></pre>
 
 <h2 id="egs-marketplaces">EGS Marketplaces</h2>
-<p>The EGS settings within the PROACTIS Connectivity snapin, do not refer to marketplace punch-out.  This are used to configure different functionality not covered by this document.</p>
+<p>The EGS settings within the PROACTIS Connectivity snapin, do not refer to marketplace PunchOut.  This are used to configure different functionality not covered by this document.</p>
 <h1 id="proxy-server">Proxy Server</h1>
-<p>Connections to both supplier punch-out, and marketplaces honour the proxy server settings held in the <strong>dsdba.ProxySettings</strong> table.
+<p>Connections to both supplier PunchOut, and marketplaces honour the proxy server settings held in the <strong>dsdba.ProxySettings</strong> table.
 This can be configured using the System Control application.</p></div>
         </div>
 
