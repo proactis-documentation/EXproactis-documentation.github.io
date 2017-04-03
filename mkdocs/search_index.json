@@ -288,6 +288,16 @@
         {
             "location": "/placeholder/",
             "text": "Placeholder text",
+            "title": "Custom Tabs"
+        },
+        {
+            "location": "/placeholder/",
+            "text": "Placeholder text",
+            "title": "Addins"
+        },
+        {
+            "location": "/placeholder/",
+            "text": "Placeholder text",
             "title": "Invoice Posting"
         },
         {
