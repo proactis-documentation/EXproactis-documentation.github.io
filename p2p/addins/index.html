@@ -123,19 +123,42 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#addins">Addins</a></li>
-        <li class="main "><a href="#location">Location</a></li>
+        <li class="main active"><a href="#add-ins">Add-ins</a></li>
+        <li class="main "><a href="#setup">Setup</a></li>
         <li class="main "><a href="#javascript">Javascript</a></li>
         <li class="main "><a href="#sample-add-in">Sample Add-In</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="addins">Addins</h1>
-<p>This document summaries the add-in functionality available in P2P-2016 to Professional Services. Specifically it discusses the “addInClient” javaScript library that is expected to be included in each add-in page that needs to communicate with the main P2P session. </p>
+<h1 id="add-ins">Add-ins</h1>
+<p>P2P supports the concept of 'Add-ins' which are additional custom links which can be added to any page within the core website.</p>
 <hr />
-<h1 id="location">Location</h1>
-<p>It is assumed that add-in pages will live in AddIns sub-folder of the Customer virtual directory in the root of the web site. Indeed, the system will not function if they reside anywhere else.</p>
+<h1 id="setup">Setup</h1>
+<ol>
+<li>
+<p>Ensure that a sub-folder called <strong>Addins</strong> exists within the Customer virtual directory in the root of the web site. </p>
+</li>
+<li>
+<p>If the folder doesn't already contain a file called <strong>Addins.xml</strong> then create the following file.  If the file does already exist then add your new page to it.</p>
+</li>
+</ol>
+<pre><code class="xml">&lt;AddIns&gt;
+    &lt;Page Name=&quot;Purchasing/Orders/Plus/MultiLineEntry.asp&quot;&gt;
+        &lt;Link AddInURL=&quot;SampleOrderAddIn.aspx&quot; WindowWidth=&quot;900&quot; WindowHeight=&quot;600&quot; WindowName=&quot;OrderTaxReset&quot;&gt;Sample Order AddIn&lt;/Link&gt;
+    &lt;/Page&gt;
+&lt;/AddIns&gt;
+</code></pre>
+
+<p>In the example above,  a link captioned <strong>Sample Order Addin</strong> will be added to the <strong>MultiLineEntry.asp</strong> page.  When this link is clicked a new window will open (900x600) which will display the URL <strong>SampleOrderAddIn.aspx</strong></p>
+<ol>
+<li>
+<p>In the same folder create your add-in page.   (<em>For example SampleOrderAddIn.aspx</em>)</p>
+</li>
+<li>
+<p>If you wish your add-in to interact with the main site,  then please read the following <em>Javascript</em> section.</p>
+</li>
+</ol>
 <hr />
 <h1 id="javascript">Javascript</h1>
 <p>An add-in page will communicate with the parent P2P application via javaScript calls exposed by the addInClient library.
