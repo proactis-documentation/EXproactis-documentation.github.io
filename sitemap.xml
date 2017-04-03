@@ -12,12 +12,6 @@
     
         
     <url>
-     <loc>/p2p/Placeholder/</loc>
-     <lastmod>2017-04-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
      <loc>/p2p/sso/</loc>
      <lastmod>2017-04-03</lastmod>
      <changefreq>daily</changefreq>
@@ -53,70 +47,6 @@
      <changefreq>daily</changefreq>
     </url>
         
-    <url>
-     <loc>/placeholder/</loc>
-     <lastmod>2017-04-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/placeholder/</loc>
-     <lastmod>2017-04-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-    <url>
-     <loc>/placeholder/</loc>
-     <lastmod>2017-04-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-        
-    <url>
-     <loc>/apf/overview/</loc>
-     <lastmod>2017-04-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/apf/overview/</loc>
-     <lastmod>2017-04-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>/apf/financesystem_to_paymentserver/</loc>
-     <lastmod>2017-04-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-    <url>
-     <loc>/s2c/placeholder/</loc>
-     <lastmod>2017-04-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>/dueNorth/Placeholder/</loc>
-     <lastmod>2017-04-03</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
     
 
 </urlset>
