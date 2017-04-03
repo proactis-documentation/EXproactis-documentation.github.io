@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="David Betteridge">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Addins - Technical Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/extra.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Technical Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">PROACTIS</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">P2P <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../Placeholder/">Overview</a>
+</li>
+                            
+<li >
+    <a href="../sso/">Single Sign On (SSO)</a>
+</li>
+                            
+<li >
+    <a href="../punchout/">PunchOut / Marketplaces</a>
+</li>
+                            
+<li >
+    <a href="../nominalvalidation/">Nominal Validation</a>
+</li>
+                            
+<li >
+    <a href="../budgetchecking/">Budget Checking</a>
+</li>
+                            
+<li >
+    <a href="../customtab/">Custom Tabs</a>
+</li>
+                            
+<li class="active">
+    <a href="./">Addins</a>
+</li>
+                            
+<li >
+    <a href="../../placeholder/">Invoice Posting</a>
+</li>
+                            
+<li >
+    <a href="../../placeholder/">Imaging Integration</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Import APIs</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../placeholder/">Invoices</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">Spend Analytics</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">APF <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../apf/overview/">overview</a>
+</li>
+                            
+<li >
+    <a href="../../apf/overview/">p2p to apf</a>
+</li>
+                            
+<li >
+    <a href="../../apf/financesystem_to_paymentserver/">Finance System to Payments Server</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../s2c/placeholder/">S2C</a>
+                    </li>
+                    <li >
+                        <a href="../../dueNorth/Placeholder/">DueNorth</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../customtab/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../placeholder/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/proactis-documentation/ExampleApplications">CodeExamples
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#addins">Addins</a></li>
+        <li class="main "><a href="#location">Location</a></li>
+        <li class="main "><a href="#javascript">Javascript</a></li>
+        <li class="main "><a href="#sample-add-in">Sample Add-In</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="addins">Addins</h1>
+<p>This document summaries the add-in functionality available in P2P-2016 to Professional Services. Specifically it discusses the “addInClient” javaScript library that is expected to be included in each add-in page that needs to communicate with the main P2P session. </p>
+<hr />
+<h1 id="location">Location</h1>
+<p>It is assumed that add-in pages will live in AddIns sub-folder of the Customer virtual directory in the root of the web site. Indeed, the system will not function if they reside anywhere else.</p>
+<hr />
+<h1 id="javascript">Javascript</h1>
+<p>An add-in page will communicate with the parent P2P application via javaScript calls exposed by the addInClient library.
+ 
+The main web site has a CustomSupport folder that contains the files that need to be included (some optionally) in each add-in page.
+ 
+<strong>AddInClient.js</strong>:  mandatory for communication between the add-in page and the owning main P2P page in the client’s browser (which can in turn communicate with the server)</p>
+<p><strong>jquery-xxx.im.js</strong>: mandatory  </p>
+<p><strong>jquery.filerNode.js</strong>: mandatory if you wish to use the xml services exposed by the AddInClient class, for manipulating order/invoice xml. Otherwise can be left out. </p>
+<p><strong>kendo.xxx.min.js</strong>, Notifications.inc, Site.css: mandatory if you wish to use the same notification services and styling as the main web site for info, alert and error messages. Otherwise can be left out. </p>
+<p><strong>Site.css</strong>: As well as notification styling mentioned above, sets the default font-family and font size for the page. 
+ 
+  
+<strong>addInClient</strong> 
+A core deliverable for any javaScript add-in solution, is the recognition that any single add-in page may need to make numerous AJAX calls in order to retrieve all the data it requires in order to function. Since those AJAX calls are asynchronous, the challenge is how to co-ordinate and handle their callbacks. 
+ 
+The addInClient javaScript class solves the callback challenge. Through the use of jQuery Deferred/Promise functionality, it can accept any number of AJAX calls as input, will manage their respective callbacks, combine the data retrieved and make that data available to the caller.  
+ 
+The <strong>addInClient</strong> class exposes the following AJAX methods. Understand that these calls are asynchronous. The return values described below are not returned directly but rather indirectly via the “MonitorAjaxCalls” method. The methods below directly return a jQuery Promise object. 
+ 
+<em> GetSessionID() 
+    -   Returns the current session-id 
+</em> GetSessionParm(keyName) 
+    -  Returns the session value (as a string) stored against the specified key-name. 
+    - Returns null if the session value is not present 
+<em> GetSessionParms(keyNames) 
+    - Accepts an array of key-names and returns the corresponding session values (or null values if the session value does not exist) 
+    - Return value is a JSON array of key/value pairs 
+    - First entry in return array is always the session-id. 
+</em> GetOrderInEdit() 
+    - Returns the full order xml (including all lines) for the order currently in edit in the current session. 
+    - Returns an error if no order is currently in edit 
+<em> GetOrderInEditWithoutLines() 
+    - Returns the order xml with an empty LineSet xml node (i.e. order header and footer only) 
+    - Returns an error if no order is currently in edit 
+</em> GetInvoiceInEdit() 
+    - Returns the full invoice xml (including all lines) for the invoice currently in edit in the current session. 
+<em> GetInvoiceInEditHeader() 
+    - Returns the invoice header xml for the invoice currently in edit in the current session. 
+</em> GetInvoiceInEditFooter 
+    - Returns the invoice footer xml for the invoice currently in edit in the current session. 
+ 
+ 
+<em> MonitorAjaxCalls(ajaxCalls) 
+    - Accepts an array of any combination of the above AJAX “Get…” methods. Since each of the above “Get…” methods actually returns a jQuery Promise object, the input to this method is actually an array of those Promise objects to be monitored.  
+    - Returns a single jQuery Promise object to which resolve/fail events can be attached 
+    - If all input “Get…” methods succeed then  
+        - All “resolve” events attached to the returned Promise, are triggered (in the order in which they were attached) 
+        - Each “resolve” event is passed the following parameters 
+        -    <strong>Results</strong>: an array of return values, matching the AJAX calls that were input. The array entries will be simple strings, JSON key/value arrays or xml strings, as per the return types from the above “Get…” methods.  
+        -    <strong>AlertMessages</strong>: an array of all alert messages output by the AJAX “Get…” messages (I don’t think there are any…. Yet!) 
+        -    <strong>InfoMessages</strong>: an array of all info messages output by the AJAX “Get…” messages (I don’t think there are any…. Yet!) 
+        -If any of input AJAX “Get…” methods fail then 
+</em> All “fail” events attached to the returned Promise, are triggered (in the order in which they were attached) 
+<em> Each “fail” event is passed an array of error messages. 
+</em> Even if some of the input AJAX “Get…” events succeed, no “resolve” events are triggered. 
+<em> HandleError(errorMessages) 
+o Will test for the presence of notification services and output formal error notifications if possible. Otherwise will issue alerts for each error message. 
+</em> XMLServices 
+o Exposes a set of helper methods for working with document xml (i.e. xml with the “grs” namespace). 
+o The following methods are available 
+<em> loadDOM(xml) 
+</em> Accepts an xml string and returns a jQuery DOM object 
+<em> getNode(parentNode, nodeName) 
+</em> Accepts a parent node (or the DOM) and the name of an immediate child element. 
+<em> Returns the child element 
+</em> nodeName can be an array of element names. Where each name corresponds to an element that is a child of the previous name (element).  
+<em> attr(node, attributeName) 
+</em> Returns the given attribute of the given element. 
+<em> getNodeAttr(parentNode, nodeName, attributeName) 
+</em> Finds the specified immediate child element of the parent node and returns the specified attribute value. 
+<em> filterNodeAttr(parentNode, nodeName, attributeName, attributeName) 
+</em> Finds the specified immediate child element of the parent node, which also has an attribute with the specified name and value. Returns the text value of that child element. 
+ </p>
+<h1 id="sample-add-in">Sample Add-In</h1>
+<p>There is a sample add-in and xml file in Custom section of the Documentation folder on the build-CD. 
+The sample is available from the multi-line orders page and shows how order information can be retrieved and displayed. </p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>(C) PROACTIS Group Ltd - All Rights Reserved</p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
