@@ -8,7 +8,7 @@
         <meta name="author" content="David Betteridge">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Nominal Validation - Technical Documentation</title>
+        <title>Custom Tabs - Technical Documentation</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -65,16 +65,16 @@
     <a href="../punchout/">PunchOut / Marketplaces</a>
 </li>
                             
-<li class="active">
-    <a href="./">Nominal Validation</a>
+<li >
+    <a href="../nominalvalidation/">Nominal Validation</a>
 </li>
                             
 <li >
     <a href="../budgetchecking/">Budget Checking</a>
 </li>
                             
-<li >
-    <a href="../customtab/">Custom Tabs</a>
+<li class="active">
+    <a href="./">Custom Tabs</a>
 </li>
                             
 <li >
@@ -135,12 +135,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../punchout/">
+                        <a rel="next" href="../budgetchecking/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../budgetchecking/">
+                        <a rel="prev" href="../../placeholder/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -156,104 +156,82 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#nominal-validation">Nominal Validation</a></li>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#implementation-steps">Implementation Steps</a></li>
-            <li><a href="#example">Example</a></li>
-            <li><a href="#deployment">Deployment</a></li>
+        <li class="main active"><a href="#custom-tab">Custom Tab</a></li>
+        <li class="main "><a href="#process">Process</a></li>
+        <li class="main "><a href="#session-details">Session Details</a></li>
+        <li class="main "><a href="#please-wait-spinner">Please Wait Spinner</a></li>
+        <li class="main "><a href="#user-role-security">User Role Security</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="nominal-validation">Nominal Validation</h1>
-<h2 id="overview">Overview</h2>
-<p>The core PROACTIS P2P product includes the functionality for complex nominal rules to be defined using the concept of nominal groups.</p>
-<p>In some situations there might be a requirement to also validate the nominal coding entered against a purchase order line against an external source,  such as a finance system.</p>
-<p>In a lot of cases this can be configured using the <strong>Generic Nominal Validation</strong> snapin directly within the product.  This is the preferred approach as all the configuration is held within the database and the generic nominal validation module automatically provides extra features such as caching.</p>
-<p>If <strong>Generic Nominal Validation</strong> is not suitable for your needs then a custom DLL can be implemented providing you with complete control of the process.</p>
+<h1 id="custom-tab">Custom Tab</h1>
+<p>The P2P website can be extended by creating additional "custom" tabs.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to display a custom tab you will first need a licence file which includes the name of the tab.  Please contact your account manager for assistance with this.</p>
+</div>
+<h1 id="process">Process</h1>
+<p>Custom tab are developed as independent websites which are then displayed as part of the core site within an iFrame.</p>
+<p>By convention the custom sites are placed within the WebSite\Custom folder and are mapped as a virtual application with in IIS.   </p>
+<p>Once the licence file has been applied then the name of the new tab will appear in the menu bar along the top of the screen.</p>
+<p>Clicking on the new tab will open the your landing page (configured in app config) within a new iframe.</p>
 <hr />
-<h2 id="implementation-steps">Implementation Steps</h2>
+<h1 id="session-details">Session Details</h1>
+<p>As the custom tab is running in a different website to the main site it is not possible to share the session state within IIS.</p>
+<p>Instead the following steps must be followed in order to obtain the details of the current user.</p>
 <ul>
 <li>
-<p>Create a new C# Class Library project called xyzNominalValidation. ( <em>xyz</em> can be anything)</p>
+<p>Before the main site opens your landing page it first generates a unique session token which is stored in the database within the <strong>dsdba.LoginTokens</strong> table.  This table also holds who the current user is. </p>
 </li>
 <li>
-<p>Add a reference to <strong>Purchasing Server\bin\PROACTIS.P2P.grsCustInterfaces.dll</strong></p>
+<p>When the landing page is opened,  it is passed the following information as query string parameters</p>
+<ul>
+<li>Token  (the unique token)</li>
+<li>Title  (the name of the tab)</li>
+<li>URL    (the url of the tab)</li>
+</ul>
+<p>The token argument is made up of the {Database's Title} @ {The unique generated session token}</p>
 </li>
 <li>
-<p>Add a class called <strong>Services</strong> which implements the <strong>grsCustInterfaces.INominals</strong> interface.</p>
-</li>
-<li>
-<p>Write an implementation of the <strong>grsCustInterfaces.INominals.NominalCheck</strong> method.</p>
+<p>The custom tab should then connect to the P2P database and call the <strong>DSDBA.usp_cust_GetSessionDetailsFromToken</strong> stored procedure supplying the full token.  This stored procedure will return with a single row containing the following columns:</p>
+<ul>
+<li>UserGUID</li>
+<li>LoginID</li>
+<li>CompanyGUID</li>
+<li>CompanyCode</li>
+<li>DepartmentGUID</li>
+<li>DepartmentCode</li>
+<li>StoreGUID</li>
+<li>StoreCode</li>
+<li>SessionID  (the internal P2P session ID)</li>
+<li>Expires  (when the login token will expiry)</li>
+</ul>
 </li>
 </ul>
-<pre><code class="C#">bool grsCustInterfaces.INominals.NominalCheck(string NominalsXML, string POXML, ref string ErrorNominals)
-</code></pre>
-
-<h3 id="arguments">Arguments</h3>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Direction</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NominalsXML</td>
-<td>In</td>
-<td>An xml document containing the nominals which need to be validated.  This also includes details of the database,  company and user.</td>
-</tr>
-<tr>
-<td>POXML</td>
-<td>In</td>
-<td>An xml document containing the entire purchase order to validate.  By default this argument is blank unless the company-wide setting is enabled.</td>
-</tr>
-<tr>
-<td>ErrorNominals</td>
-<td>Out</td>
-<td>If the nominals fail validation,  then you should return an xml document listing the failing nominals.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="return-value">Return Value</h3>
-<p>The function should return True if all nominals are valid and False if one or more nominals are invalid.</p>
-<h3 id="nominals-xml">Nominals XML</h3>
-<p>Below is an example of the xml passed to the <strong>NominalsXML</strong> argument.</p>
-<pre><code class="xml">&lt;grs:NominalCheck xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-    &lt;grs:Database grs:Server=&quot;Develop07&quot; grs:DatabaseName=&quot;PROACTISIII&quot;/&gt;
-
-    &lt;grs:General grs:UserGUID=&quot;{02E0D6D9-B655-11D5-91D6-000629864A98}&quot; grs:CompanyGUID=&quot;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&quot;/&gt;
-
-    &lt;grs:Nominals&gt;
-    &lt;grs:Nominal grs:Coding=&quot;1720&quot; grs:Element1=&quot;1720&quot; grs:Element2=&quot;&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:El
-    ement8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
-
-        &lt;grs:Nominal grs:Coding=&quot;4744.1100&quot; grs:Element1=&quot;4744&quot; grs:Element2=&quot;1100&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
-    &lt;/grs:Nominals&gt;
-&lt;/grs:NominalCheck&gt;
-</code></pre>
-
-<h3 id="poxml">POXML</h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The POXML argument is populated with an xml document based on a internal product structure which may change over time from release to release.  It is recommended that you only extract information that you cannot obtain from elsewhere,  and also code defensively. </p>
+<p>The stored procedure will return a row even when the session ID is not valid.  In this case however all the values will be NULL.</p>
 </div>
-<h3 id="error-nominals">Error Nominals</h3>
-<p>The xml for the returned invalid nominals takes a similar structure to the NominalsXML argument.  For example:</p>
-<pre><code class="xml">&lt;grs:Nominals xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-   &lt;grs:Nominal grs:Coding=&quot;1720&quot; grs:Element1=&quot;1720&quot; grs:Element2=&quot;&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
-   &lt;grs:Nominal grs:Coding=&quot;4744.1100&quot; grs:Element1=&quot;4744&quot; grs:Element2=&quot;1100&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
-&lt;/grs:Nominals&gt;
+<hr />
+<h1 id="please-wait-spinner">Please Wait Spinner</h1>
+<p>Whilst your tab is first loading the main site will be displaying the please wait spinner.  In order to remove the spinner the following javascript code should be added to the end of your first page</p>
+<pre><code class="javascript">    &lt;script type=&quot;text/javascript&quot;&gt;
+        //Hide the spinner in the main window.
+        $().ready(function () {
+            parent.hideSpinner();
+        });
+    &lt;/script&gt;
 </code></pre>
 
 <hr />
-<h2 id="example">Example</h2>
-<p>See the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Nominal%20Validation">example application</a> for a complete implementation.</p>
-<hr />
-<h2 id="deployment">Deployment</h2>
-<p>You dll should be complied (and named xyzNominalValidation.dll) and then copied into your <strong>PROACTIS P2P/Plugins</strong>  (or <strong>Plugins/[database-title]</strong>) folder.</p></div>
+<h1 id="user-role-security">User Role Security</h1>
+<p>By default all users have access to the new tab.  If you wish to restrict access to our certain users then the name of a user role (or a custom role) can be specified for the tab within the licence file.</p>
+<p>If you wish to create a custom role,  then you will also need to insert an entry into the <strong>DSDBA.Roles</strong> table with the same name.</p>
+<pre><code class="sql">INSERT INTO DSDBA.Roles (GUID, Code, Description, Properties, CompanyGUID)
+SELECT newID(), 'MyCustomRole', 'Users may use custom tab', '', C.GUID
+  FROM DSDBA.Companies C
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

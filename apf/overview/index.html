@@ -8,7 +8,7 @@
         <meta name="author" content="David Betteridge">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Overview - Technical Documentation</title>
+        <title>p2p to apf - Technical Documentation</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -49,32 +49,32 @@
                     <li >
                         <a href="../..">PROACTIS</a>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">P2P <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
-<li class="active">
-    <a href="./">Overview</a>
+<li >
+    <a href="../../p2p/Placeholder/">Overview</a>
 </li>
                             
 <li >
-    <a href="../sso/">Single Sign On (SSO)</a>
+    <a href="../../p2p/sso/">Single Sign On (SSO)</a>
 </li>
                             
 <li >
-    <a href="../punchout/">PunchOut / Marketplaces</a>
+    <a href="../../p2p/punchout/">PunchOut / Marketplaces</a>
 </li>
                             
 <li >
-    <a href="../nominalvalidation/">Nominal Validation</a>
+    <a href="../../p2p/nominalvalidation/">Nominal Validation</a>
 </li>
                             
 <li >
-    <a href="../budgetchecking/">Budget Checking</a>
+    <a href="../../p2p/budgetchecking/">Budget Checking</a>
 </li>
                             
 <li >
-    <a href="../customtab/">Custom Tabs</a>
+    <a href="../../p2p/customtab/">Custom Tabs</a>
 </li>
                             
 <li >
@@ -103,20 +103,20 @@
                     <li >
                         <a href="../../placeholder/">Spend Analytics</a>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">APF <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
 <li >
-    <a href="../../apf/overview/">overview</a>
+    <a href="./">overview</a>
+</li>
+                            
+<li class="active">
+    <a href="./">p2p to apf</a>
 </li>
                             
 <li >
-    <a href="../../apf/overview/">p2p to apf</a>
-</li>
-                            
-<li >
-    <a href="../../apf/financesystem_to_paymentserver/">Finance System to Payments Server</a>
+    <a href="../financesystem_to_paymentserver/">Finance System to Payments Server</a>
 </li>
                         </ul>
                     </li>
@@ -135,12 +135,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../..">
+                        <a rel="next" href="./">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../sso/">
+                        <a rel="prev" href="../financesystem_to_paymentserver/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -156,11 +156,35 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#overview">Overview</a></li>
+        <li class="main "><a href="#glossary">Glossary</a></li>
+        <li class="main "><a href="#readership">Readership</a></li>
+        <li class="main "><a href="#intellectual-property">Intellectual Property</a></li>
+        <li class="main "><a href="#important-notes">Important Notes</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>Placeholder text</p></div>
+<h1 id="overview">Overview</h1>
+<p>The Accelerated Payments Facility (APF) is a self-contained “micro service” which sits between a number of systems as shown in the diagram below.
+<img alt="alt text" src="../../img/apf/overview.bmp" title="Overview" /></p>
+<h1 id="glossary">Glossary</h1>
+<ul>
+<li>APF – Accelerated Payments Facility.   This is the central piece of software provided by PROACTIS</li>
+<li>P2P – Purchase-To-Pay system.  This can be either PROACTIS own P2P system or an alternative system provided by a 3rd party such as Coda.</li>
+<li>KDM – Key Decision Maker.  The responsible party for the supplier</li>
+<li>AML – Anti-money laundering checks.</li>
+<li>Application. The request created by the supplier to have their invoices paid as soon as possible.  Each application contains one or more invoices.</li>
+<li>Payment – Internally within the APF module invoices are referred to as Payments</li>
+<li>s2c –Source-To-Contract.  The supplier portal provided by PROACTIS.  Also known as Supplier Network.</li>
+</ul>
+<h1 id="readership">Readership</h1>
+<p>This document is aimed at developers who have been tasked with integrating their own supplier Portal system with APF.
+It would be advisable to be familiar with the general APF process before reading this document.</p>
+<h1 id="intellectual-property">Intellectual Property</h1>
+<p>This document contains information related to certain products and services which is proprietary to PROACTIS Group Limited and must not be disclosed, in whole or in part, to any third party.  Notably, all Intellectual property related to the deployment of the Accelerated Payment Facility is to the benefit of and remains the property of PROACTIS Group Limited.</p>
+<h1 id="important-notes">Important Notes</h1>
+<p>It should be noted that the PROACTIS APF product is still under active development and changes may be made as a result of testing (either internally or externally).</p></div>
         </div>
 
         <footer class="col-md-12">
