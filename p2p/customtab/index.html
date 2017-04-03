@@ -163,6 +163,7 @@
         <li class="main "><a href="#please-wait-spinner">Please Wait Spinner</a></li>
         <li class="main "><a href="#user-role-security">User Role Security</a></li>
         <li class="main "><a href="#example-application">Example Application</a></li>
+        <li class="main "><a href="#troubleshooting">Troubleshooting</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -251,7 +252,15 @@ SELECT newID(), 'MAY_BOOK_RESOURCES', 'Users may use the bookings tab', '', C.GU
 
 <hr />
 <h1 id="example-application">Example Application</h1>
-<p>Please see the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Custom%20Tab">example application</a> for a complete implementation.</p></div>
+<p>Please see the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Custom%20Tab">example application</a> for a complete implementation.</p>
+<hr />
+<h1 id="troubleshooting">Troubleshooting</h1>
+<p>If you custom tab does not appear then check the following</p>
+<ol>
+<li>Your licence file includes the section for your custom tab.</li>
+<li>If the RelatedRole has been specified in the licence file then the user has been granted that role.</li>
+<li>The URL of the custom page has been specified in the <strong>web.config</strong> file</li>
+</ol></div>
         </div>
 
         <footer class="col-md-12">
