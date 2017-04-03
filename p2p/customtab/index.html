@@ -158,7 +158,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#custom-tab">Custom Tab</a></li>
         <li class="main "><a href="#licence-file">Licence File</a></li>
-        <li class="main "><a href="#process">Process</a></li>
+        <li class="main "><a href="#development">Development</a></li>
         <li class="main "><a href="#session-details">Session Details</a></li>
         <li class="main "><a href="#please-wait-spinner">Please Wait Spinner</a></li>
         <li class="main "><a href="#user-role-security">User Role Security</a></li>
@@ -171,18 +171,27 @@
 <p>The P2P website can be extended by creating additional "custom" tabs.  </p>
 <hr />
 <h1 id="licence-file">Licence File</h1>
-<p>In order to display a custom tab you will first need a licence file which includes the name of the tab.  In the example below the tab will be called Bookings and will only be visible to users with the MAY_BOOK_RESOURCES user role.</p>
+<p>In order to display a custom tab you will first need a licence file which includes the name of the tab.  </p>
 <p><img alt="alt text" src="../../img/p2p/customtab/licencefile.bmp" title="Licence File" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Please contact your account manager for assistance with this.</p>
 </div>
+<p>In this example the tab will be displayed as  <strong>Manage Resource Bookings</strong> and will only be visible to users with the <strong>MAY_BOOK_RESOURCES</strong> user role.</p>
+<p><img alt="alt text" src="../../img/p2p/customtab/newtab.JPG" title="New Tab" /></p>
 <hr />
-<h1 id="process">Process</h1>
+<h1 id="development">Development</h1>
 <p>Custom tab are developed as independent websites which are then displayed as part of the core site within an iFrame.</p>
+<p><img alt="alt text" src="../../img/p2p/customtab/iframe.JPG" title="iFrame" /></p>
+<p>In the screenshot above,  the blue menu bar comes from the main site,  whilst the remainder of the page (in white) is the custom tab.</p>
 <p>By convention the custom sites are placed within the WebSite\Custom folder and are mapped as a virtual application with in IIS.   </p>
-<p>Once the licence file has been applied then the name of the new tab will appear in the menu bar along the top of the screen.</p>
-<p>Clicking on the new tab will open the your landing page (configured in app config) within a new iframe.</p>
+<p><img alt="alt text" src="../../img/p2p/customtab/iis.JPG" title="iis" /></p>
+<p>In order for P2P to know the URL of the page is displayed it's path needs to be added to the <strong>web.config</strong> file.</p>
+<p><img alt="alt text" src="../../img/p2p/customtab/config.JPG" title="config" /> </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The website will be reset logging out existing users after the <strong>web.config</strong> file is changed.</p>
+</div>
 <hr />
 <h1 id="session-details">Session Details</h1>
 <p>As the custom tab is running in a different website to the main site it is not possible to share the session state within IIS.</p>
