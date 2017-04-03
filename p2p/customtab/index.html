@@ -157,20 +157,27 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#custom-tab">Custom Tab</a></li>
+        <li class="main "><a href="#licence-file">Licence File</a></li>
         <li class="main "><a href="#process">Process</a></li>
         <li class="main "><a href="#session-details">Session Details</a></li>
         <li class="main "><a href="#please-wait-spinner">Please Wait Spinner</a></li>
         <li class="main "><a href="#user-role-security">User Role Security</a></li>
+        <li class="main "><a href="#example-application">Example Application</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="custom-tab">Custom Tab</h1>
 <p>The P2P website can be extended by creating additional "custom" tabs.  </p>
+<hr />
+<h1 id="licence-file">Licence File</h1>
+<p>In order to display a custom tab you will first need a licence file which includes the name of the tab.  In the example below the tab will be called Bookings and will only be visible to users with the MAY_BOOK_RESOURCES user role.</p>
+<p><img alt="alt text" src="../../img/p2p/customtab/licencefile.bmp" title="Licence File" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In order to display a custom tab you will first need a licence file which includes the name of the tab.  Please contact your account manager for assistance with this.</p>
+<p>Please contact your account manager for assistance with this.</p>
 </div>
+<hr />
 <h1 id="process">Process</h1>
 <p>Custom tab are developed as independent websites which are then displayed as part of the core site within an iFrame.</p>
 <p>By convention the custom sites are placed within the WebSite\Custom folder and are mapped as a virtual application with in IIS.   </p>
@@ -229,9 +236,13 @@
 <p>By default all users have access to the new tab.  If you wish to restrict access to our certain users then the name of a user role (or a custom role) can be specified for the tab within the licence file.</p>
 <p>If you wish to create a custom role,  then you will also need to insert an entry into the <strong>DSDBA.Roles</strong> table with the same name.</p>
 <pre><code class="sql">INSERT INTO DSDBA.Roles (GUID, Code, Description, Properties, CompanyGUID)
-SELECT newID(), 'MyCustomRole', 'Users may use custom tab', '', C.GUID
+SELECT newID(), 'MAY_BOOK_RESOURCES', 'Users may use the bookings tab', '', C.GUID
   FROM DSDBA.Companies C
-</code></pre></div>
+</code></pre>
+
+<hr />
+<h1 id="example-application">Example Application</h1>
+<p>Please see the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Custom%20Tab">example application</a> for a complete implementation.</p></div>
         </div>
 
         <footer class="col-md-12">
