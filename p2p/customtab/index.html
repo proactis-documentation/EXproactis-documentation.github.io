@@ -243,7 +243,7 @@
 
 <hr />
 <h1 id="user-role-security">User Role Security</h1>
-<p>By default all users have access to the new tab.  If you wish to restrict access to our certain users then the name of a user role (or a custom role) can be specified for the tab within the licence file.</p>
+<p>By default all users have access to the new tab.  If you wish to restrict access to only certain users then the name of a user role (or a custom role) can be specified for the tab within the licence file.</p>
 <p>If you wish to create a custom role,  then you will also need to insert an entry into the <strong>DSDBA.Roles</strong> table with the same name.</p>
 <pre><code class="sql">INSERT INTO DSDBA.Roles (GUID, Code, Description, Properties, CompanyGUID)
 SELECT newID(), 'MAY_BOOK_RESOURCES', 'Users may use the bookings tab', '', C.GUID
@@ -255,7 +255,7 @@ SELECT newID(), 'MAY_BOOK_RESOURCES', 'Users may use the bookings tab', '', C.GU
 <p>Please see the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Custom%20Tab">example application</a> for a complete implementation.</p>
 <hr />
 <h1 id="troubleshooting">Troubleshooting</h1>
-<p>If you custom tab does not appear then check the following</p>
+<p>If your custom tab does not appear then check the following</p>
 <ol>
 <li>Your licence file includes the section for your custom tab.</li>
 <li>If the RelatedRole has been specified in the licence file then the user has been granted that role.</li>
