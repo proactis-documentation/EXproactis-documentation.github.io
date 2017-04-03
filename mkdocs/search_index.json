@@ -349,6 +349,31 @@
             "location": "/p2p/addins/#sample-add-in",
             "text": "There is a sample add-in and xml file in Custom section of the Documentation folder on the build-CD. \nThe sample is available from the multi-line orders page and shows how order information can be retrieved and displayed.",
             "title": "Sample Add-In"
+        },
+        {
+            "location": "/placeholder/",
+            "text": "Please contact your account manager for information on integrating with this product.",
+            "title": "Spend Analytics"
+        },
+        {
+            "location": "/placeholder/",
+            "text": "Please contact your account manager for information on integrating with this product.",
+            "title": "APF"
+        },
+        {
+            "location": "/placeholder/",
+            "text": "Please contact your account manager for information on integrating with this product.",
+            "title": "S2C"
+        },
+        {
+            "location": "/placeholder/",
+            "text": "Please contact your account manager for information on integrating with this product.",
+            "title": "DueNorth"
+        },
+        {
+            "location": "/placeholder/",
+            "text": "Please contact your account manager for information on integrating with this product.",
+            "title": "System4"
         }
     ]
 }
