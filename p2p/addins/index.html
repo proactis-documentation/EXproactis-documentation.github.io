@@ -205,47 +205,19 @@
 </tr>
 <tr>
 <td>GetSessionParm(keyName)</td>
-<td>Returns the session value (as a string) stored against the specified key-name.</td>
-</tr>
-<tr>
-<td></td>
-<td>Returns null if the session value is not present</td>
+<td>- Returns the session value (as a string) stored against the specified key-name. Returns null if the session value is not present</td>
 </tr>
 <tr>
 <td>GetSessionParms(keyNames)</td>
-<td>Accepts an array of key-names and returns the corresponding session values (or null values if the session value does not exist)</td>
+<td>Accepts an array of key-names and returns the corresponding session values (or null values if the session value does not exist) Return value is a JSON array of key/value pairs First entry in return array is always the session-id.</td>
 </tr>
 <tr>
-<td></td>
-<td>Return value is a JSON array of key/value pairs</td>
+<td>GetOrderInEdit()</td>
+<td>Returns the full order xml (including all lines) for the order currently in edit in the current session. Returns an error if no order is currently in edit</td>
 </tr>
 <tr>
-<td></td>
-<td>First entry in return array is always the session-id.</td>
-</tr>
-<tr>
-<td>* GetOrderInEdit()</td>
-<td></td>
-</tr>
-<tr>
-<td>- Returns the full order xml (including all lines) for the order currently in edit in the current session.</td>
-<td></td>
-</tr>
-<tr>
-<td>- Returns an error if no order is currently in edit</td>
-<td></td>
-</tr>
-<tr>
-<td>* GetOrderInEditWithoutLines()</td>
-<td></td>
-</tr>
-<tr>
-<td>- Returns the order xml with an empty LineSet xml node (i.e. order header and footer only)</td>
-<td></td>
-</tr>
-<tr>
-<td>- Returns an error if no order is currently in edit</td>
-<td></td>
+<td>GetOrderInEditWithoutLines()</td>
+<td>Returns the order xml with an empty LineSet xml node (i.e. order header and footer only). Returns an error if no order is currently in edit</td>
 </tr>
 <tr>
 <td>* GetInvoiceInEdit()</td>
