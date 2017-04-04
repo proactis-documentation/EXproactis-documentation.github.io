@@ -187,13 +187,11 @@
 </code></pre>
 
 <h2 id="addinclient"><strong>addInClient</strong></h2>
-<p>A core deliverable for any javaScript add-in solution, is the recognition that any single add-in page may need to make numerous AJAX calls in order to retrieve all the data it requires in order to function. Since those AJAX calls are asynchronous, the challenge is how to co-ordinate and handle their callbacks. 
+<p>A core deliverable for any javaScript add-in solution, is the recognition that any single add-in page may need to make numerous AJAX calls in order to retrieve all the data it requires in order to function. Since those AJAX calls are asynchronous, the challenge is how to co-ordinate and handle their callbacks.</p>
+<p>The addInClient javaScript class solves the callback challenge. Through the use of jQuery Deferred/Promise functionality, it can accept any number of AJAX calls as input, will manage their respective callbacks, combine the data retrieved and make that data available to the caller. </p>
+<p>The <strong>addInClient</strong> class exposes the following AJAX methods. Understand that these calls are asynchronous. The return values described below are not returned directly but rather indirectly via the <strong>MonitorAjaxCalls</strong> method. The methods below directly return a jQuery Promise object. 
  
-The addInClient javaScript class solves the callback challenge. Through the use of jQuery Deferred/Promise functionality, it can accept any number of AJAX calls as input, will manage their respective callbacks, combine the data retrieved and make that data available to the caller.  
- 
-The <strong>addInClient</strong> class exposes the following AJAX methods. Understand that these calls are asynchronous. The return values described below are not returned directly but rather indirectly via the <strong>MonitorAjaxCalls</strong> method. The methods below directly return a jQuery Promise object. 
- 
-<em> GetSessionID() 
+<em> GetSessionID()
     -   Returns the current session-id 
 </em> GetSessionParm(keyName) 
     -  Returns the session value (as a string) stored against the specified key-name. 
