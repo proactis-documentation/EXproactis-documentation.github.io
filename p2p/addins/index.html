@@ -191,24 +191,15 @@
 <p>The addInClient javaScript class solves the callback challenge. Through the use of jQuery Deferred/Promise functionality, it can accept any number of AJAX calls as input, will manage their respective callbacks, combine the data retrieved and make that data available to the caller. </p>
 <p>The <strong>addInClient</strong> class exposes the following AJAX methods. Understand that these calls are asynchronous. The return values described below are not returned directly but rather indirectly via the <strong>MonitorAjaxCalls</strong> method. The methods below directly return a jQuery Promise object. 
  </p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GetSessionID()</td>
-<td>Returns the current session-id</td>
-</tr>
-<tr>
-<td>GetSessionParm(keyName)</td>
-<td>Returns the session value (as a string) stored against the specified key-name. Returns null if the session value is not present</td>
-</tr>
-</tbody>
-</table>
+<h3 id="getsessionid">GetSessionID()</h3>
+<ul>
+<li>Returns the current session-id.</li>
+</ul>
+<h3 id="getsessionparmkeyname">GetSessionParm(keyName)</h3>
+<ul>
+<li>Returns the session value (as a string) stored against the specified key-name. </li>
+<li>Returns null if the session value is not present.</li>
+</ul>
 <h3 id="getsessionparmskeynames">GetSessionParms(keyNames)</h3>
 <p>Accepts an array of key-names and returns the corresponding session values (or null values if the session value does not exist) Return value is a JSON array of key/value pairs First entry in return array is always the session-id. </p>
 <h3 id="getorderinedit">GetOrderInEdit()</h3>
