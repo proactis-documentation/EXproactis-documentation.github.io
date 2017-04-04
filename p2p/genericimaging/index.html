@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="David Betteridge">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Generic Imaging - Technical Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/extra.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Technical Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">PROACTIS</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">P2P <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../sso/">Single Sign On (SSO)</a>
+</li>
+                            
+<li >
+    <a href="../punchout/">PunchOut / Marketplaces</a>
+</li>
+                            
+<li >
+    <a href="../nominalvalidation/">Nominal Validation</a>
+</li>
+                            
+<li >
+    <a href="../budgetchecking/">Budget Checking</a>
+</li>
+                            
+<li >
+    <a href="../customtab/">Custom Tabs</a>
+</li>
+                            
+<li >
+    <a href="../addins/">Addins</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Imaging Integration</a>
+    <ul class="dropdown-menu">
+            
+<li class="active">
+    <a href="./">Generic Imaging</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">Spend Analytics</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">APF</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">S2C</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">DueNorth</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">System4</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../addins/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../placeholder/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/proactis-documentation/ExampleApplications">CodeExamples
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#generic-imaging-dll">Generic Imaging DLL</a></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#beyond-the-imaging-dll">Beyond the Imaging DLL</a></li>
+            <li><a href="#installing-the-generic-imaging-dll">Installing the Generic Imaging DLL</a></li>
+            <li><a href="#configuring-the-imaging-dll">Configuring the imaging DLL</a></li>
+            <li><a href="#examples">Examples</a></li>
+            <li><a href="#additional-settings">Additional Settings</a></li>
+            <li><a href="#the-generic-imaging-dll-processing">The “Generic Imaging DLL” - Processing</a></li>
+            <li><a href="#summary-of-settings">Summary of Settings</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="generic-imaging-dll">Generic Imaging DLL</h1>
+<h2 id="overview">Overview</h2>
+<p>The PROACTIS P2P product has been designed so that it can be easily integrated with a number of different Document Management Systems (DMS).</p>
+<p>A typical PROACTIS imaging solution requires the following integration points:-
+1.  The scanned image needs to be associated with an invoice within PROACTIS.</p>
+<ol>
+<li>Users need to be able to see the original scanned image by clicking a link within the PROACTIS web site.</li>
+</ol>
+<p>Although there are many different possible methods available (as different DMS and customers have different requirements) a generic imaging DLL has been written which meets the majority of customer’s requirements.
+This document describes how to install and configure this DLL.</p>
+<h2 id="beyond-the-imaging-dll">Beyond the Imaging DLL</h2>
+<p>If the “Generic Imaging DLL” does not meet your requirements,  then a custom DLL can written which implements the <strong>grsImageIface.IImaging</strong> and <strong>grsImageIface.IProcess</strong> interfaces.  The application server can then be configured to call this DLL when a user wishes to “process a new invoice” or view an existing scanned image.
+The development of a custom DLL is not described within this document.</p>
+<h2 id="installing-the-generic-imaging-dll">Installing the Generic Imaging DLL</h2>
+<h3 id="application-server">Application Server</h3>
+<p>•   Copy the supplied proGenericImaging.dll into you <strong>Plugins</strong> folder.</p>
+<h3 id="database-server">Database Server</h3>
+<p>•   Run the supplied <strong>Imaging.sql</strong> script against the PROACTIS database.</p>
+<h2 id="configuring-the-imaging-dll">Configuring the imaging DLL</h2>
+<p>The “generic imaging” DLL supports two different sources for viewing scanned images.  They can be displayed either from an existing image file, or from an external URL.  Different sources can be defined for different document types.  For example, expense claims might exist as .gif files in a file share, whilst scanned images might be held in a document management system accessed via a webpage.
+The configuration for the generic imaging DLL is carried out via the “Imaging Settings” snap in within the PROACTIS Management Console.</p>
+<h2 id="examples">Examples</h2>
+<p>In order to view an image via a URL held in an external DMS, the following settings would be required.</p>
+<table>
+<thead>
+<tr>
+<th>Setting Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DefaultImageSource</td>
+<td>URL – the image is retrieved from the external system using an URL</td>
+</tr>
+<tr>
+<td>InvoiceImageIdentifier</td>
+<td>DisplayNumber – the PROACTIS invoice number is used to identify the image in the DMS.</td>
+</tr>
+<tr>
+<td>DefaultURL</td>
+<td>The tag {{ImageID}} will be replaced with the value of the InvoiceImageIdentifier when access the DMS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="additional-settings">Additional Settings</h2>
+<p>The other available settings are detailed below:-</p>
+<h3 id="the-image-source">The image source</h3>
+<p>The image source specifies where the image will be found and should have the value of either URL or FILE.</p>
+<p>The DLL first checks for the value of XXImageSource setting.  XX is one of the following values depending on the type of document being viewed.</p>
+<ul>
+<li>Invoice</li>
+<li>CreditNote</li>
+<li>Expense</li>
+<li>Acceptance</li>
+</ul>
+<p>If this setting does not exist, or is blank then the DLL checks for the value of DefaultImageSource
+If no image source can be found for a document type or the value is not either FILE or URL, then the following error will be raised
+“Invalid image source –“</p>
+<h3 id="the-image-identifier">The image identifier</h3>
+<p>The DLL then determines how to identify the image.   Images can be identified by their
+- ImageReference (Invoices and Credit Notes only)
+- HeaderReference
+- DisplayNumber</p>
+<p>The “xxxImageIdentifier” setting specifies which of these sources will be used for the xxx document type.  If the setting is not set for the current document type then the following defaults will be used
+- Invoices and Credit Notes -   ImageReference
+- Expenses and Acceptances  -   HeaderReference</p>
+<p>If HeaderReference has been specified for the xxx document type, then the name of the reference field must also be set in either the
+- DefaultImageReference setting<br />
+Or
+- xxxImageReference setting.</p>
+<h3 id="viewing-images-from-an-url">Viewing Images from an URL</h3>
+<p>If the source type is determined to be a URL then the base URL is read from one of the following settings:
+- InvoiceURL
+- CreditNoteURL
+- ExpenseClaimURL
+- AcceptanceURL</p>
+<p>If the setting is blank or does not exist, then the value of DefaultURL is used.</p>
+<p>Once the URL has been determined, the image identifier is then appended to the end.  For example if the base URL is http://image-server.asp?ImageID=  and the ImageIdentifier is PINV1234 then the following URL will be used http://image-server.asp?ImageID=PINV1234</p>
+<p>If the URL contains the markup tag {{ImageID}}  then instead of the ImageIdentifier being appended to the end of the URL it will replace the tag within the URL.
+For example http://localhost/intranet/DMS/{{ImageID}}.bmp will become http://localhost/intranet/DMS/PINV1234.bmp
+ </p>
+<h3 id="viewing-images-from-a-file">Viewing Images from a FILE</h3>
+<p>If the source type is determined to be a FILE then the image folder is read from one of the following settings
+- InvoiceFolder
+- CreditNoteFolder
+- ExpenseClaimFolder
+- AcceptanceFolder
+If the setting is blank or does not exist, then the value of DefaultFolder is used.</p>
+<p>Next the mime type of the image file is resolved using the following settings
+- InvoiceMIMEType
+- CreditNoteMIMEType
+- ExpenseClaimMIMEType
+- AcceptanceMIMEType</p>
+<p>If the setting is blank or does not exist, then the value of DefaultMIMEType is used.
+If the value for the MIME type is still unknown then the DLL queries the registry for find the mime type registered for the file extensions.  This is held in HKEY_LOCAL_MACHINE\Software\Classes\xxx\Content Type where xxx is the file extension.
+If a value still can’t be found then it defaults to a mime type of application/octet-stream
+Once the MIME type and Folder is known, the complete target filename is generated by appending the image identifier to the folder.  For example if the folder is c:\Images and the ImageIdentifier is PINV1234.gif then the filename c:\Images\PINV1234.gif will be displayed.</p>
+<h2 id="the-generic-imaging-dll-processing">The “Generic Imaging DLL” - Processing</h2>
+<h3 id="display-of-the-process-images-link">Display of the Process Images Link</h3>
+<p>To determine if the “Process Images” link should be displayed the following setting is queried
+- ProcessInvoice
+- ProcessCreditNote
+- ProcessExpenseClaim
+- ProcessAcceptance</p>
+<p>If the setting is missing or blank then the ProcessDefault setting will be used.
+If it has a value of ALWAYS then the link will always be displayed.  If the setting is NEVER then the link will always be hidden.  Otherwise the link will only be displayed if there are some images to process.
+This allows the Process scanned image functionality so be available for some document types but not for others.</p>
+<h3 id="listing-images-from-the-database">Listing Images From the Database</h3>
+<p>If the image source for the document type is URL (see above) then the list of available images is determined by querying the database.
+The DLL then selects from the “dsdba.view_cus_UnprocessedDocumentImages” database view.  This view must be customised to select from your images database.
+Each of the columns returned by the view will then be displayed within a table on the website.
+One of the columns must be designated as a key column,  this means that it uniquely identifies the image.
+The key column is defined by the following setting
+- InvoiceProcessKey
+- CreditNoteProcessKey
+- ExpenseClaimProcessKey
+- AcceptanceProcessKey</p>
+<p>If the setting is missing or blank then the ProcessKeyDefault setting will be used.</p>
+<h3 id="listing-images-from-a-folder">Listing Images From a folder</h3>
+<p>If the image source for the document type is FILE (see above) then the list of available images is determined by the files in an existing folder.
+The folder is determined by the following setting
+- InvoiceProcessFolder
+- CreditNoteProcessFolder
+- ExpenseClaimProcessFolder
+- AcceptanceProcessFolder</p>
+<p>If the setting is missing or blank then the ProcessFolderDefault setting will be used.</p>
+<p>The system can be configured so that each user can have their own folder of images.  If the following setting is set to YES then the users loginID will be appended to the folder name
+- InvoicePostfixLogin
+- CreditNotePostfixLogin
+- ExpenseClaimNotePostfixLogin
+- AcceptancePostfixLogin</p>
+<p>If the setting is missing or blank then the DefaultPostfixLogin setting will be used.
+For example, if the folder is C:\Images and the post fix login is YES and the username is DAVID then the folder c:\Image\David will be used.</p>
+<h3 id="processing-database-images">Processing Database Images</h3>
+<p>Once an image held in the database has been processed then image identifier is then set against the document within PROACTIS.</p>
+<h3 id="processing-file-images">Processing File Images</h3>
+<p>Once a file image has been processed then the file is moved into a processed folder.  The folder is determined from the following setting.
+- InvoiceProcessFolder
+- CreditNoteProcessFolder
+- ExpenseClaimProcessFolder
+- AcceptanceProcessFolder</p>
+<p>If the setting is missing or blank then the DefaultProcessFolder setting will be used.
+The file can also be renamed as it’s moved when the following setting is set to YES
+- InvoiceFileRename
+- CreditNoteFileRename
+- AcceptanceFileRename
+- ExpenseClaimFileRename</p>
+<p>If the setting is missing or blank then the DefaultFileRename setting will be used.</p>
+<h2 id="summary-of-settings">Summary of Settings</h2>
+<table>
+<thead>
+<tr>
+<th>Setting Name</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InvoiceImageSource</td>
+<td>FILE or URL</td>
+<td>The source for viewing invoice files</td>
+</tr>
+<tr>
+<td>CreditNoteImageSource</td>
+<td>FILE or URL</td>
+<td>The source for viewing credit note files</td>
+</tr>
+<tr>
+<td>AcceptanceImageSource</td>
+<td>FILE or URL</td>
+<td>The source for viewing acceptance files</td>
+</tr>
+<tr>
+<td>ExpenseImageSource</td>
+<td>FILE or URL</td>
+<td>The source for viewing expense claim files</td>
+</tr>
+<tr>
+<td>DefaultImageSource</td>
+<td>FILE or URL</td>
+<td>Source used when the above setting is blank or missing</td>
+</tr>
+<tr>
+<td>ExpenseClaimImageReference</td>
+<td>IMAGE</td>
+<td>The code of the reference field on an expense claim which holds the identifier of the image.</td>
+</tr>
+<tr>
+<td>AcceptanceImageReference</td>
+<td>BARCODE</td>
+<td>The code of the reference field on an acceptance document which holds the identifier of the image.</td>
+</tr>
+<tr>
+<td>DefaultImageReference</td>
+<td>ID</td>
+<td>The reference field used when the above settings are blank or missing</td>
+</tr>
+<tr>
+<td>InvoiceURL</td>
+<td>http://images?ID=</td>
+<td>The prefix for the URL used for displaying invoices.</td>
+</tr>
+<tr>
+<td>CreditNoteURL</td>
+<td>https://images?Doc=</td>
+<td>The prefix for the URL used for displaying credit notes.</td>
+</tr>
+<tr>
+<td>ExpenseClaimURL</td>
+<td>http://127.0.0.1?BarCode=</td>
+<td>The prefix for the URL used for displaying expense claims.</td>
+</tr>
+<tr>
+<td>AcceptanceURL</td>
+<td>http://www.images.com?ID</td>
+<td>The prefix for the URL used for displaying acceptance documents.</td>
+</tr>
+<tr>
+<td>DefaultURL</td>
+<td>http://img-server?type=PROACTIS&amp;ID=</td>
+<td>The URL used when the above settings are blank or missing</td>
+</tr>
+<tr>
+<td>InvoiceFolder</td>
+<td>C:\Images</td>
+<td>The folder containing the invoice images</td>
+</tr>
+<tr>
+<td>CreditNoteFolder</td>
+<td>\file-server\Images</td>
+<td>The folder containing the credit note images</td>
+</tr>
+<tr>
+<td>ExpenseClaimFolder</td>
+<td>\127.0.0.1\Images</td>
+<td>The folder containing the expense claim images</td>
+</tr>
+<tr>
+<td>AcceptanceFolder</td>
+<td>C:\Images</td>
+<td>The folder containing the acceptance document images</td>
+</tr>
+<tr>
+<td>DefaultFolder</td>
+<td></td>
+<td>The Folder used when the above settings are blank or missing</td>
+</tr>
+</tbody>
+</table></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>(C) PROACTIS Group Ltd - All Rights Reserved</p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
