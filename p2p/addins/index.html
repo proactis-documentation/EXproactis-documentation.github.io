@@ -246,20 +246,31 @@
 <h3 id="handleerrorerrormessages">HandleError(errorMessages)</h3>
 <p>Will test for the presence of notification services and output formal error notifications if possible. Otherwise will issue alerts for each error message. </p>
 <h2 id="xmlservices">XMLServices</h2>
-<p>Exposes a set of helper methods for working with document xml (i.e. xml with the “grs” namespace). The following methods are available 
-<em> loadDOM(xml) 
-    - Accepts an xml string and returns a jQuery DOM object 
-</em> getNode(parentNode, nodeName) 
-    - Accepts a parent node (or the DOM) and the name of an immediate child element. 
-    - Returns the child element 
-    - nodeName can be an array of element names. Where each name corresponds to an element that is a child of the previous name (element).  
-<em> attr(node, attributeName) 
-    - Returns the given attribute of the given element. 
-</em> getNodeAttr(parentNode, nodeName, attributeName) 
-    - Finds the specified immediate child element of the parent node and returns the specified attribute value. 
-* filterNodeAttr(parentNode, nodeName, attributeName, attributeName) 
-    - Finds the specified immediate child element of the parent node, which also has an attribute with the specified name and value. Returns the text value of that child element. 
- </p>
+<p>Exposes a set of helper methods for working with document xml (i.e. xml with the “grs” namespace). The following methods are available </p>
+<h3 id="loaddomxml">loadDOM(xml)</h3>
+<ul>
+<li>Accepts an xml string and returns a jQuery DOM object </li>
+</ul>
+<h3 id="getnodeparentnode-nodename">getNode(parentNode, nodeName)</h3>
+<ul>
+<li>Accepts a parent node (or the DOM) and the name of an immediate child element. </li>
+<li>Returns the child element </li>
+<li>nodeName can be an array of element names. Where each name corresponds to an element that is a child of the previous name (element).  </li>
+</ul>
+<h3 id="attrnode-attributename">attr(node, attributeName)</h3>
+<ul>
+<li>Returns the given attribute of the given element. </li>
+</ul>
+<h3 id="getnodeattrparentnode-nodename-attributename">getNodeAttr(parentNode, nodeName, attributeName)</h3>
+<ul>
+<li>Finds the specified immediate child element of the parent node and returns the specified attribute value. </li>
+</ul>
+<h3 id="filternodeattrparentnode-nodename-attributename-attributename">filterNodeAttr(parentNode, nodeName, attributeName, attributeName)</h3>
+<ul>
+<li>Finds the specified immediate child element of the parent node, which also has an attribute with the specified name and value. </li>
+<li>Returns the text value of that child element. 
+ </li>
+</ul>
 <h1 id="sample-add-in">Sample Add-In</h1>
 <p>There is a sample add-in and xml file available <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Addins">here</a>.</p>
 <p>The sample is available from the multi-line orders page and shows how order information can be retrieved and displayed. </p></div>
