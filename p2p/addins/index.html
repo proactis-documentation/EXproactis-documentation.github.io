@@ -186,6 +186,7 @@
     &lt;script src=&quot;../../CustomSupport/kendo.popup.min.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 
+<hr />
 <h2 id="addinclient"><strong>addInClient</strong></h2>
 <p>A core deliverable for any javaScript add-in solution, is the recognition that any single add-in page may need to make numerous AJAX calls in order to retrieve all the data it requires in order to function. Since those AJAX calls are asynchronous, the challenge is how to co-ordinate and handle their callbacks.</p>
 <p>The addInClient javaScript class solves the callback challenge. Through the use of jQuery Deferred/Promise functionality, it can accept any number of AJAX calls as input, will manage their respective callbacks, combine the data retrieved and make that data available to the caller. </p>
@@ -245,6 +246,7 @@
 </ul>
 <h3 id="handleerrorerrormessages">HandleError(errorMessages)</h3>
 <p>Will test for the presence of notification services and output formal error notifications if possible. Otherwise will issue alerts for each error message. </p>
+<hr />
 <h2 id="xmlservices">XMLServices</h2>
 <p>Exposes a set of helper methods for working with document xml (i.e. xml with the “grs” namespace). The following methods are available </p>
 <h3 id="loaddomxml">loadDOM(xml)</h3>
@@ -271,6 +273,7 @@
 <li>Returns the text value of that child element. 
  </li>
 </ul>
+<hr />
 <h1 id="sample-add-in">Sample Add-In</h1>
 <p>There is a sample add-in and xml file available <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Addins">here</a>.</p>
 <p>The sample is available from the multi-line orders page and shows how order information can be retrieved and displayed. </p></div>
