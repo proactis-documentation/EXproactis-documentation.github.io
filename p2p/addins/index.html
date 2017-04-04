@@ -205,7 +205,7 @@
 </tr>
 <tr>
 <td>GetSessionParm(keyName)</td>
-<td>- Returns the session value (as a string) stored against the specified key-name. Returns null if the session value is not present</td>
+<td>Returns the session value (as a string) stored against the specified key-name. Returns null if the session value is not present</td>
 </tr>
 <tr>
 <td>GetSessionParms(keyNames)</td>
@@ -220,95 +220,38 @@
 <td>Returns the order xml with an empty LineSet xml node (i.e. order header and footer only). Returns an error if no order is currently in edit</td>
 </tr>
 <tr>
-<td>* GetInvoiceInEdit()</td>
-<td></td>
+<td>GetInvoiceInEdit()</td>
+<td>Returns the full invoice xml (including all lines) for the invoice currently in edit in the current session.</td>
 </tr>
 <tr>
-<td>- Returns the full invoice xml (including all lines) for the invoice currently in edit in the current session.</td>
-<td></td>
-</tr>
-<tr>
-<td>* GetInvoiceInEditHeader()</td>
-<td></td>
-</tr>
-<tr>
-<td>- Returns the invoice header xml for the invoice currently in edit in the current session.</td>
-<td></td>
-</tr>
-<tr>
-<td>* GetInvoiceInEditFooter</td>
-<td></td>
-</tr>
-<tr>
-<td>- Returns the invoice footer xml for the invoice currently in edit in the current session.</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>* MonitorAjaxCalls(ajaxCalls)</td>
-<td></td>
-</tr>
-<tr>
-<td>- Accepts an array of any combination of the above AJAX “Get…” methods. Since each of the above “Get…” methods actually returns a jQuery Promise object, the input to this method is actually an array of those Promise objects to be monitored.</td>
-<td></td>
-</tr>
-<tr>
-<td>- Returns a single jQuery Promise object to which resolve/fail events can be attached</td>
-<td></td>
-</tr>
-<tr>
-<td>- If all input “Get…” methods succeed then</td>
-<td></td>
-</tr>
-<tr>
-<td>- All “resolve” events attached to the returned Promise, are triggered (in the order in which they were attached)</td>
-<td></td>
-</tr>
-<tr>
-<td>- Each “resolve” event is passed the following parameters</td>
-<td></td>
-</tr>
-<tr>
-<td>-    <strong>Results</strong>: an array of return values, matching the AJAX calls that were input. The array entries will be simple strings, JSON key/value arrays or xml strings, as per the return types from the above “Get…” methods.</td>
-<td></td>
-</tr>
-<tr>
-<td>-    <strong>AlertMessages</strong>: an array of all alert messages output by the AJAX “Get…” messages</td>
-<td></td>
-</tr>
-<tr>
-<td>-    <strong>InfoMessages</strong>: an array of all info messages output by the AJAX “Get…” messages</td>
-<td></td>
-</tr>
-<tr>
-<td>- If any of input AJAX “Get…” methods fail then</td>
-<td></td>
-</tr>
-<tr>
-<td>- All “fail” events attached to the returned Promise, are triggered (in the order in which they were attached)</td>
-<td></td>
-</tr>
-<tr>
-<td>- Each “fail” event is passed an array of error messages.</td>
-<td></td>
-</tr>
-<tr>
-<td>- Even if some of the input AJAX “Get…” events succeed, no “resolve” events are triggered.</td>
-<td></td>
-</tr>
-<tr>
-<td>* HandleError(errorMessages)</td>
-<td></td>
-</tr>
-<tr>
-<td>o Will test for the presence of notification services and output formal error notifications if possible. Otherwise will issue alerts for each error message.</td>
-<td></td>
+<td>GetInvoiceInEditHeader()</td>
+<td>Returns the invoice header xml for the invoice currently in edit in the current session.</td>
 </tr>
 </tbody>
 </table>
+<h3 id="getinvoiceineditfooter">GetInvoiceInEditFooter</h3>
+<p>Returns the invoice footer xml for the invoice currently in edit in the current session. </p>
+<h3 id="monitorajaxcallsajaxcalls">MonitorAjaxCalls(ajaxCalls)</h3>
+<ul>
+<li>Accepts an array of any combination of the above AJAX “Get…” methods. Since each of the above “Get…” methods actually returns a jQuery Promise object, the input to this method is actually an array of those Promise objects to be monitored.  </li>
+<li>Returns a single jQuery Promise object to which resolve/fail events can be attached </li>
+<li>If all input “Get…” methods succeed then  <ul>
+<li>All “resolve” events attached to the returned Promise, are triggered (in the order in which they were attached) </li>
+<li>Each “resolve” event is passed the following parameters </li>
+<li><strong>Results</strong>: an array of return values, matching the AJAX calls that were input. The array entries will be simple strings, JSON key/value arrays or xml strings, as per the return types from the above “Get…” methods.  </li>
+<li><strong>AlertMessages</strong>: an array of all alert messages output by the AJAX “Get…” messages</li>
+<li><strong>InfoMessages</strong>: an array of all info messages output by the AJAX “Get…” messages</li>
+</ul>
+</li>
+<li>If any of input AJAX “Get…” methods fail then <ul>
+<li>All “fail” events attached to the returned Promise, are triggered (in the order in which they were attached) </li>
+<li>Each “fail” event is passed an array of error messages. </li>
+<li>Even if some of the input AJAX “Get…” events succeed, no “resolve” events are triggered. </li>
+</ul>
+</li>
+</ul>
+<h3 id="handleerrorerrormessages">HandleError(errorMessages)</h3>
+<p>Will test for the presence of notification services and output formal error notifications if possible. Otherwise will issue alerts for each error message. </p>
 <h2 id="xmlservices">XMLServices</h2>
 <p>Exposes a set of helper methods for working with document xml (i.e. xml with the “grs” namespace). The following methods are available 
 <em> loadDOM(xml) 
