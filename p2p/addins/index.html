@@ -125,7 +125,11 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#add-ins">Add-ins</a></li>
         <li class="main "><a href="#setup">Setup</a></li>
+        <li class="main "><a href="#css">CSS</a></li>
         <li class="main "><a href="#javascript">Javascript</a></li>
+            <li><a href="#includes">Includes</a></li>
+            <li><a href="#addinclient">addInClient</a></li>
+            <li><a href="#xmlservices">XMLServices</a></li>
         <li class="main "><a href="#sample-add-in">Sample Add-In</a></li>
     </ul>
 </div></div>
@@ -160,24 +164,34 @@
 </li>
 </ol>
 <hr />
+<h1 id="css">CSS</h1>
+<p>In order to pick up some of the styling from the main site (such as the default font-family and font size for the page) the <strong>CustomSupport/Site.css</strong> style-sheet should be referenced.</p>
+<pre><code class="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../../CustomSupport/Site.css&quot; /&gt;
+</code></pre>
+
+<hr />
 <h1 id="javascript">Javascript</h1>
-<p>An add-in page will communicate with the parent P2P application via javaScript calls exposed by the addInClient library.
- 
-The main web site has a CustomSupport folder that contains the files that need to be included (some optionally) in each add-in page.
- 
-<strong>AddInClient.js</strong>:  mandatory for communication between the add-in page and the owning main P2P page in the client’s browser (which can in turn communicate with the server)</p>
+<p>An add-in page can communicate with the parent P2P application via javaScript calls exposed by the addInClient library.</p>
+<h2 id="includes">Includes</h2>
+<p>The main web site has a <strong>CustomSupport</strong> folder that contains the files that need to be included (some optionally) in each add-in page.</p>
+<p><strong>AddInClient.js</strong>:  mandatory for communication between the add-in page and the owning main P2P page in the client’s browser (which can in turn communicate with the server)</p>
 <p><strong>jquery-xxx.im.js</strong>: mandatory  </p>
 <p><strong>jquery.filerNode.js</strong>: mandatory if you wish to use the xml services exposed by the AddInClient class, for manipulating order/invoice xml. Otherwise can be left out. </p>
 <p><strong>kendo.xxx.min.js</strong>, Notifications.inc, Site.css: mandatory if you wish to use the same notification services and styling as the main web site for info, alert and error messages. Otherwise can be left out. </p>
-<p><strong>Site.css</strong>: As well as notification styling mentioned above, sets the default font-family and font size for the page. 
- 
-  
-<strong>addInClient</strong> 
-A core deliverable for any javaScript add-in solution, is the recognition that any single add-in page may need to make numerous AJAX calls in order to retrieve all the data it requires in order to function. Since those AJAX calls are asynchronous, the challenge is how to co-ordinate and handle their callbacks. 
+<pre><code class="html">    &lt;script src=&quot;../../CustomSupport/jquery-2.2.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;../../CustomSupport/jquery.filerNode.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;../../CustomSupport/AddInClient.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;../../CustomSupport/kendo.core.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;../../CustomSupport/kendo.notification.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;../../CustomSupport/kendo.popup.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<h2 id="addinclient"><strong>addInClient</strong></h2>
+<p>A core deliverable for any javaScript add-in solution, is the recognition that any single add-in page may need to make numerous AJAX calls in order to retrieve all the data it requires in order to function. Since those AJAX calls are asynchronous, the challenge is how to co-ordinate and handle their callbacks. 
  
 The addInClient javaScript class solves the callback challenge. Through the use of jQuery Deferred/Promise functionality, it can accept any number of AJAX calls as input, will manage their respective callbacks, combine the data retrieved and make that data available to the caller.  
  
-The <strong>addInClient</strong> class exposes the following AJAX methods. Understand that these calls are asynchronous. The return values described below are not returned directly but rather indirectly via the “MonitorAjaxCalls” method. The methods below directly return a jQuery Promise object. 
+The <strong>addInClient</strong> class exposes the following AJAX methods. Understand that these calls are asynchronous. The return values described below are not returned directly but rather indirectly via the <strong>MonitorAjaxCalls</strong> method. The methods below directly return a jQuery Promise object. 
  
 <em> GetSessionID() 
     -   Returns the current session-id 
@@ -201,7 +215,6 @@ The <strong>addInClient</strong> class exposes the following AJAX methods. Under
 </em> GetInvoiceInEditFooter 
     - Returns the invoice footer xml for the invoice currently in edit in the current session. 
  
- 
 <em> MonitorAjaxCalls(ajaxCalls) 
     - Accepts an array of any combination of the above AJAX “Get…” methods. Since each of the above “Get…” methods actually returns a jQuery Promise object, the input to this method is actually an array of those Promise objects to be monitored.  
     - Returns a single jQuery Promise object to which resolve/fail events can be attached 
@@ -209,33 +222,32 @@ The <strong>addInClient</strong> class exposes the following AJAX methods. Under
         - All “resolve” events attached to the returned Promise, are triggered (in the order in which they were attached) 
         - Each “resolve” event is passed the following parameters 
         -    <strong>Results</strong>: an array of return values, matching the AJAX calls that were input. The array entries will be simple strings, JSON key/value arrays or xml strings, as per the return types from the above “Get…” methods.  
-        -    <strong>AlertMessages</strong>: an array of all alert messages output by the AJAX “Get…” messages (I don’t think there are any…. Yet!) 
-        -    <strong>InfoMessages</strong>: an array of all info messages output by the AJAX “Get…” messages (I don’t think there are any…. Yet!) 
-        -If any of input AJAX “Get…” methods fail then 
-</em> All “fail” events attached to the returned Promise, are triggered (in the order in which they were attached) 
-<em> Each “fail” event is passed an array of error messages. 
-</em> Even if some of the input AJAX “Get…” events succeed, no “resolve” events are triggered. 
-<em> HandleError(errorMessages) 
-o Will test for the presence of notification services and output formal error notifications if possible. Otherwise will issue alerts for each error message. 
-</em> XMLServices 
-o Exposes a set of helper methods for working with document xml (i.e. xml with the “grs” namespace). 
-o The following methods are available 
+        -    <strong>AlertMessages</strong>: an array of all alert messages output by the AJAX “Get…” messages
+        -    <strong>InfoMessages</strong>: an array of all info messages output by the AJAX “Get…” messages
+    - If any of input AJAX “Get…” methods fail then 
+        - All “fail” events attached to the returned Promise, are triggered (in the order in which they were attached) 
+        - Each “fail” event is passed an array of error messages. 
+        - Even if some of the input AJAX “Get…” events succeed, no “resolve” events are triggered. 
+</em> HandleError(errorMessages) 
+o Will test for the presence of notification services and output formal error notifications if possible. Otherwise will issue alerts for each error message. </p>
+<h2 id="xmlservices">XMLServices</h2>
+<p>Exposes a set of helper methods for working with document xml (i.e. xml with the “grs” namespace). The following methods are available 
 <em> loadDOM(xml) 
-</em> Accepts an xml string and returns a jQuery DOM object 
-<em> getNode(parentNode, nodeName) 
-</em> Accepts a parent node (or the DOM) and the name of an immediate child element. 
-<em> Returns the child element 
-</em> nodeName can be an array of element names. Where each name corresponds to an element that is a child of the previous name (element).  
+    - Accepts an xml string and returns a jQuery DOM object 
+</em> getNode(parentNode, nodeName) 
+    - Accepts a parent node (or the DOM) and the name of an immediate child element. 
+    - Returns the child element 
+    - nodeName can be an array of element names. Where each name corresponds to an element that is a child of the previous name (element).  
 <em> attr(node, attributeName) 
-</em> Returns the given attribute of the given element. 
-<em> getNodeAttr(parentNode, nodeName, attributeName) 
-</em> Finds the specified immediate child element of the parent node and returns the specified attribute value. 
-<em> filterNodeAttr(parentNode, nodeName, attributeName, attributeName) 
-</em> Finds the specified immediate child element of the parent node, which also has an attribute with the specified name and value. Returns the text value of that child element. 
+    - Returns the given attribute of the given element. 
+</em> getNodeAttr(parentNode, nodeName, attributeName) 
+    - Finds the specified immediate child element of the parent node and returns the specified attribute value. 
+* filterNodeAttr(parentNode, nodeName, attributeName, attributeName) 
+    - Finds the specified immediate child element of the parent node, which also has an attribute with the specified name and value. Returns the text value of that child element. 
  </p>
 <h1 id="sample-add-in">Sample Add-In</h1>
-<p>There is a sample add-in and xml file in Custom section of the Documentation folder on the build-CD. 
-The sample is available from the multi-line orders page and shows how order information can be retrieved and displayed. </p></div>
+<p>There is a sample add-in and xml file available <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Addins">here</a>.</p>
+<p>The sample is available from the multi-line orders page and shows how order information can be retrieved and displayed. </p></div>
         </div>
 
         <footer class="col-md-12">
