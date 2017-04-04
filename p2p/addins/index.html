@@ -207,30 +207,32 @@
 <td>GetSessionParm(keyName)</td>
 <td>Returns the session value (as a string) stored against the specified key-name. Returns null if the session value is not present</td>
 </tr>
-<tr>
-<td>GetSessionParms(keyNames)</td>
-<td>Accepts an array of key-names and returns the corresponding session values (or null values if the session value does not exist) Return value is a JSON array of key/value pairs First entry in return array is always the session-id.</td>
-</tr>
-<tr>
-<td>GetOrderInEdit()</td>
-<td>Returns the full order xml (including all lines) for the order currently in edit in the current session. Returns an error if no order is currently in edit</td>
-</tr>
-<tr>
-<td>GetOrderInEditWithoutLines()</td>
-<td>Returns the order xml with an empty LineSet xml node (i.e. order header and footer only). Returns an error if no order is currently in edit</td>
-</tr>
-<tr>
-<td>GetInvoiceInEdit()</td>
-<td>Returns the full invoice xml (including all lines) for the invoice currently in edit in the current session.</td>
-</tr>
-<tr>
-<td>GetInvoiceInEditHeader()</td>
-<td>Returns the invoice header xml for the invoice currently in edit in the current session.</td>
-</tr>
 </tbody>
 </table>
-<h3 id="getinvoiceineditfooter">GetInvoiceInEditFooter</h3>
-<p>Returns the invoice footer xml for the invoice currently in edit in the current session. </p>
+<h3 id="getsessionparmskeynames">GetSessionParms(keyNames)</h3>
+<p>Accepts an array of key-names and returns the corresponding session values (or null values if the session value does not exist) Return value is a JSON array of key/value pairs First entry in return array is always the session-id. </p>
+<h3 id="getorderinedit">GetOrderInEdit()</h3>
+<ul>
+<li>Returns the full order xml (including all lines) for the order currently in edit in the current session. </li>
+<li>Returns an error if no order is currently in edit.</li>
+</ul>
+<h3 id="getorderineditwithoutlines">GetOrderInEditWithoutLines()</h3>
+<ul>
+<li>Returns the order xml with an empty LineSet xml node (i.e. order header and footer only). </li>
+<li>Returns an error if no order is currently in edit </li>
+</ul>
+<h3 id="getinvoiceinedit">GetInvoiceInEdit()</h3>
+<ul>
+<li>Returns the full invoice xml (including all lines) for the invoice currently in edit in the current session. </li>
+</ul>
+<h3 id="getinvoiceineditheader">GetInvoiceInEditHeader()</h3>
+<ul>
+<li>Returns the invoice header xml for the invoice currently in edit in the current session. </li>
+</ul>
+<h3 id="getinvoiceineditfooter">GetInvoiceInEditFooter()</h3>
+<ul>
+<li>Returns the invoice footer xml for the invoice currently in edit in the current session. </li>
+</ul>
 <h3 id="monitorajaxcallsajaxcalls">MonitorAjaxCalls(ajaxCalls)</h3>
 <ul>
 <li>Accepts an array of any combination of the above AJAX “Get…” methods. Since each of the above “Get…” methods actually returns a jQuery Promise object, the input to this method is actually an array of those Promise objects to be monitored.  </li>
