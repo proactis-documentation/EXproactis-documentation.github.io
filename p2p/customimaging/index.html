@@ -140,6 +140,7 @@
         <li class="main active"><a href="#custom-imaging-dlls">Custom Imaging DLLs</a></li>
             <li><a href="#overview">Overview</a></li>
             <li><a href="#viewing-images">Viewing Images</a></li>
+            <li><a href="#processing-images">Processing Images</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -164,7 +165,7 @@
 <p>Add a reference to <strong>Purchasing Server\bin\PROACTIS.P2P.grsImagingIface.dll</strong></p>
 </li>
 <li>
-<p>Add a class called <strong>Imaging</strong> which implements the <strong>grsImageIface.IImaging</strong> interface.</p>
+<p>Add a public class called <strong>Imaging</strong> which implements the <strong>grsImageIface.IImaging</strong> interface.</p>
 </li>
 <li>
 <p>Write an implementation of the following methods.</p>
@@ -261,6 +262,209 @@
 &lt;grs:InvoiceImageIdentifier&gt;DisplayNumber&lt;/grs:InvoiceImageIdentifier&gt;
 &lt;grs:DefaultImageSource&gt;URL&lt;/grs:DefaultImageSource&gt;
 &lt;grs:DefaultURL&gt;https://sp-db01/imaging/{{ImageID}}.bmp&lt;/grs:DefaultURL&gt;&lt;/grs:ImagingSettings&gt;
+</code></pre>
+
+<p>The standard fields which are always supplied as:-
+<em> SessionID - in the format {uniqueID} # {database server} # {database name} # {user's language}
+</em> DocumentType - 'I' for Invoice,  'C' for Credit note',  'E' for Expense Claim and 'A' For Acceptance 
+<em> DocumentGUID - GUID to identify the document being displayed
+</em> ImageNumber
+* CompanyGUID - GUID of the company in which the document belongs</p>
+<p>In the above example the remain fields (below) are from the <strong>DSDBA.ImagingSettings</strong> table.</p>
+<ul>
+<li>InvoiceImageIdentifier</li>
+<li>DefaultImageSource</li>
+<li>DefaultURL</li>
+</ul>
+<hr />
+<h2 id="processing-images">Processing Images</h2>
+<ul>
+<li>
+<p>Create a new C# Class Library project called xyzImaging. ( <em>xyz</em> can be anything)</p>
+</li>
+<li>
+<p>Add a reference to <strong>Purchasing Server\bin\PROACTIS.P2P.grsImagingIface.dll</strong></p>
+</li>
+<li>
+<p>Add a public class called <strong>Process</strong> which implements the <strong>P2P.grsImageIface.IProcess</strong> interface.</p>
+</li>
+<li>
+<p>Write an implementation of the following methods.</p>
+<ul>
+<li>GetImage</li>
+<li>GetImageInfo</li>
+<li>GetListOfUnprocessedImages</li>
+<li>HasUnprocessedImages</li>
+<li>ProcessImage</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="hasunprocessedimages">HasUnprocessedImages</h3>
+<p>Controls if the "Process An Image" link is available from Invoicing home page.</p>
+<pre><code class="C#">bool IProcess.HasUnprocessedImages(string DetailsXML)
+</code></pre>
+
+<h4 id="arguments_2">Arguments</h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DetailsXML</td>
+<td>In</td>
+<td>An xml document containing the details of the document type, database and company</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-value_2">Return Value</h4>
+<p>The function should return True if one or more images are available for linking to invoices.</p>
+<hr />
+<h3 id="getlistofunprocessedimages">GetListOfUnprocessedImages</h3>
+<p>Returns an XML table showing the list of invoices available for linking</p>
+<pre><code class="C#">string IProcess.GetListOfUnprocessedImages(string DetailsXML)
+</code></pre>
+
+<h4 id="arguments_3">Arguments</h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DetailsXML</td>
+<td>In</td>
+<td>An xml document containing the details of the document type, database and company</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return-value_3">Return Value</h4>
+<p>The function should return XML in the following format</p>
+<pre><code class="xml">&lt;?xml version='1.0'?&gt;
+&lt;grs:Images xmlns:grs='http://www.getrealsystems.com/xml/xml-ns'&gt;
+    &lt;grs:Image grs:Identifier='PINV123.xml'&gt;
+        &lt;grs:Fields&gt;
+            &lt;grs:Field grs:Name='Column1' grs:Value='Value in column 1' /&gt;
+            &lt;grs:Field grs:Name='Column2' grs:Value='Value in column 2' /&gt;
+        &lt;/grs:Fields&gt;
+    &lt;/grs:Image&gt;
+&lt;/grs:Images&gt;
+</code></pre>
+
+<p>The above table would generate the following table:</p>
+<p><img alt="alt text" src="../../img/p2p/imaging/unprocessed.JPG" title="Unprocessed" /></p>
+<ul>
+<li>There should be 1 grs:Image per scanned image.</li>
+<li>The grs:Identifier attribute uniquely identities the image</li>
+<li>Each column required in the table should be added as a grs:Field element</li>
+<li>grs:Name provides the caption for the column and grs:Value it's contents.</li>
+</ul>
+<hr />
+<h3 id="getimageinfo_1">GetImageInfo</h3>
+<p>Returns basic information (MimeType and NumberOfPages) for an image held against a document.</p>
+<pre><code class="C#">int IProcess.GetImageInfo(string DetailsXML, ref string MIMEType)
+</code></pre>
+
+<h4 id="arguments_4">Arguments</h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DetailsXML</td>
+<td>In</td>
+<td>An xml document containing the details of the document currently being displayed.</td>
+</tr>
+<tr>
+<td>MIMEType</td>
+<td>Out</td>
+<td>Mime type of the document</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mimetype_2">MIMEType</h4>
+<p>This should be set to the MIME type of the image.    If image will be display via an URL to another system this must be set to text/url.</p>
+<h4 id="return-value_4">Return Value</h4>
+<p>The function should return the name of pages within the document.  Normally 1</p>
+<hr />
+<h3 id="getimage_1">GetImage</h3>
+<p>Used to return either the bytes which make up the image of the URL for the image if it's in a DMS.</p>
+<pre><code class="c#">bool IProcess.GetImage(string DetailsXML, ref string MIMEType, ref byte[] Image, ref string URL)
+</code></pre>
+
+<h4 id="mimetype_3">MIMEType</h4>
+<p>This should be set to the MIME type of the image.    If image will be display via an URL to another system this must be set to text/url.</p>
+<h4 id="image_1">Image</h4>
+<p>The image file as an array of bytes.  This will be steamed to the client's browser</p>
+<h4 id="url_1">URL</h4>
+<p>The URL of image in a DMS.</p>
+<div class="admonition notes">
+<p class="admonition-title">Notes</p>
+<p>Either the Image <em>or</em> URL argument should be used.</p>
+</div>
+<hr />
+<h3 id="processimage">ProcessImage</h3>
+<p>Used to associate the image with a document.</p>
+<pre><code class="c#">bool IProcess.ProcessImage(string DetailsXML, string DocumentXML, ref string UserMessages)
+</code></pre>
+
+<h4 id="arguments_5">Arguments</h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DetailsXML</td>
+<td>In</td>
+<td>An xml document containing the details of the document currently being displayed.</td>
+</tr>
+<tr>
+<td>DocumentXML</td>
+<td>In</td>
+<td></td>
+</tr>
+<tr>
+<td>UserMessages</td>
+<td>Out</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="documentxml">DocumentXML</h4>
+<h4 id="usermessages">UserMessages</h4>
+<hr />
+<h3 id="detailsxml">DetailsXML</h3>
+<p>The xml in the DetailsXML argument is made up from some context specific details based on the document being display and the settings you have defined in the imaging settings table.</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;&lt;grs:ImagingSettings xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
+&lt;grs:SessionID&gt;789e432f-6515-435c-8748-d88665d57119#dbserver2008r2\qa#DavidB_94#en-gb&lt;/grs:SessionID&gt;
+&lt;grs:DocumentType&gt;C&lt;/grs:DocumentType&gt;
+&lt;grs:DocumentGUID&gt;&lt;/grs:DocumentGUID&gt;
+&lt;grs:ImageNumber&gt;0&lt;/grs:ImageNumber&gt;
+&lt;grs:CompanyGUID&gt;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B&lt;/grs:CompanyGUID&gt;
+
+&lt;grs:InvoiceImageIdentifier&gt;DisplayNumber&lt;/grs:InvoiceImageIdentifier&gt;
+&lt;grs:DefaultImageSource&gt;URL&lt;/grs:DefaultImageSource&gt;
+&lt;grs:DefaultURL&gt;https://sp-db01/imaging/{{ImageID}}.bmp&lt;/grs:DefaultURL&gt;
+&lt;/grs:ImagingSettings&gt;
 </code></pre>
 
 <p>The standard fields which are always supplied as:-
