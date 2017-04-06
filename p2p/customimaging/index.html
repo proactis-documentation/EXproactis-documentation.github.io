@@ -515,10 +515,22 @@
 </tr>
 </tbody>
 </table>
+<h4 id="detailsxml">DetailsXML</h4>
+<p>The DocumentGUID will contain the unique identifier for the selected image.</p>
 <h4 id="documentxml">DocumentXML</h4>
+<p>The full internal XML for the document this image is being linked with.  The format varies depending on the type of document.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As the internal xml format us undocumented and subject to change it is recommended that you extract as little information as possible and program defensively.</p>
+</div>
 <h4 id="usermessages">UserMessages</h4>
+<p>Allows user message to be returned to the PROACTIS website.  Not normally required.</p>
+<div class="admonition notes">
+<p class="admonition-title">Notes</p>
+<p>This method is responsible for storing the link between the scanned image and the P2P document.  For example the unique ID might be written to the <strong>ImageReference</strong> column in the <strong>dsdba.Invoices</strong> table.</p>
+</div>
 <hr />
-<h3 id="detailsxml">DetailsXML</h3>
+<h3 id="detailsxml_1">DetailsXML</h3>
 <p>The xml in the DetailsXML argument is made up from some context specific details based on the document being display and the settings you have defined in the imaging settings table.</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;grs:ImagingSettings xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
