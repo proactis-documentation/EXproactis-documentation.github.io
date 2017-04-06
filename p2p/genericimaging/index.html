@@ -158,14 +158,13 @@
 This document describes how to install and configure this DLL.</p>
 <h2 id="beyond-the-imaging-dll">Beyond the Imaging DLL</h2>
 <p>If the “Generic Imaging DLL” does not meet your requirements,  then a custom DLL can written which implements the <strong>grsImageIface.IImaging</strong> and <strong>grsImageIface.IProcess</strong> interfaces.  The application server can then be configured to call this DLL when a user wishes to “process a new invoice” or view an existing scanned image.
-The development of a custom DLL is not described within this document.</p>
+The development of a custom DLL is not described within this page.</p>
 <h2 id="installing-the-generic-imaging-dll">Installing the Generic Imaging DLL</h2>
 <h3 id="application-server">Application Server</h3>
-<p>•   Copy the supplied proGenericImaging.dll into you <strong>Plugins</strong> folder.</p>
-<h3 id="database-server">Database Server</h3>
-<p>•   Run the supplied <strong>Imaging.sql</strong> script against the PROACTIS database.</p>
+<p>Within your <strong>PROACTIS P2P/Plugins</strong>  (or <strong>Plugins/[database-title]</strong>) folder create a file called <strong>PROACTIS.P2P.proGenericImaging.dll</strong>  This can be an empty text file.
+.</p>
 <h2 id="configuring-the-imaging-dll">Configuring the imaging DLL</h2>
-<p>The “generic imaging” DLL supports two different sources for viewing scanned images.  They can be displayed either from an existing image file, or from an external URL.  Different sources can be defined for different document types.  For example, expense claims might exist as .gif files in a file share, whilst scanned images might be held in a document management system accessed via a webpage.
+<p>The “generic imaging” DLL supports two different sources for viewing scanned images.  They can be displayed either from an existing image file on the filesystem, or from an external URL.  Different sources can be defined for different document types.  For example, expense claims might exist as .gif files in a file share, whilst scanned images might be held in a document management system accessed via a webpage.
 The configuration for the generic imaging DLL is carried out via the “Imaging Settings” snap in within the PROACTIS Management Console.</p>
 <h2 id="examples">Examples</h2>
 <p>In order to view an image via a URL held in an external DMS, the following settings would be required.</p>
@@ -187,15 +186,16 @@ The configuration for the generic imaging DLL is carried out via the “Imaging 
 </tr>
 <tr>
 <td>DefaultURL</td>
-<td>The tag {{ImageID}} will be replaced with the value of the InvoiceImageIdentifier when access the DMS</td>
+<td>The tag {{ImageID}} will be replaced with the value of the InvoiceImageIdentifier when access the DMS.</td>
 </tr>
 </tbody>
 </table>
+<p><img alt="alt text" src="../../img/p2p/imaging/config_filesystem.JPG" title="Configuration" /></p>
 <h2 id="additional-settings">Additional Settings</h2>
 <p>The other available settings are detailed below:-</p>
 <h3 id="the-image-source">The image source</h3>
 <p>The image source specifies where the image will be found and should have the value of either URL or FILE.</p>
-<p>The DLL first checks for the value of XXImageSource setting.  XX is one of the following values depending on the type of document being viewed.</p>
+<p>The DLL first checks for the value of {doctype}ImageSource setting.  <em>{doctype}</em> is one of the following values depending on the type of document being viewed.</p>
 <ul>
 <li>Invoice</li>
 <li>CreditNote</li>
@@ -210,13 +210,13 @@ If no image source can be found for a document type or the value is not either F
 - ImageReference (Invoices and Credit Notes only)
 - HeaderReference
 - DisplayNumber</p>
-<p>The “xxxImageIdentifier” setting specifies which of these sources will be used for the xxx document type.  If the setting is not set for the current document type then the following defaults will be used
+<p>The “{doctype}ImageIdentifier” setting specifies which of these sources will be used for the {doctype} document type.  If the setting is not set for the current document type then the following defaults will be used
 - Invoices and Credit Notes -   ImageReference
 - Expenses and Acceptances  -   HeaderReference</p>
 <p>If HeaderReference has been specified for the xxx document type, then the name of the reference field must also be set in either the
 - DefaultImageReference setting<br />
 Or
-- xxxImageReference setting.</p>
+- {doctype}ImageReference setting.</p>
 <h3 id="viewing-images-from-an-url">Viewing Images from an URL</h3>
 <p>If the source type is determined to be a URL then the base URL is read from one of the following settings:
 - InvoiceURL
@@ -241,7 +241,7 @@ If the setting is blank or does not exist, then the value of DefaultFolder is us
 - ExpenseClaimMIMEType
 - AcceptanceMIMEType</p>
 <p>If the setting is blank or does not exist, then the value of DefaultMIMEType is used.
-If the value for the MIME type is still unknown then the DLL queries the registry for find the mime type registered for the file extensions.  This is held in HKEY_LOCAL_MACHINE\Software\Classes\xxx\Content Type where xxx is the file extension.
+If the value for the MIME type is still unknown then the DLL queries the registry for find the mime type registered for the file extensions.  This is held in HKEY_LOCAL_MACHINE\Software\Classes{fileext}\Content Type where {fileext} is the file extension.
 If a value still can’t be found then it defaults to a mime type of application/octet-stream
 Once the MIME type and Folder is known, the complete target filename is generated by appending the image identifier to the folder.  For example if the folder is c:\Images and the ImageIdentifier is PINV1234.gif then the filename c:\Images\PINV1234.gif will be displayed.</p>
 <h2 id="the-generic-imaging-dll-processing">The “Generic Imaging DLL” - Processing</h2>
