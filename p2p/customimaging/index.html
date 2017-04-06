@@ -239,6 +239,38 @@
 <pre><code class="c#">bool IImaging.GetImage(string DocumentDetailsXML, ref string MIMEType, ref byte[] Image, ref string URL)
 </code></pre>
 
+<h4 id="arguments_2">Arguments</h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DocumentDetailsXML</td>
+<td>In</td>
+<td>An xml document containing the details of the document currently being displayed.</td>
+</tr>
+<tr>
+<td>MIMEType</td>
+<td>Out</td>
+<td>The type of image</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>Out</td>
+<td>Byte[] containing the image</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>Out</td>
+<td>URL to the image</td>
+</tr>
+</tbody>
+</table>
 <h4 id="mimetype_1">MIMEType</h4>
 <p>This should be set to the MIME type of the image.    If image will be display via an URL to another system this must be set to text/url.</p>
 <h4 id="image">Image</h4>
@@ -305,7 +337,7 @@
 <pre><code class="C#">bool IProcess.HasUnprocessedImages(string DetailsXML)
 </code></pre>
 
-<h4 id="arguments_2">Arguments</h4>
+<h4 id="arguments_3">Arguments</h4>
 <table>
 <thead>
 <tr>
@@ -330,7 +362,7 @@
 <pre><code class="C#">string IProcess.GetListOfUnprocessedImages(string DetailsXML)
 </code></pre>
 
-<h4 id="arguments_3">Arguments</h4>
+<h4 id="arguments_4">Arguments</h4>
 <table>
 <thead>
 <tr>
@@ -374,7 +406,7 @@
 <pre><code class="C#">int IProcess.GetImageInfo(string DetailsXML, ref string MIMEType)
 </code></pre>
 
-<h4 id="arguments_4">Arguments</h4>
+<h4 id="arguments_5">Arguments</h4>
 <table>
 <thead>
 <tr>
@@ -406,6 +438,38 @@
 <pre><code class="c#">bool IProcess.GetImage(string DetailsXML, ref string MIMEType, ref byte[] Image, ref string URL)
 </code></pre>
 
+<h4 id="arguments_6">Arguments</h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DetailsXML</td>
+<td>In</td>
+<td>An xml document containing the details of the document currently being displayed.</td>
+</tr>
+<tr>
+<td>MIMEType</td>
+<td>Out</td>
+<td>The type of image</td>
+</tr>
+<tr>
+<td>Image</td>
+<td>Out</td>
+<td>Byte[] containing the image</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>Out</td>
+<td>URL to the image</td>
+</tr>
+</tbody>
+</table>
 <h4 id="mimetype_3">MIMEType</h4>
 <p>This should be set to the MIME type of the image.    If image will be display via an URL to another system this must be set to text/url.</p>
 <h4 id="image_1">Image</h4>
@@ -422,7 +486,7 @@
 <pre><code class="c#">bool IProcess.ProcessImage(string DetailsXML, string DocumentXML, ref string UserMessages)
 </code></pre>
 
-<h4 id="arguments_5">Arguments</h4>
+<h4 id="arguments_7">Arguments</h4>
 <table>
 <thead>
 <tr>
@@ -467,12 +531,14 @@
 &lt;/grs:ImagingSettings&gt;
 </code></pre>
 
-<p>The standard fields which are always supplied as:-
-<em> SessionID - in the format {uniqueID} # {database server} # {database name} # {user's language}
-</em> DocumentType - 'I' for Invoice,  'C' for Credit note',  'E' for Expense Claim and 'A' For Acceptance 
-<em> DocumentGUID - GUID to identify the document being displayed
-</em> ImageNumber
-* CompanyGUID - GUID of the company in which the document belongs</p>
+<p>The standard fields which are always supplied as:-</p>
+<ul>
+<li>SessionID - in the format {uniqueID} # {database server} # {database name} # {user's language}</li>
+<li>DocumentType - 'I' for Invoice,  'C' for Credit note',  'E' for Expense Claim and 'A' For Acceptance </li>
+<li>DocumentGUID - GUID to identify the document being displayed</li>
+<li>ImageNumber</li>
+<li>CompanyGUID - GUID of the company in which the document belongs</li>
+</ul>
 <p>In the above example the remain fields (below) are from the <strong>DSDBA.ImagingSettings</strong> table.</p>
 <ul>
 <li>InvoiceImageIdentifier</li>
