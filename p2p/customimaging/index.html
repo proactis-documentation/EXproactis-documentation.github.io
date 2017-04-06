@@ -296,13 +296,15 @@
 &lt;grs:DefaultURL&gt;https://sp-db01/imaging/{{ImageID}}.bmp&lt;/grs:DefaultURL&gt;&lt;/grs:ImagingSettings&gt;
 </code></pre>
 
-<p>The standard fields which are always supplied as:-
-<em> SessionID - in the format {uniqueID} # {database server} # {database name} # {user's language}
-</em> DocumentType - 'I' for Invoice,  'C' for Credit note',  'E' for Expense Claim and 'A' For Acceptance 
-<em> DocumentGUID - GUID to identify the document being displayed
-</em> ImageNumber
-* CompanyGUID - GUID of the company in which the document belongs</p>
-<p>In the above example the remain fields (below) are from the <strong>DSDBA.ImagingSettings</strong> table.</p>
+<p>The standard fields which are always supplied as:-</p>
+<ul>
+<li>SessionID - in the format {uniqueID} # {database server} # {database name} # {user's language}</li>
+<li>DocumentType - 'I' for Invoice,  'C' for Credit note',  'E' for Expense Claim and 'A' For Acceptance </li>
+<li>DocumentGUID - GUID to identify the document being displayed</li>
+<li>ImageNumber</li>
+<li>CompanyGUID - GUID of the company in which the document belongs</li>
+</ul>
+<p>In the above example the remaining fields (below) are from the <strong>DSDBA.ImagingSettings</strong> table.</p>
 <ul>
 <li>InvoiceImageIdentifier</li>
 <li>DefaultImageSource</li>
@@ -518,7 +520,8 @@
 <hr />
 <h3 id="detailsxml">DetailsXML</h3>
 <p>The xml in the DetailsXML argument is made up from some context specific details based on the document being display and the settings you have defined in the imaging settings table.</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;&lt;grs:ImagingSettings xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;grs:ImagingSettings xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
 &lt;grs:SessionID&gt;789e432f-6515-435c-8748-d88665d57119#dbserver2008r2\qa#DavidB_94#en-gb&lt;/grs:SessionID&gt;
 &lt;grs:DocumentType&gt;C&lt;/grs:DocumentType&gt;
 &lt;grs:DocumentGUID&gt;&lt;/grs:DocumentGUID&gt;
@@ -539,7 +542,7 @@
 <li>ImageNumber</li>
 <li>CompanyGUID - GUID of the company in which the document belongs</li>
 </ul>
-<p>In the above example the remain fields (below) are from the <strong>DSDBA.ImagingSettings</strong> table.</p>
+<p>In the above example the remaining fields (below) are from the <strong>DSDBA.ImagingSettings</strong> table.</p>
 <ul>
 <li>InvoiceImageIdentifier</li>
 <li>DefaultImageSource</li>
