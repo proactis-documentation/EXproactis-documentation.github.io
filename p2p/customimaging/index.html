@@ -578,14 +578,15 @@
 <li>
 <p>Write an implementation of the following methods.</p>
 <ul>
-<li>GetImage</li>
+<li>SearchForUnprocessedImages</li>
 </ul>
 </li>
 </ul>
 <hr />
 <h3 id="searchforunprocessedimages">SearchForUnprocessedImages</h3>
-<p>Allows users to enter criteria to filter the display of unprocessed images.</p>
+<p>Returns a list of unprocessed images based on the search criteria entered by the user.</p>
 <p><img alt="alt text" src="../../img/p2p/imaging/search.JPG" title="Search" /></p>
+<h4 id="signature">Signature</h4>
 <pre><code class="C#">string ISearch.SearchForUnprocessedImages(string DetailsXML)
 </code></pre>
 
@@ -632,13 +633,17 @@
 &lt;/grs:ImagingSettings&gt;
 </code></pre>
 
-<p>The following fields can be ignored as they aren't applicable to this function
- * DocumentGUID
- * ImageNumber</p>
-<p>In the above example the following fields come from the <strong>dsdba.ImagingSettings</strong> table
- * InvoiceImageIdentifier
- * DefaultImageSource
- * DefaultURL</p>
+<p>The following fields can be ignored as they aren't applicable to this function</p>
+<ul>
+<li>DocumentGUID</li>
+<li>ImageNumber</li>
+</ul>
+<p>In the above example the following fields come from the <strong>dsdba.ImagingSettings</strong> table</p>
+<ul>
+<li>InvoiceImageIdentifier</li>
+<li>DefaultImageSource</li>
+<li>DefaultURL</li>
+</ul>
 <h4 id="return-value_5">Return Value</h4>
 <p>The function should return xml table in the following format containing the list of available (unprocessed) images.</p>
 <pre><code class="xml">&lt;SearchResults&gt;
