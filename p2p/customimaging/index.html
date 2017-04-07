@@ -142,6 +142,7 @@
             <li><a href="#viewing-images">Viewing Images</a></li>
             <li><a href="#processing-images">Processing Images</a></li>
             <li><a href="#searching-for-unprocessed-images">Searching for unprocessed images</a></li>
+            <li><a href="#uploading-images">Uploading Images</a></li>
             <li><a href="#example">Example</a></li>
             <li><a href="#deployment">Deployment</a></li>
     </ul>
@@ -664,6 +665,87 @@
 <li>All the attributes listed above must be supplied</li>
 </ul>
 <p><img alt="alt text" src="../../img/p2p/imaging/search_results.JPG" title="Results" /></p>
+<hr />
+<h2 id="uploading-images">Uploading Images</h2>
+<ul>
+<li>
+<p>Create a new C# Class Library project called xyzImaging. ( <em>xyz</em> can be anything)</p>
+</li>
+<li>
+<p>Add a reference to <strong>Purchasing Server\bin\PROACTIS.P2P.grsImagingIface.dll</strong></p>
+</li>
+<li>
+<p>Add a public class called <strong>Upload</strong> which implements the __grsImageIface.IUpload interface.</p>
+</li>
+<li>
+<p>Write an implementation of the following methods.</p>
+<ul>
+<li>StoreNewImage</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="storenewimage">StoreNewImage</h3>
+<p>Stores an image uploaded by the user on the server</p>
+<p><img alt="alt text" src="../../img/p2p/imaging/upload.JPG" title="Upload" /></p>
+<h4 id="signature_1">Signature</h4>
+<pre><code class="C#">bool IUpload.StoreNewImage(string DetailsXML, byte[] FileContents)
+</code></pre>
+
+<h4 id="arguments_9">Arguments</h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DetailsXML</td>
+<td>In</td>
+<td>An xml document containing the image metadata.</td>
+</tr>
+<tr>
+<td>FileContents</td>
+<td>In</td>
+<td>Contents of the image</td>
+</tr>
+</tbody>
+</table>
+<h5 id="detailsxml_3">DetailsXML</h5>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;grs:ImagingSettings xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
+    &lt;grs:DocumentGUID&gt;{7451C54A-52F0-4794-87FB-A6093AAD65AF}&lt;/grs:DocumentGUID&gt;
+    &lt;grs:ImageNumber&gt;1&lt;/grs:ImageNumber&gt;
+
+    &lt;grs:SessionID&gt;bd860b98-c82b-47fa-9522-a4f27f154cd6#dbserver2008r2\qa#DavidB_94#en-gb&lt;/grs:SessionID&gt;
+    &lt;grs:DocumentType&gt;I&lt;/grs:DocumentType&gt;
+    &lt;grs:CompanyGUID&gt;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&lt;/grs:CompanyGUID&gt;
+    &lt;grs:Reference&gt;heading.JPG&lt;/grs:Reference&gt;
+    &lt;grs:FileType&gt;JPG&lt;/grs:FileType&gt;
+
+    &lt;grs:InvoiceImageIdentifier&gt;DisplayNumber&lt;/grs:InvoiceImageIdentifier&gt;
+    &lt;grs:DefaultImageSource&gt;URL&lt;/grs:DefaultImageSource&gt;
+    &lt;grs:DefaultURL&gt;https://sp-db01/imaging/{{ImageID}}.bmp&lt;/grs:DefaultURL&gt;
+&lt;/grs:ImagingSettings&gt;
+</code></pre>
+
+<ul>
+<li>The DocumentGUID is a unique ID generated for this file</li>
+<li>ImageNumber will always be 1</li>
+<li>Reference is the name of the uploaded file</li>
+<li>DocumentType is I for Invoice and C for Credit Note</li>
+</ul>
+<p>In the above example the following fields come from the <strong>dsdba.ImagingSettings</strong> table</p>
+<ul>
+<li>InvoiceImageIdentifier</li>
+<li>DefaultImageSource</li>
+<li>DefaultURL</li>
+</ul>
+<h4 id="return-value_6">Return Value</h4>
+<p>Return TRUE for success</p>
 <hr />
 <h2 id="example">Example</h2>
 <p>See the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Imaging">example application</a> for a complete implementation.</p>
