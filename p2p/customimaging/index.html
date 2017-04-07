@@ -141,6 +141,7 @@
             <li><a href="#overview">Overview</a></li>
             <li><a href="#viewing-images">Viewing Images</a></li>
             <li><a href="#processing-images">Processing Images</a></li>
+            <li><a href="#searching-for-unprocessed-images">Searching for unprocessed images</a></li>
             <li><a href="#example">Example</a></li>
             <li><a href="#deployment">Deployment</a></li>
     </ul>
@@ -561,6 +562,94 @@
 <li>InvoiceImageIdentifier</li>
 <li>DefaultImageSource</li>
 <li>DefaultURL</li>
+</ul>
+<hr />
+<h2 id="searching-for-unprocessed-images">Searching for unprocessed images</h2>
+<ul>
+<li>
+<p>Create a new C# Class Library project called xyzImaging. ( <em>xyz</em> can be anything)</p>
+</li>
+<li>
+<p>Add a reference to <strong>Purchasing Server\bin\PROACTIS.P2P.grsImagingIface.dll</strong></p>
+</li>
+<li>
+<p>Add a public class called <strong>Search</strong> which implements the <strong>grsImageIface.ISearch</strong> interface.</p>
+</li>
+<li>
+<p>Write an implementation of the following methods.</p>
+<ul>
+<li>GetImage</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="searchforunprocessedimages">SearchForUnprocessedImages</h3>
+<p>Allows users to enter criteria to filter the display of unprocessed images.</p>
+<p><img alt="alt text" src="../../img/p2p/imaging/search.JPG" title="Search" /></p>
+<pre><code class="C#">string ISearch.SearchForUnprocessedImages(string DetailsXML)
+</code></pre>
+
+<h4 id="arguments_8">Arguments</h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Direction</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DetailsXML</td>
+<td>In</td>
+<td>An xml document containing the search criteria .</td>
+</tr>
+</tbody>
+</table>
+<h4 id="detailsxml_2">DetailsXML</h4>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;grs:ImagingSettings xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
+    &lt;grs:SessionID&gt;fd2ae334-dd29-42d3-9706-ea4883b7bedc#dbserver2008r2\qa#DavidB_94#en-gb&lt;/grs:SessionID&gt;
+    &lt;grs:DocumentType&gt;I&lt;/grs:DocumentType&gt;
+    &lt;grs:DocumentGUID&gt;&lt;/grs:DocumentGUID&gt;
+    &lt;grs:ImageNumber&gt;0&lt;/grs:ImageNumber&gt;
+    &lt;grs:CompanyGUID&gt;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&lt;/grs:CompanyGUID&gt;
+    &lt;grs:MaxReturnRows&gt;100&lt;/grs:MaxReturnRows&gt;
+    &lt;grs:PrimarySortColumn&gt;DocumentDate&lt;/grs:PrimarySortColumn&gt;
+    &lt;grs:PrimarySortAscending&gt;False&lt;/grs:PrimarySortAscending&gt;
+    &lt;grs:SupplierReference&gt;&lt;/grs:SupplierReference&gt;
+    &lt;grs:DateFrom&gt;&lt;/grs:DateFrom&gt;
+    &lt;grs:DateTo&gt;&lt;/grs:DateTo&gt;
+    &lt;grs:FromAddress&gt;&lt;/grs:FromAddress&gt;
+    &lt;grs:ToAddress&gt;&lt;/grs:ToAddress&gt;
+    &lt;grs:Subject&gt;&lt;/grs:Subject&gt;
+    &lt;grs:RuleName&gt;&lt;/grs:RuleName&gt;
+    &lt;grs:DateEmailedFrom&gt;&lt;/grs:DateEmailedFrom&gt;
+    &lt;grs:DateEmailedTo&gt;&lt;/grs:DateEmailedTo&gt;
+
+    &lt;grs:DefaultImageSource&gt;URL&lt;/grs:DefaultImageSource&gt;
+    &lt;grs:DefaultURL&gt;https://sp-db01/imaging/{{ImageID}}.bmp&lt;/grs:DefaultURL&gt;
+&lt;/grs:ImagingSettings&gt;
+</code></pre>
+
+<p>The following fields can be ignored as they aren't applicable to this function
+ * DocumentGUID
+ * ImageNumber</p>
+<p>In the above example the following fields come from the <strong>dsdba.ImagingSettings</strong> table
+ * InvoiceImageIdentifier
+ * DefaultImageSource
+ * DefaultURL</p>
+<h4 id="return-value_5">Return Value</h4>
+<p>The function should return xml table in the following format containing the list of available (unprocessed) images.</p>
+<pre><code class="xml">&lt;SearchResults&gt;
+    &lt;Row column1='Value1' column2='Value2' /&gt;
+&lt;/SearchResults&gt;
+</code></pre>
+
+<ul>
+<li>One row should be added for each unprocessed image</li>
+<li>The attribute names will be used as the column headers in the table</li>
+<li>The attribute values will be used as the cell values.</li>
 </ul>
 <hr />
 <h2 id="example">Example</h2>
