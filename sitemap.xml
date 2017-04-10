@@ -53,6 +53,12 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>/p2p/commitments/</loc>
+     <lastmod>2017-04-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
