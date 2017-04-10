@@ -208,7 +208,7 @@
 <hr />
 <h3 id="getimageinfo">GetImageInfo</h3>
 <p>Returns basic information (MimeType and NumberOfPages) for an image held against a document.</p>
-<pre><code class="C#">int IImaging.GetImageInfo(string DocumentDetailsXML, ref string MIMEType)
+<pre><code class="C#">int IImaging.GetImageInfo(string DocumentDetailsXML, out string MIMEType)
 </code></pre>
 
 <h4 id="arguments_1">Arguments</h4>
@@ -240,7 +240,7 @@
 <hr />
 <h3 id="getimage">GetImage</h3>
 <p>Used to return either the bytes which make up the image of the URL for the image if it's in a DMS.</p>
-<pre><code class="c#">bool IImaging.GetImage(string DocumentDetailsXML, ref string MIMEType, ref byte[] Image, ref string URL)
+<pre><code class="c#">bool IImaging.GetImage(string DocumentDetailsXML, out string MIMEType, out byte[] Image, out string URL)
 </code></pre>
 
 <h4 id="arguments_2">Arguments</h4>
@@ -409,7 +409,7 @@
 <hr />
 <h3 id="getimageinfo_1">GetImageInfo</h3>
 <p>Returns basic information (MimeType and NumberOfPages) for an image held against a document.</p>
-<pre><code class="C#">int IProcess.GetImageInfo(string DetailsXML, ref string MIMEType)
+<pre><code class="C#">int IProcess.GetImageInfo(string DetailsXML, out string MIMEType)
 </code></pre>
 
 <h4 id="arguments_5">Arguments</h4>
@@ -441,7 +441,7 @@
 <hr />
 <h3 id="getimage_1">GetImage</h3>
 <p>Used to return either the bytes which make up the image of the URL for the image if it's in a DMS.</p>
-<pre><code class="c#">bool IProcess.GetImage(string DetailsXML, ref string MIMEType, ref byte[] Image, ref string URL)
+<pre><code class="c#">bool IProcess.GetImage(string DetailsXML, out string MIMEType, out byte[] Image, out string URL)
 </code></pre>
 
 <h4 id="arguments_6">Arguments</h4>
@@ -489,7 +489,7 @@
 <hr />
 <h3 id="processimage">ProcessImage</h3>
 <p>Used to associate the image with a document.</p>
-<pre><code class="c#">bool IProcess.ProcessImage(string DetailsXML, string DocumentXML, ref string UserMessages)
+<pre><code class="c#">bool IProcess.ProcessImage(string DetailsXML, string DocumentXML, out string UserMessages)
 </code></pre>
 
 <h4 id="arguments_7">Arguments</h4>
