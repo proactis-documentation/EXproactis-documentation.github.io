@@ -151,6 +151,9 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="commitment-posting">Commitment Posting</h1>
+<p>To allow the real time posting of commitments into a finance system a custom commitment DLL can be written which to responds to new commitments being placed on the <strong>proactis3commitmentslink</strong> message qeueue (MSMQ).</p>
+<p>The format of these message queue entries is defined by the <strong>Grouped Commitments Export</strong> application hook.  (This is detailed separately.)</p>
+<p>The windows service <strong>PROACTIS P2P Client Commitments Service</strong> monitors the <strong>proactis3commitmentslink</strong> message queue and calls the custom DLL once per message it receives.</p>
 <h2 id="implementation">Implementation</h2>
 <ul>
 <li>
