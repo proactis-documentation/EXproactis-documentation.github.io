@@ -205,7 +205,21 @@
 </tbody>
 </table>
 <h3 id="error-handling">Error Handling</h3>
+<p>If your DLL fails to process the commitment entry that it a throw an exception up to the caller service</p>
+<p>For example</p>
+<pre><code class="csharp">    throw new Exception(&quot;Failed to connect to the finance system&quot;);
+</code></pre>
+
+<p>This will be recorded in the <strong>ErrorMessage</strong> column of the <strong>dbo.CommitmentsForPosting</strong> table and the message queue entry will be moved from the <strong>proactis3commitmentslink</strong> queue into the <strong>proactis3commitmentslinkFailed</strong> queue.</p>
+<p>The error message may also be viewed from the windows event log viewer on the application server.</p>
 <h3 id="transaction-handling">Transaction Handling</h3>
+<p>By default your code will run in a database transaction provided by the calling service.  If you wish your database code to run outside of this transaction scope,  then the following code maybe used</p>
+<pre><code class="csharp">using (var tx = new TransactionScope(TransactionScopeOption.Suppress))
+{
+    // ... your database code here...
+}
+</code></pre>
+
 <h2 id="example">Example</h2>
 <!--
 See the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Nominal%20Validation">example application</a> for a complete implementation.-->
