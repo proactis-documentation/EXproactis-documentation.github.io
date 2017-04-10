@@ -205,8 +205,8 @@
 </tbody>
 </table>
 <h3 id="error-handling">Error Handling</h3>
-<p>If your DLL fails to process the commitment entry that it a throw an exception up to the caller service</p>
-<p>For example</p>
+<p>If your DLL fails to process the commitment entry then it can throw an exception up to the calling service.</p>
+<p><em>For example</em></p>
 <pre><code class="csharp">    throw new Exception(&quot;Failed to connect to the finance system&quot;);
 </code></pre>
 
@@ -220,6 +220,7 @@
 }
 </code></pre>
 
+<hr />
 <h2 id="example">Example</h2>
 <!--
 See the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Nominal%20Validation">example application</a> for a complete implementation.-->
