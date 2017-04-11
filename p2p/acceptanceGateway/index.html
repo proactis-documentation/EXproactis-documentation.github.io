@@ -167,8 +167,7 @@
 <p>This document should be used in conjunction with the <strong>ImportAcceptances.xsd</strong> xml schema</p>
 <h2 id="process-overview">Process Overview</h2>
 <p>The process of importing acceptances is very similar to the existing master-data (suppliers/items/nominals) and purchase document xml gateways.</p>
-<p>First the user generates an xml document containing the details of the acceptances(s) to be imported.  This xml must conform to the ImportAcceptances.xsd schema document.</p>
-<p>The user then calls a method on the grsAccGateway.Core object with in the grsAccGateway dll.  This method takes the supplied acceptance xml as its only argument.</p>
+<p>First the user generates an xml document containing the details of the acceptances(s) to be imported.  This xml must conform to the <strong>ImportAcceptances.xsd</strong> schema document.</p>
 <p>The xml is then validated, first to ensure it conforms to the schema and then to check the supplied data is valid.  For instance does the template exist?</p>
 <p>The document is then created within PROACTIS using the existing purchasing engine.  This allows the gateway to use the existing PROACTIS functionality.</p>
 <h2 id="limitations-of-the-gateway">Limitations of the Gateway</h2>
@@ -226,7 +225,7 @@
                          Version=&quot;1.0.0&quot; /&gt;
 </code></pre>
 
-<p>NB: The value of the "AuthenticationMethod" field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
+<p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="acceptances">Acceptances</h3>
 <p>The next section contains the details of the acceptance documents to be imported.  The gateway allows multiple acceptances to be included in a single xml document.  At least one acceptance document must be included.</p>
 <pre><code class="xml">&lt;pro:Acceptance Template=&quot; **ACC**&quot; DateReceived=&quot; **2006-01-01**&quot; AcceptedAt=&quot; **MAIN**&quot; SupplierDeliveryNote=&quot; **Delivery11**&quot;&gt;
