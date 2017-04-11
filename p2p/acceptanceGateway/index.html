@@ -156,6 +156,7 @@
             <li><a href="#process-overview">Process Overview</a></li>
             <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
             <li><a href="#using-the-gateway">Using the gateway</a></li>
+            <li><a href="#worked-example">Worked Example</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -202,17 +203,13 @@ Set objGateway = CreateObject(&quot;grsWebService.Service&quot;)
 
 'Pass the data to be imported into the gateway and receive the results.
 strResultsXML = objGateway.ImportDocument(strDataXML)
+</code></pre>
 
-## Worked Example
-
-This section of the document walks you through the creation of a simple document.  All the available fields are described in complete detail, within the next section.
-
-### XML Document
-
-The xml document must start with the following to lines
-
-```xml
-&lt;?xml version=&quot;1.0&quot; ?&gt;
+<h2 id="worked-example">Worked Example</h2>
+<p>This section of the document walks you through the creation of a simple document.  All the available fields are described in complete detail, within the next section.</p>
+<h3 id="xml-document">XML Document</h3>
+<p>The xml document must start with the following to lines</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
 
 &lt;pro:Import xmlns:pro=&quot; [http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;
 </code></pre>
@@ -263,7 +260,7 @@ The xml document must start with the following to lines
 <p>This attribute is optional and will default to the user's default location if missing</p>
 <p>Specifies the location at which the goods have been accepted.  The user must have access to the location.</p>
 <h3 id="supplierdeliverynote">@SupplierDeliveryNote</h3>
-<p>This attribute is optional/required as configured within PROACTIS.  PROACTIS may also enfore the reference to be unique for a given supplier.</p>
+<p>This attribute is optional/required as configured within PROACTIS.  PROACTIS may also encore the reference to be unique for a given supplier.</p>
 <h3 id="references">References</h3>
 <p>Any mandatory reference fields must be supplied.  References fields are identified by their code.  A reference field can only be supplied if it is defined as editable on the document template.</p>
 <pre><code class="xml">&lt;pro:References&gt;
