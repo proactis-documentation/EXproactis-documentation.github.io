@@ -162,12 +162,11 @@
 
 <h1 id="acceptances-gateway">Acceptances Gateway</h1>
 <h2 id="summary">Summary</h2>
-<p>This section describes the structure of the XML file used for importing Purchase Order Acceptances into PROACTIS 3.  It is assumed that the reader of the document is familiar both with XML and PROACTIS acceptances.</p>
-<p>The document also describes the validation rules, which must be passed in order for the order to be imported, and the current limitations of the acceptances gateway.</p>
+<p>This section describes the structure of the XML file used for importing Purchase Order Acceptances into PROACTIS P2P.  It is assumed that the reader of the document is familiar both with XML and PROACTIS acceptance documents.</p>
+<p>The document also describes the validation rules, which must be passed in order for the document to be imported, and the current limitations of the acceptances gateway.</p>
 <p>This document should be used in conjunction with the <strong>ImportAcceptances.xsd</strong> xml schema</p>
 <h2 id="process-overview">Process Overview</h2>
-<p>The process of importing acceptances is very similar to the existing master-data (suppliers/items/nominals) and purchase document xml gateways.</p>
-<p>First the user generates an xml document containing the details of the acceptances(s) to be imported.  This xml must conform to the <strong>ImportAcceptances.xsd</strong> schema document.</p>
+<p>As with the other import gateways,  the user first generates an xml document containing the details of the acceptances(s) to be imported.  This xml must conform to the <strong>ImportAcceptances.xsd</strong> schema document.</p>
 <p>The xml is then validated, first to ensure it conforms to the schema and then to check the supplied data is valid.  For instance does the template exist?</p>
 <p>The document is then created within PROACTIS using the existing purchasing engine.  This allows the gateway to use the existing PROACTIS functionality.</p>
 <h2 id="limitations-of-the-gateway">Limitations of the Gateway</h2>
@@ -189,8 +188,7 @@
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
-
-&lt;pro:Import xmlns:pro=&quot; [http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;
+&lt;pro:Import xmlns:pro=&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;
 </code></pre>
 
 <p>And finish with</p>
@@ -198,37 +196,28 @@
 </code></pre>
 
 <h3 id="control-block">Control Block</h3>
-<p>A control block must then be included so that the gateway knows which database and company to import the orders into.  This has the same structure as the control block for the other XML gateways.</p>
+<p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
-<pre><code class="xml"> &lt;pro:Control           DatabaseName=&quot;PROACTIS\_LIVE&quot;
-
-                           UserName=&quot;ORDER&quot;
-
-                          Password=&quot;mysecret&quot;
-
-                                Company=&quot;MAIN&quot;
-
-                                Department=&quot;SALES&quot;
-
-                                 Version=&quot;1.0.0&quot; /&gt;
+<pre><code class="xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
+              UserName=&quot;ORDER&quot;
+              Password=&quot;mysecret&quot;
+              Company=&quot;MAIN&quot;
+              Department=&quot;SALES&quot;
+              Version=&quot;1.0.0&quot; /&gt;
 </code></pre>
 
 <p>The XML gateway supports NT authentication, an example is shown below.</p>
 <pre><code class="xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
-
-                     AuthenticationMethod=&quot;WINDOWS&quot;
-
-                   Company=&quot;MAIN&quot;
-
-                    Department=&quot;SALES&quot;
-
-                         Version=&quot;1.0.0&quot; /&gt;
+                 AuthenticationMethod=&quot;WINDOWS&quot;
+                 Company=&quot;MAIN&quot;
+                 Department=&quot;SALES&quot;
+                 Version=&quot;1.0.0&quot; /&gt;
 </code></pre>
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="acceptances">Acceptances</h3>
 <p>The next section contains the details of the acceptance documents to be imported.  The gateway allows multiple acceptances to be included in a single xml document.  At least one acceptance document must be included.</p>
-<pre><code class="xml">&lt;pro:Acceptance Template=&quot; **ACC**&quot; DateReceived=&quot; **2006-01-01**&quot; AcceptedAt=&quot; **MAIN**&quot; SupplierDeliveryNote=&quot; **Delivery11**&quot;&gt;
+<pre><code class="xml">&lt;pro:Acceptance Template=&quot;ACC&quot; DateReceived=&quot;2006-01-01&quot; AcceptedAt=&quot;MAIN&quot; SupplierDeliveryNote=&quot;Delivery11&quot;&gt;
 </code></pre>
 
 <h3 id="template">@Template</h3>
@@ -243,141 +232,117 @@
 <h3 id="references">References</h3>
 <p>Any mandatory reference fields must be supplied.  References fields are identified by their code.  A reference field can only be supplied if it is defined as editable on the document template.</p>
 <pre><code class="xml">&lt;pro:References&gt;
-
-&lt;pro:Reference SelectUsingCode=&quot;Bar code&quot; Value=&quot;345-223-33&quot;  /&gt;
-
+  &lt;pro:Reference SelectUsingCode=&quot;Bar code&quot; Value=&quot;345-223-33&quot;  /&gt;
 &lt;/pro:References&gt;
 </code></pre>
 
 <h3 id="comments">Comments</h3>
 <p>Any number of comments may be added onto the acceptance document</p>
 <pre><code class="xml">&lt;pro:Comments&gt;
-
-&lt;pro:Comment&gt;&quot;Please pay quickly&quot;&lt;/pro:Comment&gt;
-
-&lt;pro:Comment&gt;&quot;BarCode: 1232&quot; &lt;/pro:Comment&gt;
-
+  &lt;pro:Comment&gt;&quot;Please pay quickly&quot;&lt;/pro:Comment&gt;
+  &lt;pro:Comment&gt;&quot;BarCode: 1232&quot; &lt;/pro:Comment&gt;
 &lt;/pro:Comments&gt;
 </code></pre>
 
 <h3 id="orders">Orders</h3>
 <p>The purchase orders to accept are specified next.</p>
 <pre><code class="xml">&lt;pro:Orders&gt;
-
         &lt;pro:OrderSelectUsingTemplate='GENERIC' SelectUsingOrderNo='15'
-
                   ControlFullyReceiptOrder='YES' ControlItemCondition='OK'&gt;
 </code></pre>
 
 <ul>
 <li>
-<p>.At least one purchase order document must be specified.</p>
+<p>At least one purchase order document must be specified.</p>
 </li>
 <li>
-<p>.Each order can only be specified once.</p>
+<p>Each order can only be specified once.</p>
 </li>
 <li>
-<p>.An order can be identified in one of two ways.</p>
+<p>An order can be identified in one of two ways.</p>
 </li>
+<li>.Supply its Template and OrderNo using the SelectUsingTemplate and SelectUsingOrderNo</li>
+<li>
+<p>.Supply its display number using the SelectUsingDisplayNo attribute.</p>
+</li>
+<li>
+<p>If you wish to automatically receipt all items on the order then</p>
+</li>
+<li>Set the ControlFullyReceiptOrder attribute to be YES</li>
+<li>If you wish to specify a delivery condition, then set the ControlItemCondition  attribute to be the desired condition. If a condition is not specified, then the default delivery condition will be used.</li>
+<li>Do not specify any delivery conditions or items for the order.</li>
 </ul>
-<p>-
-  - .Supply its Template and OrderNo using the SelectUsingTemplate and SelectUsingOrderNo</p>
-<p>-
-  - .Supply its display number using the SelectUsingDisplayNo attribute.</p>
-<ul>
-<li>.If you wish to automatically receipt all items on the order then</li>
-</ul>
-<p>-
-  - .Set the ControlFullyReceiptOrder attribute to be YES</p>
-<p>-
-  - .If you wish to specify a delivery condition, then set the ControlItemCondition  attribute to be the desired condition. If a condition is not specified, then the default delivery condition will be used.</p>
-<p>-
-  - .Do not specify any delivery conditions or items for the order.</p>
 <h3 id="items">Items</h3>
 <p>For each order, you then specify which items you would like to accept.</p>
-<p><pro:Items></p>
-<pre><code>    &lt;pro:ItemSelectUsingCode='0300'&gt;
+<pre><code class="xml">&lt;pro:Items&gt;
+        &lt;pro:ItemSelectUsingCode='0300'&gt;
 </code></pre>
+
 <ul>
-<li>
-<p>.At least one item must be specified</p>
-</li>
-<li>
-<p>.Each item can only be specified once</p>
-</li>
-<li>
-<p>.An item can be identified in one of two ways.</p>
-</li>
+<li>At least one item must be specified</li>
+<li>Each item can only be specified once</li>
+<li>An item can be identified in one of two ways.</li>
+<li>Supply its PROACTIS Code using the SelectUsingCode</li>
+<li>Supply its Description using the SelectUsingDiscription attribute.</li>
+<li>Supply its OrderItemGUID using the SelectUsingOrderItemGUID attribute.</li>
 </ul>
-<p>-
-  - .Supply its PROACTIS Code using the SelectUsingCode</p>
-<p>-
-  - .Supply its Description using the SelectUsingDiscription attribute.</p>
-<p>-
-  - .Supply its OrderItemGUID using the SelectUsingOrderItemGUID attribute.</p>
 <h3 id="itemreferences">ItemReferences</h3>
 <p>Any mandatory item level reference fields must be supplied.  References fields are identified by their code.  A reference field can only be supplied if it is defined as editable on the document template.</p>
-<p><pro:ItemReferences></p>
-<p><pro:ItemReference SelectUsingCode="Bar code" Value="345-223-33"  /></p>
-<p></pro:ItemReferences></p>
+<pre><code class="xml">&lt;pro:ItemReferences&gt;
+  &lt;pro:ItemReference SelectUsingCode=&quot;Bar code&quot; Value=&quot;345-223-33&quot;  /&gt;
+&lt;/pro:ItemReferences&gt;
+</code></pre>
+
 <h3 id="item-comments">Item Comments</h3>
 <p>Any number of comments may be added onto an acceptance document line.</p>
-<p><pro:ItemComments></p>
-<p><pro:ItemComment>"Please pay quickly"</pro:Comment></p>
-<p><pro:ItemComment>"BarCode: 1232" </pro:Comment></p>
-<p></pro:ItemComments></p>
+<pre><code class="xml">&lt;pro:ItemComments&gt;
+  &lt;pro:ItemComment&gt;&quot;Please pay quickly&quot;&lt;/pro:Comment&gt;
+  &lt;pro:ItemComment&gt;&quot;BarCode: 1232&quot; &lt;/pro:Comment&gt;
+&lt;/pro:ItemComments&gt;
+</code></pre>
+
 <h3 id="conditions">Conditions</h3>
 <p>The conditions element allows you define what the condition the receipts goods are in.  For example, OK, Damaged.</p>
-<pre><code>    &lt;attribute name="Receipted"type="pro:NonNegativeDecimal"/&gt;
+<pre><code class="xml">        &lt;attribute name=&quot;Receipted&quot;type=&quot;pro:NonNegativeDecimal&quot;/&gt;
+                &lt;attribute name=&quot;Condition&quot;type=&quot;pro:Char50Type&quot;/&gt;
 
-            &lt;attribute name="Condition"type="pro:Char50Type"/&gt;
-
-            &lt;attribute name="ControlFullyReceiptItem"type="pro:YesNoType"/&gt;
+                &lt;attribute name=&quot;ControlFullyReceiptItem&quot;type=&quot;pro:YesNoType&quot;/&gt;
 </code></pre>
+
 <ul>
+<li>At least one condition element must be supplied.</li>
+<li>If the condition attribute is not supplied, then the default delivery condition will be used.</li>
+<li>The receipted quantity must be supplied, even nominal information is provided for the condition.</li>
 <li>
-<p>.At least one condition element must be supplied.</p>
+<p>If the receipted quantity exceeds the outstanding quantity for the item, it will be assumed that the item has been over delivered, and an over delivery will be generated.</p>
 </li>
 <li>
-<p>.If the condition attribute is not supplied, then the default delivery condition will be used.</p>
+<p>If you wish to receipt the entire outstanding balance for the item then</p>
+</li>
+<li>Don't supplied any nominal information</li>
+<li>Don't supplied the receipted attribute</li>
+<li>Set the ControlFullyReceiptItem attribute to YES.</li>
+<li>
+<p>Don't supply any other delivery conditions for the line.</p>
 </li>
 <li>
-<p>.The receipted quantity must be supplied, even nominal information is provided for the condition.</p>
+<p>If no nominal information is provided, then the nominals will be receipted on a first-come-first-served basis.</p>
 </li>
-<li>
-<p>.If the receipted quantity exceeds the outstanding quantity for the item, it will be assumed that the item has been over delivered, and an over delivery will be generated.</p>
-</li>
-<li>
-<p>.If you wish to receipt the entire outstanding balance for the item then</p>
-</li>
-</ul>
-<p>-
-  - .Don't supplied any nominal information</p>
-<p>-
-  - .Don't supplied the receipted attribute</p>
-<p>-
-  - .Set the ControlFullyReceiptItem attribute to YES.</p>
-<p>-
-  - .Don't supply any other delivery conditions for the line.</p>
-<ul>
-<li>.If no nominal information is provided, then the nominals will be receipted on a first-come-first-served basis.</li>
 </ul>
 <h3 id="nominals">Nominals</h3>
 <p>If required, the receipted quantity can be allocated at nominal level.</p>
-<p><pro:Nominals></p>
-<p><pro:NominalSelectUsingNominalCoding='0300.0990.0610.ACT'  Receipted='1'/></p>
-<p></pro:Nominals></p>
+<pre><code class="xml">&lt;pro:Nominals&gt;
+  &lt;pro:NominalSelectUsingNominalCoding='0300.0990.0610.ACT'  Receipted='1'/&gt;
+&lt;/pro:Nominals&gt;
+</code></pre>
+
 <ul>
-<li>.A nominal can be identified in one of two ways.</li>
+<li>A nominal can be identified in one of two ways.</li>
+<li>Supply its Nominal Coding using the SelectUsingNominalCoding attributes.</li>
+<li>Supply its CommitmentDate in the format yyyy-mm-dd using the SelectUsingCommitmentDate attribute.</li>
 </ul>
-<p>-
-  - .Supply its Nominal Coding using the SelectUsingNominalCoding attributes.</p>
-<p>-
-  - .Supply its CommitmentDate in the format yyyy-mm-dd using the SelectUsingCommitmentDate attribute.</p>
-<p>At lease one of the two methods must be used.</p>
-<ul>
-<li>.The receipted quantity must be supplied, and should not exceed the outstanding quantity from the original order.</Description></li>
-</ul>
+<p>At lease one of the two methods must be used.
+- .The receipted quantity must be supplied, and should not exceed the outstanding quantity from the original order.</Description></p>
 <pre><code class="xml">            &lt;UnitOfMeasure&gt;EA&lt;/UnitOfMeasure&gt;
             &lt;UnitValue&gt;28.70&lt;/UnitValue&gt;
             &lt;UNSPSCCode&gt;44121604&lt;/UNSPSCCode&gt;
