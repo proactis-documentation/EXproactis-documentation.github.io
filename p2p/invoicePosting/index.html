@@ -170,7 +170,7 @@
 
 <h1 id="invoice-export">Invoice Export</h1>
 <p>To allow the real time posting of documents into external systems; typically finance systems; a custom export DLL can be written which to responds to new documents being placed in the <strong>dbo.DocumentsForPosting</strong> database table.</p>
-<p>The format of document xml which is stored in this table is defined by the various document export application hooks.  (These are detailed separately.)</p>
+<p>The format of the document xml which is stored in this table is defined by the various document export application hooks.  (These are detailed separately.)</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Although titled <em>Invoice Export</em> this process also applied to other document types such as Credit Notes and Expense Claims</p>
@@ -360,6 +360,8 @@
 </code></pre>
 
 <p>Your dll should be complied (and named xyzExportProcessor.dll) and then copied into your <strong>PROACTIS P2P/Plugins</strong>  (or <strong>Plugins/[database-title]</strong>) folder.</p>
+<p>As the <strong>PROACTIS P2P Accounting Export Service</strong> starts it will write a message to Windows Event Log listing the databases/plugins which will be used.</p>
+<p><img alt="alt text" src="../../img/p2p/exports/servicestartup.JPG" title="Upload" /></p>
 <h2 id="database">Database</h2>
 <p>The pending documents are held in the database table <strong>dbo.DocumentsForPosting</strong>.  In order to maintain compatibility with legacy code there is a view of this table called <strong>dbo.InvoicesForPosting</strong>.  For all new development the use of the base table is preferred. </p></div>
         </div>
