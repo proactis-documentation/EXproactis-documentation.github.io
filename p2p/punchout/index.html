@@ -367,7 +367,7 @@ The xslt needs to generate xml in the following format</p>
 <li>PartID</li>
 </ol>
 <p>If however either of these references already exist in <strong>dsdba.CompanyReferences</strong> table but without a category of 'global' then the following error will be reported.</p>
-<pre><code>__There is already a reference of type template with a code of ContractReference. This reference cannot be linked to an item.__
+<pre><code>There is already a reference of type template with a code of ContractReference. This reference cannot be linked to an item.
 </code></pre>
 
 <p>The solution is to either convert the reference field to a global one,  or drop a custom XSLT into the plugins folder which uses a different reference field.</p>
