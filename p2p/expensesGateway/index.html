@@ -164,6 +164,7 @@
             <li><a href="#process-overview">Process Overview</a></li>
             <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
             <li><a href="#worked-example">Worked Example</a></li>
+            <li><a href="#error-handling">Error Handling</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -261,7 +262,52 @@
                NominalMask='Advertising'
                Ratio='1'/&gt;
 &lt;/pro:Nominals&gt;
-</code></pre></div>
+</code></pre>
+
+<h2 id="error-handling">Error Handling</h2>
+<p>By default the import routine will return the XML amended to include status and error information.</p>
+<p>When a piece of data has been processed, then an extra attribute called status will be added to the node, this will contain either OK or FAILED.  </p>
+<p>Note: Nodes without this attribute have not been processed.</p>
+<p>The supplied XML is first validated against the <strong>ImportExpenseClaims.XSD</strong> schema.  If the xml fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block</p>
+<p>An example errors block is shown below</p>
+<pre><code class="xml">&lt;pro:Errors&gt;
+  &lt;pro:Error Number='-1072898030' 
+             Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ExpenseClaim'/&gt;
+&lt;/ pro:Errors&gt;
+</code></pre>
+
+<h3 id="errorserror">Errors/Error</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number</td>
+<td align="center">Internal Error Number - this may change between releases</td>
+</tr>
+<tr>
+<td>Message</td>
+<td align="center">The error message (in English)</td>
+</tr>
+<tr>
+<td>Source</td>
+<td align="center">Optional attribute describing where the error occurred.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="notes">Notes</h4>
+<ul>
+<li>
+<p>The error block may occur anywhere within the document.  For example, if a line is invalid, the errors block will be appended to that line.</p>
+</li>
+<li>
+<p>It is possible for an errors block to contain more than one error.</p>
+</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
