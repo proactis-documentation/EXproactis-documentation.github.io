@@ -281,21 +281,21 @@
 <thead>
 <tr>
 <th>Attribute Name</th>
-<th align="center">Description</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Number</td>
-<td align="center">Internal Error Number - this may change between releases</td>
+<td>Internal Error Number - this may change between releases</td>
 </tr>
 <tr>
 <td>Message</td>
-<td align="center">The error message (in English)</td>
+<td>The error message (in English)</td>
 </tr>
 <tr>
 <td>Source</td>
-<td align="center">Optional attribute describing where the error occurred.</td>
+<td>Optional attribute describing where the error occurred.</td>
 </tr>
 </tbody>
 </table>
@@ -307,7 +307,46 @@
 <li>
 <p>It is possible for an errors block to contain more than one error.</p>
 </li>
-</ul></div>
+</ul>
+<h3 id="errorhandlingmodes">ErrorHandlingModes</h3>
+<p>The reporting of errors can be configured by setting the <strong>ErrorHandlingMode</strong> attribute within the control block.  The table below describes the available modes</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMBED</td>
+<td>The processed XML is returned, but we the error message stored in additional <strong>pro:Errors/pro:Error</strong> nodes. This is the default mode if the attribute is not supplied.</td>
+</tr>
+<tr>
+<td>THROWERRORS</td>
+<td>The errors are thrown as SOAP exceptions back to the calling code, the message is an xml document describing the errors</td>
+</tr>
+<tr>
+<td>THROWXML</td>
+<td>The errors are thrown as SOAP exceptions back to the calling code; the message is the processed xml document, which contains all the errors.</td>
+</tr>
+<tr>
+<td>THROWTEXT</td>
+<td>The errors are thrown as OAP exceptions back to the calling code, the message is an human readable text describing the errors.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="success">Success</h3>
+<p>If a claim has been successfully imported, then two new attributes will be added the ExpenseClaim node.
+1.      The first attribute is Status, and will have a value of OK
+2.      The second attribute is DocumentNumber, and this will contain the claims internal number.</p>
+<h4 id="note">Note</h4>
+<ul>
+<li>If the XML contains multiple expense claims, then as long as the control block is valid, it is possible for some expense claims to be imported and other claims to be rejected.</li>
+</ul>
+<p>Example</p>
+<pre><code class="xml">&lt;pro:ExpenseClaim  Template='EXP' Status='OK' DocumentNumber='exp 52487'&gt;
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
