@@ -8,7 +8,7 @@
         <meta name="author" content="David Betteridge">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Custom Tabs - Technical Documentation</title>
+        <title>Expenses - Technical Documentation</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -69,8 +69,8 @@
     <a href="../budgetchecking/">Budget Checking</a>
 </li>
                             
-<li class="active">
-    <a href="./">Custom Tabs</a>
+<li >
+    <a href="../customtab/">Custom Tabs</a>
 </li>
                             
 <li >
@@ -107,8 +107,8 @@
     <a href="../acceptanceGateway/">Acceptances</a>
 </li>
             
-<li >
-    <a href="../expensesGateway/">Expenses</a>
+<li class="active">
+    <a href="./">Expenses</a>
 </li>
     </ul>
   </li>
@@ -138,12 +138,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../budgetchecking/">
+                        <a rel="next" href="../acceptanceGateway/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../addins/">
+                        <a rel="prev" href="../../placeholder/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -159,117 +159,109 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#custom-tab">Custom Tab</a></li>
-        <li class="main "><a href="#licence-file">Licence File</a></li>
-        <li class="main "><a href="#development">Development</a></li>
-        <li class="main "><a href="#session-details">Session Details</a></li>
-        <li class="main "><a href="#please-wait-spinner">Please Wait Spinner</a></li>
-        <li class="main "><a href="#user-role-security">User Role Security</a></li>
-        <li class="main "><a href="#example-application">Example Application</a></li>
-        <li class="main "><a href="#troubleshooting">Troubleshooting</a></li>
+        <li class="main active"><a href="#expenses-gateway">Expenses Gateway</a></li>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#process-overview">Process Overview</a></li>
+            <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
+            <li><a href="#worked-example">Worked Example</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="custom-tab">Custom Tab</h1>
-<p>The P2P website can be extended by creating additional "custom" tabs.  </p>
-<hr />
-<h1 id="licence-file">Licence File</h1>
-<p>In order to display a custom tab you will first need a licence file which includes the name of the tab.  </p>
-<p><img alt="alt text" src="../../img/p2p/customtab/licencefile.bmp" title="Licence File" /></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Please contact your account manager for assistance with this.</p>
-</div>
-<p>In this example the tab will be displayed as  <strong>Manage Resource Bookings</strong> and will only be visible to users with the <strong>MAY_BOOK_RESOURCES</strong> user role.</p>
-<p><img alt="alt text" src="../../img/p2p/customtab/newtab.JPG" title="New Tab" /> </p>
-<hr />
-<h1 id="development">Development</h1>
-<p>Custom tab are developed as independent websites which are then displayed as part of the core site within an iFrame.</p>
-<p><img alt="alt text" src="../../img/p2p/customtab/iframe.JPG" title="iFrame" /></p>
-<p>In the screenshot above,  the blue menu bar comes from the main site,  whilst the remainder of the page (in white) is the custom tab.</p>
-<p>By convention the custom sites are placed within the <strong>WebSite\Customer</strong> folder and are mapped as a virtual application with in IIS.   </p>
-<p><img alt="alt text" src="../../img/p2p/customtab/iis.JPG" title="iis" /></p>
-<p>In order for P2P to know the URL of the page is displayed it's path needs to be added to the <strong>ApplicationConfig.xml</strong> file.</p>
-<p><img alt="alt text" src="../../img/p2p/customtab/config.JPG" title="config" /> </p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>After changing the application configuration file the caches in the website will need refreshing.   This can be done either by recycling the application pool,  or by performing an IIS reset.</p>
-</div>
-<hr />
-<h1 id="session-details">Session Details</h1>
-<p>As the custom tab is running in a different website to the main site it is not possible to share the session state within IIS.</p>
-<p>Instead the following steps must be followed in order to obtain the details of the current user.</p>
-<ul>
-<li>
-<p>Before the main site opens your landing page it first generates a unique session token which is stored in the database within the <strong>dsdba.LoginTokens</strong> table.  This table also holds who the current user is. </p>
-</li>
-<li>
-<p>When the landing page is opened,  it is passed the following information as query string parameters</p>
-<ul>
-<li>Token  (the unique token)</li>
-<li>Title  (the name of the tab)</li>
-<li>URL    (the url of the tab)</li>
-</ul>
-<p>The token argument is made up of the {Database's Title} @ {The unique generated session token}</p>
-</li>
-<li>
-<p>The custom tab should then connect to the P2P database and call the <strong>DSDBA.usp_cust_GetSessionDetailsFromToken</strong> stored procedure supplying the full token.  This stored procedure will return with a single row containing the following columns:</p>
-<ul>
-<li>UserGUID</li>
-<li>LoginID</li>
-<li>CompanyGUID</li>
-<li>CompanyCode</li>
-<li>DepartmentGUID</li>
-<li>DepartmentCode</li>
-<li>StoreGUID</li>
-<li>StoreCode</li>
-<li>SessionID  (the internal P2P session ID)</li>
-<li>Expires  (when the login token will expiry)</li>
-</ul>
-</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The stored procedure will return a row even when the session ID is not valid.  In this case however all the values will be NULL.</p>
-</div>
-<hr />
-<h1 id="please-wait-spinner">Please Wait Spinner</h1>
-<p>Whilst your tab is first loading the main site will be displaying the please wait spinner.  In order to remove the spinner the following javascript code should be added to the end of your first page</p>
-<pre><code class="javascript">    &lt;script type=&quot;text/javascript&quot;&gt;
-        //Hide the spinner in the main window.
-        $().ready(function () {
-            parent.hideSpinner();
-        });
-    &lt;/script&gt;
+<h1 id="expenses-gateway">Expenses Gateway</h1>
+<h2 id="summary">Summary</h2>
+<p>This document describes the structure of the XML file used for importing Expense Claims into PROACTIS.  It is assumed that the reader of the document is familiar both with XML and PROACTIS expense claims.</p>
+<p>The document also describes the validation rules, which must be passed in order for the claim to be imported, and the current limitations of the expense claim gateway.</p>
+<p>This document should be used in conjunction with the <strong>ImportExpenseClaims.xsd</strong> xml schema</p>
+<h2 id="process-overview">Process Overview</h2>
+<p>The process of importing expense claims is very similar to the existing master-data (suppliers/items/nominals) and purchase invoice and order xml gateways.</p>
+<p>First the user generates an xml document containing the details of the expense claim(s) to be imported.  This xml must conform to the <strong>ImportExpenseClaims.xsd</strong> schema document.</p>
+<p>The xml is then validated, first to ensure it conforms to the schema and then to check the supplied data is valid.  For instance does the template exist?</p>
+<p>The expense claim is then created within PROACTIS using the existing expenses engine.  This allows the gateway to use the existing PROACTIS functionality.</p>
+<h2 id="limitations-of-the-gateway">Limitations of the Gateway</h2>
+<p>Although the Expense Claim XML gateway mimics the PROACTIS web application wherever possible, it is subject to the following limitations.</p>
+<h3 id="companies">Companies</h3>
+<p>As with the other XML gateways, an XML document can only contain documents for a single company.</p>
+<h3 id="departments">Departments</h3>
+<p>As with the other XML gateways, an XML document can only contain documents for a single department.</p>
+<h3 id="language">Language</h3>
+<p>The schema, documentation and error messages are all written in English.</p>
+<h3 id="actions">Actions</h3>
+<p>This XML gateway only supports the creation and submission of expense claims.  It does not allow users to amend, authorise or cancel expense claims.</p>
+<h2 id="worked-example">Worked Example</h2>
+<p>This section of the document walks you through the creation of a simple document.  All the available fields are described in complete detail, within the next section.</p>
+<h3 id="xml-document">XML Document</h3>
+<p>The xml document must start with the following to lines</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;pro:Import xmlns:pro=&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;
 </code></pre>
 
-<p>If you wish to re-display the spinner then the following javascript can be used</p>
-<pre><code class="javascript">    &lt;script type=&quot;text/javascript&quot;&gt;
-        window.parent.showSpinner();
-    &lt;/script&gt;
+<p>And finish with</p>
+<pre><code class="xml">&lt;/pro:Import&gt;
 </code></pre>
 
-<hr />
-<h1 id="user-role-security">User Role Security</h1>
-<p>By default all users have access to the new tab.  If you wish to restrict access to only certain users then the name of a user role (or a custom role) can be specified for the tab within the licence file.</p>
-<p>If you wish to create a custom role,  then you will also need to insert an entry into the <strong>DSDBA.Roles</strong> table with the same name.</p>
-<pre><code class="sql">INSERT INTO DSDBA.Roles (GUID, Code, Description, Properties, CompanyGUID)
-SELECT newID(), 'MAY_BOOK_RESOURCES', 'Users may use the bookings tab', '', C.GUID
-  FROM DSDBA.Companies C
+<h3 id="control-block">Control Block</h3>
+<p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
+<p>An example control block is shown below.</p>
+<pre><code class="xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
+              UserName=&quot;DAVIDBETTERIDGE&quot;
+              Password=&quot;mysecret&quot;
+              Company=&quot;MAIN&quot;
+              Department=&quot;SOLUTIONS&quot;
+              Version=&quot;1.0.0&quot; /&gt;
 </code></pre>
 
-<hr />
-<h1 id="example-application">Example Application</h1>
-<p>Please see the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Custom%20Tab">example application</a> for a complete implementation.</p>
-<hr />
-<h1 id="troubleshooting">Troubleshooting</h1>
-<p>If your custom tab does not appear then check the following</p>
-<ol>
-<li>Your licence file includes the section for your custom tab.</li>
-<li>If the RelatedRole has been specified in the licence file then the user has been granted that role.</li>
-<li>The URL of the custom page has been specified in the <strong>web.config</strong> file</li>
-</ol></div>
+<p>The XML gateway supports NT authentication, an example is shown below.</p>
+<pre><code class="xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
+                 AuthenticationMethod=&quot;WINDOWS&quot;
+                 Company=&quot;MAIN&quot;
+                 Department=&quot;SOLUTIONS&quot;
+                 Version=&quot;1.0.0&quot; /&gt;
+</code></pre>
+
+<p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
+<h3 id="expense-claims">Expense Claims</h3>
+<p>The next section contains the details of the expense claims to be imported.  The gateway allows multiple claims to be included in a single xml document.  At least one expense claim must be included.</p>
+<pre><code class="xml">&lt;pro:ExpenseClaim Template = &quot;EXP&quot;
+                  Title = &quot;Pen and Paper&quot; 
+                  ClaimDate=&quot;2017-08-18&quot;
+                  ClaimFor=&quot;Anderson&quot;
+                  SaveMethod=&quot;SUBMIT&quot; /&gt;  
+</code></pre>
+
+<h3 id="template">@Template</h3>
+<p>This attribute is optional if the user only has access to a single template.  However, it is recommended that a value is explicitly supplied where possible.</p>
+<h3 id="claimdate">@ClaimDate</h3>
+<p>This attribute is optional and will default to today's date if missing.  Must be in the format yyyy-mm-dd</p>
+<h3 id="comments">Comments</h3>
+<p>Any number of comments may be added onto the claim.</p>
+<pre><code class="xml">&lt;pro:Comments&gt;
+  &lt;pro:Comment&gt;&quot;Please pay quickly&quot;&lt;/pro:Comment&gt;
+  &lt;pro:Comment&gt;&quot;BarCode: 1232&quot; &lt;/pro:Comment&gt;
+&lt;/pro:Comments&gt;
+</code></pre>
+
+<h3 id="items">Items</h3>
+<p>The claim must contain one or more item lines.</p>
+<pre><code class="xml">&lt;pro:Items&gt;
+  &lt;pro:Item PROACTISCode='LTP001'
+            Price='1002.35'
+            Quantity='1'
+            Description='Laptop'
+            Receipt='YES'
+            TaxReceipt='YES'
+            TaxCode='C1' /&gt;
+&lt;pro:Items&gt;
+</code></pre>
+
+<h3 id="nominals">Nominals</h3>
+<p>Each item on the claim must contain one or more nominals</p>
+<pre><code class="xml">&lt;pro:Nominals&gt;
+  &lt;pro:Nominal AccountingElement1='113'
+               NominalMask='Advertising'
+               Ratio='1'/&gt;
+&lt;/pro:Nominals&gt;
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
