@@ -226,7 +226,7 @@
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="invoice">Invoice</h3>
-<p>The next section contains the details of the invoices to be imported.  The gateway allows multiple claims to be included in a single xml document.  At least one invoice must be included.</p>
+<p>The next section contains the details of the invoices to be imported.  The gateway allows multiple documents to be included in a single xml document.  At least one invoice must be included.</p>
 <pre><code class="xml">&lt;pro:Invoice  InvoiceDate='2003-08-27'              
               SupplierInvoiceNumber='PR-234' 
               Template='PINV' 
@@ -369,7 +369,7 @@
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="invoice_1">Invoice</h3>
-<p>The next section contains the details of the invoices to be imported.  The gateway allows multiple claims to be included in a single xml document.  At least one invoice must be included.</p>
+<p>The next section contains the details of the invoices to be imported.  The gateway allows multiple documents to be included in a single xml document.  At least one invoice must be included.</p>
 <pre><code class="xml">&lt;pro:Invoice InvoiceDate=&quot;2003-08-27&quot;              
             SupplierInvoiceNumber=&quot;PR-234&quot; 
             Template=&quot;PINV&quot; 
@@ -459,11 +459,11 @@ ImageReference=&quot;10&quot;/&gt;
 <p>By default the import routine will return the XML amended to include status and error information.</p>
 <p>When a piece of data has been processed, then an extra attribute called status will be added to the node, this will contain the value OK, FAILED or REGISTERED.  OK means the invoice was fully imported successfully.  FAILED means the invoice could not be imported.  REGISTERED means the initial values of the invoice have been successfully imported but a problem occurred when trying to set specific item details requiring the invoice to be matched manually.</p>
 <p>Note: Nodes without this attribute have not been processed.</p>
-<p>he supplied XML is first validated against the <strong>ImportPurchaseCreditNotes.xsd</strong> schema.  If the invoice fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block</p>
+<p>he supplied XML is first validated against the <strong>ImportPurchaseInvoices.xsd</strong> schema.  If the invoice fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block</p>
 <p>An example errors block is shown below</p>
 <pre><code class="xml">&lt;pro:Errors&gt;
   &lt;pro:Error Number='-1072898030' 
-             Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ExpenseClaim'/&gt;
+             Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}Invoice'/&gt;
 &lt;/pro:Errors&gt;
 </code></pre>
 
