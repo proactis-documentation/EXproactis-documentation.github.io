@@ -170,6 +170,7 @@
             <li><a href="#importexpenseclaim">Import/ExpenseClaim</a></li>
             <li><a href="#importexpenseclaimcommentscomment">Import/ExpenseClaim/Comments/Comment</a></li>
             <li><a href="#importexpenseclaimreferencesreference">Import/ExpenseClaim/References/Reference</a></li>
+            <li><a href="#importexpenseclaimitemsitem">Import/ExpenseClaim/Items/Item</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -495,11 +496,69 @@
 </tr>
 </tbody>
 </table>
-<p>### Notes
-1. Any mandatory reference fields must be supplied
-2. A reference can be identified by its Code, Caption or Position
-3. The Code should be used if possible.</p>
-<hr /></div>
+<h3 id="notes_3">Notes</h3>
+<ol>
+<li>Any mandatory reference fields must be supplied</li>
+<li>A reference can be identified by its Code, Caption or Position</li>
+<li>The Code should be used if possible.</li>
+</ol>
+<hr />
+<h2 id="importexpenseclaimitemsitem">Import/ExpenseClaim/Items/Item</h2>
+<p>The attributes supported by the Item element within the xml are listed below:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PROACTISCode</td>
+<td>The item must be available for use from the template.</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>The item must allow the user to change the price, and the item’s ‘enter net value’ setting must be turned off.  If missing, the price from the item master will be used.</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>The item’s ‘Enter Net Value’ setting must be turned off.  If missing,  a quantity of 1 will be assumed.</td>
+</tr>
+<tr>
+<td>NetValue</td>
+<td>The item’s ‘Enter Net Value’ setting must be turned on.</td>
+</tr>
+<tr>
+<td>ClaimDate</td>
+<td>Must be in the format yyyy-mm-dd</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>The item must allow the user to change the description. If missing, the description from the item master will be used.</td>
+</tr>
+<tr>
+<td>Receipt</td>
+<td>Does the user have a receipt?</td>
+</tr>
+<tr>
+<td>TaxReceipt</td>
+<td>Is the receipt a tax receipt?  (Receipt must be set to YES)</td>
+</tr>
+<tr>
+<td>TaxCode</td>
+<td>Allows a different tax code (Band1) to be used for the line. If missing uses the tax rules defined against the template.</td>
+</tr>
+<tr>
+<td>TaxOverride</td>
+<td>Allows the line tax to be manually set.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="notes_4">Notes</h3>
+<ol>
+<li>The claim must contain at least one item.</li>
+</ol></div>
         </div>
 
         <footer class="col-md-12">
