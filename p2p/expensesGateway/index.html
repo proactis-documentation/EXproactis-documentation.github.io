@@ -168,6 +168,8 @@
             <li><a href="#success">Success</a></li>
             <li><a href="#control-block_1">Control Block</a></li>
             <li><a href="#importexpenseclaim">Import/ExpenseClaim</a></li>
+            <li><a href="#importexpenseclaimcommentscomment">Import/ExpenseClaim/Comments/Comment</a></li>
+            <li><a href="#importexpenseclaimreferencesreference">Import/ExpenseClaim/References/Reference</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -445,6 +447,58 @@
 <ol>
 <li>At least one claim must be provided</li>
 </ol>
+<hr />
+<h2 id="importexpenseclaimcommentscomment">Import/ExpenseClaim/Comments/Comment</h2>
+<p>The attributes supported by the Comment element within the xml are listed below:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ELEMENT  TEXT</td>
+<td>The text of the comment</td>
+</tr>
+</tbody>
+</table>
+<p>### Notes
+1. A claim can have any number of comments.</p>
+<hr />
+<h2 id="importexpenseclaimreferencesreference">Import/ExpenseClaim/References/Reference</h2>
+<p>The attributes supported by the Reference element within the xml are listed below:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code</td>
+<td>The reference's code</td>
+</tr>
+<tr>
+<td>Caption</td>
+<td>The reference’s caption</td>
+</tr>
+<tr>
+<td>Position</td>
+<td>The references position</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>The value of the reference</td>
+</tr>
+</tbody>
+</table>
+<p>### Notes
+1. Any mandatory reference fields must be supplied
+2. A reference can be identified by its Code, Caption or Position
+3. The Code should be used if possible.</p>
 <hr /></div>
         </div>
 
