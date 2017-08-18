@@ -165,6 +165,8 @@
             <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
             <li><a href="#worked-example">Worked Example</a></li>
             <li><a href="#error-handling">Error Handling</a></li>
+            <li><a href="#success">Success</a></li>
+            <li><a href="#control-block_1">Control Block</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -273,7 +275,7 @@
 <pre><code class="xml">&lt;pro:Errors&gt;
   &lt;pro:Error Number='-1072898030' 
              Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ExpenseClaim'/&gt;
-&lt;/ pro:Errors&gt;
+&lt;/pro:Errors&gt;
 </code></pre>
 
 <h3 id="errorserror">Errors/Error</h3>
@@ -336,17 +338,74 @@
 </tr>
 </tbody>
 </table>
-<h3 id="success">Success</h3>
+<h2 id="success">Success</h2>
 <p>If a claim has been successfully imported, then two new attributes will be added the ExpenseClaim node.
-1.      The first attribute is Status, and will have a value of OK
-2.      The second attribute is DocumentNumber, and this will contain the claims internal number.</p>
+1. The first attribute is Status, and will have a value of OK
+2. The second attribute is DocumentNumber, and this will contain the claims internal number.</p>
 <h4 id="note">Note</h4>
 <ul>
 <li>If the XML contains multiple expense claims, then as long as the control block is valid, it is possible for some expense claims to be imported and other claims to be rejected.</li>
 </ul>
 <p>Example</p>
 <pre><code class="xml">&lt;pro:ExpenseClaim  Template='EXP' Status='OK' DocumentNumber='exp 52487'&gt;
-</code></pre></div>
+</code></pre>
+
+<h2 id="control-block_1">Control Block</h2>
+<p>The attributes supported by the control block within the xml are listed below:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DatabaseName</td>
+<td>This is the title of,the database as shown to the user on the logon screen.</td>
+</tr>
+<tr>
+<td>UserName</td>
+<td>The LoginID of the,PROACTIS user.,This user must have,permission to create expense claims.</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>Password for above user.</td>
+</tr>
+<tr>
+<td>EncodedPassword</td>
+<td>Encoded version of the password.  (No longer supported)</td>
+</tr>
+<tr>
+<td>Company</td>
+<td>The user must have access to the company.  If missing, the user’s default company will be used.</td>
+</tr>
+<tr>
+<td>Department</td>
+<td>The user must have access to the department.  If missing, the user’s default department will be used.</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>Must be 1.0.0</td>
+</tr>
+<tr>
+<td>WriteErrorsToDatabase</td>
+<td>Not currently used.</td>
+</tr>
+<tr>
+<td>AuthenticationMethod</td>
+<td>PROACTIS or WINDOWS.  For WINDOWS authentication, the username and password must not be supplied.</td>
+</tr>
+<tr>
+<td>ErrorHandlingMode</td>
+<td>Describes how error messages will be handled.  See the error handling section for details.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="notes_1">Notes</h3>
+<ol>
+<li>The control block must be provided</li>
+</ol></div>
         </div>
 
         <footer class="col-md-12">
