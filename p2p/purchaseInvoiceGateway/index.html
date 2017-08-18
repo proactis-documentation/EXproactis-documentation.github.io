@@ -300,7 +300,39 @@
 <h4 id="notes_3">Notes</h4>
 <ul>
 <li>The address is ignored if it is not a one-off supplier</li>
-</ul></div>
+</ul>
+<h3 id="comments">Comments</h3>
+<p>It is possible to add one or more comments to an invoice</p>
+<pre><code class="xml">&lt;pro:Comments&gt;
+  &lt;pro:Comment&gt;Please pay quickly&lt;/pro:Comment&gt;
+&lt;/pro:Comments&gt;
+</code></pre>
+
+<h4 id="notes_4">Notes</h4>
+<ul>
+<li>It is not currently possible to view comments from within the PROACTIS website.</li>
+</ul>
+<h3 id="references">References</h3>
+<p>It is also possible to set the reference fields on the invoice</p>
+<pre><code class="xml">&lt;pro:References&gt;
+          &lt;pro:Reference Caption='Bar code' 
+                         Value='345-223-33'
+          &lt;pro:Reference Position='2' 
+                         Value='BACS'
+          &lt;pro:Reference Code='Colour' 
+                         Value='Red'
+&lt;/pro:References&gt;
+</code></pre>
+
+<h4 id="notes_5">Notes</h4>
+<ul>
+<li>Any mandatory reference fields without default values must be set.</li>
+<li>Either the code, caption or the position can be specified</li>
+</ul>
+<p>The invoice then finishes with a closing tag:</p>
+<p></pro:Invoice></p>
+<p>Finally the XML must be closed as follows:</p>
+<p></pro:Import></p></div>
         </div>
 
         <footer class="col-md-12">
