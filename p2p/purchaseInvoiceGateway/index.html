@@ -167,6 +167,7 @@
             <li><a href="#summary">Summary</a></li>
             <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
             <li><a href="#order-based-invoices-worked-example">Order Based Invoices - Worked Example</a></li>
+            <li><a href="#standalone-invoices-worked-example">Standalone Invoices - Worked Example</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -189,8 +190,9 @@
 <li>As with the other XML gateways, an XML document can only contain documents for a single department.</li>
 <li>The schema, documentation and error messages are all written in English.</li>
 </ul>
+<hr />
 <h2 id="order-based-invoices-worked-example">Order Based Invoices - Worked Example</h2>
-<p>This section of the document walks you through the creation of a simple document. </p>
+<p>This section of the document walks you through the creation of a simple order based invoice. </p>
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
@@ -330,9 +332,126 @@
 <li>Either the code, caption or the position can be specified</li>
 </ul>
 <p>The invoice then finishes with a closing tag:</p>
-<p></pro:Invoice></p>
+<pre><code class="xml">&lt;/pro:Invoice&gt;
+</code></pre>
+
 <p>Finally the XML must be closed as follows:</p>
-<p></pro:Import></p></div>
+<pre><code class="xml">&lt;/pro:Import&gt;
+</code></pre>
+
+<hr />
+<h2 id="standalone-invoices-worked-example">Standalone Invoices - Worked Example</h2>
+<p>This section of the document walks you through the creation of a simple standalone invoice. This is a type of invoices which is not matched to parent purchase orders.</p>
+<p>The gateway assumes the invoice is a standalone invoice if 
+<em> One or more non-order items are supplied
+</em> A standalone purchase invoice is specified.
+* The authorisation pool is specified</p>
+<h3 id="control-block_1">Control Block</h3>
+<p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
+<p>An example control block is shown below.</p>
+<pre><code class="xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
+              UserName=&quot;DAVIDBETTERIDGE&quot;
+              Password=&quot;mysecret&quot;
+              Company=&quot;MAIN&quot;
+              Department=&quot;SOLUTIONS&quot;
+              Version=&quot;1.0.0&quot; /&gt;
+</code></pre>
+
+<p>The XML gateway supports NT authentication, an example is shown below.</p>
+<pre><code class="xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
+                 AuthenticationMethod=&quot;WINDOWS&quot;
+                 Company=&quot;MAIN&quot;
+                 Department=&quot;SOLUTIONS&quot;
+                 Version=&quot;1.0.0&quot; /&gt;
+</code></pre>
+
+<p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
+<h3 id="invoice_1">Invoice</h3>
+<p>The next section contains the details of the invoices to be imported.  The gateway allows multiple claims to be included in a single xml document.  At least one invoice must be included.</p>
+<pre><code class="xml">&lt;pro:Invoice InvoiceDate=&quot;2003-08-27&quot;              
+            SupplierInvoiceNumber=&quot;PR-234&quot; 
+            Template=&quot;PINV&quot; 
+            Tray=&quot;Standard&quot; 
+            GrossValue=&quot;1&quot;
+            AuthorisationPool=&quot;PISA&quot;
+            Supplier=&quot;510632&quot;
+ImageReference=&quot;10&quot;/&gt;
+</code></pre>
+
+<h4 id="notes_6">Notes</h4>
+<ul>
+<li>The template must be a standalone invoicing template, which the user has access to.</li>
+<li>If the template is not provided, then the gateway attempts to automatically select one.  This is only possible if the user only has access to a single template. </li>
+<li>The tray must an invoicing tray, which the user has access to.</li>
+<li>If the tray is missing, then the user’s default tray is used.</li>
+<li>The supplier invoice number must unique for this supplier</li>
+<li>The invoice date should be in the format yyyy-mm-dd</li>
+<li>The ImageReference value also supports Settlement Discount, so if you have settlement discount switched on; use this field to enter the percentage discount – this must be a number only if settlement discount is active.</li>
+<li>Post-match authorisation is supported by the invoice XML gateway – simply activate this property on the supplier and set the supplier on the invoice… post-match authorisation will be adopted.</li>
+<li>The Supplier attribute must be supplied for standalone invoices.</li>
+<li>The authorisation pool must be supplied if the template is used for standalone invoices and the company level setting is configured to use pools for authorisation.  (This is no longer recommended)</li>
+</ul>
+<h3 id="standalone-tax-details">Standalone Tax Details</h3>
+<p>The next section contains the summary Tax information.</p>
+<pre><code class="xml"> &lt;pro:TaxDetails&gt;
+                  &lt;pro:Tax Band=&quot;UKVAT&quot; 
+                           BandNumber=&quot;1&quot;
+                           Code=&quot;ST&quot;
+                           GrossValue=&quot;11.75&quot;/&gt;
+          &lt;/pro:TaxDetails&gt; 
+</code></pre>
+
+<h4 id="notes_7">Notes</h4>
+<ul>
+<li>The Band can be identified by either its name (Band) or number (BandNumber). If neither is specified then the first band is assumed.</li>
+</ul>
+<h3 id="standalone-line-detail">Standalone Line Detail</h3>
+<p>The line details can now be specified.  </p>
+<pre><code class="xml">            &lt;pro:NonOrderItems&gt;
+                  &lt;pro:NonOrderItem SelectUsingPROACTISCode='TEST' 
+                                    SelectUsingDescription='A test item' 
+                                    SelectUsingSupplierItemCode='TEST001'
+                                    Price='1' 
+                                    Quantity='10'
+                                    Description='my  test item'
+                                    NetValue=''
+                                    UnitOfMeasure='each'
+                                  ShortCutEntry='ABC'&gt;
+</code></pre>
+
+<h4 id="notes_8">Notes</h4>
+<ol>
+<li>
+<p>Items are identified using a combination of the following attributes.  At least one attribute must be supplied, and the item must be uniquely identified.</p>
+<ul>
+<li>SelectUsingPROACTISCode</li>
+<li>SelectUsingDescription</li>
+<li>SelectUsingSupplierItemCode</li>
+</ul>
+</li>
+<li>
+<p>For goods items the Price and Quantity can be specified.</p>
+</li>
+<li>For service items (data-entry-by-value) the net value can be specified.</li>
+<li>The description and unit of measure can be replaced on all items regardless of the item master settings.</li>
+<li>The short cut entry can be used to default the coding on all nominal lines.  The short cut list must be specified on the invoice template.</li>
+</ol>
+<h3 id="standalone-line-nominals">Standalone Line Nominals</h3>
+<p>A line can optionally have its nominal coding specified.</p>
+<pre><code class="xml">                &lt;pro:NonOrderItemNominals&gt;
+                        &lt;pro:NonOrderItemNominal AccountingElement1='1111'                                                                 
+                                                 AccountingElement2='AAAA' 
+                                                 NominalMask='DEFAULT' 
+                                                 ShortCutEntry='My entry' 
+                                                 Quantity='10'&gt;
+</code></pre>
+
+<h4 id="notes_9">Notes</h4>
+<ul>
+<li>If no nominals are specified, then a single nominal line will automatically be created. It’s coding will be provided by PROACTIS.</li>
+<li>The NominalMask must refer to a nominal mask attached to the item master.</li>
+<li>The quantities must sum to the quantities set against the parent item.</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
