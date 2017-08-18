@@ -166,11 +166,12 @@
             <li><a href="#worked-example">Worked Example</a></li>
             <li><a href="#error-handling">Error Handling</a></li>
             <li><a href="#success">Success</a></li>
-            <li><a href="#control-block_1">Control Block</a></li>
-            <li><a href="#importexpenseclaim">Import/ExpenseClaim</a></li>
-            <li><a href="#importexpenseclaimcommentscomment">Import/ExpenseClaim/Comments/Comment</a></li>
-            <li><a href="#importexpenseclaimreferencesreference">Import/ExpenseClaim/References/Reference</a></li>
-            <li><a href="#importexpenseclaimitemsitem">Import/ExpenseClaim/Items/Item</a></li>
+            <li><a href="#control-block-element">Control Block Element</a></li>
+            <li><a href="#expenseclaim-element">ExpenseClaim Element</a></li>
+            <li><a href="#comment-element">Comment Element</a></li>
+            <li><a href="#reference-element">Reference Element</a></li>
+            <li><a href="#item-element">Item Element</a></li>
+            <li><a href="#nominal-element">Nominal Element</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -355,7 +356,7 @@
 </code></pre>
 
 <hr />
-<h2 id="control-block_1">Control Block</h2>
+<h2 id="control-block-element">Control Block Element</h2>
 <p>The attributes supported by the control block element within the xml are listed below:</p>
 <table>
 <thead>
@@ -412,8 +413,8 @@
 <li>The control block must be provided</li>
 </ol>
 <hr />
-<h2 id="importexpenseclaim">Import/ExpenseClaim</h2>
-<p>The attributes supported by the ExpenseClaim element within the xml are listed below:</p>
+<h2 id="expenseclaim-element">ExpenseClaim Element</h2>
+<p>The attributes supported by the Import/ExpenseClaim element within the xml are listed below:</p>
 <table>
 <thead>
 <tr>
@@ -449,8 +450,8 @@
 <li>At least one claim must be provided</li>
 </ol>
 <hr />
-<h2 id="importexpenseclaimcommentscomment">Import/ExpenseClaim/Comments/Comment</h2>
-<p>The attributes supported by the Comment element within the xml are listed below:</p>
+<h2 id="comment-element">Comment Element</h2>
+<p>The attributes supported by the Import/ExpenseClaim/Comments/Comment and Import/ExpenseClaim/Items/Item/Comments/Comment elements within the xml are listed below:</p>
 <table>
 <thead>
 <tr>
@@ -465,11 +466,13 @@
 </tr>
 </tbody>
 </table>
-<p>### Notes
-1. A claim can have any number of comments.</p>
+<h3 id="notes_3">Notes</h3>
+<ol>
+<li>A claim can have any number of comments.</li>
+</ol>
 <hr />
-<h2 id="importexpenseclaimreferencesreference">Import/ExpenseClaim/References/Reference</h2>
-<p>The attributes supported by the Reference element within the xml are listed below:</p>
+<h2 id="reference-element">Reference Element</h2>
+<p>The attributes supported by the Import/ExpenseClaim/References/Reference and Import/ExpenseClaim/Items/Item/References/Reference elements within the xml are listed below:</p>
 <table>
 <thead>
 <tr>
@@ -496,15 +499,15 @@
 </tr>
 </tbody>
 </table>
-<h3 id="notes_3">Notes</h3>
+<h3 id="notes_4">Notes</h3>
 <ol>
 <li>Any mandatory reference fields must be supplied</li>
 <li>A reference can be identified by its Code, Caption or Position</li>
 <li>The Code should be used if possible.</li>
 </ol>
 <hr />
-<h2 id="importexpenseclaimitemsitem">Import/ExpenseClaim/Items/Item</h2>
-<p>The attributes supported by the Item element within the xml are listed below:</p>
+<h2 id="item-element">Item Element</h2>
+<p>The attributes supported by the Import/ExpenseClaim/Items/Item element within the xml are listed below:</p>
 <table>
 <thead>
 <tr>
@@ -555,10 +558,41 @@
 </tr>
 </tbody>
 </table>
-<h3 id="notes_4">Notes</h3>
+<h3 id="notes_5">Notes</h3>
 <ol>
 <li>The claim must contain at least one item.</li>
-</ol></div>
+</ol>
+<hr />
+<h2 id="nominal-element">Nominal Element</h2>
+<p>The attributes supported by the Import/ExpenseClaim/Items/Item/Nominals/Nominal element within the xml are listed below:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ratio</td>
+<td>Ratio of this nominal to the other nominals on the line.  If missing, the ratio will be set to 1.</td>
+</tr>
+<tr>
+<td>AccountingElement1-8</td>
+<td>The nominal must pass the standard PROACTIS rules for nominal validation.</td>
+</tr>
+<tr>
+<td>NominalMask</td>
+<td>Applies the coding from a nominal mask attached to the item.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="notes_6">Notes</h3>
+<ol>
+<li>The item must contain at least one nominal</li>
+<li>Any accounting elements attached to the item/user/department/template or company will be preset by default, in exactly the same way as normal expense claims are created.</li>
+</ol>
+<hr /></div>
         </div>
 
         <footer class="col-md-12">
