@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="David Betteridge">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Purchase Invoices - Technical Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/extra.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Technical Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">PROACTIS</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">P2P <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../sso/">Single Sign On (SSO)</a>
+</li>
+                            
+<li >
+    <a href="../punchout/">PunchOut / Marketplaces</a>
+</li>
+                            
+<li >
+    <a href="../nominalvalidation/">Nominal Validation</a>
+</li>
+                            
+<li >
+    <a href="../budgetchecking/">Budget Checking</a>
+</li>
+                            
+<li >
+    <a href="../customtab/">Custom Tabs</a>
+</li>
+                            
+<li >
+    <a href="../addins/">Addins</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Imaging Integration</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../genericimaging/">Generic Imaging</a>
+</li>
+            
+<li >
+    <a href="../customimaging/">Custom Imaging</a>
+</li>
+    </ul>
+  </li>
+                            
+<li >
+    <a href="../commitments/">Commitment Posting</a>
+</li>
+                            
+<li >
+    <a href="../invoicePosting/">Invoice Posting</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Import APIs</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../acceptanceGateway/">Acceptances</a>
+</li>
+            
+<li >
+    <a href="../expensesGateway/">Expenses</a>
+</li>
+            
+<li class="active">
+    <a href="./">Purchase Invoices</a>
+</li>
+    </ul>
+  </li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">Spend Analytics</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">APF</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">S2C</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">DueNorth</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">System4</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../expensesGateway/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../placeholder/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/proactis-documentation/ExampleApplications">CodeExamples
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#purchase-invoice-gateway">Purchase Invoice Gateway</a></li>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
+            <li><a href="#order-based-invoices-worked-example">Order Based Invoices - Worked Example</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="purchase-invoice-gateway">Purchase Invoice Gateway</h1>
+<h2 id="summary">Summary</h2>
+<p>This document describes the structure of the XML file used for importing Purchase Invoices into PROACTIS.  It is assumed that the reader of the document is familiar both with XML and PROACTIS invoicing.</p>
+<p>The document also describes the validation rules, which must be passed in order for the invoice to be imported, and the current limitations of the invoice matching gateway.</p>
+<p>This document should be used in conjunction with the <strong>ImportPurchaseInvoices.xsd</strong> xml schema</p>
+<h2 id="limitations-of-the-gateway">Limitations of the Gateway</h2>
+<p>The current release of the invoice gateway is subjected to the following invoice matching limitations.  </p>
+<ul>
+<li>It is not possible to set the supplier’s branch on the invoice.  The default invoicing branch will be selected.</li>
+<li>The imported invoice cannot contain items which are not on the original orders.  Unexpected items are NOT supported.</li>
+<li>The quantity on the invoice cannot exceed the quantity expected from the order unless complete nominal information is included in the import file.</li>
+<li>The Invoice Gateway only supports the import of external invoices.  To import internal invoices, use the Internal Invoice Gateway.</li>
+<li>If the quantity on an order exceeds the quantity on the invoice, then the quantity will be allocated to the line nominals in a first-come-first-served basis.</li>
+<li>Withholding tax is not supported</li>
+<li>As with the other XML gateways, an XML document can only contain documents for a single company.</li>
+<li>As with the other XML gateways, an XML document can only contain documents for a single department.</li>
+<li>The schema, documentation and error messages are all written in English.</li>
+</ul>
+<h2 id="order-based-invoices-worked-example">Order Based Invoices - Worked Example</h2>
+<p>This section of the document walks you through the creation of a simple document. </p>
+<h3 id="xml-document">XML Document</h3>
+<p>The xml document must start with the following to lines</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;pro:Import xmlns:pro=&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;
+</code></pre>
+
+<p>And finish with</p>
+<pre><code class="xml">&lt;/pro:Import&gt;
+</code></pre>
+
+<h3 id="control-block">Control Block</h3>
+<p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
+<p>An example control block is shown below.</p>
+<pre><code class="xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
+              UserName=&quot;DAVIDBETTERIDGE&quot;
+              Password=&quot;mysecret&quot;
+              Company=&quot;MAIN&quot;
+              Department=&quot;SOLUTIONS&quot;
+              Version=&quot;1.0.0&quot; /&gt;
+</code></pre>
+
+<p>The XML gateway supports NT authentication, an example is shown below.</p>
+<pre><code class="xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
+                 AuthenticationMethod=&quot;WINDOWS&quot;
+                 Company=&quot;MAIN&quot;
+                 Department=&quot;SOLUTIONS&quot;
+                 Version=&quot;1.0.0&quot; /&gt;
+</code></pre>
+
+<p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
+<h3 id="invoice">Invoice</h3>
+<p>The next section contains the details of the invoices to be imported.  The gateway allows multiple claims to be included in a single xml document.  At least one invoice must be included.</p>
+<pre><code class="xml">&lt;pro:Invoice  InvoiceDate='2003-08-27'              
+              SupplierInvoiceNumber='PR-234' 
+              Template='PINV' 
+              Tray='Standard' 
+              GrossValue='1'
+              Supplier='510632'
+              ImageReference='10'/&gt;
+</code></pre>
+
+<h3 id="notes">Notes</h3>
+<ul>
+<li>The template must be an invoicing template, which the user has access to.</li>
+<li>If the template is not provided, then the gateway attempts to automatically select one.  This is only possible if the user only has access to a single template.  In order to pick a template, the gateway must first determine if the invoice is a stand-alone or order based.</li>
+<li>The gateway assumes the invoice is a standalone invoice if either</li>
+<li>One or more non-order items are supplied</li>
+<li>The authorisation pool is specified</li>
+</ul>
+<p>Otherwise, the invoice is treated as an order based invoice.
+<em> The tray must an invoicing tray, which the user has access to.
+</em> If the tray is missing, then the user’s default tray is used.
+<em> The supplier invoice number must unique for this supplier
+</em> The invoice date should be in the format yyyy-mm-dd
+<em> The ImageReference value also supports Settlement Discount, so if you have settlement discount switched on; use this field to enter the percentage discount – this must be a number only if settlement discount is active.
+</em> Post-match authorisation is supported by the invoice XML gateway – simply activate this property on the supplier and set the supplier on the invoice… post-match authorisation will be adopted.
+<em> The Supplier attribute must be set if the invoice has no related purchase orders, or the supplier is a one-off supplier.
+</em> The authorisation pool must be supplied if the template is used for standalone invoices.  (The pool can’t be supplied if the template isn’t used for standalone invoices).</p>
+<h3 id="invoice-items">Invoice Items</h3>
+<p>Then the orders and items against which the invoice will be matched are listed.</p>
+<pre><code class="xml">&lt;pro:ParentOrders&gt;                   
+  &lt;pro:ParentOrder    OrderNumber='PORD10034'&gt;
+    &lt;pro:Item    Position='1'   Value='1'/&gt;
+    &lt;pro:Item    Position='2'   Price='1'  Quantity='1'&gt;
+              &lt;pro:Nominals&gt;
+                      &lt;pro:Nominal   Code='ABC.XYZ'   Quantity='1' CommitmentDate='2005-12-18' /&gt;
+              &lt;/pro:Nominals&gt;
+    &lt;/pro:Item&gt; 
+&lt;/pro:ParentOrder&gt;
+&lt;/pro:ParentOrders&gt;
+</code></pre>
+
+<h3 id="notes_1">Notes</h3>
+<ul>
+<li>The items refer to the item lines on the orders, not the nominal period lines.  Quantities will be allocated to the nominals on a first-come-first-severed basis if the details are not specified in the import document.</li>
+<li>Depending on the type of item, either the Price plus Quantity should be provided or the Value.</li>
+<li>The position is used to specify the item on the purchase order or an order amendment. For example, if the order has three lines, and has an amendment for an additional line, then a position of 4 would refer to the new line on the order amendment.</li>
+<li>If no parent orders are specified then the invoice can only be registered.  In this case, the supplier must set.</li>
+<li>In additional to the nominal coding, a commitment date can also be specified to help identify the order nominal to invoice.</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>(C) PROACTIS Group Ltd - All Rights Reserved</p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
