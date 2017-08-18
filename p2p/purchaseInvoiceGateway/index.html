@@ -240,15 +240,17 @@
 <li>One or more non-order items are supplied</li>
 <li>The authorisation pool is specified</li>
 </ul>
-<p>Otherwise, the invoice is treated as an order based invoice.
-<em> The tray must an invoicing tray, which the user has access to.
-</em> If the tray is missing, then the user’s default tray is used.
-<em> The supplier invoice number must unique for this supplier
-</em> The invoice date should be in the format yyyy-mm-dd
-<em> The ImageReference value also supports Settlement Discount, so if you have settlement discount switched on; use this field to enter the percentage discount – this must be a number only if settlement discount is active.
-</em> Post-match authorisation is supported by the invoice XML gateway – simply activate this property on the supplier and set the supplier on the invoice… post-match authorisation will be adopted.
-<em> The Supplier attribute must be set if the invoice has no related purchase orders, or the supplier is a one-off supplier.
-</em> The authorisation pool must be supplied if the template is used for standalone invoices.  (The pool can’t be supplied if the template isn’t used for standalone invoices).</p>
+<p>Otherwise, the invoice is treated as an order based invoice.</p>
+<ul>
+<li>The tray must an invoicing tray, which the user has access to.</li>
+<li>If the tray is missing, then the user’s default tray is used.</li>
+<li>The supplier invoice number must unique for this supplier</li>
+<li>The invoice date should be in the format yyyy-mm-dd</li>
+<li>The ImageReference value also supports Settlement Discount, so if you have settlement discount switched on; use this field to enter the percentage discount – this must be a number only if settlement discount is active.</li>
+<li>Post-match authorisation is supported by the invoice XML gateway – simply activate this property on the supplier and set the supplier on the invoice… post-match authorisation will be adopted.</li>
+<li>The Supplier attribute must be set if the invoice has no related purchase orders, or the supplier is a one-off supplier.</li>
+<li>The authorisation pool must be supplied if the template is used for standalone invoices.  (The pool can’t be supplied if the template isn’t used for standalone invoices).</li>
+</ul>
 <h3 id="invoice-items">Invoice Items</h3>
 <p>Then the orders and items against which the invoice will be matched are listed.</p>
 <pre><code class="xml">&lt;pro:ParentOrders&gt;                   
