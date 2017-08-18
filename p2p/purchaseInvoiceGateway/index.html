@@ -166,8 +166,10 @@
         <li class="main active"><a href="#purchase-invoice-gateway">Purchase Invoice Gateway</a></li>
             <li><a href="#summary">Summary</a></li>
             <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
-            <li><a href="#order-based-invoices-worked-example">Order Based Invoices - Worked Example</a></li>
-            <li><a href="#standalone-invoices-worked-example">Standalone Invoices - Worked Example</a></li>
+            <li><a href="#order-based-invoices">Order Based Invoices</a></li>
+            <li><a href="#standalone-invoices">Standalone Invoices</a></li>
+            <li><a href="#error-handling">Error Handling</a></li>
+            <li><a href="#successful-response">Successful Response</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -191,7 +193,7 @@
 <li>The schema, documentation and error messages are all written in English.</li>
 </ul>
 <hr />
-<h2 id="order-based-invoices-worked-example">Order Based Invoices - Worked Example</h2>
+<h2 id="order-based-invoices">Order Based Invoices</h2>
 <p>This section of the document walks you through the creation of a simple order based invoice. </p>
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
@@ -340,7 +342,7 @@
 </code></pre>
 
 <hr />
-<h2 id="standalone-invoices-worked-example">Standalone Invoices - Worked Example</h2>
+<h2 id="standalone-invoices">Standalone Invoices</h2>
 <p>This section of the document walks you through the creation of a simple standalone invoice. This is a type of invoices which is not matched to parent purchase orders.</p>
 <p>The gateway assumes the invoice is a standalone invoice if 
 <em> One or more non-order items are supplied
@@ -451,6 +453,87 @@ ImageReference=&quot;10&quot;/&gt;
 <li>If no nominals are specified, then a single nominal line will automatically be created. It’s coding will be provided by PROACTIS.</li>
 <li>The NominalMask must refer to a nominal mask attached to the item master.</li>
 <li>The quantities must sum to the quantities set against the parent item.</li>
+</ul>
+<hr />
+<h2 id="error-handling">Error Handling</h2>
+<p>By default the import routine will return the XML amended to include status and error information.</p>
+<p>When a piece of data has been processed, then an extra attribute called status will be added to the node, this will contain the value OK, FAILED or REGISTERED.  OK means the invoice was fully imported successfully.  FAILED means the invoice could not be imported.  REGISTERED means the initial values of the invoice have been successfully imported but a problem occurred when trying to set specific item details requiring the invoice to be matched manually.</p>
+<p>Note: Nodes without this attribute have not been processed.</p>
+<p>he supplied XML is first validated against the <strong>ImportPurchaseCreditNotes.xsd</strong> schema.  If the invoice fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block</p>
+<p>An example errors block is shown below</p>
+<pre><code class="xml">&lt;pro:Errors&gt;
+  &lt;pro:Error Number='-1072898030' 
+             Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ExpenseClaim'/&gt;
+&lt;/pro:Errors&gt;
+</code></pre>
+
+<h3 id="errorserror">Errors/Error</h3>
+<table>
+<thead>
+<tr>
+<th>Attribute Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number</td>
+<td>Internal Error Number - this may change between releases</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>The error message (in English)</td>
+</tr>
+<tr>
+<td>Source</td>
+<td>Optional attribute describing where the error occurred.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="notes_10">Notes</h4>
+<ul>
+<li>
+<p>The error block may occur anywhere within the document.  For example, if a line is invalid, the errors block will be appended to that line.</p>
+</li>
+<li>
+<p>It is possible for an errors block to contain more than one error.</p>
+</li>
+</ul>
+<h3 id="errorhandlingmodes">ErrorHandlingModes</h3>
+<p>The reporting of errors can be configured by setting the <strong>ErrorHandlingMode</strong> attribute within the control block.  The table below describes the available modes</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMBED</td>
+<td>The processed XML is returned, but we the error message stored in additional <strong>pro:Errors/pro:Error</strong> nodes. This is the default mode if the attribute is not supplied.</td>
+</tr>
+<tr>
+<td>THROWERRORS</td>
+<td>The errors are thrown as SOAP exceptions back to the calling code, the message is an xml document describing the errors</td>
+</tr>
+<tr>
+<td>THROWXML</td>
+<td>The errors are thrown as SOAP exceptions back to the calling code; the message is the processed xml document, which contains all the errors.</td>
+</tr>
+<tr>
+<td>THROWTEXT</td>
+<td>The errors are thrown as OAP exceptions back to the calling code, the message is an human readable text describing the errors.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="successful-response">Successful Response</h2>
+<p>If a document has been successfully imported, then two new attributes will be added the documents's node.
+1. The first attribute is Status, and will have a value of OK
+2. The second attribute is DocumentNumber, and this will contain the invoices generated number.</p>
+<h4 id="note">Note</h4>
+<ul>
+<li>If the XML contains multiple documents, then as long as the control block is valid, it is possible for some documents to be imported and other to be rejected.</li>
 </ul></div>
         </div>
 
