@@ -175,6 +175,8 @@
             <li><a href="#summary">Summary</a></li>
             <li><a href="#process-overview">Process Overview</a></li>
             <li><a href="#worked-example">Worked Example</a></li>
+            <li><a href="#errors">Errors</a></li>
+            <li><a href="#example-code">Example Code</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -184,7 +186,7 @@
 <p>This document describes how to cancel purchase orders using the PROACTIS web services.</p>
 <p>It is assumed that the reader of the document is familiar both with XML and PROACTIS ordering.</p>
 <p>The document also describes the validation rules, which must be passed in order for the order to be cancelled and any current limitations of the gateway.</p>
-<p>This document should be used in conjunction with the AuthenticateUser.xsd xml schema</p>
+<p>This document should be used in conjunction with the <strong>AuthenticateUser.xsd</strong> xml schema</p>
 <hr />
 <h2 id="process-overview">Process Overview</h2>
 <p>The following information is passed to the web service call</p>
@@ -228,18 +230,48 @@
 </code></pre>
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
-<h3 id="order-identification">Order Identification</h3>
-<p>There are two ways in which the purchase order to cancel can be identified. </p>
-<p>Either supply the order’s
-1. TemplateLabel and numeric Number
-Or
-2. The DisplayNumber</p>
-<p>If the DisplayNumber is supplied, then the TemplateLabel and Number are ignored.</p>
-<p>An error will be reported if either the order doesn’t exist, or it’s not in a state to be cancelled.</p>
+<h3 id="web-services">Web Services</h3>
+<p>There are two different web services available depending on how the purchase order will be identified.</p>
+<h4 id="cancelorderbyguid">CancelOrderByGUID</h4>
+<p>If you know the order's internal GUID; then the <strong>CancelOrderByGUID</strong> method should be used.
+This method takes the following arguments:</p>
+<ul>
+<li>ControlXML</li>
+<li>OrderGUID</li>
+<li>CancellationReason</li>
+<li>Comments</li>
+</ul>
+<h4 id="cancelorder">CancelOrder</h4>
+<p>If you only know the order's document number; then the <strong>CancelOrder</strong> method should be used.
+This method takes the following arguments:</p>
+<ul>
+<li>ControlXML</li>
+<li>TemplateLabel</li>
+<li>OrderNumber</li>
+<li>DisplayNumber</li>
+<li>CancellationReason</li>
+<li>Comments</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>The order can be identified by either of the following arguments
+    1. TemplateLabel and numeric Number
+    2. The DisplayNumber
+  If the DisplayNumber is supplied, then the TemplateLabel and Number are ignored.</p>
 <h3 id="cancellation-reason">Cancellation Reason</h3>
-<p>The reason for cancellation the order must be supplied.  Reasons are defined in the List snapin within the PROACTIS management console.</p>
+<p>The reason for cancellation the order must be supplied.  Reasons are defined in the List snap-in within the PROACTIS management console.</p>
 <h3 id="comments">Comments</h3>
-<p>Finally, any additional comments can be supplied.</p></div>
+<p>Finally, any additional comments can be supplied.</p>
+<h2 id="errors">Errors</h2>
+<p>If the order does not exist,  or is not in a state where it can be cancelled then the gateway will throw the following fault:
+<strong>The order is not available for cancellation</strong></p>
+<h2 id="example-code">Example Code</h2>
+<p>See the following example applications:</p>
+<ul>
+<li><a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Gateways/PROACTIS.ExampleApplication.CancelOrder">Cancel Order</a>
+( <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Gateways/PROACTIS.ExampleApplication.CancelOrderByGUID">Cancel Order by GUID</a></li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">

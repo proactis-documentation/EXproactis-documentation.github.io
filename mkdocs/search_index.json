@@ -1107,7 +1107,7 @@
         },
         {
             "location": "/p2p/cancelPurhaseOrderGateway/",
-            "text": "Cancel Purchase Order Gateway\n\n\nSummary\n\n\nThis document describes how to cancel purchase orders using the PROACTIS web services.\n\n\nIt is assumed that the reader of the document is familiar both with XML and PROACTIS ordering.\n\n\nThe document also describes the validation rules, which must be passed in order for the order to be cancelled and any current limitations of the gateway.\n\n\nThis document should be used in conjunction with the AuthenticateUser.xsd xml schema\n\n\n\n\nProcess Overview\n\n\nThe following information is passed to the web service call\n\n\n\n\nAn xml control block, which authenticates the user onto a PROACTIS database.\n\n\nThe purchase order to cancel\n\n\nThe reason why the order is being cancelled\n\n\nAny additional comments.\n\n\n\n\nAs with the front end, not all orders are in a state where they can be cancelled.  For example, a fully invoiced order can not be cancelled.\n\n\n\n\nWorked Example\n\n\nThis section of the document walks you through the cancellation of a purchase order.\n\n\nAuthenticateUser XML Document\n\n\nThe xml document must start with the following to lines\n\n\n<?xml version=\u201d1.0\u201d ?>  \n  <pro:AuthenticateUser xmlns:pro=\u201dhttp://www.proactis.com/xml/xml-ns\u201d>\n\n\n\n\nAnd finish with\n\n\n</pro: AuthenticateUser >\n\n\n\n\nControl Block\n\n\nA control block must then be included so that the gateway knows which database and company to log into.  This has the same structure as the control block for the other XML gateways.\n\n\nAn example control block is shown below.\n\n\n <pro:Control DatabaseName=\"PROACTIS\"\n              UserName=\"DAVIDBETTERIDGE\"\n              Password=\"mysecret\"\n              Company=\"MAIN\"\n              Department=\"SOLUTIONS\"\n              Version=\"1.0.0\" />\n\n\n\n\nThe XML gateway supports NT authentication, an example is shown below.\n\n\n <pro:Control    DatabaseName=\"PROACTIS\\_LIVE\"\n                 AuthenticationMethod=\"WINDOWS\"\n                 Company=\"MAIN\"\n                 Department=\"SOLUTIONS\"\n                 Version=\"1.0.0\" />\n\n\n\n\nNB: The value of the \nAuthenticationMethod\n field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.\n\n\nOrder Identification\n\n\nThere are two ways in which the purchase order to cancel can be identified. \n\n\nEither supply the order\u2019s\n1. TemplateLabel and numeric Number\nOr\n2. The DisplayNumber\n\n\nIf the DisplayNumber is supplied, then the TemplateLabel and Number are ignored.\n\n\nAn error will be reported if either the order doesn\u2019t exist, or it\u2019s not in a state to be cancelled.\n\n\nCancellation Reason\n\n\nThe reason for cancellation the order must be supplied.  Reasons are defined in the List snapin within the PROACTIS management console.\n\n\nComments\n\n\nFinally, any additional comments can be supplied.",
+            "text": "Cancel Purchase Order Gateway\n\n\nSummary\n\n\nThis document describes how to cancel purchase orders using the PROACTIS web services.\n\n\nIt is assumed that the reader of the document is familiar both with XML and PROACTIS ordering.\n\n\nThe document also describes the validation rules, which must be passed in order for the order to be cancelled and any current limitations of the gateway.\n\n\nThis document should be used in conjunction with the \nAuthenticateUser.xsd\n xml schema\n\n\n\n\nProcess Overview\n\n\nThe following information is passed to the web service call\n\n\n\n\nAn xml control block, which authenticates the user onto a PROACTIS database.\n\n\nThe purchase order to cancel\n\n\nThe reason why the order is being cancelled\n\n\nAny additional comments.\n\n\n\n\nAs with the front end, not all orders are in a state where they can be cancelled.  For example, a fully invoiced order can not be cancelled.\n\n\n\n\nWorked Example\n\n\nThis section of the document walks you through the cancellation of a purchase order.\n\n\nAuthenticateUser XML Document\n\n\nThe xml document must start with the following to lines\n\n\n<?xml version=\u201d1.0\u201d ?>  \n  <pro:AuthenticateUser xmlns:pro=\u201dhttp://www.proactis.com/xml/xml-ns\u201d>\n\n\n\n\nAnd finish with\n\n\n</pro: AuthenticateUser >\n\n\n\n\nControl Block\n\n\nA control block must then be included so that the gateway knows which database and company to log into.  This has the same structure as the control block for the other XML gateways.\n\n\nAn example control block is shown below.\n\n\n <pro:Control DatabaseName=\"PROACTIS\"\n              UserName=\"DAVIDBETTERIDGE\"\n              Password=\"mysecret\"\n              Company=\"MAIN\"\n              Department=\"SOLUTIONS\"\n              Version=\"1.0.0\" />\n\n\n\n\nThe XML gateway supports NT authentication, an example is shown below.\n\n\n <pro:Control    DatabaseName=\"PROACTIS\\_LIVE\"\n                 AuthenticationMethod=\"WINDOWS\"\n                 Company=\"MAIN\"\n                 Department=\"SOLUTIONS\"\n                 Version=\"1.0.0\" />\n\n\n\n\nNB: The value of the \nAuthenticationMethod\n field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.\n\n\nWeb Services\n\n\nThere are two different web services available depending on how the purchase order will be identified.\n\n\nCancelOrderByGUID\n\n\nIf you know the order's internal GUID; then the \nCancelOrderByGUID\n method should be used.\nThis method takes the following arguments:\n\n\n\n\nControlXML\n\n\nOrderGUID\n\n\nCancellationReason\n\n\nComments\n\n\n\n\nCancelOrder\n\n\nIf you only know the order's document number; then the \nCancelOrder\n method should be used.\nThis method takes the following arguments:\n\n\n\n\nControlXML\n\n\nTemplateLabel\n\n\nOrderNumber\n\n\nDisplayNumber\n\n\nCancellationReason\n\n\nComments\n\n\n\n\n\n\nNote\n\n\n\n\nThe order can be identified by either of the following arguments\n    1. TemplateLabel and numeric Number\n    2. The DisplayNumber\n  If the DisplayNumber is supplied, then the TemplateLabel and Number are ignored.\n\n\nCancellation Reason\n\n\nThe reason for cancellation the order must be supplied.  Reasons are defined in the List snap-in within the PROACTIS management console.\n\n\nComments\n\n\nFinally, any additional comments can be supplied.\n\n\nErrors\n\n\nIf the order does not exist,  or is not in a state where it can be cancelled then the gateway will throw the following fault:\n\nThe order is not available for cancellation\n\n\nExample Code\n\n\nSee the following example applications:\n\n\n\n\nCancel Order\n\n( \nCancel Order by GUID",
             "title": "Cancel Purchase Order"
         },
         {
@@ -1117,7 +1117,7 @@
         },
         {
             "location": "/p2p/cancelPurhaseOrderGateway/#summary",
-            "text": "This document describes how to cancel purchase orders using the PROACTIS web services.  It is assumed that the reader of the document is familiar both with XML and PROACTIS ordering.  The document also describes the validation rules, which must be passed in order for the order to be cancelled and any current limitations of the gateway.  This document should be used in conjunction with the AuthenticateUser.xsd xml schema",
+            "text": "This document describes how to cancel purchase orders using the PROACTIS web services.  It is assumed that the reader of the document is familiar both with XML and PROACTIS ordering.  The document also describes the validation rules, which must be passed in order for the order to be cancelled and any current limitations of the gateway.  This document should be used in conjunction with the  AuthenticateUser.xsd  xml schema",
             "title": "Summary"
         },
         {
@@ -1141,19 +1141,39 @@
             "title": "Control Block"
         },
         {
-            "location": "/p2p/cancelPurhaseOrderGateway/#order-identification",
-            "text": "There are two ways in which the purchase order to cancel can be identified.   Either supply the order\u2019s\n1. TemplateLabel and numeric Number\nOr\n2. The DisplayNumber  If the DisplayNumber is supplied, then the TemplateLabel and Number are ignored.  An error will be reported if either the order doesn\u2019t exist, or it\u2019s not in a state to be cancelled.",
-            "title": "Order Identification"
+            "location": "/p2p/cancelPurhaseOrderGateway/#web-services",
+            "text": "There are two different web services available depending on how the purchase order will be identified.",
+            "title": "Web Services"
+        },
+        {
+            "location": "/p2p/cancelPurhaseOrderGateway/#cancelorderbyguid",
+            "text": "If you know the order's internal GUID; then the  CancelOrderByGUID  method should be used.\nThis method takes the following arguments:   ControlXML  OrderGUID  CancellationReason  Comments",
+            "title": "CancelOrderByGUID"
+        },
+        {
+            "location": "/p2p/cancelPurhaseOrderGateway/#cancelorder",
+            "text": "If you only know the order's document number; then the  CancelOrder  method should be used.\nThis method takes the following arguments:   ControlXML  TemplateLabel  OrderNumber  DisplayNumber  CancellationReason  Comments    Note   The order can be identified by either of the following arguments\n    1. TemplateLabel and numeric Number\n    2. The DisplayNumber\n  If the DisplayNumber is supplied, then the TemplateLabel and Number are ignored.",
+            "title": "CancelOrder"
         },
         {
             "location": "/p2p/cancelPurhaseOrderGateway/#cancellation-reason",
-            "text": "The reason for cancellation the order must be supplied.  Reasons are defined in the List snapin within the PROACTIS management console.",
+            "text": "The reason for cancellation the order must be supplied.  Reasons are defined in the List snap-in within the PROACTIS management console.",
             "title": "Cancellation Reason"
         },
         {
             "location": "/p2p/cancelPurhaseOrderGateway/#comments",
             "text": "Finally, any additional comments can be supplied.",
             "title": "Comments"
+        },
+        {
+            "location": "/p2p/cancelPurhaseOrderGateway/#errors",
+            "text": "If the order does not exist,  or is not in a state where it can be cancelled then the gateway will throw the following fault: The order is not available for cancellation",
+            "title": "Errors"
+        },
+        {
+            "location": "/p2p/cancelPurhaseOrderGateway/#example-code",
+            "text": "See the following example applications:   Cancel Order \n(  Cancel Order by GUID",
+            "title": "Example Code"
         },
         {
             "location": "/p2p/expensesGateway/",
