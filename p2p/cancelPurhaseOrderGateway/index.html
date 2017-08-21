@@ -8,7 +8,7 @@
         <meta name="author" content="David Betteridge">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Purchase Invoices - Technical Documentation</title>
+        <title>Cancel Purchase Order - Technical Documentation</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -107,8 +107,8 @@
     <a href="../acceptanceGateway/">Acceptances</a>
 </li>
             
-<li >
-    <a href="../cancelPurhaseOrderGateway/">Cancel Purchase Order</a>
+<li class="active">
+    <a href="./">Cancel Purchase Order</a>
 </li>
             
 <li >
@@ -119,8 +119,8 @@
     <a href="../purchaseCreditNoteGateway/">Purchase Credit Notes</a>
 </li>
             
-<li class="active">
-    <a href="./">Purchase Invoices</a>
+<li >
+    <a href="../purchaseInvoiceGateway/">Purchase Invoices</a>
 </li>
     </ul>
   </li>
@@ -150,12 +150,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../purchaseCreditNoteGateway/">
+                        <a rel="next" href="../acceptanceGateway/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../placeholder/">
+                        <a rel="prev" href="../expensesGateway/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -171,9 +171,10 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#purchase-invoice-gateway">Purchase Invoice Gateway</a></li>
+        <li class="main active"><a href="#cancel-purchase-order-gateway">Cancel Purchase Order Gateway</a></li>
             <li><a href="#summary">Summary</a></li>
-            <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
+            <li><a href="#process-overview">Process Overview</a></li>
+            <li><a href="#worked-example">Worked Example</a></li>
             <li><a href="#order-based-invoices">Order Based Invoices</a></li>
             <li><a href="#standalone-invoices">Standalone Invoices</a></li>
             <li><a href="#error-handling">Error Handling</a></li>
@@ -182,25 +183,67 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="purchase-invoice-gateway">Purchase Invoice Gateway</h1>
+<h1 id="cancel-purchase-order-gateway">Cancel Purchase Order Gateway</h1>
 <h2 id="summary">Summary</h2>
-<p>This document describes the structure of the XML file used for importing Purchase Invoices into PROACTIS.  It is assumed that the reader of the document is familiar both with XML and PROACTIS invoicing.</p>
-<p>The document also describes the validation rules, which must be passed in order for the invoice to be imported, and the current limitations of the invoice matching gateway.</p>
-<p>This document should be used in conjunction with the <strong>ImportPurchaseInvoices.xsd</strong> xml schema</p>
-<h2 id="limitations-of-the-gateway">Limitations of the Gateway</h2>
-<p>The current release of the invoice gateway is subjected to the following invoice matching limitations.  </p>
-<ul>
-<li>It is not possible to set the supplier’s branch on the invoice.  The default invoicing branch will be selected.</li>
-<li>The imported invoice cannot contain items which are not on the original orders.  Unexpected items are NOT supported.</li>
-<li>The quantity on the invoice cannot exceed the quantity expected from the order unless complete nominal information is included in the import file.</li>
-<li>The Invoice Gateway only supports the import of external invoices.  To import internal invoices, use the Internal Invoice Gateway.</li>
-<li>If the quantity on an order exceeds the quantity on the invoice, then the quantity will be allocated to the line nominals in a first-come-first-served basis.</li>
-<li>Withholding tax is not supported</li>
-<li>As with the other XML gateways, an XML document can only contain documents for a single company.</li>
-<li>As with the other XML gateways, an XML document can only contain documents for a single department.</li>
-<li>The schema, documentation and error messages are all written in English.</li>
-</ul>
+<p>This document describes how to cancel purchase orders using the PROACTIS web services.</p>
+<p>It is assumed that the reader of the document is familiar both with XML and PROACTIS ordering.</p>
+<p>The document also describes the validation rules, which must be passed in order for the order to be cancelled and any current limitations of the gateway.</p>
+<p>This document should be used in conjunction with the AuthenticateUser.xsd xml schema</p>
 <hr />
+<h2 id="process-overview">Process Overview</h2>
+<p>The following information is passed to the web service call</p>
+<ul>
+<li>An xml control block, which authenticates the user onto a PROACTIS database.</li>
+<li>The purchase order to cancel</li>
+<li>The reason why the order is being cancelled</li>
+<li>Any additional comments.</li>
+</ul>
+<p>As with the front end, not all orders are in a state where they can be cancelled.  For example, a fully invoiced order can not be cancelled.</p>
+<hr />
+<h2 id="worked-example">Worked Example</h2>
+<p>This section of the document walks you through the cancellation of a purchase order.</p>
+<h3 id="authenticateuser-xml-document">AuthenticateUser XML Document</h3>
+<p>The xml document must start with the following to lines</p>
+<pre><code class="xml">&lt;?xml version=”1.0” ?&gt;  
+  &lt;pro:AuthenticateUser xmlns:pro=”http://www.proactis.com/xml/xml-ns”&gt;
+</code></pre>
+
+<p>And finish with</p>
+<pre><code class="xml">&lt;/pro: AuthenticateUser &gt;
+</code></pre>
+
+<h3 id="control-block">Control Block</h3>
+<p>A control block must then be included so that the gateway knows which database and company to log into.  This has the same structure as the control block for the other XML gateways.</p>
+<p>An example control block is shown below.</p>
+<pre><code class="xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
+              UserName=&quot;DAVIDBETTERIDGE&quot;
+              Password=&quot;mysecret&quot;
+              Company=&quot;MAIN&quot;
+              Department=&quot;SOLUTIONS&quot;
+              Version=&quot;1.0.0&quot; /&gt;
+</code></pre>
+
+<p>The XML gateway supports NT authentication, an example is shown below.</p>
+<pre><code class="xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
+                 AuthenticationMethod=&quot;WINDOWS&quot;
+                 Company=&quot;MAIN&quot;
+                 Department=&quot;SOLUTIONS&quot;
+                 Version=&quot;1.0.0&quot; /&gt;
+</code></pre>
+
+<p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
+<h3 id="order-identification">Order Identification</h3>
+<p>There are two ways in which the purchase order to cancel can be identified. </p>
+<p>Either supply the order’s
+1. TemplateLabel and numeric Number
+Or
+2. The DisplayNumber</p>
+<p>If the DisplayNumber is supplied, then the TemplateLabel and Number are ignored.</p>
+<p>An error will be reported if either the order doesn’t exist, or it’s not in a state to be cancelled.</p>
+<h3 id="cancellation-reason">Cancellation Reason</h3>
+<p>The reason for cancellation the order must be supplied.  Reasons are defined in the List snapin within the PROACTIS management console.</p>
+<h3 id="comments">Comments</h3>
+<p>Finally, any additional comments can be supplied.</p>
 <h2 id="order-based-invoices">Order Based Invoices</h2>
 <p>This section of the document walks you through the creation of a simple order based invoice. </p>
 <h3 id="xml-document">XML Document</h3>
@@ -213,7 +256,7 @@
 <pre><code class="xml">&lt;/pro:Import&gt;
 </code></pre>
 
-<h3 id="control-block">Control Block</h3>
+<h3 id="control-block_1">Control Block</h3>
 <p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
 <pre><code class="xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
@@ -313,7 +356,7 @@
 <ul>
 <li>The address is ignored if it is not a one-off supplier</li>
 </ul>
-<h3 id="comments">Comments</h3>
+<h3 id="comments_1">Comments</h3>
 <p>It is possible to add one or more comments to an invoice</p>
 <pre><code class="xml">&lt;pro:Comments&gt;
   &lt;pro:Comment&gt;Please pay quickly&lt;/pro:Comment&gt;
@@ -356,7 +399,7 @@
 <em> One or more non-order items are supplied
 </em> A standalone purchase invoice is specified.
 * The authorisation pool is specified</p>
-<h3 id="control-block_1">Control Block</h3>
+<h3 id="control-block_2">Control Block</h3>
 <p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
 <pre><code class="xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
