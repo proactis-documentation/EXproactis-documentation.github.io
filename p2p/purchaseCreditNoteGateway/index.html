@@ -169,6 +169,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#purchase-credit-note-gateway">Purchase Credit Note Gateway</a></li>
             <li><a href="#summary">Summary</a></li>
+            <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
             <li><a href="#worked-example">Worked Example</a></li>
             <li><a href="#error-handling">Error Handling</a></li>
             <li><a href="#successful-response">Successful Response</a></li>
@@ -183,10 +184,7 @@
 <p>This document describes the structure of the XML file used for importing Purchase Credit Notes into PROACTIS.  It is assumed that the reader of the document is familiar both with XML and PROACTIS invoicing.</p>
 <p>The document also describes the validation rules, which must be passed in order for the credit note to be imported, and the current limitations of the credit note gateway.</p>
 <p>This document should be used in conjunction with the <strong>ImportPurchaseCreditNotes.xsd</strong> xml schema</p>
-<div class="admonition limitations">
-<p class="admonition-title">Limitations</p>
-</div>
-<p>of the Gateway</p>
+<h2 id="limitations-of-the-gateway">Limitations of the Gateway</h2>
 <p>The initial release of the credit note gateway is subjected to the following limitations.<br />
 <em> It is not possible to set the supplier’s branch on the credit note.  The default invoicing branch will be selected.
 </em> The quantity on the credit note cannot exceed the quantity expected from the credit note unless the complete nominal details are specified in the import file.
@@ -249,8 +247,8 @@
 <li>The supplier credit note number must unique for this supplier</li>
 <li>The credit note date should be in the format yyyy-mm-dd</li>
 </ul>
-<h3 id="credit-note-items">Credit Note Items</h3>
-<p>Then the parent documents (credit notes and/or credit notes) and items against which the credit note will be matched are listed.</p>
+<p>+### Credit Note Items
+Then the parent documents (credit notes and/or credit notes) and items against which the credit note will be matched are listed.</p>
 <pre><code class="xml"> &lt;pro:ParentDocuments&gt;                       
   &lt;pro:ParentDocument DocumentNumber=&quot;PORD10034&quot;&gt;
     &lt;pro:Item Position=&quot;1&quot; Value=&quot;1&quot;/&gt;
