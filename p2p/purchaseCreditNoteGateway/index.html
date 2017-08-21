@@ -169,7 +169,6 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#purchase-credit-note-gateway">Purchase Credit Note Gateway</a></li>
             <li><a href="#summary">Summary</a></li>
-            <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
             <li><a href="#worked-example">Worked Example</a></li>
             <li><a href="#error-handling">Error Handling</a></li>
             <li><a href="#successful-response">Successful Response</a></li>
@@ -184,10 +183,10 @@
 <p>This document describes the structure of the XML file used for importing Purchase Credit Notes into PROACTIS.  It is assumed that the reader of the document is familiar both with XML and PROACTIS invoicing.</p>
 <p>The document also describes the validation rules, which must be passed in order for the credit note to be imported, and the current limitations of the credit note gateway.</p>
 <p>This document should be used in conjunction with the <strong>ImportPurchaseCreditNotes.xsd</strong> xml schema</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<div class="admonition limitations">
+<p class="admonition-title">Limitations</p>
 </div>
-<h2 id="limitations-of-the-gateway">Limitations of the Gateway</h2>
+<p>of the Gateway</p>
 <p>The initial release of the credit note gateway is subjected to the following limitations.<br />
 <em> It is not possible to set the supplier’s branch on the credit note.  The default invoicing branch will be selected.
 </em> The quantity on the credit note cannot exceed the quantity expected from the credit note unless the complete nominal details are specified in the import file.
@@ -240,8 +239,8 @@
 
 </code></pre>
 
-<div class="admonition notes">
-<p class="admonition-title">Notes</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 </div>
 <ul>
 <li>The template must be a credit note template, which the user has access to.</li>
