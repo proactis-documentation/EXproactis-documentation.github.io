@@ -178,6 +178,7 @@
             <li><a href="#standalone-invoices">Standalone Invoices</a></li>
             <li><a href="#error-handling">Error Handling</a></li>
             <li><a href="#successful-response">Successful Response</a></li>
+            <li><a href="#example-code">Example Code</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -206,7 +207,7 @@
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;pro:Import xmlns:pro=&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;
+&lt;pro:Import xmlns:pro=&quot;http://www.proactis.com/xml/xml-ns&quot;&gt;
 </code></pre>
 
 <p>And finish with</p>
@@ -536,12 +537,19 @@ ImageReference=&quot;10&quot;/&gt;
 </tbody>
 </table>
 <h2 id="successful-response">Successful Response</h2>
-<p>If a document has been successfully imported, then two new attributes will be added the documents's node.
-1. The first attribute is Status, and will have a value of OK
-2. The second attribute is DocumentNumber, and this will contain the invoices generated number.</p>
+<p>If a document has been successfully imported, then two new attributes will be added the document's node.</p>
+<ol>
+<li>The first attribute is Status, and will have a value of OK</li>
+<li>The second attribute is DocumentNumber, and this will contain the invoices generated number.</li>
+</ol>
 <h4 id="note">Note</h4>
 <ul>
 <li>If the XML contains multiple documents, then as long as the control block is valid, it is possible for some documents to be imported and other to be rejected.</li>
+</ul>
+<h2 id="example-code">Example Code</h2>
+<p>See the following example applications:</p>
+<ul>
+<li><a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Gateways/PROACTIS.ExampleApplication.CreateInvoice">Create Standalone Invoice</a></li>
 </ul></div>
         </div>
 
