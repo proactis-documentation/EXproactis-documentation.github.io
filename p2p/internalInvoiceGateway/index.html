@@ -8,7 +8,7 @@
         <meta name="author" content="David Betteridge">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Purchase Credit Notes - Technical Documentation</title>
+        <title>Internal Invoices - Technical Documentation</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -115,12 +115,12 @@
     <a href="../expensesGateway/">Expenses</a>
 </li>
             
-<li >
-    <a href="../internalInvoiceGateway/">Internal Invoices</a>
+<li class="active">
+    <a href="./">Internal Invoices</a>
 </li>
             
-<li class="active">
-    <a href="./">Purchase Credit Notes</a>
+<li >
+    <a href="../purchaseCreditNoteGateway/">Purchase Credit Notes</a>
 </li>
             
 <li >
@@ -154,12 +154,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../internalInvoiceGateway/">
+                        <a rel="next" href="../expensesGateway/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../purchaseInvoiceGateway/">
+                        <a rel="prev" href="../purchaseCreditNoteGateway/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -175,40 +175,28 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#purchase-credit-note-gateway">Purchase Credit Note Gateway</a></li>
+        <li class="main active"><a href="#internal-invoice-gateway">Internal Invoice Gateway</a></li>
             <li><a href="#summary">Summary</a></li>
-            <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
             <li><a href="#worked-example">Worked Example</a></li>
             <li><a href="#error-handling">Error Handling</a></li>
             <li><a href="#successful-response">Successful Response</a></li>
-            <li><a href="#example-xml">Example XML</a></li>
-            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#example-code">Example Code</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="purchase-credit-note-gateway">Purchase Credit Note Gateway</h1>
+<h1 id="internal-invoice-gateway">Internal Invoice Gateway</h1>
 <h2 id="summary">Summary</h2>
-<p>This document describes the structure of the XML file used for importing Purchase Credit Notes into PROACTIS.  It is assumed that the reader of the document is familiar both with XML and PROACTIS invoicing.</p>
-<p>The document also describes the validation rules, which must be passed in order for the credit note to be imported, and the current limitations of the credit note gateway.</p>
-<p>This document should be used in conjunction with the <strong>ImportPurchaseCreditNotes.xsd</strong> xml schema</p>
-<h2 id="limitations-of-the-gateway">Limitations of the Gateway</h2>
-<p>The initial release of the credit note gateway is subjected to the following limitations.<br />
-<em> It is not possible to set the supplier’s branch on the credit note.  The default invoicing branch will be selected.
-</em> The quantity on the credit note cannot exceed the quantity expected from the credit note unless the complete nominal details are specified in the import file.
-* If the quantity expected exceeds the quantity on the credit note, then the quantity will be allocated to the line nominals in a first-come-first-served basis.</p>
-<h3 id="_1"></h3>
-<p>For example:</p>
-<p>If the parent credit note has a single line, with a quantity of 6 split equally across two nominals, and a credit note is imported containing a quantity of 4.
-<em> The first nominal will be allocated a quantity of 3 
-</em> The second nominal will be allocated the remaining quantity of 1</p>
+<p>This document describes the structure of the XML file used for importing Internal Invoices into PROACTIS.  It is assumed that the reader of the document is familiar both with XML and PROACTIS internal invoicing.</p>
+<p>The document also describes the validation rules, which must be passed in order for the internal invoice to be imported, and the current limitations of the invoice matching gateway.</p>
+<p>This document should be used in conjunction with the <strong>ImportInternalInvoice.xsd</strong> xml schema.</p>
 <hr />
 <h2 id="worked-example">Worked Example</h2>
-<p>This section of the document walks you through the creation of a simple credit note. </p>
+<p>This section of the document walks you through the creation of a simple internal invoice. </p>
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
 <pre><code class="xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;pro:Import xmlns:pro=&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;
+&lt;pro:Import xmlns:pro=&quot;http://www.proactis.com/xml/xml-ns&quot;&gt;
 </code></pre>
 
 <p>And finish with</p>
@@ -235,86 +223,62 @@
 </code></pre>
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
-<h3 id="credit-note">Credit Note</h3>
-<p>The next section contains the details of the Credit Notes to be imported.  The gateway allows multiple documents to be included in a single xml document.  At least one credit note must be included.</p>
-<pre><code class="xml">          &lt;pro:CreditNote CreditNoteDate=&quot;2005-01-27&quot;              
-                          SupplierCreditNoteNumber=&quot;PR-234&quot; 
-                          Template=&quot;CRED&quot; 
-                          Tray=&quot;Standard&quot; 
-                          GrossValue=&quot;100&quot;&gt;
+<h3 id="internal-invoice">Internal Invoice</h3>
+<p>The next section contains the details of the invoices to be imported.  The gateway allows multiple documents to be included in a single xml document.  At least one invoice must be included.</p>
+<pre><code class="xml">&lt;pro:InternalInvoice&gt;
+</code></pre>
 
+<h3 id="order-items">Order Items</h3>
+<p>Then the order's items (and item details) to which the internal invoice relates are listed.</p>
+<pre><code class="xml">&lt;pro:OrderItems OrderNumber=&quot;PORD10035&quot;&gt;                 
+  &lt;pro:OrderItem Position=&quot;1&quot;
+                 Price=&quot;7.99&quot;
+                 Quantity=&quot;5&quot;
+                 Description=&quot;Test Internal Order Item&quot;&gt;
+    &lt;pro:OrderNominals&gt;
+      &lt;pro:OrderNominal    Code=&quot;ABC.123&quot;
+          Quantity=&quot;3&quot;
+          Price=&quot;7.99&quot;/&gt;
+      &lt;/pro:OrderNominals&gt;
+  &lt;/pro:OrderItem&gt;
+&lt;/pro:OrderItems&gt;
 </code></pre>
 
 <h4 id="notes">Notes</h4>
 <ul>
-<li>The template must be a credit note template, which the user has access to.</li>
-<li>The tray must an invoicing tray, which the user has access to.</li>
-<li>If the tray is missing, then the user’s default tray is used.</li>
-<li>The supplier credit note number must unique for this supplier</li>
-<li>The credit note date should be in the format yyyy-mm-dd</li>
+<li>The OrderNumber must relate to an order with an internal supplier,</li>
+<li>The Price, Quantity and Description can be used to override the values set on the order.</li>
+<li>For DataEntryByValue items, the NetValue should be supplied instead of the Price and Quantity.</li>
+<li>The Nominal elements can reallocate the order items to different nominals.</li>
 </ul>
-<h3 id="credit-note-items">Credit Note Items</h3>
-<p>Then the parent documents (credit notes and/or credit notes) and items against which the credit note will be matched are listed.</p>
-<pre><code class="xml"> &lt;pro:ParentDocuments&gt;                       
-  &lt;pro:ParentDocument DocumentNumber=&quot;PORD10034&quot;&gt;
-    &lt;pro:Item Position=&quot;1&quot; Value=&quot;1&quot;/&gt;
-    &lt;pro:Item Position=&quot;2&quot; Price=&quot;1&quot; Quantity=&quot;1&quot;&gt;
-      &lt;pro:Nominals&gt;
-        &lt;pro:Nominal Code=&quot;ABC.XYZ&quot; Quantity=&quot;1&quot;/&gt;
-      &lt;/pro:Nominals&gt;
-    &lt;/pro:Item&gt; 
-  &lt;/pro:ParentDocument&gt;
-&lt;/pro:ParentDocuments&gt;
+<h3 id="invoice-items">Invoice Items</h3>
+<p>The invoice items are listed next in a similar format</p>
+<pre><code class="xml">&lt;pro:InvoiceItems&gt;                   
+  &lt;pro:InvoiceItem BuyerItemCode=&quot;ABC&quot;
+                   SupplierItemCode=&quot;123&quot;
+                   Description=&quot;Test Internal Order Item&quot;
+                   Quantity=&quot;5&quot;
+                   Price=&quot;7.99&quot;&gt;
+    &lt;pro:InvoiceNominals&gt;
+      &lt;pro:InvoiceNominal Code=&quot;ABC.123&quot; Value=&quot;3&quot;/&gt;
+    &lt;/pro:InvoiceNominals&gt;
+   &lt;/pro:InvoiceItem&gt;
+&lt;/pro:InvoiceItems&gt;
 </code></pre>
 
-<h4 id="notes_1">Notes</h4>
-<ul>
-<li>The items refer to the item lines on the parent documents, not the nominal period lines.  Quantities will be allocated to the nominals on a first-come-first-severed basis if the details are not specified in the import document.</li>
-<li>Depending on the type of item, either the Price plus Quantity should be provided or the Value.</li>
-<li>The position is used to specify the item on the purchase credit note or credit note.</li>
-<li>If no parent documents are specified then the credit note can only be registered.  In this case, the supplier must set.</li>
-</ul>
-<h3 id="tax">Tax</h3>
-<p>As well as the parent documents, the credit note must also include the tax details.</p>
-<pre><code class="xml">&lt;pro:TaxDetails&gt;
-  &lt;pro:Tax Band='VAT' BandNumber='1' Code='STD' GrossValue='1.18' TaxValue='0.18'/&gt;
- &lt;/pro:TaxDetails&gt;
-</code></pre>
-
-<h4 id="notes_2">Notes</h4>
-<ul>
-<li>If the TaxValue is missing, then it will be automatically calculated.</li>
-<li>The Band can be identified by either its name (Band) or number (BandNumber). If neither is specified then the first band is assumed.</li>
-</ul>
-<h3 id="supplier">Supplier</h3>
-<p>If the supplier is a one-off supplier, then their address details must also be set.</p>
-<pre><code class="xml">&lt;pro:SupplierAddress  Name='Accounts' 
-                      Line1='12 The close' 
-                      Line2='East Kettlewell' 
-                      Line3='' 
-                      Line4='' 
-                      Town='YORK' 
-                      County='North Yorkshire' 
-                      Country='UK'/&gt;
-</code></pre>
-
-<h4 id="notes_3">Notes</h4>
-<ul>
-<li>The address is ignored if it is not a one-off supplier</li>
-</ul>
 <h3 id="comments">Comments</h3>
-<p>It is possible to add one or more comments to an credit note</p>
+<p>It is possible to add one or more comments to an invoice</p>
 <pre><code class="xml">&lt;pro:Comments&gt;
   &lt;pro:Comment&gt;Please pay quickly&lt;/pro:Comment&gt;
 &lt;/pro:Comments&gt;
 </code></pre>
 
-<h4 id="notes_4">Notes</h4>
+<h4 id="notes_1">Notes</h4>
 <ul>
 <li>It is not currently possible to view comments from within the PROACTIS website.</li>
 </ul>
 <h3 id="references">References</h3>
-<p>It is also possible to set the reference fields on the credit</p>
+<p>It is also possible to set the reference fields on the invoice</p>
 <pre><code class="xml">&lt;pro:References&gt;
           &lt;pro:Reference Caption='Bar code' 
                          Value='345-223-33'
@@ -325,29 +289,27 @@
 &lt;/pro:References&gt;
 </code></pre>
 
-<h4 id="notes_5">Notes</h4>
+<h4 id="notes_2">Notes</h4>
 <ul>
 <li>Any mandatory reference fields without default values must be set.</li>
 <li>Either the code, caption or the position can be specified</li>
 </ul>
-<p>The credit then finishes with a closing tag:</p>
-<pre><code class="xml">&lt;/pro:CreditNote&gt;
+<p>The invoice then finishes with a closing tag:</p>
+<pre><code class="xml">&lt;/pro:InternalInvoice&gt;
 </code></pre>
 
 <p>Finally the XML must be closed as follows:</p>
-<pre><code class="xml">&lt;/pro:Import&gt;
+<pre><code class="xml">&lt;/pro:InternalInvoice&gt;
 </code></pre>
 
 <hr />
 <h2 id="error-handling">Error Handling</h2>
-<p>By default the import routine will return the XML amended to include status and error information.</p>
-<p>When a piece of data has been processed, then an extra attribute called status will be added to the node, this will contain the value OK, FAILED or REGISTERED.  OK means the credit note was fully imported successfully.  FAILED means the credit note could not be imported.  REGISTERED means the initial values of the credit note have been successfully imported but a problem occurred when trying to set specific item details requiring the credit note to be matched manually.</p>
-<p>Note: Nodes without this attribute have not been processed.</p>
-<p>he supplied XML is first validated against the <strong>ImportPurchaseCreditNotes.xsd</strong> schema.  If the credit note fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block</p>
+<p>The import routine will return the XML amended to include status and error information.</p>
+<p>When a piece of data has been processed, then an extra attribute called status will be added to the node, this will contain the value OK or FAILED.  OK means the invoice was fully imported successfully.  FAILED means the invoice could not be imported. Note: Nodes without this attribute have not been processed.</p>
+<p>The supplied XML is first validated against the <strong>ImportInternalInvoices.XSD</strong> schema.  If the invoice fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block.</p>
 <p>An example errors block is shown below</p>
 <pre><code class="xml">&lt;pro:Errors&gt;
-  &lt;pro:Error Number='-1072898030' 
-             Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ParentDocument'/&gt;
+  &lt;pro:Error Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}OrderItems'/&gt;
 &lt;/pro:Errors&gt;
 </code></pre>
 
@@ -361,10 +323,6 @@
 </thead>
 <tbody>
 <tr>
-<td>Number</td>
-<td>Internal Error Number - this may change between releases</td>
-</tr>
-<tr>
 <td>Message</td>
 <td>The error message (in English)</td>
 </tr>
@@ -374,7 +332,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="notes_6">Notes</h4>
+<h4 id="notes_3">Notes</h4>
 <ul>
 <li>
 <p>The error block may occur anywhere within the document.  For example, if a line is invalid, the errors block will be appended to that line.</p>
@@ -412,57 +370,20 @@
 </tbody>
 </table>
 <h2 id="successful-response">Successful Response</h2>
-<p>If a document has been successfully imported, then two new attributes will be added the document's node.
-1. The first attribute is Status, and will have a value of OK
-2. The second attribute is DocumentNumber, and this will contain the Credit Notes generated number.</p>
+<p>If a document has been successfully imported, then two new attributes will be added the document's node.</p>
+<ol>
+<li>The first attribute is Status, and will have a value of OK</li>
+<li>The second attribute is DocumentNumber, and this will contain the invoices generated number.</li>
+</ol>
 <h4 id="note">Note</h4>
 <ul>
 <li>If the XML contains multiple documents, then as long as the control block is valid, it is possible for some documents to be imported and other to be rejected.</li>
 </ul>
-<hr />
-<h2 id="example-xml">Example XML</h2>
-<p>The example below shows a basic single credit note being imported.  The credit note will be matched against the purchase invoice PINV10034. </p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;pro:Import xmlns:pro=&quot;http://www.proactis.com/xml/xml-ns&quot;&gt;
-          &lt;pro:Control   Version=&quot;1.0.0&quot; 
-                         DatabaseName=&quot;DEMO&quot;
-                         UserName=&quot;sysadmin&quot;
-                         Password=&quot;mypassword&quot;/&gt;
-          &lt;pro:CreditNote CreditNoteDate=&quot;2005-01-27&quot;              
-                          SupplierCreditNoteNumber=&quot;CN-234&quot; 
-                          Template=&quot;CRED&quot; 
-                          GrossValue=&quot;1&quot;&gt;
-                          &lt;pro:ParentDocument&gt;
-                            &lt;pro:ParentDocument DocumentNumber=&quot;PINV10034&quot;&gt;
-                                    &lt;pro:Item         Position=&quot;1&quot; 
-                                                         Price=&quot;1&quot; 
-                                                        Quantity=&quot;1&quot;/&gt;
-                            &lt;/pro:ParentDocument&gt;
-                          &lt;/pro:ParentDocuments&gt;
-
-                          &lt;pro:TaxDetails&gt;
-                                    &lt;pro:Tax Band=&quot;VAT&quot; 
-                                             Code=&quot;Z&quot; 
-                                             GrossValue=&quot;1&quot;/&gt;
-                          &lt;/pro:TaxDetails&gt;
-          &lt;/pro:CreditNote&gt;
-&lt;/pro:Import&gt;
-</code></pre>
-
-<hr />
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p><strong>Error</strong>
-You must have at least one tax code.  If there is no tax, then use a zero-rated or exempt code. </p>
-<p><strong>Solution</strong>
-Check the name of the tax band has been specified correctly.</p>
-<p><strong>Error</strong>
-The XML returned by the gateway is blank. </p>
-<p><strong>Solution</strong>
-An error has occurred which could not be handled by the gateway.  Please check the Windows Event Log for additional details.</p>
-<p><strong>Error</strong>
-Element content is invalid according to the DTD/Schema.</p>
-<p><strong>Solution</strong>
-The supplied credit note XML is not in the required format.   Check that the structure of the XML matches the xsd schema.</p></div>
+<h2 id="example-code">Example Code</h2>
+<p>See the following example applications:</p>
+<ul>
+<li><a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Gateways/PROACTIS.ExampleApplication.CreateInvoice">Create Standalone Invoice</a></li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
