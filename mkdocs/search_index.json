@@ -17,7 +17,7 @@
         },
         {
             "location": "/p2p/applicationConfigurationSettings/",
-            "text": "Application Configuration Settings\n\n\nConfiguration\n\n\nThe application configuration values control how the P2P product works at a server level.  These can be configured by either directly amending the \nApplicationConfiguration.xml\n found in the \nConfigurationFolder\n or by using the \nPROACTIS Server Administration\n tool.\n\n\n\n\nOnline Help\n\n\n\n\n\n\n\n\nSetting\n\n\nDefault Value\n\n\nType\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nShowHelp\n\n\nFalse\n\n\nBoolean\n\n\nDisplay the help button at the top right of the window",
+            "text": "Application Configuration Settings\n\n\nConfiguration\n\n\nThe application configuration values control how the P2P product works at a server level.  These can be configured by either directly amending the \nApplicationConfiguration.xml\n found in the \nConfigurationFolder\n or by using the \nPROACTIS Server Administration\n tool.\n\n\n\n\n\n\nNotes\n\n\nThe Category is only used to organise the settings and is ignored by the server.\n\n\n\n\nOnline Help\n\n\n\n\n\n\n\n\nSetting\n\n\nDefault Value\n\n\nType\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nShowHelp\n\n\nFalse\n\n\nBoolean\n\n\nDisplay the help button at the top right of the window",
             "title": "Application Configuration"
         },
         {
@@ -27,7 +27,7 @@
         },
         {
             "location": "/p2p/applicationConfigurationSettings/#configuration",
-            "text": "The application configuration values control how the P2P product works at a server level.  These can be configured by either directly amending the  ApplicationConfiguration.xml  found in the  ConfigurationFolder  or by using the  PROACTIS Server Administration  tool.",
+            "text": "The application configuration values control how the P2P product works at a server level.  These can be configured by either directly amending the  ApplicationConfiguration.xml  found in the  ConfigurationFolder  or by using the  PROACTIS Server Administration  tool.    Notes  The Category is only used to organise the settings and is ignored by the server.",
             "title": "Configuration"
         },
         {
