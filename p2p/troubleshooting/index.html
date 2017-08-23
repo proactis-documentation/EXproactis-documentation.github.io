@@ -194,16 +194,20 @@
 <h3 id="summary">Summary</h3>
 <p>The user receives the error <strong>“New transaction cannot enlist in specified transaction coordinator”</strong> when they try to logon via the website.  The error is also received when they try to amend data using the PROACTIS Management Console (PMC). </p>
 <h3 id="solutions">Solutions</h3>
-<p>There are various different causes to this error, the following should be checked. 
-1.    Network DTC is enabled on the application server, and allows outbound transactions. The server may require a reboot for any changes to these settings to take effect. 
-2.    Network DTC is enabled on the database server, and allows inbound transactions. The server may require a reboot for any changes to these settings to take effect. 
-3.    The two servers can successfully ping each other using both their IP addresses and their names.  If they can’t ping by name, try adding an entry to the hosts file on the machine. 
-4.    Check the windows event log (application) on both machines for any reported errors.  Sometimes an error will be reported prompted and you may need to reinstall MSDTC as below: 
-    * Msdtc –uninstall 
-    * Reboot the server 
-    * Msdtc – install 
-  This is sometimes required when both machines are from the same 'base images'. </p>
+<p>There are various different causes to this error, the following should be checked. </p>
 <ol>
+<li>Network DTC is enabled on the application server, and allows outbound transactions. The server may require a reboot for any changes to these settings to take effect. </li>
+<li>Network DTC is enabled on the database server, and allows inbound transactions. The server may require a reboot for any changes to these settings to take effect. </li>
+<li>The two servers can successfully ping each other using both their IP addresses and their names.  If they can’t ping by name, try adding an entry to the hosts file on the machine. </li>
+<li>
+<p>Check the windows event log (application) on both machines for any reported errors.  Sometimes an error will be reported prompted and you may need to reinstall MSDTC as below: </p>
+<ul>
+<li>Msdtc –uninstall </li>
+<li>Reboot the server </li>
+<li>Msdtc – install 
+  This is sometimes required when both machines are from the same 'base images'. </li>
+</ul>
+</li>
 <li>
 <p>Try the DTC ping utility available from <a href="https://support.microsoft.com/en-gb/help/918331/how-to-troubleshoot-connectivity-issues-in-ms-dtc-by-using-the-dtcping">here</a>.<br />
 If the server reports a warning message saying that the CID values are the same on both machines, then again the two machines have originated from the same image and MSDTC will need to be reinstalled on one of the machines.</p>
@@ -213,18 +217,20 @@ If the server reports a warning message saying that the CID values are the same 
 </li>
 </ol>
 <h3 id="dcomcnfgexe">dcomcnfg.exe</h3>
-<p>Enable MSDTC to allow the network transaction. To do this, follow these steps: 
-<em> Click Start, and then click Run. 
-</em> In the Run dialog box, type <strong>dcomcnfg.exe</strong>, and then click OK. 
-<em> In the Component Services window, expand Component Services, expand Computers, and then expand My Computer. 
-</em> Right-click My Computer, and then click Properties. 
-<em> In the My Computer Properties dialog box, click Security Configuration on the MSDTC tab.
-</em> In the Security Configuration dialog box, click to select the Network DTC Access check box. 
-<em> To allow the distributed transaction to run on this computer from a remote computer, click to select the Allow Inbound check box. 
-</em> To allow the distributed transaction to run on a remote computer from this computer, click to select the Allow Outbound check box. 
-<em> Under the Transaction Manager Communication group, click to select the No Authentication Required option. 
-</em> In the Security Configuration dialog box, click OK. 
-* In the My Computer Properties dialog box, click OK. </p></div>
+<p>Enable MSDTC to allow the network transaction. To do this, follow these steps: </p>
+<ul>
+<li>Click Start, and then click Run. </li>
+<li>In the Run dialog box, type <strong>dcomcnfg.exe</strong>, and then click OK. </li>
+<li>In the Component Services window, expand Component Services, expand Computers, and then expand My Computer. </li>
+<li>Right-click My Computer, and then click Properties. </li>
+<li>In the My Computer Properties dialog box, click Security Configuration on the MSDTC tab.</li>
+<li>In the Security Configuration dialog box, click to select the Network DTC Access check box. </li>
+<li>To allow the distributed transaction to run on this computer from a remote computer, click to select the Allow Inbound check box. </li>
+<li>To allow the distributed transaction to run on a remote computer from this computer, click to select the Allow Outbound check box. </li>
+<li>Under the Transaction Manager Communication group, click to select the No Authentication Required option. </li>
+<li>In the Security Configuration dialog box, click OK. </li>
+<li>In the My Computer Properties dialog box, click OK. </li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
