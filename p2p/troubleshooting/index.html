@@ -8,7 +8,7 @@
         <meta name="author" content="David Betteridge">
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Custom Tabs - Technical Documentation</title>
+        <title>Troubleshooting - Technical Documentation</title>
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -69,8 +69,8 @@
     <a href="../budgetchecking/">Budget Checking</a>
 </li>
                             
-<li class="active">
-    <a href="./">Custom Tabs</a>
+<li >
+    <a href="../customtab/">Custom Tabs</a>
 </li>
                             
 <li >
@@ -129,8 +129,8 @@
     </ul>
   </li>
                             
-<li >
-    <a href="../troubleshooting/">Troubleshooting</a>
+<li class="active">
+    <a href="./">Troubleshooting</a>
 </li>
                         </ul>
                     </li>
@@ -158,12 +158,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../budgetchecking/">
+                        <a rel="next" href="../purchaseInvoiceGateway/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../addins/">
+                        <a rel="prev" href="../../placeholder/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -179,117 +179,52 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#custom-tab">Custom Tab</a></li>
-        <li class="main "><a href="#licence-file">Licence File</a></li>
-        <li class="main "><a href="#development">Development</a></li>
-        <li class="main "><a href="#session-details">Session Details</a></li>
-        <li class="main "><a href="#please-wait-spinner">Please Wait Spinner</a></li>
-        <li class="main "><a href="#user-role-security">User Role Security</a></li>
-        <li class="main "><a href="#example-application">Example Application</a></li>
-        <li class="main "><a href="#troubleshooting">Troubleshooting</a></li>
+        <li class="main active"><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#new-transaction-cannot-enlist-in-the-specified-transaction-coordinator">New Transaction Cannot Enlist in the Specified Transaction Coordinator</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="custom-tab">Custom Tab</h1>
-<p>The P2P website can be extended by creating additional "custom" tabs.  </p>
-<hr />
-<h1 id="licence-file">Licence File</h1>
-<p>In order to display a custom tab you will first need a licence file which includes the name of the tab.  </p>
-<p><img alt="alt text" src="../../img/p2p/customtab/licencefile.bmp" title="Licence File" /></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Please contact your account manager for assistance with this.</p>
-</div>
-<p>In this example the tab will be displayed as  <strong>Manage Resource Bookings</strong> and will only be visible to users with the <strong>MAY_BOOK_RESOURCES</strong> user role.</p>
-<p><img alt="alt text" src="../../img/p2p/customtab/newtab.JPG" title="New Tab" /> </p>
-<hr />
-<h1 id="development">Development</h1>
-<p>Custom tab are developed as independent websites which are then displayed as part of the core site within an iFrame.</p>
-<p><img alt="alt text" src="../../img/p2p/customtab/iframe.JPG" title="iFrame" /></p>
-<p>In the screenshot above,  the blue menu bar comes from the main site,  whilst the remainder of the page (in white) is the custom tab.</p>
-<p>By convention the custom sites are placed within the <strong>WebSite\Customer</strong> folder and are mapped as a virtual application with in IIS.   </p>
-<p><img alt="alt text" src="../../img/p2p/customtab/iis.JPG" title="iis" /></p>
-<p>In order for P2P to know the URL of the page is displayed it's path needs to be added to the <strong>ApplicationConfig.xml</strong> file.</p>
-<p><img alt="alt text" src="../../img/p2p/customtab/config.JPG" title="config" /> </p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>After changing the application configuration file the caches in the website will need refreshing.   This can be done either by recycling the application pool,  or by performing an IIS reset.</p>
-</div>
-<hr />
-<h1 id="session-details">Session Details</h1>
-<p>As the custom tab is running in a different website to the main site it is not possible to share the session state within IIS.</p>
-<p>Instead the following steps must be followed in order to obtain the details of the current user.</p>
-<ul>
-<li>
-<p>Before the main site opens your landing page it first generates a unique session token which is stored in the database within the <strong>dsdba.LoginTokens</strong> table.  This table also holds who the current user is. </p>
-</li>
-<li>
-<p>When the landing page is opened,  it is passed the following information as query string parameters</p>
-<ul>
-<li>Token  (the unique token)</li>
-<li>Title  (the name of the tab)</li>
-<li>URL    (the url of the tab)</li>
-</ul>
-<p>The token argument is made up of the {Database's Title} @ {The unique generated session token}</p>
-</li>
-<li>
-<p>The custom tab should then connect to the P2P database and call the <strong>DSDBA.usp_cust_GetSessionDetailsFromToken</strong> stored procedure supplying the full token.  This stored procedure will return with a single row containing the following columns:</p>
-<ul>
-<li>UserGUID</li>
-<li>LoginID</li>
-<li>CompanyGUID</li>
-<li>CompanyCode</li>
-<li>DepartmentGUID</li>
-<li>DepartmentCode</li>
-<li>StoreGUID</li>
-<li>StoreCode</li>
-<li>SessionID  (the internal P2P session ID)</li>
-<li>Expires  (when the login token will expiry)</li>
-</ul>
-</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The stored procedure will return a row even when the session ID is not valid.  In this case however all the values will be NULL.</p>
-</div>
-<hr />
-<h1 id="please-wait-spinner">Please Wait Spinner</h1>
-<p>Whilst your tab is first loading the main site will be displaying the please wait spinner.  In order to remove the spinner the following javascript code should be added to the end of your first page</p>
-<pre><code class="javascript">    &lt;script type=&quot;text/javascript&quot;&gt;
-        //Hide the spinner in the main window.
-        $().ready(function () {
-            parent.hideSpinner();
-        });
-    &lt;/script&gt;
-</code></pre>
-
-<p>If you wish to re-display the spinner then the following javascript can be used</p>
-<pre><code class="javascript">    &lt;script type=&quot;text/javascript&quot;&gt;
-        window.parent.showSpinner();
-    &lt;/script&gt;
-</code></pre>
-
-<hr />
-<h1 id="user-role-security">User Role Security</h1>
-<p>By default all users have access to the new tab.  If you wish to restrict access to only certain users then the name of a user role (or a custom role) can be specified for the tab within the licence file.</p>
-<p>If you wish to create a custom role,  then you will also need to insert an entry into the <strong>DSDBA.Roles</strong> table with the same name.</p>
-<pre><code class="sql">INSERT INTO DSDBA.Roles (GUID, Code, Description, Properties, CompanyGUID)
-SELECT newID(), 'MAY_BOOK_RESOURCES', 'Users may use the bookings tab', '', C.GUID
-  FROM DSDBA.Companies C
-</code></pre>
-
-<hr />
-<h1 id="example-application">Example Application</h1>
-<p>Please see the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Custom%20Tab">example application</a> for a complete implementation.</p>
-<hr />
 <h1 id="troubleshooting">Troubleshooting</h1>
-<p>If your custom tab does not appear then check the following</p>
+<h2 id="new-transaction-cannot-enlist-in-the-specified-transaction-coordinator">New Transaction Cannot Enlist in the Specified Transaction Coordinator</h2>
+<h3 id="applies-to">Applies To</h3>
+<p>New installs of PROACTIS and the Management Console Server component, where the application and database are on different servers.  </p>
+<h3 id="references">References</h3>
+<p><a href="http://msdn2.microsoft.com/en-us/library/ms679479.aspx">http://msdn2.microsoft.com/en-us/library/ms679479.aspx</a></p>
+<h3 id="summary">Summary</h3>
+<p>The user receives the error <strong>“New transaction cannot enlist in specified transaction coordinator”</strong> when they try to logon via the website.  The error is also received when they try to amend data using the PROACTIS Management Console (PMC). </p>
+<h3 id="solutions">Solutions</h3>
+<p>There are various different causes to this error, the following should be checked. 
+1.    Network DTC is enabled on the application server, and allows outbound transactions. The server may require a reboot for any changes to these settings to take effect. 
+2.    Network DTC is enabled on the database server, and allows inbound transactions. The server may require a reboot for any changes to these settings to take effect. 
+3.    The two servers can successfully ping each other using both their IP addresses and their names.  If they can’t ping by name, try adding an entry to the hosts file on the machine. 
+4.    Check the windows event log (application) on both machines for any reported errors.  Sometimes an error will be reported prompted and you may need to reinstall MSDTC as below: 
+    * Msdtc –uninstall 
+    * Reboot the server 
+    * Msdtc – install 
+  This is sometimes required when both machines are from the same 'base images'. </p>
 <ol>
-<li>Your licence file includes the section for your custom tab.</li>
-<li>If the RelatedRole has been specified in the licence file then the user has been granted that role.</li>
-<li>The URL of the custom page has been specified in the <strong>web.config</strong> file</li>
-</ol></div>
+<li>
+<p>Try the DTC ping utility available from <a href="https://support.microsoft.com/en-gb/help/918331/how-to-troubleshoot-connectivity-issues-in-ms-dtc-by-using-the-dtcping">here</a>.<br />
+If the server reports a warning message saying that the CID values are the same on both machines, then again the two machines have originated from the same image and MSDTC will need to be reinstalled on one of the machines.</p>
+</li>
+<li>
+<p>If the machines are not in the same domain, or in a work group then try reducing the authentication level to <strong>No Authentication Required</strong></p>
+</li>
+</ol>
+<h3 id="dcomcnfgexe">dcomcnfg.exe</h3>
+<p>Enable MSDTC to allow the network transaction. To do this, follow these steps: 
+<em> Click Start, and then click Run. 
+</em> In the Run dialog box, type <strong>dcomcnfg.exe</strong>, and then click OK. 
+<em> In the Component Services window, expand Component Services, expand Computers, and then expand My Computer. 
+</em> Right-click My Computer, and then click Properties. 
+<em> In the My Computer Properties dialog box, click Security Configuration on the MSDTC tab.
+</em> In the Security Configuration dialog box, click to select the Network DTC Access check box. 
+<em> To allow the distributed transaction to run on this computer from a remote computer, click to select the Allow Inbound check box. 
+</em> To allow the distributed transaction to run on a remote computer from this computer, click to select the Allow Outbound check box. 
+<em> Under the Transaction Manager Communication group, click to select the No Authentication Required option. 
+</em> In the Security Configuration dialog box, click OK. 
+* In the My Computer Properties dialog box, click OK. </p></div>
         </div>
 
         <footer class="col-md-12">

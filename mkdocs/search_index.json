@@ -1776,6 +1776,46 @@
             "title": "Example Code"
         },
         {
+            "location": "/p2p/troubleshooting/",
+            "text": "Troubleshooting\n\n\nNew Transaction Cannot Enlist in the Specified Transaction Coordinator\n\n\nApplies To\n\n\nNew installs of PROACTIS and the Management Console Server component, where the application and database are on different servers.  \n\n\nReferences\n\n\nhttp://msdn2.microsoft.com/en-us/library/ms679479.aspx\n\n\nSummary\n\n\nThe user receives the error \n\u201cNew transaction cannot enlist in specified transaction coordinator\u201d\n when they try to logon via the website.  The error is also received when they try to amend data using the PROACTIS Management Console (PMC). \n\n\nSolutions\n\n\nThere are various different causes to this error, the following should be checked. \n1.    Network DTC is enabled on the application server, and allows outbound transactions. The server may require a reboot for any changes to these settings to take effect. \n2.    Network DTC is enabled on the database server, and allows inbound transactions. The server may require a reboot for any changes to these settings to take effect. \n3.    The two servers can successfully ping each other using both their IP addresses and their names.  If they can\u2019t ping by name, try adding an entry to the hosts file on the machine. \n4.    Check the windows event log (application) on both machines for any reported errors.  Sometimes an error will be reported prompted and you may need to reinstall MSDTC as below: \n    * Msdtc \u2013uninstall \n    * Reboot the server \n    * Msdtc \u2013 install \n  This is sometimes required when both machines are from the same 'base images'. \n\n\n\n\n\n\nTry the DTC ping utility available from \nhere\n.\n\nIf the server reports a warning message saying that the CID values are the same on both machines, then again the two machines have originated from the same image and MSDTC will need to be reinstalled on one of the machines.\n\n\n\n\n\n\nIf the machines are not in the same domain, or in a work group then try reducing the authentication level to \nNo Authentication Required\n\n\n\n\n\n\ndcomcnfg.exe\n\n\nEnable MSDTC to allow the network transaction. To do this, follow these steps: \n\n Click Start, and then click Run. \n\n In the Run dialog box, type \ndcomcnfg.exe\n, and then click OK. \n\n In the Component Services window, expand Component Services, expand Computers, and then expand My Computer. \n\n Right-click My Computer, and then click Properties. \n\n In the My Computer Properties dialog box, click Security Configuration on the MSDTC tab.\n\n In the Security Configuration dialog box, click to select the Network DTC Access check box. \n\n To allow the distributed transaction to run on this computer from a remote computer, click to select the Allow Inbound check box. \n\n To allow the distributed transaction to run on a remote computer from this computer, click to select the Allow Outbound check box. \n\n Under the Transaction Manager Communication group, click to select the No Authentication Required option. \n\n In the Security Configuration dialog box, click OK. \n* In the My Computer Properties dialog box, click OK.",
+            "title": "Troubleshooting"
+        },
+        {
+            "location": "/p2p/troubleshooting/#troubleshooting",
+            "text": "",
+            "title": "Troubleshooting"
+        },
+        {
+            "location": "/p2p/troubleshooting/#new-transaction-cannot-enlist-in-the-specified-transaction-coordinator",
+            "text": "",
+            "title": "New Transaction Cannot Enlist in the Specified Transaction Coordinator"
+        },
+        {
+            "location": "/p2p/troubleshooting/#applies-to",
+            "text": "New installs of PROACTIS and the Management Console Server component, where the application and database are on different servers.",
+            "title": "Applies To"
+        },
+        {
+            "location": "/p2p/troubleshooting/#references",
+            "text": "http://msdn2.microsoft.com/en-us/library/ms679479.aspx",
+            "title": "References"
+        },
+        {
+            "location": "/p2p/troubleshooting/#summary",
+            "text": "The user receives the error  \u201cNew transaction cannot enlist in specified transaction coordinator\u201d  when they try to logon via the website.  The error is also received when they try to amend data using the PROACTIS Management Console (PMC).",
+            "title": "Summary"
+        },
+        {
+            "location": "/p2p/troubleshooting/#solutions",
+            "text": "There are various different causes to this error, the following should be checked. \n1.    Network DTC is enabled on the application server, and allows outbound transactions. The server may require a reboot for any changes to these settings to take effect. \n2.    Network DTC is enabled on the database server, and allows inbound transactions. The server may require a reboot for any changes to these settings to take effect. \n3.    The two servers can successfully ping each other using both their IP addresses and their names.  If they can\u2019t ping by name, try adding an entry to the hosts file on the machine. \n4.    Check the windows event log (application) on both machines for any reported errors.  Sometimes an error will be reported prompted and you may need to reinstall MSDTC as below: \n    * Msdtc \u2013uninstall \n    * Reboot the server \n    * Msdtc \u2013 install \n  This is sometimes required when both machines are from the same 'base images'.     Try the DTC ping utility available from  here . \nIf the server reports a warning message saying that the CID values are the same on both machines, then again the two machines have originated from the same image and MSDTC will need to be reinstalled on one of the machines.    If the machines are not in the same domain, or in a work group then try reducing the authentication level to  No Authentication Required",
+            "title": "Solutions"
+        },
+        {
+            "location": "/p2p/troubleshooting/#dcomcnfgexe",
+            "text": "Enable MSDTC to allow the network transaction. To do this, follow these steps:   Click Start, and then click Run.   In the Run dialog box, type  dcomcnfg.exe , and then click OK.   In the Component Services window, expand Component Services, expand Computers, and then expand My Computer.   Right-click My Computer, and then click Properties.   In the My Computer Properties dialog box, click Security Configuration on the MSDTC tab.  In the Security Configuration dialog box, click to select the Network DTC Access check box.   To allow the distributed transaction to run on this computer from a remote computer, click to select the Allow Inbound check box.   To allow the distributed transaction to run on a remote computer from this computer, click to select the Allow Outbound check box.   Under the Transaction Manager Communication group, click to select the No Authentication Required option.   In the Security Configuration dialog box, click OK. \n* In the My Computer Properties dialog box, click OK.",
+            "title": "dcomcnfg.exe"
+        },
+        {
             "location": "/placeholder/",
             "text": "Please contact your account manager for information on integrating with this great product.",
             "title": "Spend Analytics"
