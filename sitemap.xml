@@ -12,6 +12,12 @@
     
         
     <url>
+     <loc></loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>/p2p/sso/</loc>
      <lastmod>2017-08-23</lastmod>
      <changefreq>daily</changefreq>
