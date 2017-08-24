@@ -313,7 +313,7 @@
 <p>None, the &lt;<strong>grs:Content&gt;</strong> element contains no attributes.</p>
 <hr />
 <h2 id="grshelp">grs:Help</h2>
-<p>The &lt;<strong>grs:Help&gt;</strong> element is the outermost element of the help file, and is also known as the root element. It contains a reference to the type of help that this file reflects and the ID of the help that it corresponds to. It also contains the Get Real Systems Ltd. namespace declaration, which is outside the scope of this document. However, the Get Real Systems Ltd. namespace declaration looks like this: <strong>xmlns:grs=”http://www.getrealsystems.com/xml/xml-ns”</strong></p>
+<p>The <strong>&lt;grs:Help&gt;</strong> element is the outermost element of the help file, and is also known as the root element. It contains a reference to the type of help that this file reflects and the ID of the help that it corresponds to. It also contains the Get Real Systems Ltd. namespace declaration, which is outside the scope of this document. However, the Get Real Systems Ltd. namespace declaration looks like this: <strong>xmlns:grs=”http://www.getrealsystems.com/xml/xml-ns”</strong></p>
 <h3 id="format_1">Format</h3>
 <pre><code class="xml">&lt;grs:Help 
     grs:Type=help document type
@@ -323,12 +323,12 @@
 </code></pre>
 
 <h3 id="position_1">Position</h3>
-<p>&lt;<strong>grs:Help&gt;</strong> element always appears as the outermost element of every help file. In other words, there are no other elements that appear outside this element, other than the XML processing instruction, which is outside the scope of this document. An example of the processing instruction can be seen below:</p>
+<p><strong>&lt;grs:Help&gt;</strong> element always appears as the outermost element of every help file. In other words, there are no other elements that appear outside this element, other than the XML processing instruction, which is outside the scope of this document. An example of the processing instruction can be seen below:</p>
 <pre><code class="xml">&lt;?xml version=”1.0”?&gt;
 </code></pre>
 
 <h3 id="content_1">Content</h3>
-<p>The &lt;<strong>grs:Help&gt;</strong> element is allowed one each of the following child elements, but never any text:</p>
+<p>The <strong>&lt;grs:Help&gt;</strong> element is allowed one each of the following child elements, but never any text:</p>
 <pre><code class="xml">&lt;grs:Title&gt;
 &lt;grs:Content&gt;
 &lt;grs:RelatedDocuments&gt;
