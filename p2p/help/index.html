@@ -313,8 +313,7 @@
 <p>None, the &lt;<strong>grs:Content&gt;</strong> element contains no attributes.</p>
 <hr />
 <h2 id="grshelp">grs:Help</h2>
-<p>The &lt;<strong>grs:Help&gt;</strong> element is the outermost element of the help file, and is also known as the root element. It contains a reference to the type of help that this file reflects and the ID of the help that it corresponds to. It also contains the Get Real Systems Ltd. namespace declaration, which is outside the scope of this document. However, the Get Real Systems Ltd. namespace declaration looks like this:</p>
-<p>xmlns:grs=”http://www.getrealsystems.com/xml/xml-ns”</p>
+<p>The &lt;<strong>grs:Help&gt;</strong> element is the outermost element of the help file, and is also known as the root element. It contains a reference to the type of help that this file reflects and the ID of the help that it corresponds to. It also contains the Get Real Systems Ltd. namespace declaration, which is outside the scope of this document. However, the Get Real Systems Ltd. namespace declaration looks like this: <strong>xmlns:grs=”http://www.getrealsystems.com/xml/xml-ns”</strong></p>
 <h3 id="format_1">Format</h3>
 <pre><code class="xml">&lt;grs:Help 
     grs:Type=help document type
@@ -330,9 +329,9 @@
 
 <h3 id="content_1">Content</h3>
 <p>The &lt;<strong>grs:Help&gt;</strong> element is allowed one each of the following child elements, but never any text:</p>
-<pre><code class="xml">+ &lt;grs:Title&gt;
-+ &lt;grs:Content&gt;
-+ &lt;grs:RelatedDocuments&gt;
+<pre><code class="xml">&lt;grs:Title&gt;
+&lt;grs:Content&gt;
+&lt;grs:RelatedDocuments&gt;
 </code></pre>
 
 <h3 id="attributes_1">Attributes</h3>
@@ -347,8 +346,8 @@
 <tbody>
 <tr>
 <td>grs:Type (mandatory)</td>
-<td>&lt;&lt; Page &gt;&gt;</td>
-<td>&lt;&lt; Topic &gt;&gt;</td>
+<td>&lt;&lt; Page &gt;&gt; &#124; &lt;&lt; Topic &gt;&gt;</td>
+<td>Sets the type of help file. Since help files can be categorised into two distinct types, only one of these types is permissable.</td>
 </tr>
 <tr>
 <td>grs:ID (mandatory)</td>
