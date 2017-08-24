@@ -203,6 +203,7 @@
             <li><a href="#grsimage">grs:Image</a></li>
             <li><a href="#grslink">grs:Link</a></li>
             <li><a href="#grslist">grs:List</a></li>
+            <li><a href="#grslistentry">grs:ListEntry</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -498,6 +499,24 @@
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="grslistentry">grs:ListEntry</h2>
+<p><strong>&lt;grs:ListEntry&gt;</strong> element describes each point in a list, and is classed as a formatting element. There is a separate element per point in the list, with each <strong>&lt;grs:ListEntry&gt;</strong> being converted into an individual HTML list item (&lt;LI&gt;). </p>
+<h3 id="format_5">Format</h3>
+<pre><code class="xml">&lt;grs:ListEntry&gt;
+&lt;/grs:ListEntry&gt;
+</code></pre>
+
+<h3 id="position_5">Position</h3>
+<p><strong>&lt;grs:ListEntry&gt;</strong> element must be a child of <strong>&lt;grs:List&gt;</strong> element only.</p>
+<h3 id="content_5">Content</h3>
+<p>May contain multiple occurrences of the following:</p>
+<pre><code class="xml">&lt;grs:Link&gt;
+Text
+</code></pre>
+
+<h3 id="attributes_5">Attributes</h3>
+<p>None, the <strong>&lt;grs:ListEntry&gt;</strong> element has no attributes.</p>
 <hr /></div>
         </div>
 
