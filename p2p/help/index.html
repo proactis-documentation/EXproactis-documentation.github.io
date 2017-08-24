@@ -198,6 +198,8 @@
             <li><a href="#topical-help">Topical Help</a></li>
             <li><a href="#the-toc-table-of-contents">The TOC (Table Of Contents)</a></li>
             <li><a href="#the-help-file">The Help File</a></li>
+            <li><a href="#grscontent">grs:Content</a></li>
+            <li><a href="#grshelp">grs:Help</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -263,7 +265,7 @@
 <h3 id="what-is-the-toc">What is the TOC?</h3>
 <p>The TOC, or table of contents, is an XML file that contains a reference to each topical help file, and how it relates to the topics around it, i.e. who it’s parent topics are, and who it’s child topics are. It’s worth noting that the TOC does NOT relate to any pages, i.e. context help; it only provides access to the topics. For more information about context help and topical help, see the sections above. An example of the TOC can be seen below (figure 3):</p>
 <p>PICTURE</p>
-<p>This TOC gives rise to the tree-view type of structure that can be seen on the left hand side in figure 2. You can see, for instance that the topic Creating an order falls under the topic Orders, which itself falls under the topic Purchasing. If you know a little XML, you’ll notice that each &lt;<strong>grs:HelpTopic&gt;</strong> tag relates to a corresponding <strong></grs:HelpTopic></strong> closing tag if it contains any children. If it doesn’t contain any children, it is simply an empty tag; viz. <strong><grs:HelpTopic /></strong>. </p>
+<p>This TOC gives rise to the tree-view type of structure that can be seen on the left hand side in figure 2. You can see, for instance that the topic Creating an order falls under the topic Orders, which itself falls under the topic Purchasing. If you know a little XML, you’ll notice that each &lt;<strong>grs:HelpTopic&gt;</strong> tag relates to a corresponding &lt;<strong>/grs:HelpTopic&gt;</strong> closing tag if it contains any children. If it doesn’t contain any children, it is simply an empty tag; viz. &lt;<strong>grs:HelpTopic /&gt;</strong>. </p>
 <h3 id="how-does-the-toc-work">How does the TOC work?</h3>
 <p>The TOC is effectively a container with which to hold and manage the table of contents. As mentioned previously, the structure reflects the hierarchical nature of the data. Each HelpTopic tag holds all the information needed to display the corresponding help topic file. Below is an explanation of each HelpTopic attribute:</p>
 <h3 id="displayname">DisplayName</h3>
@@ -290,7 +292,7 @@
 <p>It is also important to discuss some notation. All values surrounded by double chevrons (&lt;&lt; &gt;&gt;) indicate actual values. Where shown, these actual values are case sensitive, so &lt;<yes>&gt; is not the same as &lt;<Yes>&gt; since the second value begins with a capitol letter. Where there are two or more possible values, they are separated by a vertical bar (|), indicating an or possibility, for instance &lt;<yes>&gt; | &lt;<no>&gt; would be indicating possible values of ‘yes’ or ‘no’ only. If one of these values acts as a default value, i.e. if no value is entered this value is assumed, it would look like this, where the value &lt;<no>&gt; is the default value;  &lt;<yes>&gt; | default &lt;<no>&gt;. </p>
 <p>So, armed with this information, let’s take a look at each element in alphabetical order.</p>
 <hr />
-<p>## grs:Content</p>
+<h2 id="grscontent">grs:Content</h2>
 <p>The <grs:Content> element defines the content that the user sees in the right hand pane of the help screen, barring the title at the top and the related documents at the bottom. It has no attributes and merely acts as a container for various formatting elements, such as the <grs:Paragraph> element. </p>
 <h3 id="format">Format</h3>
 <pre><code class="xml">&lt;grs:Content&gt;
@@ -298,17 +300,64 @@
 </code></pre>
 
 <h3 id="position">Position</h3>
-<p><grs:Content> element always appears as a child of the <grs:Help> root element. It only ever appears once within the help document and usually contains numerous child elements.</p>
+<p>&lt;<strong>grs:Content&gt;</strong> element always appears as a child of the &lt;<strong>grs:Help&gt;</strong> root element. It only ever appears once within the help document and usually contains numerous child elements.</p>
 <h3 id="content">Content</h3>
 <p>The following child elements are permissible in any order, and with any amount of occurrences, but never any text:</p>
-<ul>
-<li><grs:Image></li>
-<li><grs:List></li>
-<li><grs:Note></li>
-<li><grs:Paragraph></li>
-</ul>
+<pre><code class="xml">* &lt;grs:Image&gt;
+* &lt;grs:List&gt;
+* &lt;grs:Note&gt;
+* &lt;grs:Paragraph&gt;
+</code></pre>
+
 <h3 id="attributes">Attributes</h3>
-<p>None, the <grs:Content> element contains no attributes.</p></div>
+<p>None, the &lt;<strong>grs:Content&gt;</strong> element contains no attributes.</p>
+<hr />
+<h2 id="grshelp">grs:Help</h2>
+<p>The &lt;<strong>grs:Help&gt;</strong> element is the outermost element of the help file, and is also known as the root element. It contains a reference to the type of help that this file reflects and the ID of the help that it corresponds to. It also contains the Get Real Systems Ltd. namespace declaration, which is outside the scope of this document. However, the Get Real Systems Ltd. namespace declaration looks like this:</p>
+<p>xmlns:grs=”http://www.getrealsystems.com/xml/xml-ns”</p>
+<h3 id="format_1">Format</h3>
+<pre><code class="xml">&lt;grs:Help 
+    grs:Type=help document type
+    grs:ID=identifier
+    xmlns:grs=”http://www.getrealsystems.com/xml/xml-ns” &gt;
+&lt;/grs:Help&gt;
+</code></pre>
+
+<h3 id="position_1">Position</h3>
+<p>&lt;<strong>grs:Help&gt;</strong> element always appears as the outermost element of every help file. In other words, there are no other elements that appear outside this element, other than the XML processing instruction, which is outside the scope of this document. An example of the processing instruction can be seen below:</p>
+<pre><code class="xml">&lt;?xml version=”1.0”?&gt;
+</code></pre>
+
+<h3 id="content_1">Content</h3>
+<p>The &lt;<strong>grs:Help&gt;</strong> element is allowed one each of the following child elements, but never any text:</p>
+<pre><code class="xml">+ &lt;grs:Title&gt;
++ &lt;grs:Content&gt;
++ &lt;grs:RelatedDocuments&gt;
+</code></pre>
+
+<h3 id="attributes_1">Attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grs:Type (mandatory)</td>
+<td>&lt;&lt; Page &gt;&gt;</td>
+<td>&lt;&lt; Topic &gt;&gt;</td>
+</tr>
+<tr>
+<td>grs:ID (mandatory)</td>
+<td>string</td>
+<td>This attribute would correspond to the help topic ID or the page ID (name) to which this help file refers.</td>
+</tr>
+</tbody>
+</table>
+<hr /></div>
         </div>
 
         <footer class="col-md-12">
