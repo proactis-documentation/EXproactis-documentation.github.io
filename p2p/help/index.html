@@ -205,6 +205,7 @@
             <li><a href="#grslist">grs:List</a></li>
             <li><a href="#grslistentry">grs:ListEntry</a></li>
             <li><a href="#grsnote">grs:Note</a></li>
+            <li><a href="#grsparagraph">grs:Paragraph</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -537,6 +538,40 @@ Text
 
 <h3 id="attributes_6">Attributes</h3>
 <p>None, the <strong>&lt;grs:Note&gt;</strong> element has no attributes.</p>
+<hr />
+<h2 id="grsparagraph">grs:Paragraph</h2>
+<p>This element is classed as a formatting element, and describes a paragraph within the help content. It may have a heading or not, and it may contain text and links, or just text or just links.</p>
+<h3 id="format_7">Format</h3>
+<pre><code class="xml">&lt;grs:Paragraph 
+    grs:Title=paragraph title &gt;
+&lt;/grs:Paragraph&gt;
+</code></pre>
+
+<h3 id="position_7">Position</h3>
+<p>Always appears as a child of the <strong>&lt;grs:Content&gt;</strong> element, in any order, and any amount of times.</p>
+<h3 id="content_7">Content</h3>
+<p>May contain multiple occurrences of the following:</p>
+<pre><code class="xml">&lt;grs:Link&gt;
+Text
+</code></pre>
+
+<h3 id="attributes_7">Attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grs:Title (optional)</td>
+<td>string</td>
+<td>If present, creates a title for the paragraph in bold.</td>
+</tr>
+</tbody>
+</table>
 <hr /></div>
         </div>
 
