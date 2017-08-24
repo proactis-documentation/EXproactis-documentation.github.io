@@ -293,24 +293,24 @@
 <p>So, armed with this information, let’s take a look at each element in alphabetical order.</p>
 <hr />
 <h2 id="grscontent">grs:Content</h2>
-<p>The <grs:Content> element defines the content that the user sees in the right hand pane of the help screen, barring the title at the top and the related documents at the bottom. It has no attributes and merely acts as a container for various formatting elements, such as the <grs:Paragraph> element. </p>
+<p>The <strong>&lt;grs:Content&gt;</strong> element defines the content that the user sees in the right hand pane of the help screen, barring the title at the top and the related documents at the bottom. It has no attributes and merely acts as a container for various formatting elements, such as the <strong>&lt;grs:Paragraph&gt;</strong> element. </p>
 <h3 id="format">Format</h3>
 <pre><code class="xml">&lt;grs:Content&gt;
 &lt;/grs:Content&gt;
 </code></pre>
 
 <h3 id="position">Position</h3>
-<p>&lt;<strong>grs:Content&gt;</strong> element always appears as a child of the &lt;<strong>grs:Help&gt;</strong> root element. It only ever appears once within the help document and usually contains numerous child elements.</p>
+<p><strong>&lt;grs:Content&gt;</strong> element always appears as a child of the <strong>&lt;grs:Help&gt;</strong> root element. It only ever appears once within the help document and usually contains numerous child elements.</p>
 <h3 id="content">Content</h3>
 <p>The following child elements are permissible in any order, and with any amount of occurrences, but never any text:</p>
-<pre><code class="xml">* &lt;grs:Image&gt;
-* &lt;grs:List&gt;
-* &lt;grs:Note&gt;
-* &lt;grs:Paragraph&gt;
+<pre><code class="xml">&lt;grs:Image&gt;
+&lt;grs:List&gt;
+&lt;grs:Note&gt;
+&lt;grs:Paragraph&gt;
 </code></pre>
 
 <h3 id="attributes">Attributes</h3>
-<p>None, the &lt;<strong>grs:Content&gt;</strong> element contains no attributes.</p>
+<p>None, the <strong>&lt;grs:Content&gt;</strong> element contains no attributes.</p>
 <hr />
 <h2 id="grshelp">grs:Help</h2>
 <p>The <strong>&lt;grs:Help&gt;</strong> element is the outermost element of the help file, and is also known as the root element. It contains a reference to the type of help that this file reflects and the ID of the help that it corresponds to. It also contains the Get Real Systems Ltd. namespace declaration, which is outside the scope of this document. However, the Get Real Systems Ltd. namespace declaration looks like this: <strong>xmlns:grs=”http://www.getrealsystems.com/xml/xml-ns”</strong></p>
