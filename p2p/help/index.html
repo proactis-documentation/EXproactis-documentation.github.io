@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="David Betteridge">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>On Line Help - Technical Documentation</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/extra.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">Technical Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">PROACTIS</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">P2P <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Configuration</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../applicationConfigurationSettings/">Application Configuration</a>
+</li>
+            
+<li class="active">
+    <a href="./">On Line Help</a>
+</li>
+    </ul>
+  </li>
+                            
+<li >
+    <a href="../sso/">Single Sign On (SSO)</a>
+</li>
+                            
+<li >
+    <a href="../punchout/">PunchOut / Marketplaces</a>
+</li>
+                            
+<li >
+    <a href="../nominalvalidation/">Nominal Validation</a>
+</li>
+                            
+<li >
+    <a href="../budgetchecking/">Budget Checking</a>
+</li>
+                            
+<li >
+    <a href="../customtab/">Custom Tabs</a>
+</li>
+                            
+<li >
+    <a href="../addins/">Addins</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Imaging Integration</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../genericimaging/">Generic Imaging</a>
+</li>
+            
+<li >
+    <a href="../customimaging/">Custom Imaging</a>
+</li>
+    </ul>
+  </li>
+                            
+<li >
+    <a href="../commitments/">Commitment Posting</a>
+</li>
+                            
+<li >
+    <a href="../invoicePosting/">Invoice Posting</a>
+</li>
+                            
+  <li class="dropdown-submenu">
+    <a href="#">Import APIs</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../acceptanceGateway/">Acceptances</a>
+</li>
+            
+<li >
+    <a href="../cancelPurhaseOrderGateway/">Cancel Purchase Order</a>
+</li>
+            
+<li >
+    <a href="../expensesGateway/">Expenses</a>
+</li>
+            
+<li >
+    <a href="../internalInvoiceGateway/">Internal Invoices</a>
+</li>
+            
+<li >
+    <a href="../purchaseCreditNoteGateway/">Purchase Credit Notes</a>
+</li>
+            
+<li >
+    <a href="../purchaseInvoiceGateway/">Purchase Invoices</a>
+</li>
+    </ul>
+  </li>
+                            
+<li >
+    <a href="../troubleshooting/">Troubleshooting</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">Spend Analytics</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">APF</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">S2C</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">DueNorth</a>
+                    </li>
+                    <li >
+                        <a href="../../placeholder/">System4</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../applicationConfigurationSettings/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../sso/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/proactis-documentation/ExampleApplications">CodeExamples
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#online-help">Online Help</a></li>
+            <li><a href="#context-sensitive-help">Context Sensitive Help</a></li>
+            <li><a href="#topical-help">Topical Help</a></li>
+            <li><a href="#the-toc-table-of-contents">The TOC (Table Of Contents)</a></li>
+            <li><a href="#the-help-file">The Help File</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="online-help">Online Help</h1>
+<p>PROACTIS online help, is a mechanism for bundling help with the PROACTIS application, help that is relevant to what the user is currently doing. The user gets to the online help through the help button, located at the top right of each web page (as shown below).</p>
+<p>PICTURE</p>
+<p>In order for the help button to be display,  the following setting needs to be added to the <strong>Application Configuration</strong> settings.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default Value</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ShowHelp</td>
+<td>False</td>
+<td>Boolean</td>
+<td>Display the help button at the top right of the window</td>
+</tr>
+</tbody>
+</table>
+<p>By selecting the help button, they are presented with a pop-up help window that defaults to the context of the page from where the user called it. This is called context sensitive help, help which is sensitive to the current page. The other form of help is topical help. The topics may be seen in the left hand pane of the help window (see figure 2), and usually relate to tasks as a whole rather than specific pages, such as creating a purchase order.</p>
+<p>PICTURE</p>
+<h2 id="context-sensitive-help">Context Sensitive Help</h2>
+<p>As mentioned above, context sensitive help relates to specific pages, and when the help button is pressed, the help page that is displayed relates to page from which the help was requested. This is controlled through the page name, a unique name that is assigned to each and every web page. The page name may be seen as a comment at the top of the HTML source for each page, by right clicking in any blank area of a PROACTIS webpage, and selecting the view source option from the pop-up menu. An example of this can be seen below:</p>
+<pre><code class="html">&lt;!-- Page Name: Home/Logon.asp --&gt;
+&lt;html&gt;
+    &lt;head&gt;
+      ...
+</code></pre>
+
+<p>Using this unique name, the help system looks for a related XML help file, and, if not found, defaults to a file called <strong>NoPageHelp.xml</strong>. This file holds the contents of the default message to be displayed when the proper help file cannot be found in the location specified, or if there is a problem when trying to load it.</p>
+<p>Each context sensitive help file is found within the Pages folder beneath the Help subfolder, located just off of the application root folder. Each file is stored in a folder structure that mimics the page folder structure it refers to, and is called by a name that is similar to the page name, except that the help file has an .xml file extension rather than an .asp file extension. So, taking the example above, the help system would be looking for the following help file:</p>
+<p>Help/Pages/<strong>Home/Logon.xml</strong></p>
+<p>As discussed, if this file is not a well-formed XML document or is not in the expected location, the default XML file will be used, indicating that there is not help associated with this page.</p>
+<h2 id="topical-help">Topical Help</h2>
+<p>On the other hand, Topical help refers to more general types of help such as how to create a purchase order, rather than the specifics of a single page. Topical help is navigated and governed by the TOC (Table Of Contents), which can be seen in the left hand pane when viewing the help window. The TOC appears as a tree list (see figure 2) with each topic described as a link, or anchor, to the desired topic. </p>
+<p>As with context sensitive help, if the specific help file is not a well-formed XML document or could not be found in the location specified, then the help system defaults to <strong>NoTopicHelp.xml</strong> file for its content.</p>
+<p>As with context sensitive help, an ID refers to each help topic, and it is this ID that is used to load the associated help file. For instance, a help topic with an ID of ‘LoggingIn’ would have an associated topic file called <strong>LoggingIn.xml</strong>. These topic files are grouped together under a common folder called Topics, which is located within the Help subfolder. It is possible to group like topics under the same folder to make the help files easier to manage. For instance, suppose you have the following topical help files:</p>
+<ul>
+<li>Logon</li>
+<li>ChangeUserPassword</li>
+<li>LogonCompany</li>
+</ul>
+<p>You might want to group these as into a folder that best reflects the subject that they are talking about, a folder called, say, LoggingIn. By doing this it important to adjust your ID to reflect the new folder grouping. So, in our example above, we have three folder topics, each representing a topical help ID of the same type of task, namely logging in, and these may then be grouped into a folder called LoggingIn. With all of this information, our topical help ID’s will be:</p>
+<ul>
+<li>LoggingIn/Logon</li>
+<li>LoggingIn/ChangeUserPassword</li>
+<li>LoggingIn/LogonCompany</li>
+</ul>
+<p>The folders and file names of our files would be:</p>
+<ul>
+<li>Help/Topics/LoggingIn/<strong>Logon.xml</strong></li>
+<li>Help/Topics/LoggingIn/<strong>ChangeUserPassword.xml</strong></li>
+<li>Help/Topics/LoggingIn/<strong>LogonCompany.xml</strong></li>
+</ul>
+<h2 id="the-toc-table-of-contents">The TOC (Table Of Contents)</h2>
+<h3 id="what-is-the-toc">What is the TOC?</h3>
+<p>The TOC, or table of contents, is an XML file that contains a reference to each topical help file, and how it relates to the topics around it, i.e. who it’s parent topics are, and who it’s child topics are. It’s worth noting that the TOC does NOT relate to any pages, i.e. context help; it only provides access to the topics. For more information about context help and topical help, see the sections above. An example of the TOC can be seen below (figure 3):</p>
+<p>PICTURE</p>
+<p>This TOC gives rise to the tree-view type of structure that can be seen on the left hand side in figure 2. You can see, for instance that the topic Creating an order falls under the topic Orders, which itself falls under the topic Purchasing. If you know a little XML, you’ll notice that each &lt;<strong>grs:HelpTopic&gt;</strong> tag relates to a corresponding <strong></grs:HelpTopic></strong> closing tag if it contains any children. If it doesn’t contain any children, it is simply an empty tag; viz. <strong><grs:HelpTopic /></strong>. </p>
+<h3 id="how-does-the-toc-work">How does the TOC work?</h3>
+<p>The TOC is effectively a container with which to hold and manage the table of contents. As mentioned previously, the structure reflects the hierarchical nature of the data. Each HelpTopic tag holds all the information needed to display the corresponding help topic file. Below is an explanation of each HelpTopic attribute:</p>
+<h3 id="displayname">DisplayName</h3>
+<p>This attribute controls what the user sees for the link in the help window. </p>
+<h3 id="id">ID</h3>
+<p>The ID corresponds to the topic help file. So an ID of Logon would correspond to a help file called ‘Logon.xml’ in the Topic folder located within the Help folder.</p>
+<h3 id="alttext">AltText</h3>
+<p>This is to provide the user with a tool-tip type text pop-up, when they hover their mouse over the link. You may add more descriptive text to the link.</p>
+<h2 id="the-help-file">The Help File</h2>
+<h3 id="description">Description</h3>
+<p>Since we have covered the help mechanism structure, we can now have a closer look at the help file itself, the file that holds the content of the help, the content that the user will see and interact with. As mentioned, each topic and page has its own help file, with the page help files kept in a folder structure that mimics the site structure, and topic help files are kept in user defined folders.</p>
+<h3 id="file-contents">File Contents</h3>
+<p>The help files are well-formed XML files. Each file is broken into three distinct sections; Title, Contents, and Related Documents, each of which will be discussed in more detail later. These three sections are all held together with a root element whose purpose is contain these sections, as well as confirm the help Type, ID and namespace. Again, the details of these will be discussed later. Each section in turn may contain child elements, links and paragraphs, for instance. Below, is an outline of a help file document, and with its sections displayed:</p>
+<pre><code class="xml">&lt;?xml version=”1.0”?&gt;
+&lt;grs:Help&gt;
+    &lt;grs:Title&gt;
+    &lt;grs:Content&gt;
+    &lt;grs:RelatedDocuments&gt;
+&lt;/grs:Help&gt;
+</code></pre>
+
+<h3 id="file-sections">File Sections</h3>
+<p>In this part of the document, I’ll be discussing the various sections and how they fit together. I was contemplating which order to discuss each element, or section, in the order that they appear, or alphabetically, and have decided on alphabetically. </p>
+<p>It is also important to discuss some notation. All values surrounded by double chevrons (&lt;&lt; &gt;&gt;) indicate actual values. Where shown, these actual values are case sensitive, so &lt;<yes>&gt; is not the same as &lt;<Yes>&gt; since the second value begins with a capitol letter. Where there are two or more possible values, they are separated by a vertical bar (|), indicating an or possibility, for instance &lt;<yes>&gt; | &lt;<no>&gt; would be indicating possible values of ‘yes’ or ‘no’ only. If one of these values acts as a default value, i.e. if no value is entered this value is assumed, it would look like this, where the value &lt;<no>&gt; is the default value;  &lt;<yes>&gt; | default &lt;<no>&gt;. </p>
+<p>So, armed with this information, let’s take a look at each element in alphabetical order.</p>
+<hr />
+<p>## grs:Content</p>
+<p>The <grs:Content> element defines the content that the user sees in the right hand pane of the help screen, barring the title at the top and the related documents at the bottom. It has no attributes and merely acts as a container for various formatting elements, such as the <grs:Paragraph> element. </p>
+<h3 id="format">Format</h3>
+<pre><code class="xml">&lt;grs:Content&gt;
+&lt;/grs:Content&gt;
+</code></pre>
+
+<h3 id="position">Position</h3>
+<p><grs:Content> element always appears as a child of the <grs:Help> root element. It only ever appears once within the help document and usually contains numerous child elements.</p>
+<h3 id="content">Content</h3>
+<p>The following child elements are permissible in any order, and with any amount of occurrences, but never any text:</p>
+<ul>
+<li><grs:Image></li>
+<li><grs:List></li>
+<li><grs:Note></li>
+<li><grs:Paragraph></li>
+</ul>
+<h3 id="attributes">Attributes</h3>
+<p>None, the <grs:Content> element contains no attributes.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>(C) PROACTIS Group Ltd - All Rights Reserved</p>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
