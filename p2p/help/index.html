@@ -200,6 +200,7 @@
             <li><a href="#the-help-file">The Help File</a></li>
             <li><a href="#grscontent">grs:Content</a></li>
             <li><a href="#grshelp">grs:Help</a></li>
+            <li><a href="#grsimage">grs:Image</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -356,6 +357,53 @@
 <td>grs:ID (mandatory)</td>
 <td>string</td>
 <td>This attribute would correspond to the help topic ID or the page ID (name) to which this help file refers.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="grsimage">grs:Image</h2>
+<p>The <strong>&lt;grs:Image&gt;</strong> element is classed as a formatting element, in that it describes the content and how it is shown. It is intended to be used to show illustrations, such as screen shots, embedding them within the help file. It has no child elements, and no text nodes, in other words it must me an empty element.</p>
+<h3 id="format_2">Format</h3>
+<pre><code class="xml">&lt;grs:Image 
+    grs:AltText=mouse over text
+    grs:Border=image border
+    grs:Caption=image caption
+    grs:Source=image file location/&gt;
+</code></pre>
+
+<h3 id="position_2">Position</h3>
+<p><strong>&lt;grs:Image&gt;</strong> element always appears as a child of the <strong>&lt;grs:Content&gt;</strong> element, in any order and any amount of times.</p>
+<h3 id="content_2">Content</h3>
+<p>None, the <strong>&lt;grs:Image&gt;</strong> element never contains any child elements nor any text.</p>
+<h3 id="attributes_2">Attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grs:AltText (optional)</td>
+<td>string</td>
+<td>Sets the image tool-tip text. This is visible when the user holds their cursor over the image.</td>
+</tr>
+<tr>
+<td>grs:Border (optional)</td>
+<td>&lt;&lt;yes&gt;&gt; &#124; default &lt;&lt;no&gt;&gt;</td>
+<td>If set, sets a 1 pixel width black border around the image.</td>
+</tr>
+<tr>
+<td>grs:Caption (optional)</td>
+<td>string</td>
+<td>If entered, sets an italicised caption underneath the picture.</td>
+</tr>
+<tr>
+<td>grs:Source (mandatory)</td>
+<td>string</td>
+<td>The location of the image file, including the image name. Is always with respect to the Help</td>
 </tr>
 </tbody>
 </table>
