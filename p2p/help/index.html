@@ -206,6 +206,7 @@
             <li><a href="#grslistentry">grs:ListEntry</a></li>
             <li><a href="#grsnote">grs:Note</a></li>
             <li><a href="#grsparagraph">grs:Paragraph</a></li>
+            <li><a href="#grsrelateddocuments">grs:RelatedDocuments</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -572,7 +573,25 @@ Text
 </tr>
 </tbody>
 </table>
-<hr /></div>
+<hr />
+<h2 id="grsrelateddocuments">grs:RelatedDocuments</h2>
+<p><strong>&lt;grs:RelatedDocuments&gt;</strong> element provides a standardised way for the Help system developer to link topics and pages together and provide links to external documents. All links appearing as children to this element appear at the very bottom of the help content page, divided into three groups:</p>
+<ol>
+<li>Related Pages</li>
+<li>Related Topics</li>
+<li>Related Links</li>
+</ol>
+<h3 id="format_8">Format</h3>
+<pre><code class="xml">&lt;grs:RelatedDocuments&gt;
+&lt;/grs:RelatedDocuments&gt;
+</code></pre>
+
+<h3 id="position_8">Position</h3>
+<p><strong>&lt;grs:RelatedDocuments&gt;</strong> element only appears as child of the <strong>&lt;grs:Help&gt;</strong> element, and only ever appears once.</p>
+<h3 id="content_8">Content</h3>
+<p>May contain any number of <strong>&lt;grs:Link&gt;</strong> elements.</p>
+<h3 id="attributes_8">Attributes</h3>
+<p>None, the <strong>&lt;grs:RelatedDocuments&gt;</strong> element contains no attributes.</p></div>
         </div>
 
         <footer class="col-md-12">
