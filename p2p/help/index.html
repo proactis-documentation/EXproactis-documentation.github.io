@@ -204,6 +204,7 @@
             <li><a href="#grslink">grs:Link</a></li>
             <li><a href="#grslist">grs:List</a></li>
             <li><a href="#grslistentry">grs:ListEntry</a></li>
+            <li><a href="#grsnote">grs:Note</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -517,6 +518,25 @@ Text
 
 <h3 id="attributes_5">Attributes</h3>
 <p>None, the <strong>&lt;grs:ListEntry&gt;</strong> element has no attributes.</p>
+<hr />
+<h2 id="grsnote">grs:Note</h2>
+<p>The <strong>&lt;grs:Note&gt;</strong> element is classed as a formatting element, and is converted to the word ‘Note’ underlined and in italics, followed by a hyphen then the text of the note, thus:</p>
+<p><em>Note</em> – The text of the element goes here.</p>
+<h3 id="format_6">Format</h3>
+<pre><code class="xml">&lt;grs:Note&gt;
+&lt;/grs:Note&gt;
+</code></pre>
+
+<h3 id="position_6">Position</h3>
+<p>The <strong>&lt;grs:Note&gt;</strong> element always appears as a child of the <strong>&lt;grs:Content&gt;</strong> element.</p>
+<h3 id="content_6">Content</h3>
+<p>May contain multiple occurrences of the following:</p>
+<pre><code class="xml">&lt;grs:Link&gt;
+Text
+</code></pre>
+
+<h3 id="attributes_6">Attributes</h3>
+<p>None, the <strong>&lt;grs:Note&gt;</strong> element has no attributes.</p>
 <hr /></div>
         </div>
 
