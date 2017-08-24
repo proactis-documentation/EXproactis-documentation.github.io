@@ -238,16 +238,47 @@
 <p><img alt="alt text" src="../../img/p2p/admin/help_iis.PNG" title="Help Folder in IIS" />
 <em>IIS Structure</em></p>
 <h3 id="important-file">Important File</h3>
-<p>Two important files are found within the XML folder 
-<em> TOC.XML
-</em> ExternalContext.XML</p>
+<p>Two important files are found within the XML folder </p>
+<ul>
+<li>TOC.XML</li>
+<li>ExternalContext.XML</li>
+</ul>
 <p>These are edited by administrators to provide the links to the files that they have written and stored in the external directory.</p>
 <h3 id="creating-help-topics">Creating Help Topics</h3>
 <p>These can be created in any editor WORD etc. and saved within the <strong>Customer\Help\External</strong> directory.</p>
 <p>Files can be saved in multiple formats (HTML, Word .Doc , PDF ) although perhaps the easiest to manage are the .MHT files that can be saved from later versions of Microsoft Word. This creates a single web file that contains any graphics etc used within the document</p>
 <h3 id="toc-entries">TOC Entries</h3>
 <p>This file holds a listing of topics and a link to the appropriate help contents. It supports both the original help and the new simplified help documented here.</p>
-<p>EXAMPLE HERE</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;grs:TableOfContents xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
+    &lt;grs:HelpTopic grs:DisplayName=&quot;Getting started&quot; grs:ID=&quot;&quot; grs:AltText=&quot;Getting started with PROACTIS.&quot;/&gt;
+    &lt;grs:HelpTopic grs:External=&quot;True&quot;  grs:DisplayName=&quot;Writing help in Word&quot; grs:ID=&quot;PROACTIS.mht&quot; grs:AltText=&quot;Getting started with writing help in word.&quot;/&gt;
+    &lt;grs:HelpTopic grs:DisplayName=&quot;Logging In&quot; grs:ID=&quot;LoggingIn/LoggingIn&quot; grs:AltText=&quot;An explanation on how to login to PROACTIS.&quot;/&gt;
+
+    &lt;grs:HelpTopic grs:DisplayName=&quot;Home&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;All about the PROACTIS Home section.&quot;/&gt;
+    &lt;grs:HelpTopic grs:DisplayName=&quot;Purchasing&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Purchasing section.&quot;&gt;
+        &lt;grs:HelpTopic grs:DisplayName=&quot;Requests&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Requesition sub-section.&quot;/&gt;
+        &lt;grs:HelpTopic grs:DisplayName=&quot;Orders&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Orders sub-section.&quot;&gt;
+            &lt;grs:HelpTopic grs:DisplayName=&quot;Creating an order&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;How to create a purchase order.&quot;/&gt;
+            &lt;grs:HelpTopic grs:DisplayName=&quot;Setting the order header&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Changing header information for a purchae order.&quot;/&gt;
+            &lt;grs:HelpTopic grs:DisplayName=&quot;Adding items&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;How to add items to a purchase order.&quot;/&gt;
+            &lt;grs:HelpTopic grs:DisplayName=&quot;Set the order footer&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Additional details that may appear at the foot of each purchase order.&quot;/&gt;
+            &lt;grs:HelpTopic grs:DisplayName=&quot;Submitting the order&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Tips on how to submit an order from PROACTIS&quot;/&gt;
+        &lt;/grs:HelpTopic&gt;
+        &lt;grs:HelpTopic grs:DisplayName=&quot;Receipting&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Reciepting sub-section.&quot;/&gt;
+        &lt;grs:HelpTopic grs:External=&quot;True&quot; grs:DisplayName=&quot;Invoicing&quot; grs:ID=&quot;Invoice.doc&quot; grs:AltText=&quot;Using the PROACTIS Invoicing sub-section.&quot;/&gt;
+    &lt;/grs:HelpTopic&gt;
+    &lt;grs:HelpTopic grs:DisplayName=&quot;Reports&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Reports section.&quot;/&gt;
+    &lt;grs:HelpTopic grs:DisplayName=&quot;Authorisation&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using teh PROACTIS Authorisation section.&quot;/&gt;
+    &lt;grs:HelpTopic grs:DisplayName=&quot;Admin&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Admin section.&quot;/&gt;
+    &lt;grs:HelpTopic grs:DisplayName=&quot;Help System&quot; grs:ID=&quot;Help/Index&quot; grs:AltText=&quot;Find out how the help system works...&quot;&gt;
+        &lt;grs:HelpTopic grs:DisplayName=&quot;Adding New Help&quot; grs:ID=&quot;Help/AddingNewHelp&quot; grs:AltText=&quot;How to add a new help topic or context help.&quot;/&gt;
+        &lt;grs:HelpTopic grs:DisplayName=&quot;Troubshooting The Help System&quot; grs:ID=&quot;Help/Troubleshooting&quot; grs:AltText=&quot;Troubleshot a problem with the Help system.&quot;/&gt;
+    &lt;/grs:HelpTopic&gt;
+    &lt;grs:HelpTopic grs:DisplayName=&quot;About&quot; grs:ID=&quot;About/About&quot; grs:AltText=&quot;About PROACTIS&quot;/&gt;
+&lt;/grs:TableOfContents&gt;
+</code></pre>
+
 <p>Help topics can be indented / embedded in a hierarchical structure as shown below.</p>
 <pre><code class="xml">    &lt;grs:HelpTopic…….&gt;
         &lt;grs:HelpTopic……./&gt;
