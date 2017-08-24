@@ -202,6 +202,7 @@
             <li><a href="#grshelp">grs:Help</a></li>
             <li><a href="#grsimage">grs:Image</a></li>
             <li><a href="#grslink">grs:Link</a></li>
+            <li><a href="#grslist">grs:List</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -462,11 +463,42 @@
 </tr>
 <tr>
 <td>grs:Type (mandatory)</td>
-<td><strong>&lt;&lt;external&gt;&gt;</strong> &#124; <strong>&lt;&lt;page&gt;&gt;</strong> &#124; <strong>&lt;&lt;topic&gt;&gt;</strong></td>
+<td>&lt;&lt;external&gt;&gt; &#124; &lt;&lt;page&gt;&gt; &#124; &lt;&lt;topic&gt;&gt;</td>
 <td>Defines the type of the link. Both <strong>&lt;&lt;page&gt;&gt;</strong> and <strong>&lt;&lt;topic&gt;&gt;</strong> are used make the help application create Help system tags, while the <strong>&lt;&lt;external&gt;&gt;</strong> option creates a standard HTML anchor tag.</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<hr />
+<h2 id="grslist">grs:List</h2>
+<p>The <strong>&lt;grs:List&gt;</strong> element is considered to be a formatting type element, in that it appears as a child element within the <strong>&lt;grs:Content&gt;</strong> element, and describes the way that the content appears to the user. Its purpose is to provide either a bulleted or numbered list. The list gets converted into an HTML unordered, or bulleted, list (<UL>) or ordered, or numbered, list (<OL>).</p>
+<h3 id="format_4">Format</h3>
+<pre><code class="xml">&lt;grs:List 
+    grs:Type=list type &gt;
+&lt;/grs:List&gt;
+</code></pre>
+
+<h3 id="position_4">Position</h3>
+<p><strong>&lt;grs:List&gt;</strong> element appears always as a child of the <strong>&lt;grs:Content&gt;</strong> element, in any order and any amount of times.</p>
+<h3 id="content_4">Content</h3>
+<p>Only the <strong>&lt;grs:ListEntry&gt;</strong> element is allowed as a child of the <strong>&lt;grs:List&gt;</strong> element, and no text.</p>
+<h3 id="attributes_4">Attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grs:Type (mandatory)</td>
+<td>&lt;&lt;bullet&gt;&gt; &#124; &lt;&lt;number&gt;&gt;</td>
+<td>Sets the type of list, either bulleted or numbered.</td>
+</tr>
+</tbody>
+</table>
+<hr /></div>
         </div>
 
         <footer class="col-md-12">
