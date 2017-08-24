@@ -240,6 +240,7 @@
 <p>Each context sensitive help file is found within the Pages folder beneath the Help subfolder, located just off of the application root folder. Each file is stored in a folder structure that mimics the page folder structure it refers to, and is called by a name that is similar to the page name, except that the help file has an .xml file extension rather than an .asp file extension. So, taking the example above, the help system would be looking for the following help file:</p>
 <p>Help/Pages/<strong>Home/Logon.xml</strong></p>
 <p>As discussed, if this file is not a well-formed XML document or is not in the expected location, the default XML file will be used, indicating that there is not help associated with this page.</p>
+<hr />
 <h2 id="topical-help">Topical Help</h2>
 <p>On the other hand, Topical help refers to more general types of help such as how to create a purchase order, rather than the specifics of a single page. Topical help is navigated and governed by the TOC (Table Of Contents), which can be seen in the left hand pane when viewing the help window. The TOC appears as a tree list (see figure 2) with each topic described as a link, or anchor, to the desired topic. </p>
 <p>As with context sensitive help, if the specific help file is not a well-formed XML document or could not be found in the location specified, then the help system defaults to <strong>NoTopicHelp.xml</strong> file for its content.</p>
@@ -261,11 +262,12 @@
 <li>Help/Topics/LoggingIn/<strong>ChangeUserPassword.xml</strong></li>
 <li>Help/Topics/LoggingIn/<strong>LogonCompany.xml</strong></li>
 </ul>
+<hr />
 <h2 id="the-toc-table-of-contents">The TOC (Table Of Contents)</h2>
 <h3 id="what-is-the-toc">What is the TOC?</h3>
 <p>The TOC, or table of contents, is an XML file that contains a reference to each topical help file, and how it relates to the topics around it, i.e. who it’s parent topics are, and who it’s child topics are. It’s worth noting that the TOC does NOT relate to any pages, i.e. context help; it only provides access to the topics. For more information about context help and topical help, see the sections above. An example of the TOC can be seen below (figure 3):</p>
 <p>PICTURE</p>
-<p>This TOC gives rise to the tree-view type of structure that can be seen on the left hand side in figure 2. You can see, for instance that the topic Creating an order falls under the topic Orders, which itself falls under the topic Purchasing. If you know a little XML, you’ll notice that each &lt;<strong>grs:HelpTopic&gt;</strong> tag relates to a corresponding &lt;<strong>/grs:HelpTopic&gt;</strong> closing tag if it contains any children. If it doesn’t contain any children, it is simply an empty tag; viz. &lt;<strong>grs:HelpTopic /&gt;</strong>. </p>
+<p>This TOC gives rise to the tree-view type of structure that can be seen on the left hand side in figure 2. You can see, for instance that the topic Creating an order falls under the topic Orders, which itself falls under the topic Purchasing. If you know a little XML, you’ll notice that each <strong>&lt;grs:HelpTopic&gt;</strong> tag relates to a corresponding <strong>&lt;/grs:HelpTopic&gt;</strong> closing tag if it contains any children. If it doesn’t contain any children, it is simply an empty tag; viz. <strong>&lt;grs:HelpTopic /&gt;</strong>. </p>
 <h3 id="how-does-the-toc-work">How does the TOC work?</h3>
 <p>The TOC is effectively a container with which to hold and manage the table of contents. As mentioned previously, the structure reflects the hierarchical nature of the data. Each HelpTopic tag holds all the information needed to display the corresponding help topic file. Below is an explanation of each HelpTopic attribute:</p>
 <h3 id="displayname">DisplayName</h3>
