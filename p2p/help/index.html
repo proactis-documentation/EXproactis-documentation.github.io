@@ -201,6 +201,7 @@
             <li><a href="#grscontent">grs:Content</a></li>
             <li><a href="#grshelp">grs:Help</a></li>
             <li><a href="#grsimage">grs:Image</a></li>
+            <li><a href="#grslink">grs:Link</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -407,7 +408,65 @@
 </tr>
 </tbody>
 </table>
-<hr /></div>
+<hr />
+<h2 id="grslink">grs:Link</h2>
+<p>This element allows the user to provide a link to either a page help document, a topic help document or an external link using the HTML standard anchor format. If the link type is set to either <strong>&lt;&lt;page&gt;&gt;</strong> or <strong>&lt;&lt;topic&gt;&gt;</strong> then the grs:ID attribute is used to construct the Help system’s custom hyperlinks, otherwise if the link type is set to <strong>&lt;&lt;external&gt;&gt;</strong> then the grs:HREF attribute is used to construct a standard HTML hyperlink.</p>
+<h3 id="format_3">Format</h3>
+<pre><code class="xml">&lt;grs:Link 
+    grs:AltText=mouse over text
+    grs:DisplayName=link text name
+    grs:ID=page or topic ID
+    grs:HREF=HTML anchor format HREF
+    grs:Type=link type /&gt;
+</code></pre>
+
+<h3 id="position_3">Position</h3>
+<p><strong>&lt;grs:Link&gt;</strong> element may appear multiple times as a child of a the following:</p>
+<pre><code class="xml">&lt;grs:Paragraph&gt;
+&lt;grs:ListEntry&gt;
+&lt;grs:Note&gt;
+&lt;grs:RelatedDocuments&gt;
+</code></pre>
+
+<h3 id="content_3">Content</h3>
+<p>None, the <strong>&lt;grs:Link&gt;</strong> element is an empty element and may contain no child elements nor text.</p>
+<h3 id="attributes_3">Attributes</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grs:AltText (optional)</td>
+<td>string</td>
+<td>Sets the link’s tool-tip text. This is visible when the user holds their cursor over the link.</td>
+</tr>
+<tr>
+<td>grs:DisplayName (mandatory)</td>
+<td>string</td>
+<td>Sets the text of the hyperlink, the display name.</td>
+</tr>
+<tr>
+<td>grs:HREF (mandatory)</td>
+<td>string</td>
+<td>Only mandatory when the grs:Type is set to <strong>&lt;&lt;external&gt;&gt;</strong>. When used, sets up the HTML anchor tag HREF attribute to create a standard anchor tag.</td>
+</tr>
+<tr>
+<td>grs:ID (mandatory)</td>
+<td>string</td>
+<td>Only mandatory when the grs:Type is set to <strong>&lt;&lt;page&gt;&gt;</strong> &#124; <strong>&lt;&lt;topic&gt;&gt;</strong>. When used, sets up the HTML anchor tag HREF attribute to create a help system specific anchor tag.</td>
+</tr>
+<tr>
+<td>grs:Type (mandatory)</td>
+<td><strong>&lt;&lt;external&gt;&gt;</strong> &#124; <strong>&lt;&lt;page&gt;&gt;</strong> &#124; <strong>&lt;&lt;topic&gt;&gt;</strong></td>
+<td>Defines the type of the link. Both <strong>&lt;&lt;page&gt;&gt;</strong> and <strong>&lt;&lt;topic&gt;&gt;</strong> are used make the help application create Help system tags, while the <strong>&lt;&lt;external&gt;&gt;</strong> option creates a standard HTML anchor tag.</td>
+</tr>
+</tbody>
+</table></div>
         </div>
 
         <footer class="col-md-12">
