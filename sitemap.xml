@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -19,37 +19,37 @@
         
     <url>
      <loc>/p2p/sso/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/p2p/punchout/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/p2p/nominalvalidation/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/p2p/budgetchecking/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/p2p/customtab/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/p2p/addins/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -61,13 +61,13 @@
         
     <url>
      <loc>/p2p/commitments/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/p2p/invoicePosting/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -79,7 +79,17 @@
         
     <url>
      <loc>/p2p/troubleshooting/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/spendAnalytics/invoiceImport/</loc>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -88,7 +98,7 @@
     
     <url>
      <loc>/placeholder/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -96,7 +106,7 @@
     
     <url>
      <loc>/placeholder/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -104,7 +114,7 @@
     
     <url>
      <loc>/placeholder/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -112,15 +122,7 @@
     
     <url>
      <loc>/placeholder/</loc>
-     <lastmod>2017-08-24</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>/placeholder/</loc>
-     <lastmod>2017-08-24</lastmod>
+     <lastmod>2017-11-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

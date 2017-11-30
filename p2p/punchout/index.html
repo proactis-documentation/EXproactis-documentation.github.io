@@ -148,8 +148,14 @@
 </li>
                         </ul>
                     </li>
-                    <li >
-                        <a href="../../placeholder/">Spend Analytics</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Spend Analytics <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../spendAnalytics/invoiceImport/">Invoice Import</a>
+</li>
+                        </ul>
                     </li>
                     <li >
                         <a href="../../placeholder/">APF</a>
@@ -355,7 +361,7 @@ Unlike previous versions of PROACTIS it is now possible to configure marketplace
 </ul>
 <p>The Supplier Code Mapped From field specifies how the supplier code in the returned basket is mapped back to the suppliers within PROACTIS.</p>
 <h2 id="customisation">Customisation</h2>
-<p>The xml used for the initial connection is generated using an xslt embedded within the product.  It is possible to provide your own xslt by creating a file in the plugins folder called <strong>MarketPlaceConnection_{marketPlaceName}.xslt</strong>.  Where <em>{marketPlaceName}</em> is the name of the configured marketplace.
+<p>The xml used for the initial connection is generated using an xslt embedded within the product.  It is possible to provide your own xslt by creating a file in the plugins folder called <strong>MarketPlaceConnection_{marketPlaceName}.xslt</strong>.  Where <em>{marketPlaceName}</em> is the name of the configured marketplace. For example MarketPlaceConnection_EGS.xslt
 The fields passed into the xml are listed below:</p>
 <ul>
 <li>DepartmentCode</li>
@@ -372,7 +378,7 @@ The fields passed into the xml are listed below:</p>
 <li>PunchoutSenderIdentity</li>
 <li>PunchoutSenderSharedSecret</li>
 </ul>
-<p>When the basket is returned from the market place by default it is transformed into the correct format by using an XSLT embedded within the product.  It is possible to provide your own xslt by creating a file in the plugins folder called <strong>MarketPlaceResult_{marketPlaceName}.xslt</strong>.  Where <em>{marketPlaceName}</em> is the name of the configured marketplace.
+<p>When the basket is returned from the market place by default it is transformed into the correct format by using an XSLT embedded within the product.  It is possible to provide your own xslt by creating a file in the plugins folder called <strong>MarketPlaceResult_{marketPlaceName}.xslt</strong>.  Where <em>{marketPlaceName}</em> is the name of the configured marketplace.  For example MarketPlaceResult_EGS.xslt
 The xslt needs to generate xml in the following format</p>
 <pre><code class="xml">&lt;PurchaseOrder&gt;
   &lt;PurchaseOrderHeader&gt;
