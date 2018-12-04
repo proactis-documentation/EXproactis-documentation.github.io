@@ -1086,19 +1086,22 @@ Given a set of nominal lines from a purchase order returns the total amount that
 <p>Write an implementation of the <strong>grsCustInterfaces.ICustCommit.CommitmentCheck</strong> method.</p>
 </li>
 </ul>
-<pre class="codehilite"><code class="language-C#">bool grsCustInterfaces.ICustCommit.CommitmentCheck(string NominalsXML, string POXML)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">grsCustInterfaces</span><span class="p">.</span><span class="n">ICustCommit</span><span class="p">.</span><span class="n">CommitmentCheck</span><span class="p">(</span><span class="kt">string</span> <span class="n">NominalsXML</span><span class="p">,</span> <span class="kt">string</span> <span class="n">POXML</span><span class="p">)</span>
+</pre></div>
 
 
 <ul>
 <li>Write an implementation of the <strong>grsCustInterfaces.ICustCommit.CommitmentReport</strong> method.</li>
 </ul>
-<pre class="codehilite"><code class="language-C#">string grsCustInterfaces.ICustCommit.CommitmentReport(string NominalsXML, string POXML)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">string</span> <span class="n">grsCustInterfaces</span><span class="p">.</span><span class="n">ICustCommit</span><span class="p">.</span><span class="n">CommitmentReport</span><span class="p">(</span><span class="kt">string</span> <span class="n">NominalsXML</span><span class="p">,</span> <span class="kt">string</span> <span class="n">POXML</span><span class="p">)</span>
+</pre></div>
 
 
 <ul>
 <li>(Optionally) Write an implementation of the <strong>grsCustInterfaces.IOverSpend.GetOverspend</strong> method.</li>
 </ul>
-<pre class="codehilite"><code class="language-C#">decimal grsCustInterfaces.IOverSpend.GetOverspend(string NominalsXML, string POXML)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">decimal</span> <span class="n">grsCustInterfaces</span><span class="p">.</span><span class="n">IOverSpend</span><span class="p">.</span><span class="n">GetOverspend</span><span class="p">(</span><span class="kt">string</span> <span class="n">NominalsXML</span><span class="p">,</span> <span class="kt">string</span> <span class="n">POXML</span><span class="p">)</span>
+</pre></div>
 
 
 <hr />
@@ -1129,20 +1132,21 @@ Given a set of nominal lines from a purchase order returns the total amount that
 <p>The function should return True if all the lines pass budget checking and False if at least one line fails the check.</p>
 <h3 id="nominals-xml">Nominals XML</h3>
 <p>Below is an example of the xml passed to the <strong>NominalsXML</strong> argument.</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:CommitmentLookup xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-&lt;grs:Database grs:Server=&quot;localhost&quot; grs:DatabaseName=&quot;PROACTIS&quot; /&gt;
-&lt;grs:General grs:UserGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:CompanyGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; /&gt;
-&lt;grs:Currencies&gt;&lt;grs:Currency grs:CurrencyGUID=&quot;{2E67C438-9012-415B-AED4-8809F0012A78}&quot; grs:Status=&quot;H1&quot; grs:Symbol=&quot;£&quot; grs:DecimalPlaces=&quot;2&quot; /&gt;&lt;/grs:Currencies&gt;
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:CommitmentLookup</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;grs:Database</span> <span class="na">grs:Server=</span><span class="s">&quot;localhost&quot;</span> <span class="na">grs:DatabaseName=</span><span class="s">&quot;PROACTIS&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;grs:General</span> <span class="na">grs:UserGUID=</span><span class="s">&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot;</span> <span class="na">grs:CompanyGUID=</span><span class="s">&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;grs:Currencies&gt;&lt;grs:Currency</span> <span class="na">grs:CurrencyGUID=</span><span class="s">&quot;{2E67C438-9012-415B-AED4-8809F0012A78}&quot;</span> <span class="na">grs:Status=</span><span class="s">&quot;H1&quot;</span> <span class="na">grs:Symbol=</span><span class="s">&quot;£&quot;</span> <span class="na">grs:DecimalPlaces=</span><span class="s">&quot;2&quot;</span> <span class="nt">/&gt;&lt;/grs:Currencies&gt;</span>
 
-&lt;grs:NominalPeriods&gt;
-    &lt;grs:NominalPeriod grs:Year=&quot;2017&quot; grs:Period=&quot;1&quot; grs:YearPeriodGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:Value=&quot;120.12&quot; 
-    grs:Home1Value=&quot;120.12&quot; grs:Home2Value=&quot;120.12&quot; grs:NonRecoverableTax=&quot;0&quot; grs:NonRecoverableTaxHome1=&quot;0&quot; grs:NonRecoverableTaxHome2=&quot;0&quot;&gt;
-        &lt;grs:Nominal grs:Coding=&quot;SALES.CONF.MARKET&quot; grs:Element1=&quot;SALES&quot; grs:Element2=&quot;CONF&quot; grs:Element3=&quot;MARKET&quot; grs:Element4=&quot;&quot; 
-        grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot;&gt;&lt;/grs:Nominal&gt;
-    &lt;/grs:NominalPeriod&gt;
-&lt;/grs:NominalPeriods&gt;
+<span class="nt">&lt;grs:NominalPeriods&gt;</span>
+    <span class="nt">&lt;grs:NominalPeriod</span> <span class="na">grs:Year=</span><span class="s">&quot;2017&quot;</span> <span class="na">grs:Period=</span><span class="s">&quot;1&quot;</span> <span class="na">grs:YearPeriodGUID=</span><span class="s">&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot;</span> <span class="na">grs:Value=</span><span class="s">&quot;120.12&quot;</span> 
+    <span class="na">grs:Home1Value=</span><span class="s">&quot;120.12&quot;</span> <span class="na">grs:Home2Value=</span><span class="s">&quot;120.12&quot;</span> <span class="na">grs:NonRecoverableTax=</span><span class="s">&quot;0&quot;</span> <span class="na">grs:NonRecoverableTaxHome1=</span><span class="s">&quot;0&quot;</span> <span class="na">grs:NonRecoverableTaxHome2=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;grs:Nominal</span> <span class="na">grs:Coding=</span><span class="s">&quot;SALES.CONF.MARKET&quot;</span> <span class="na">grs:Element1=</span><span class="s">&quot;SALES&quot;</span> <span class="na">grs:Element2=</span><span class="s">&quot;CONF&quot;</span> <span class="na">grs:Element3=</span><span class="s">&quot;MARKET&quot;</span> <span class="na">grs:Element4=</span><span class="s">&quot;&quot;</span> 
+        <span class="na">grs:Element5=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element6=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element7=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element8=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/grs:Nominal&gt;</span>
+    <span class="nt">&lt;/grs:NominalPeriod&gt;</span>
+<span class="nt">&lt;/grs:NominalPeriods&gt;</span>
 
-&lt;/grs:CommitmentLookup&gt;</code></pre>
+<span class="nt">&lt;/grs:CommitmentLookup&gt;</span>
+</pre></div>
 
 
 <p>The <strong>NominalPeriods</strong> element is repeated for each nominal line on the purchase order.</p>
@@ -1178,20 +1182,21 @@ Given a set of nominal lines from a purchase order returns the total amount that
 <p>The function should return a table (in xml format) which describes the budget calculation for each line on the order.</p>
 <h3 id="nominals-xml_1">Nominals XML</h3>
 <p>Below is an example of the xml passed to the <strong>NominalsXML</strong> argument.</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:CommitmentLookup xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-&lt;grs:Database grs:Server=&quot;localhost&quot; grs:DatabaseName=&quot;PROACTIS&quot; /&gt;
-&lt;grs:General grs:UserGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:CompanyGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; /&gt;
-&lt;grs:Currencies&gt;&lt;grs:Currency grs:CurrencyGUID=&quot;{2E67C438-9012-415B-AED4-8809F0012A78}&quot; grs:Status=&quot;H1&quot; grs:Symbol=&quot;£&quot; grs:DecimalPlaces=&quot;2&quot; /&gt;&lt;/grs:Currencies&gt;
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:CommitmentLookup</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;grs:Database</span> <span class="na">grs:Server=</span><span class="s">&quot;localhost&quot;</span> <span class="na">grs:DatabaseName=</span><span class="s">&quot;PROACTIS&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;grs:General</span> <span class="na">grs:UserGUID=</span><span class="s">&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot;</span> <span class="na">grs:CompanyGUID=</span><span class="s">&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;grs:Currencies&gt;&lt;grs:Currency</span> <span class="na">grs:CurrencyGUID=</span><span class="s">&quot;{2E67C438-9012-415B-AED4-8809F0012A78}&quot;</span> <span class="na">grs:Status=</span><span class="s">&quot;H1&quot;</span> <span class="na">grs:Symbol=</span><span class="s">&quot;£&quot;</span> <span class="na">grs:DecimalPlaces=</span><span class="s">&quot;2&quot;</span> <span class="nt">/&gt;&lt;/grs:Currencies&gt;</span>
 
-&lt;grs:NominalPeriods&gt;
-    &lt;grs:NominalPeriod grs:Year=&quot;2017&quot; grs:Period=&quot;1&quot; grs:YearPeriodGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:Value=&quot;120.12&quot; 
-    grs:Home1Value=&quot;120.12&quot; grs:Home2Value=&quot;120.12&quot; grs:NonRecoverableTax=&quot;0&quot; grs:NonRecoverableTaxHome1=&quot;0&quot; grs:NonRecoverableTaxHome2=&quot;0&quot;&gt;
-        &lt;grs:Nominal grs:Coding=&quot;SALES.CONF.MARKET&quot; grs:Element1=&quot;SALES&quot; grs:Element2=&quot;CONF&quot; grs:Element3=&quot;MARKET&quot; grs:Element4=&quot;&quot; 
-        grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot;&gt;&lt;/grs:Nominal&gt;
-    &lt;/grs:NominalPeriod&gt;
-&lt;/grs:NominalPeriods&gt;
+<span class="nt">&lt;grs:NominalPeriods&gt;</span>
+    <span class="nt">&lt;grs:NominalPeriod</span> <span class="na">grs:Year=</span><span class="s">&quot;2017&quot;</span> <span class="na">grs:Period=</span><span class="s">&quot;1&quot;</span> <span class="na">grs:YearPeriodGUID=</span><span class="s">&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot;</span> <span class="na">grs:Value=</span><span class="s">&quot;120.12&quot;</span> 
+    <span class="na">grs:Home1Value=</span><span class="s">&quot;120.12&quot;</span> <span class="na">grs:Home2Value=</span><span class="s">&quot;120.12&quot;</span> <span class="na">grs:NonRecoverableTax=</span><span class="s">&quot;0&quot;</span> <span class="na">grs:NonRecoverableTaxHome1=</span><span class="s">&quot;0&quot;</span> <span class="na">grs:NonRecoverableTaxHome2=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;grs:Nominal</span> <span class="na">grs:Coding=</span><span class="s">&quot;SALES.CONF.MARKET&quot;</span> <span class="na">grs:Element1=</span><span class="s">&quot;SALES&quot;</span> <span class="na">grs:Element2=</span><span class="s">&quot;CONF&quot;</span> <span class="na">grs:Element3=</span><span class="s">&quot;MARKET&quot;</span> <span class="na">grs:Element4=</span><span class="s">&quot;&quot;</span> 
+        <span class="na">grs:Element5=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element6=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element7=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element8=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/grs:Nominal&gt;</span>
+    <span class="nt">&lt;/grs:NominalPeriod&gt;</span>
+<span class="nt">&lt;/grs:NominalPeriods&gt;</span>
 
-&lt;/grs:CommitmentLookup&gt;</code></pre>
+<span class="nt">&lt;/grs:CommitmentLookup&gt;</span>
+</pre></div>
 
 
 <p>The <strong>NominalPeriods</strong> element is repeated for each nominal line on the purchase order.</p>
@@ -1201,31 +1206,32 @@ Given a set of nominal lines from a purchase order returns the total amount that
 </div>
 <h3 id="returned-xml">Returned XML</h3>
 <p>The function needs to return XML with the following structure</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:HeadedList xmlns:grs='http://www.getrealsystems.com/xml/xml-ns'&gt;
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:HeadedList</span> <span class="na">xmlns:grs=</span><span class="s">&#39;http://www.getrealsystems.com/xml/xml-ns&#39;</span><span class="nt">&gt;</span>
 
-&lt;grs:Headings&gt;
-    &lt;grs:Column grs:Number='1' grs:Type=''          grs:BudgetType=''&gt;Nominal Coding&lt;/grs:Column&gt;
-    &lt;grs:Column grs:Number='2' grs:Type='Currency'  grs:BudgetType='Budget'&gt;Budget For Year&lt;/grs:Column&gt;
-    &lt;grs:Column grs:Number='3' grs:Type='Currency'  grs:BudgetType='Cost'&gt;Spend To Date&lt;/grs:Column&gt;
-    &lt;grs:Column grs:Number='4' grs:Type='Currency'  grs:BudgetType='Cost'&gt;Accruals&lt;/grs:Column&gt;
-    &lt;grs:Column grs:Number='5' grs:Type='Currency'  grs:BudgetType='Cost'&gt;This Document&lt;/grs:Column&gt;
-    &lt;grs:Column grs:Number='6' grs:Type='Currency'  grs:BudgetType=''&gt;Remaining Budget&lt;/grs:Column&gt;
-    &lt;grs:Column grs:Number='7' grs:Type='Highlight' grs:BudgetType=''&gt;Highlight&lt;/grs:Column&gt;
-&lt;/grs:Headings&gt;
+<span class="nt">&lt;grs:Headings&gt;</span>
+    <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;1&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;&#39;</span>          <span class="na">grs:BudgetType=</span><span class="s">&#39;&#39;</span><span class="nt">&gt;</span>Nominal Coding<span class="nt">&lt;/grs:Column&gt;</span>
+    <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;2&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span>  <span class="na">grs:BudgetType=</span><span class="s">&#39;Budget&#39;</span><span class="nt">&gt;</span>Budget For Year<span class="nt">&lt;/grs:Column&gt;</span>
+    <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;3&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span>  <span class="na">grs:BudgetType=</span><span class="s">&#39;Cost&#39;</span><span class="nt">&gt;</span>Spend To Date<span class="nt">&lt;/grs:Column&gt;</span>
+    <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;4&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span>  <span class="na">grs:BudgetType=</span><span class="s">&#39;Cost&#39;</span><span class="nt">&gt;</span>Accruals<span class="nt">&lt;/grs:Column&gt;</span>
+    <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;5&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span>  <span class="na">grs:BudgetType=</span><span class="s">&#39;Cost&#39;</span><span class="nt">&gt;</span>This Document<span class="nt">&lt;/grs:Column&gt;</span>
+    <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;6&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span>  <span class="na">grs:BudgetType=</span><span class="s">&#39;&#39;</span><span class="nt">&gt;</span>Remaining Budget<span class="nt">&lt;/grs:Column&gt;</span>
+    <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;7&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Highlight&#39;</span> <span class="na">grs:BudgetType=</span><span class="s">&#39;&#39;</span><span class="nt">&gt;</span>Highlight<span class="nt">&lt;/grs:Column&gt;</span>
+<span class="nt">&lt;/grs:Headings&gt;</span>
 
-&lt;grs:Items&gt;
-    &lt;grs:Item grs:GUID='{3A8D2AC2-6287-41DF-817A-F77B0551D80D}' &gt;
-        &lt;grs:Column grs:Number='1' grs:Type='Standard'&gt;SALES.CONF.MARKETING&lt;/grs:Column&gt;
-        &lt;grs:Column grs:Number='2' grs:CurrencySymbol='£' grs:DecimalPlaces='0' grs:Type='Currency'&gt;100000&lt;/grs:Column&gt;
-        &lt;grs:Column grs:Number='3' grs:CurrencySymbol='£' grs:DecimalPlaces='0' grs:Type='Currency'&gt;60000&lt;/grs:Column&gt;
-        &lt;grs:Column grs:Number='4' grs:CurrencySymbol='£' grs:DecimalPlaces='0' grs:Type='Currency' Hyperlink='/CommitmentReport.html'&gt;50000&lt;/grs:Column&gt;
-        &lt;grs:Column grs:Number='5' grs:CurrencySymbol='£' grs:DecimalPlaces='0' grs:Type='Currency'&gt;20000&lt;/grs:Column&gt;
-        &lt;grs:Column grs:Number='6' grs:CurrencySymbol='£' grs:DecimalPlaces='0' grs:Type='Currency'&gt;-10000&lt;/grs:Column&gt;
-        &lt;grs:Column grs:Number='7' grs:Type='Highlight'&gt;true&lt;/grs:Column&gt;
-    &lt;/grs:Item&gt;
-&lt;/grs:Items&gt;
+<span class="nt">&lt;grs:Items&gt;</span>
+    <span class="nt">&lt;grs:Item</span> <span class="na">grs:GUID=</span><span class="s">&#39;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&#39;</span> <span class="nt">&gt;</span>
+        <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;1&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Standard&#39;</span><span class="nt">&gt;</span>SALES.CONF.MARKETING<span class="nt">&lt;/grs:Column&gt;</span>
+        <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;2&#39;</span> <span class="na">grs:CurrencySymbol=</span><span class="s">&#39;£&#39;</span> <span class="na">grs:DecimalPlaces=</span><span class="s">&#39;0&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span><span class="nt">&gt;</span>100000<span class="nt">&lt;/grs:Column&gt;</span>
+        <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;3&#39;</span> <span class="na">grs:CurrencySymbol=</span><span class="s">&#39;£&#39;</span> <span class="na">grs:DecimalPlaces=</span><span class="s">&#39;0&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span><span class="nt">&gt;</span>60000<span class="nt">&lt;/grs:Column&gt;</span>
+        <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;4&#39;</span> <span class="na">grs:CurrencySymbol=</span><span class="s">&#39;£&#39;</span> <span class="na">grs:DecimalPlaces=</span><span class="s">&#39;0&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span> <span class="na">Hyperlink=</span><span class="s">&#39;/CommitmentReport.html&#39;</span><span class="nt">&gt;</span>50000<span class="nt">&lt;/grs:Column&gt;</span>
+        <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;5&#39;</span> <span class="na">grs:CurrencySymbol=</span><span class="s">&#39;£&#39;</span> <span class="na">grs:DecimalPlaces=</span><span class="s">&#39;0&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span><span class="nt">&gt;</span>20000<span class="nt">&lt;/grs:Column&gt;</span>
+        <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;6&#39;</span> <span class="na">grs:CurrencySymbol=</span><span class="s">&#39;£&#39;</span> <span class="na">grs:DecimalPlaces=</span><span class="s">&#39;0&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Currency&#39;</span><span class="nt">&gt;</span>-10000<span class="nt">&lt;/grs:Column&gt;</span>
+        <span class="nt">&lt;grs:Column</span> <span class="na">grs:Number=</span><span class="s">&#39;7&#39;</span> <span class="na">grs:Type=</span><span class="s">&#39;Highlight&#39;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/grs:Column&gt;</span>
+    <span class="nt">&lt;/grs:Item&gt;</span>
+<span class="nt">&lt;/grs:Items&gt;</span>
 
-&lt;/grs:HeadedList&gt;</code></pre>
+<span class="nt">&lt;/grs:HeadedList&gt;</span>
+</pre></div>
 
 
 <div class="admonition note">
@@ -1277,18 +1283,19 @@ Given a set of nominal lines from a purchase order returns the total amount that
 <p>The function should return the total amount (as a decimal) that the lines on the order exceed their budget.  For example if the first line exceeded by £10 and the second by £20 then you should return 30.</p>
 <h3 id="nominals-xml_2">Nominals XML</h3>
 <p>Below is an example of the xml passed to the <strong>NominalsXML</strong> argument.</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:CommitmentLookup xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-&lt;grs:Database grs:Server=&quot;localhost&quot; grs:DatabaseName=&quot;PROACTIS&quot; /&gt;
-&lt;grs:General grs:UserGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:CompanyGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; /&gt;
-&lt;grs:Currencies&gt;&lt;grs:Currency grs:CurrencyGUID=&quot;{2E67C438-9012-415B-AED4-8809F0012A78}&quot; grs:Status=&quot;H1&quot; grs:Symbol=&quot;£&quot; grs:DecimalPlaces=&quot;2&quot; /&gt;&lt;/grs:Currencies&gt;
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:CommitmentLookup</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;grs:Database</span> <span class="na">grs:Server=</span><span class="s">&quot;localhost&quot;</span> <span class="na">grs:DatabaseName=</span><span class="s">&quot;PROACTIS&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;grs:General</span> <span class="na">grs:UserGUID=</span><span class="s">&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot;</span> <span class="na">grs:CompanyGUID=</span><span class="s">&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;grs:Currencies&gt;&lt;grs:Currency</span> <span class="na">grs:CurrencyGUID=</span><span class="s">&quot;{2E67C438-9012-415B-AED4-8809F0012A78}&quot;</span> <span class="na">grs:Status=</span><span class="s">&quot;H1&quot;</span> <span class="na">grs:Symbol=</span><span class="s">&quot;£&quot;</span> <span class="na">grs:DecimalPlaces=</span><span class="s">&quot;2&quot;</span> <span class="nt">/&gt;&lt;/grs:Currencies&gt;</span>
 
-&lt;grs:NominalPeriods&gt;
-    &lt;grs:NominalPeriod grs:Year=&quot;2017&quot; grs:Period=&quot;1&quot; grs:YearPeriodGUID=&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot; grs:Value=&quot;120.12&quot; 
-    grs:Home1Value=&quot;120.12&quot; grs:Home2Value=&quot;120.12&quot; grs:NonRecoverableTax=&quot;0&quot; grs:NonRecoverableTaxHome1=&quot;0&quot; grs:NonRecoverableTaxHome2=&quot;0&quot;&gt;
-        &lt;grs:Nominal grs:Coding=&quot;SALES.CONF.MARKET&quot; grs:Element1=&quot;SALES&quot; grs:Element2=&quot;CONF&quot; grs:Element3=&quot;MARKET&quot; grs:Element4=&quot;&quot; 
-        grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot;&gt;&lt;/grs:Nominal&gt;
-    &lt;/grs:NominalPeriod&gt;
-&lt;/grs:NominalPeriods&gt;</code></pre>
+<span class="nt">&lt;grs:NominalPeriods&gt;</span>
+    <span class="nt">&lt;grs:NominalPeriod</span> <span class="na">grs:Year=</span><span class="s">&quot;2017&quot;</span> <span class="na">grs:Period=</span><span class="s">&quot;1&quot;</span> <span class="na">grs:YearPeriodGUID=</span><span class="s">&quot;{3A8D2AC2-6287-41DF-817A-F77B0551D80D}&quot;</span> <span class="na">grs:Value=</span><span class="s">&quot;120.12&quot;</span> 
+    <span class="na">grs:Home1Value=</span><span class="s">&quot;120.12&quot;</span> <span class="na">grs:Home2Value=</span><span class="s">&quot;120.12&quot;</span> <span class="na">grs:NonRecoverableTax=</span><span class="s">&quot;0&quot;</span> <span class="na">grs:NonRecoverableTaxHome1=</span><span class="s">&quot;0&quot;</span> <span class="na">grs:NonRecoverableTaxHome2=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;grs:Nominal</span> <span class="na">grs:Coding=</span><span class="s">&quot;SALES.CONF.MARKET&quot;</span> <span class="na">grs:Element1=</span><span class="s">&quot;SALES&quot;</span> <span class="na">grs:Element2=</span><span class="s">&quot;CONF&quot;</span> <span class="na">grs:Element3=</span><span class="s">&quot;MARKET&quot;</span> <span class="na">grs:Element4=</span><span class="s">&quot;&quot;</span> 
+        <span class="na">grs:Element5=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element6=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element7=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element8=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/grs:Nominal&gt;</span>
+    <span class="nt">&lt;/grs:NominalPeriod&gt;</span>
+<span class="nt">&lt;/grs:NominalPeriods&gt;</span>
+</pre></div>
 
 
 <div class="admonition warning">

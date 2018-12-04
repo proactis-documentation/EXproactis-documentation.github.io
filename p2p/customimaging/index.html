@@ -1687,7 +1687,8 @@
 <hr />
 <h3 id="hasimage">HasImage</h3>
 <p>Controls if the View Image link is available when looking at a transaction within P2P</p>
-<pre class="codehilite"><code class="language-C#">bool IImaging.HasImage(string DocumentDetailsXML)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">IImaging</span><span class="p">.</span><span class="n">HasImage</span><span class="p">(</span><span class="kt">string</span> <span class="n">DocumentDetailsXML</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments">Arguments</h4>
@@ -1712,7 +1713,8 @@
 <hr />
 <h3 id="getimageinfo">GetImageInfo</h3>
 <p>Returns basic information (MimeType and NumberOfPages) for an image held against a document.</p>
-<pre class="codehilite"><code class="language-C#">int IImaging.GetImageInfo(string DocumentDetailsXML, out string MIMEType)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">IImaging</span><span class="p">.</span><span class="n">GetImageInfo</span><span class="p">(</span><span class="kt">string</span> <span class="n">DocumentDetailsXML</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">MIMEType</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments_1">Arguments</h4>
@@ -1744,7 +1746,8 @@
 <hr />
 <h3 id="getimage">GetImage</h3>
 <p>Used to return either the bytes which make up the image of the URL for the image if it's in a DMS.</p>
-<pre class="codehilite"><code class="language-c#">bool IImaging.GetImage(string DocumentDetailsXML, out string MIMEType, out byte[] Image, out string URL)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">IImaging</span><span class="p">.</span><span class="n">GetImage</span><span class="p">(</span><span class="kt">string</span> <span class="n">DocumentDetailsXML</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">MIMEType</span><span class="p">,</span> <span class="k">out</span> <span class="kt">byte</span><span class="p">[]</span> <span class="n">Image</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">URL</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments_2">Arguments</h4>
@@ -1792,16 +1795,17 @@
 <hr />
 <h3 id="documentdetailsxml">DocumentDetailsXML</h3>
 <p>The xml in the DocumentDetailsXML argument is made up from some context specific details based on the document being display and the settings you have defined in the imaging settings table.</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version='1.0'?&gt;&lt;grs:ImagingSettings xmlns:grs='http://www.getrealsystems.com/xml/xml-ns'&gt;
-&lt;grs:SessionID&gt;eb89c444-0270-4f06-b8b6-ec0303b00117#dbserver2008r2\qa#DavidB_94#en-gb&lt;/grs:SessionID&gt;
-&lt;grs:DocumentType&gt;I&lt;/grs:DocumentType&gt;
-&lt;grs:DocumentGUID&gt;{D79D1EE8-4B87-414B-8512-92590DFBE2E8}&lt;/grs:DocumentGUID&gt;
-&lt;grs:ImageNumber&gt;0&lt;/grs:ImageNumber&gt;
-&lt;grs:CompanyGUID&gt;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&lt;/grs:CompanyGUID&gt;
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&#39;1.0&#39;?&gt;</span><span class="nt">&lt;grs:ImagingSettings</span> <span class="na">xmlns:grs=</span><span class="s">&#39;http://www.getrealsystems.com/xml/xml-ns&#39;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;grs:SessionID&gt;</span>eb89c444-0270-4f06-b8b6-ec0303b00117#dbserver2008r2\qa#DavidB_94#en-gb<span class="nt">&lt;/grs:SessionID&gt;</span>
+<span class="nt">&lt;grs:DocumentType&gt;</span>I<span class="nt">&lt;/grs:DocumentType&gt;</span>
+<span class="nt">&lt;grs:DocumentGUID&gt;</span>{D79D1EE8-4B87-414B-8512-92590DFBE2E8}<span class="nt">&lt;/grs:DocumentGUID&gt;</span>
+<span class="nt">&lt;grs:ImageNumber&gt;</span>0<span class="nt">&lt;/grs:ImageNumber&gt;</span>
+<span class="nt">&lt;grs:CompanyGUID&gt;</span>{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}<span class="nt">&lt;/grs:CompanyGUID&gt;</span>
 
-&lt;grs:InvoiceImageIdentifier&gt;DisplayNumber&lt;/grs:InvoiceImageIdentifier&gt;
-&lt;grs:DefaultImageSource&gt;URL&lt;/grs:DefaultImageSource&gt;
-&lt;grs:DefaultURL&gt;https://sp-db01/imaging/{{ImageID}}.bmp&lt;/grs:DefaultURL&gt;&lt;/grs:ImagingSettings&gt;</code></pre>
+<span class="nt">&lt;grs:InvoiceImageIdentifier&gt;</span>DisplayNumber<span class="nt">&lt;/grs:InvoiceImageIdentifier&gt;</span>
+<span class="nt">&lt;grs:DefaultImageSource&gt;</span>URL<span class="nt">&lt;/grs:DefaultImageSource&gt;</span>
+<span class="nt">&lt;grs:DefaultURL&gt;</span>https://sp-db01/imaging/{{ImageID}}.bmp<span class="nt">&lt;/grs:DefaultURL&gt;&lt;/grs:ImagingSettings&gt;</span>
+</pre></div>
 
 
 <p>The standard fields which are always supplied as:-</p>
@@ -1844,7 +1848,8 @@
 <hr />
 <h3 id="hasunprocessedimages">HasUnprocessedImages</h3>
 <p>Controls if the "Process An Image" link is available from Invoicing home page.</p>
-<pre class="codehilite"><code class="language-C#">bool IProcess.HasUnprocessedImages(string DetailsXML)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">IProcess</span><span class="p">.</span><span class="n">HasUnprocessedImages</span><span class="p">(</span><span class="kt">string</span> <span class="n">DetailsXML</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments_3">Arguments</h4>
@@ -1869,7 +1874,8 @@
 <hr />
 <h3 id="getlistofunprocessedimages">GetListOfUnprocessedImages</h3>
 <p>Returns an XML table showing the list of invoices available for linking</p>
-<pre class="codehilite"><code class="language-C#">string IProcess.GetListOfUnprocessedImages(string DetailsXML)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">string</span> <span class="n">IProcess</span><span class="p">.</span><span class="n">GetListOfUnprocessedImages</span><span class="p">(</span><span class="kt">string</span> <span class="n">DetailsXML</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments_4">Arguments</h4>
@@ -1891,15 +1897,16 @@
 </table>
 <h4 id="return-value_3">Return Value</h4>
 <p>The function should return XML in the following format</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version='1.0'?&gt;
-&lt;grs:Images xmlns:grs='http://www.getrealsystems.com/xml/xml-ns'&gt;
-    &lt;grs:Image grs:Identifier='PINV123.xml'&gt;
-        &lt;grs:Fields&gt;
-            &lt;grs:Field grs:Name='Column1' grs:Value='Value in column 1' /&gt;
-            &lt;grs:Field grs:Name='Column2' grs:Value='Value in column 2' /&gt;
-        &lt;/grs:Fields&gt;
-    &lt;/grs:Image&gt;
-&lt;/grs:Images&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&#39;1.0&#39;?&gt;</span>
+<span class="nt">&lt;grs:Images</span> <span class="na">xmlns:grs=</span><span class="s">&#39;http://www.getrealsystems.com/xml/xml-ns&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;grs:Image</span> <span class="na">grs:Identifier=</span><span class="s">&#39;PINV123.xml&#39;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;grs:Fields&gt;</span>
+            <span class="nt">&lt;grs:Field</span> <span class="na">grs:Name=</span><span class="s">&#39;Column1&#39;</span> <span class="na">grs:Value=</span><span class="s">&#39;Value in column 1&#39;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;grs:Field</span> <span class="na">grs:Name=</span><span class="s">&#39;Column2&#39;</span> <span class="na">grs:Value=</span><span class="s">&#39;Value in column 2&#39;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/grs:Fields&gt;</span>
+    <span class="nt">&lt;/grs:Image&gt;</span>
+<span class="nt">&lt;/grs:Images&gt;</span>
+</pre></div>
 
 
 <p>The above table would generate the following table:</p>
@@ -1913,7 +1920,8 @@
 <hr />
 <h3 id="getimageinfo_1">GetImageInfo</h3>
 <p>Returns basic information (MimeType and NumberOfPages) for an image held against a document.</p>
-<pre class="codehilite"><code class="language-C#">int IProcess.GetImageInfo(string DetailsXML, out string MIMEType)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">IProcess</span><span class="p">.</span><span class="n">GetImageInfo</span><span class="p">(</span><span class="kt">string</span> <span class="n">DetailsXML</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">MIMEType</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments_5">Arguments</h4>
@@ -1945,7 +1953,8 @@
 <hr />
 <h3 id="getimage_1">GetImage</h3>
 <p>Used to return either the bytes which make up the image of the URL for the image if it's in a DMS.</p>
-<pre class="codehilite"><code class="language-c#">bool IProcess.GetImage(string DetailsXML, out string MIMEType, out byte[] Image, out string URL)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">IProcess</span><span class="p">.</span><span class="n">GetImage</span><span class="p">(</span><span class="kt">string</span> <span class="n">DetailsXML</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">MIMEType</span><span class="p">,</span> <span class="k">out</span> <span class="kt">byte</span><span class="p">[]</span> <span class="n">Image</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">URL</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments_6">Arguments</h4>
@@ -1993,7 +2002,8 @@
 <hr />
 <h3 id="processimage">ProcessImage</h3>
 <p>Used to associate the image with a document.</p>
-<pre class="codehilite"><code class="language-c#">bool IProcess.ProcessImage(string DetailsXML, string DocumentXML, out string UserMessages)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">IProcess</span><span class="p">.</span><span class="n">ProcessImage</span><span class="p">(</span><span class="kt">string</span> <span class="n">DetailsXML</span><span class="p">,</span> <span class="kt">string</span> <span class="n">DocumentXML</span><span class="p">,</span> <span class="k">out</span> <span class="kt">string</span> <span class="n">UserMessages</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments_7">Arguments</h4>
@@ -2040,18 +2050,19 @@
 <hr />
 <h3 id="detailsxml_1">DetailsXML</h3>
 <p>The xml in the DetailsXML argument is made up from some context specific details based on the document being display and the settings you have defined in the imaging settings table.</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;grs:ImagingSettings xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-&lt;grs:SessionID&gt;789e432f-6515-435c-8748-d88665d57119#dbserver2008r2\qa#DavidB_94#en-gb&lt;/grs:SessionID&gt;
-&lt;grs:DocumentType&gt;C&lt;/grs:DocumentType&gt;
-&lt;grs:DocumentGUID&gt;&lt;/grs:DocumentGUID&gt;
-&lt;grs:ImageNumber&gt;0&lt;/grs:ImageNumber&gt;
-&lt;grs:CompanyGUID&gt;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&lt;/grs:CompanyGUID&gt;
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;grs:ImagingSettings</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;grs:SessionID&gt;</span>789e432f-6515-435c-8748-d88665d57119#dbserver2008r2\qa#DavidB_94#en-gb<span class="nt">&lt;/grs:SessionID&gt;</span>
+<span class="nt">&lt;grs:DocumentType&gt;</span>C<span class="nt">&lt;/grs:DocumentType&gt;</span>
+<span class="nt">&lt;grs:DocumentGUID&gt;&lt;/grs:DocumentGUID&gt;</span>
+<span class="nt">&lt;grs:ImageNumber&gt;</span>0<span class="nt">&lt;/grs:ImageNumber&gt;</span>
+<span class="nt">&lt;grs:CompanyGUID&gt;</span>{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}<span class="nt">&lt;/grs:CompanyGUID&gt;</span>
 
-&lt;grs:InvoiceImageIdentifier&gt;DisplayNumber&lt;/grs:InvoiceImageIdentifier&gt;
-&lt;grs:DefaultImageSource&gt;URL&lt;/grs:DefaultImageSource&gt;
-&lt;grs:DefaultURL&gt;https://sp-db01/imaging/{{ImageID}}.bmp&lt;/grs:DefaultURL&gt;
-&lt;/grs:ImagingSettings&gt;</code></pre>
+<span class="nt">&lt;grs:InvoiceImageIdentifier&gt;</span>DisplayNumber<span class="nt">&lt;/grs:InvoiceImageIdentifier&gt;</span>
+<span class="nt">&lt;grs:DefaultImageSource&gt;</span>URL<span class="nt">&lt;/grs:DefaultImageSource&gt;</span>
+<span class="nt">&lt;grs:DefaultURL&gt;</span>https://sp-db01/imaging/{{ImageID}}.bmp<span class="nt">&lt;/grs:DefaultURL&gt;</span>
+<span class="nt">&lt;/grs:ImagingSettings&gt;</span>
+</pre></div>
 
 
 <p>The standard fields which are always supplied as:-</p>
@@ -2092,7 +2103,8 @@
 <p>Returns a list of unprocessed images based on the search criteria entered by the user.</p>
 <p><img alt="alt text" src="../../img/p2p/imaging/search.JPG" title="Search" /></p>
 <h4 id="signature">Signature</h4>
-<pre class="codehilite"><code class="language-C#">string ISearch.SearchForUnprocessedImages(string DetailsXML)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">string</span> <span class="n">ISearch</span><span class="p">.</span><span class="n">SearchForUnprocessedImages</span><span class="p">(</span><span class="kt">string</span> <span class="n">DetailsXML</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments_8">Arguments</h4>
@@ -2113,29 +2125,30 @@
 </tbody>
 </table>
 <h4 id="detailsxml_2">DetailsXML</h4>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;grs:ImagingSettings xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-    &lt;grs:SessionID&gt;fd2ae334-dd29-42d3-9706-ea4883b7bedc#dbserver2008r2\qa#DavidB_94#en-gb&lt;/grs:SessionID&gt;
-    &lt;grs:DocumentType&gt;I&lt;/grs:DocumentType&gt;
-    &lt;grs:DocumentGUID&gt;&lt;/grs:DocumentGUID&gt;
-    &lt;grs:ImageNumber&gt;0&lt;/grs:ImageNumber&gt;
-    &lt;grs:CompanyGUID&gt;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&lt;/grs:CompanyGUID&gt;
-    &lt;grs:MaxReturnRows&gt;100&lt;/grs:MaxReturnRows&gt;
-    &lt;grs:PrimarySortColumn&gt;DocumentDate&lt;/grs:PrimarySortColumn&gt;
-    &lt;grs:PrimarySortAscending&gt;False&lt;/grs:PrimarySortAscending&gt;
-    &lt;grs:SupplierReference&gt;&lt;/grs:SupplierReference&gt;
-    &lt;grs:DateFrom&gt;&lt;/grs:DateFrom&gt;
-    &lt;grs:DateTo&gt;&lt;/grs:DateTo&gt;
-    &lt;grs:FromAddress&gt;&lt;/grs:FromAddress&gt;
-    &lt;grs:ToAddress&gt;&lt;/grs:ToAddress&gt;
-    &lt;grs:Subject&gt;&lt;/grs:Subject&gt;
-    &lt;grs:RuleName&gt;&lt;/grs:RuleName&gt;
-    &lt;grs:DateEmailedFrom&gt;&lt;/grs:DateEmailedFrom&gt;
-    &lt;grs:DateEmailedTo&gt;&lt;/grs:DateEmailedTo&gt;
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;grs:ImagingSettings</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;grs:SessionID&gt;</span>fd2ae334-dd29-42d3-9706-ea4883b7bedc#dbserver2008r2\qa#DavidB_94#en-gb<span class="nt">&lt;/grs:SessionID&gt;</span>
+    <span class="nt">&lt;grs:DocumentType&gt;</span>I<span class="nt">&lt;/grs:DocumentType&gt;</span>
+    <span class="nt">&lt;grs:DocumentGUID&gt;&lt;/grs:DocumentGUID&gt;</span>
+    <span class="nt">&lt;grs:ImageNumber&gt;</span>0<span class="nt">&lt;/grs:ImageNumber&gt;</span>
+    <span class="nt">&lt;grs:CompanyGUID&gt;</span>{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}<span class="nt">&lt;/grs:CompanyGUID&gt;</span>
+    <span class="nt">&lt;grs:MaxReturnRows&gt;</span>100<span class="nt">&lt;/grs:MaxReturnRows&gt;</span>
+    <span class="nt">&lt;grs:PrimarySortColumn&gt;</span>DocumentDate<span class="nt">&lt;/grs:PrimarySortColumn&gt;</span>
+    <span class="nt">&lt;grs:PrimarySortAscending&gt;</span>False<span class="nt">&lt;/grs:PrimarySortAscending&gt;</span>
+    <span class="nt">&lt;grs:SupplierReference&gt;&lt;/grs:SupplierReference&gt;</span>
+    <span class="nt">&lt;grs:DateFrom&gt;&lt;/grs:DateFrom&gt;</span>
+    <span class="nt">&lt;grs:DateTo&gt;&lt;/grs:DateTo&gt;</span>
+    <span class="nt">&lt;grs:FromAddress&gt;&lt;/grs:FromAddress&gt;</span>
+    <span class="nt">&lt;grs:ToAddress&gt;&lt;/grs:ToAddress&gt;</span>
+    <span class="nt">&lt;grs:Subject&gt;&lt;/grs:Subject&gt;</span>
+    <span class="nt">&lt;grs:RuleName&gt;&lt;/grs:RuleName&gt;</span>
+    <span class="nt">&lt;grs:DateEmailedFrom&gt;&lt;/grs:DateEmailedFrom&gt;</span>
+    <span class="nt">&lt;grs:DateEmailedTo&gt;&lt;/grs:DateEmailedTo&gt;</span>
 
-    &lt;grs:DefaultImageSource&gt;URL&lt;/grs:DefaultImageSource&gt;
-    &lt;grs:DefaultURL&gt;https://sp-db01/imaging/{{ImageID}}.bmp&lt;/grs:DefaultURL&gt;
-&lt;/grs:ImagingSettings&gt;</code></pre>
+    <span class="nt">&lt;grs:DefaultImageSource&gt;</span>URL<span class="nt">&lt;/grs:DefaultImageSource&gt;</span>
+    <span class="nt">&lt;grs:DefaultURL&gt;</span>https://sp-db01/imaging/{{ImageID}}.bmp<span class="nt">&lt;/grs:DefaultURL&gt;</span>
+<span class="nt">&lt;/grs:ImagingSettings&gt;</span>
+</pre></div>
 
 
 <p>The following fields can be ignored as they aren't applicable to this function</p>
@@ -2151,17 +2164,18 @@
 </ul>
 <h4 id="return-value_5">Return Value</h4>
 <p>The function should return xml table in the following format containing the list of available (unprocessed) images.</p>
-<pre class="codehilite"><code class="language-xml">&lt;SearchResults&gt;
-    &lt;Row GUID='...' 
-        SupplierReference='sup' 
-        DocumentDate='2016-1-1' 
-        DocumentImportRule = ''
-        EmailDate='2016-1-1'
-        FromAddress='david@proactis.com'
-        FromName='David Betteridge'
-        Subject='An Email'
-        ToAddress='david@proactis.com' /&gt;
-&lt;/SearchResults&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;SearchResults&gt;</span>
+    <span class="nt">&lt;Row</span> <span class="na">GUID=</span><span class="s">&#39;...&#39;</span> 
+        <span class="na">SupplierReference=</span><span class="s">&#39;sup&#39;</span> 
+        <span class="na">DocumentDate=</span><span class="s">&#39;2016-1-1&#39;</span> 
+        <span class="na">DocumentImportRule =</span> <span class="s">&#39;&#39;</span>
+        <span class="na">EmailDate=</span><span class="s">&#39;2016-1-1&#39;</span>
+        <span class="na">FromAddress=</span><span class="s">&#39;david@proactis.com&#39;</span>
+        <span class="na">FromName=</span><span class="s">&#39;David Betteridge&#39;</span>
+        <span class="na">Subject=</span><span class="s">&#39;An Email&#39;</span>
+        <span class="na">ToAddress=</span><span class="s">&#39;david@proactis.com&#39;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/SearchResults&gt;</span>
+</pre></div>
 
 
 <ul>
@@ -2193,7 +2207,8 @@
 <p>Stores an image uploaded by the user on the server</p>
 <p><img alt="alt text" src="../../img/p2p/imaging/upload.JPG" title="Upload" /></p>
 <h4 id="signature_1">Signature</h4>
-<pre class="codehilite"><code class="language-C#">bool IUpload.StoreNewImage(string DetailsXML, byte[] FileContents)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">IUpload</span><span class="p">.</span><span class="n">StoreNewImage</span><span class="p">(</span><span class="kt">string</span> <span class="n">DetailsXML</span><span class="p">,</span> <span class="kt">byte</span><span class="p">[]</span> <span class="n">FileContents</span><span class="p">)</span>
+</pre></div>
 
 
 <h4 id="arguments_9">Arguments</h4>
@@ -2219,21 +2234,22 @@
 </tbody>
 </table>
 <h5 id="detailsxml_3">DetailsXML</h5>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;grs:ImagingSettings xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-    &lt;grs:DocumentGUID&gt;{7451C54A-52F0-4794-87FB-A6093AAD65AF}&lt;/grs:DocumentGUID&gt;
-    &lt;grs:ImageNumber&gt;1&lt;/grs:ImageNumber&gt;
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;grs:ImagingSettings</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;grs:DocumentGUID&gt;</span>{7451C54A-52F0-4794-87FB-A6093AAD65AF}<span class="nt">&lt;/grs:DocumentGUID&gt;</span>
+    <span class="nt">&lt;grs:ImageNumber&gt;</span>1<span class="nt">&lt;/grs:ImageNumber&gt;</span>
 
-    &lt;grs:SessionID&gt;bd860b98-c82b-47fa-9522-a4f27f154cd6#dbserver2008r2\qa#DavidB_94#en-gb&lt;/grs:SessionID&gt;
-    &lt;grs:DocumentType&gt;I&lt;/grs:DocumentType&gt;
-    &lt;grs:CompanyGUID&gt;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&lt;/grs:CompanyGUID&gt;
-    &lt;grs:Reference&gt;heading.JPG&lt;/grs:Reference&gt;
-    &lt;grs:FileType&gt;JPG&lt;/grs:FileType&gt;
+    <span class="nt">&lt;grs:SessionID&gt;</span>bd860b98-c82b-47fa-9522-a4f27f154cd6#dbserver2008r2\qa#DavidB_94#en-gb<span class="nt">&lt;/grs:SessionID&gt;</span>
+    <span class="nt">&lt;grs:DocumentType&gt;</span>I<span class="nt">&lt;/grs:DocumentType&gt;</span>
+    <span class="nt">&lt;grs:CompanyGUID&gt;</span>{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}<span class="nt">&lt;/grs:CompanyGUID&gt;</span>
+    <span class="nt">&lt;grs:Reference&gt;</span>heading.JPG<span class="nt">&lt;/grs:Reference&gt;</span>
+    <span class="nt">&lt;grs:FileType&gt;</span>JPG<span class="nt">&lt;/grs:FileType&gt;</span>
 
-    &lt;grs:InvoiceImageIdentifier&gt;DisplayNumber&lt;/grs:InvoiceImageIdentifier&gt;
-    &lt;grs:DefaultImageSource&gt;URL&lt;/grs:DefaultImageSource&gt;
-    &lt;grs:DefaultURL&gt;https://sp-db01/imaging/{{ImageID}}.bmp&lt;/grs:DefaultURL&gt;
-&lt;/grs:ImagingSettings&gt;</code></pre>
+    <span class="nt">&lt;grs:InvoiceImageIdentifier&gt;</span>DisplayNumber<span class="nt">&lt;/grs:InvoiceImageIdentifier&gt;</span>
+    <span class="nt">&lt;grs:DefaultImageSource&gt;</span>URL<span class="nt">&lt;/grs:DefaultImageSource&gt;</span>
+    <span class="nt">&lt;grs:DefaultURL&gt;</span>https://sp-db01/imaging/{{ImageID}}.bmp<span class="nt">&lt;/grs:DefaultURL&gt;</span>
+<span class="nt">&lt;/grs:ImagingSettings&gt;</span>
+</pre></div>
 
 
 <ul>

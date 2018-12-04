@@ -740,8 +740,9 @@ Currently there is only one integration between these two systems which is the f
 <h3 id="authentication">Authentication</h3>
 <p>All API calls require the username and password be supplied in a base64 encoded format in the Authorisation header of the request.
 In C# the code for doing this would look like the following:</p>
-<pre class="codehilite"><code class="language-C#">credentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(USER + &quot;:&quot; + PASSWORD));
-client.DefaultRequestHeaders.Add(&quot;Authorization&quot;, &quot;Basic &quot; + credentials);</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">credentials</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToBase64String</span><span class="p">(</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="n">GetBytes</span><span class="p">(</span><span class="n">USER</span> <span class="p">+</span> <span class="s">&quot;:&quot;</span> <span class="p">+</span> <span class="n">PASSWORD</span><span class="p">));</span>
+<span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Basic &quot;</span> <span class="p">+</span> <span class="n">credentials</span><span class="p">);</span>
+</pre></div>
 
 
 <p>For example</p>

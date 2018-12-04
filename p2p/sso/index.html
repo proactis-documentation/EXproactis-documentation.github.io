@@ -845,7 +845,8 @@
 <p class="admonition-title">Note</p>
 <p>If you wish your users to use a combination of PROACTIS and SSO logins then add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</p>
 </div>
-<pre class="codehilite"><code class="language-xml">&lt;Setting Name=&quot;AllowPROACTISLogins&quot;&gt;True&lt;/Setting&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Setting</span> <span class="na">Name=</span><span class="s">&quot;AllowPROACTISLogins&quot;</span><span class="nt">&gt;</span>True<span class="nt">&lt;/Setting&gt;</span>
+</pre></div>
 
 
 <hr />
@@ -865,7 +866,8 @@
 <ul>
 <li>Add the following setting to the <strong>ApplicationConfiguration.xml</strong> file.</li>
 </ul>
-<pre class="codehilite"><code class="language-xml">&lt;Setting Name=&quot;AuthenticationMethod&quot;&gt;WINDOWS&lt;/Setting&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Setting</span> <span class="na">Name=</span><span class="s">&quot;AuthenticationMethod&quot;</span><span class="nt">&gt;</span>WINDOWS<span class="nt">&lt;/Setting&gt;</span>
+</pre></div>
 
 
 <ul>
@@ -877,11 +879,12 @@
 <ul>
 <li>First generate (or obtain) a local certificate and provide the public part of this to your identity provider.</li>
 </ul>
-<pre class="codehilite"><code class="language-batch">makecert -r -pe -n &quot;CN=your_cert_name&quot; -sky exchange -sv mycert.pvk mycert.cer
+<div class="codehilite"><pre><span></span>makecert -r -pe -n <span class="s2">&quot;CN=your_cert_name&quot;</span> -sky exchange -sv mycert.pvk mycert.cer
 
 Enter yourPassword for the subject key (3 times!)
 
-pvk2pfx.exe -pvk mycert.pvk -spc mycert.cer  -pi yourPassword -pfx mycert.pfx -po yourPassword</code></pre>
+pvk2pfx.exe -pvk mycert.pvk -spc mycert.cer  -pi yourPassword -pfx mycert.pfx -po yourPassword
+</pre></div>
 
 
 <p>You will need to supply the identity provider with the public part of the generated certificate along with the path to the AssertionConsumerService which will be <strong>https://{server}/SystemLogon/AssertionConsumerService</strong>.</p>
@@ -892,51 +895,56 @@ pvk2pfx.exe -pvk mycert.pvk -spc mycert.cer  -pi yourPassword -pfx mycert.pfx -p
 <ul>
 <li>With in your website's customer folder create a file called <strong>saml.config</strong>.   This should be based on the following template.</li>
 </ul>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;SAMLConfiguration xmlns=&quot;urn:componentspace:SAML:2.0:configuration&quot;&gt;
-   &lt;ServiceProvider Name=&quot;service-provider-name&quot;
-                    AssertionConsumerServiceUrl=&quot;~/SystemLogon/AssertionConsumerService&quot;
-                    LocalCertificateFile=&quot;path-to-local-certificate-file&quot;
-                    LocalCertificatePassword=&quot;local-certificate-password&quot;/&gt;
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;SAMLConfiguration</span> <span class="na">xmlns=</span><span class="s">&quot;urn:componentspace:SAML:2.0:configuration&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;ServiceProvider</span> <span class="na">Name=</span><span class="s">&quot;service-provider-name&quot;</span>
+                    <span class="na">AssertionConsumerServiceUrl=</span><span class="s">&quot;~/SystemLogon/AssertionConsumerService&quot;</span>
+                    <span class="na">LocalCertificateFile=</span><span class="s">&quot;path-to-local-certificate-file&quot;</span>
+                    <span class="na">LocalCertificatePassword=</span><span class="s">&quot;local-certificate-password&quot;</span><span class="nt">/&gt;</span>
  
  
-   &lt;!-- ADFS --&gt;
-   &lt;PartnerIdentityProviders&gt;
-      &lt;PartnerIdentityProvider Name=&quot;partner-identity-provider-name&quot;
-                Description=&quot;PROACTIS AD&quot;
-                               SignAuthnRequest=&quot;false&quot;
-                               WantSAMLResponseSigned=&quot;false&quot;
-                               WantAssertionSigned=&quot;true&quot;
-                               WantAssertionEncrypted=&quot;true&quot;
-                               PartnerCertificateFile=&quot;path-to-partner-certificate-file&quot;
-                               ClockSkew=&quot;00:03:00&quot;
-                               SingleSignOnServiceUrl=&quot;single-sign-on-service-url&quot;/&gt;
-   &lt;/PartnerIdentityProviders&gt;
+   <span class="c">&lt;!-- ADFS --&gt;</span>
+   <span class="nt">&lt;PartnerIdentityProviders&gt;</span>
+      <span class="nt">&lt;PartnerIdentityProvider</span> <span class="na">Name=</span><span class="s">&quot;partner-identity-provider-name&quot;</span>
+                <span class="na">Description=</span><span class="s">&quot;PROACTIS AD&quot;</span>
+                               <span class="na">SignAuthnRequest=</span><span class="s">&quot;false&quot;</span>
+                               <span class="na">WantSAMLResponseSigned=</span><span class="s">&quot;false&quot;</span>
+                               <span class="na">WantAssertionSigned=</span><span class="s">&quot;true&quot;</span>
+                               <span class="na">WantAssertionEncrypted=</span><span class="s">&quot;true&quot;</span>
+                               <span class="na">PartnerCertificateFile=</span><span class="s">&quot;path-to-partner-certificate-file&quot;</span>
+                               <span class="na">ClockSkew=</span><span class="s">&quot;00:03:00&quot;</span>
+                               <span class="na">SingleSignOnServiceUrl=</span><span class="s">&quot;single-sign-on-service-url&quot;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/PartnerIdentityProviders&gt;</span>
  
-&lt;/SAMLConfiguration&gt;</code></pre>
+<span class="nt">&lt;/SAMLConfiguration&gt;</span>
+</pre></div>
 
 
 <ul>
 <li>Add the following settings to your application.configuration file</li>
 </ul>
-<pre class="codehilite"><code class="language-xml">&lt;Setting Name=&quot;SSOAttributeName&quot;&gt;NameID&lt;/Setting&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Setting</span> <span class="na">Name=</span><span class="s">&quot;SSOAttributeName&quot;</span><span class="nt">&gt;</span>NameID<span class="nt">&lt;/Setting&gt;</span>
+</pre></div>
 
 
 <p>The name of the attribute containing the user identifier in the attributes list returned from the ADFS server.
 If not specified then no attribute lookup is made and user identification is based on the “username” returned from the ADFS server.
  </p>
-<pre class="codehilite"><code class="language-xml">&lt;Setting Name=&quot;SSOAttributeNameMask&quot;&gt;&lt;/Setting&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Setting</span> <span class="na">Name=</span><span class="s">&quot;SSOAttributeNameMask&quot;</span><span class="nt">&gt;&lt;/Setting&gt;</span>
+</pre></div>
 
 
 <p>An optional mask to be applied to the above user identifier value.
  </p>
-<pre class="codehilite"><code class="language-xml">&lt;Setting Name=&quot;SSOMatchP2PUserOnEmailAddress&quot;&gt;False&lt;/Setting&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Setting</span> <span class="na">Name=</span><span class="s">&quot;SSOMatchP2PUserOnEmailAddress&quot;</span><span class="nt">&gt;</span>False<span class="nt">&lt;/Setting&gt;</span>
+</pre></div>
 
 
 <p>By default, P2P searches the database Users table to find a user whose “LoginID” matches the identifier value returned from the ADFS server.
 This optional setting will cause the lookup to be made on “EmailAddress” rather than “LoginID”
  </p>
-<pre class="codehilite"><code class="language-xml">&lt;Setting Name=&quot;SSODatabaseTitle&quot;&gt;&lt;/Setting&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Setting</span> <span class="na">Name=</span><span class="s">&quot;SSODatabaseTitle&quot;</span><span class="nt">&gt;&lt;/Setting&gt;</span>
+</pre></div>
 
 
 <p>An optional setting that only applies when a user who is already logged into a 3rd party system, initiates a logon to P2P via SSO. In this scenario, the user is not 
@@ -955,7 +963,8 @@ Obviously if only one database is available, then this setting is unnecessary.</
 <p>Decide if your login process will be called asynchronously or not and implement the UseAsynchronousImplementation as required.</p>
 </li>
 </ul>
-<pre class="codehilite"><code class="language-C#">    public bool UseAsynchronousImplementation =&gt; false;</code></pre>
+<div class="codehilite"><pre><span></span>    <span class="k">public</span> <span class="kt">bool</span> <span class="n">UseAsynchronousImplementation</span> <span class="p">=&gt;</span> <span class="k">false</span><span class="p">;</span>
+</pre></div>
 
 
 <ul>
@@ -972,7 +981,8 @@ Obviously if only one database is available, then this setting is unnecessary.</
 <p>Add the following setting into your <strong>applicationconfiguration.xml</strong> file.</p>
 </li>
 </ul>
-<pre class="codehilite"><code class="language-xml">&lt;Setting Name=&quot;AuthenticationMethod&quot;&gt;EXTERNAL&lt;/Setting&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Setting</span> <span class="na">Name=</span><span class="s">&quot;AuthenticationMethod&quot;</span><span class="nt">&gt;</span>EXTERNAL<span class="nt">&lt;/Setting&gt;</span>
+</pre></div>
 
 
 <p>See the <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/SSO/PROACTIS.ExampleApplications.ExternalLogin">PROACTIS.ExampleApplications.ExternalLogin</a> example application for a complete sample implementation.</p>
@@ -1006,8 +1016,9 @@ Obviously if only one database is available, then this setting is unnecessary.</
 <p>To enable your new page to be used,  the following settings should be added to the <strong>ApplicationConfiguration</strong> file.</p>
 </li>
 </ul>
-<pre class="codehilite"><code class="language-xml">&lt;Setting Name=&quot;AuthenticationMethod&quot;&gt;CUSTOM&lt;/Setting&gt;
-&lt;Setting Name=&quot;CustomLoginURL&quot;&gt;https://server/custom/CustomLogin.aspx&lt;/Setting&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;Setting</span> <span class="na">Name=</span><span class="s">&quot;AuthenticationMethod&quot;</span><span class="nt">&gt;</span>CUSTOM<span class="nt">&lt;/Setting&gt;</span>
+<span class="nt">&lt;Setting</span> <span class="na">Name=</span><span class="s">&quot;CustomLoginURL&quot;</span><span class="nt">&gt;</span>https://server/custom/CustomLogin.aspx<span class="nt">&lt;/Setting&gt;</span>
+</pre></div>
 
 
 <p>Where <em>server</em> is the address of your core P2P website.</p>

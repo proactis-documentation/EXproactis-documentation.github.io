@@ -1126,7 +1126,8 @@
 <h2 id="initialise-method">Initialise Method</h2>
 <p>This method is called first after the pending documents have been retrieved from the database.  This method is typically used to make connections to external systems (databases) and to specify the transaction handling model to be used.</p>
 <h3 id="signature">Signature</h3>
-<pre class="codehilite"><code>ExportProcessorInitialiseResult Initialise(int numberOfDocuments, string databaseTitle, string databaseName, string databaseServer)</code></pre>
+<div class="codehilite"><pre><span></span>ExportProcessorInitialiseResult Initialise(int numberOfDocuments, string databaseTitle, string databaseName, string databaseServer)
+</pre></div>
 
 
 <h3 id="arguments">Arguments</h3>
@@ -1171,7 +1172,8 @@
 <h2 id="processdocument-method">ProcessDocument Method</h2>
 <p>This method is called once for each document to be processed.</p>
 <h3 id="signature_1">Signature</h3>
-<pre class="codehilite"><code class="language-csharp">ExportProcessorExportResult ProcessDocument(Guid guid, string documentNumber, string documentXml, Guid documentGuid, string documentType, string description);</code></pre>
+<div class="codehilite"><pre><span></span><span class="n">ExportProcessorExportResult</span> <span class="nf">ProcessDocument</span><span class="p">(</span><span class="n">Guid</span> <span class="n">guid</span><span class="p">,</span> <span class="kt">string</span> <span class="n">documentNumber</span><span class="p">,</span> <span class="kt">string</span> <span class="n">documentXml</span><span class="p">,</span> <span class="n">Guid</span> <span class="n">documentGuid</span><span class="p">,</span> <span class="kt">string</span> <span class="n">documentType</span><span class="p">,</span> <span class="kt">string</span> <span class="n">description</span><span class="p">);</span>
+</pre></div>
 
 
 <h3 id="arguments_1">Arguments</h3>
@@ -1228,7 +1230,8 @@
 <h2 id="postingcomplete-method">PostingComplete Method</h2>
 <p>This method is called last,  after <strong>ProcessDocument</strong> has been called for each pending document.</p>
 <h3 id="signature_2">Signature</h3>
-<pre class="codehilite"><code class="language-csharp">void PostingComplete();</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">void</span> <span class="nf">PostingComplete</span><span class="p">();</span>
+</pre></div>
 
 
 <h3 id="arguments_2">Arguments</h3>
@@ -1261,10 +1264,11 @@
 <p>If an exception is thrown by either <strong>ProcessDocument</strong> or <strong>PostingComplete</strong> then entire process is rolled back and the error is recorded in the windows event log.</p>
 <h3 id="no-transactions">No Transactions</h3>
 <p>By default your code will run in the transaction provided by the calling service.  If you wish your database code to run outside of this transaction scope,  then the following code maybe used</p>
-<pre class="codehilite"><code class="language-csharp">using (var tx = new TransactionScope(TransactionScopeOption.Suppress))
-{
-    // ... your database code here...
-}</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">tx</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TransactionScope</span><span class="p">(</span><span class="n">TransactionScopeOption</span><span class="p">.</span><span class="n">Suppress</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="c1">// ... your database code here...</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <hr />
@@ -1273,7 +1277,8 @@
 <hr />
 <h2 id="deployment">Deployment</h2>
 <p>Edit the file <strong>"ConfigurationFolder\PROACTIS.P2P.AccountingExportService.exe.config"</strong> and ensure that the value for <strong>VBProgID</strong> is set to blank.</p>
-<pre class="codehilite"><code class="language-xml">&lt;add key=&quot;VBProgID&quot; value=&quot;&quot;/&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&quot;VBProgID&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>Your dll should be complied (and named xyzExportProcessor.dll) and then copied into your <strong>PROACTIS P2P/Plugins</strong>  (or <strong>Plugins/[database-title]</strong>) folder.</p>

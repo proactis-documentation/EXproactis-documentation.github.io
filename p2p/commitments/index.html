@@ -903,7 +903,8 @@
 <hr />
 <h2 id="processcommitment-method">ProcessCommitment Method</h2>
 <h3 id="signature">Signature</h3>
-<pre class="codehilite"><code>void ICommitmentProcessor.ProcessCommitment(Guid commitmentGUID, string commitmentXML, string database, string databaseServer)</code></pre>
+<div class="codehilite"><pre><span></span>void ICommitmentProcessor.ProcessCommitment(Guid commitmentGUID, string commitmentXML, string database, string databaseServer)
+</pre></div>
 
 
 <h3 id="arguments">Arguments</h3>
@@ -941,17 +942,19 @@
 <h3 id="error-handling">Error Handling</h3>
 <p>If your DLL fails to process the commitment entry then it can throw an exception up to the calling service.</p>
 <p><em>For example</em></p>
-<pre class="codehilite"><code class="language-csharp">    throw new Exception(&quot;Failed to connect to the finance system&quot;);</code></pre>
+<div class="codehilite"><pre><span></span>    <span class="k">throw</span> <span class="k">new</span> <span class="nf">Exception</span><span class="p">(</span><span class="s">&quot;Failed to connect to the finance system&quot;</span><span class="p">);</span>
+</pre></div>
 
 
 <p>This will be recorded in the <strong>ErrorMessage</strong> column of the <strong>dbo.CommitmentsForPosting</strong> table and the message queue entry will be moved from the <strong>proactis3commitmentslink</strong> queue into the <strong>proactis3commitmentslinkFailed</strong> queue.</p>
 <p>The error message may also be viewed from the windows event log viewer on the application server.</p>
 <h3 id="transaction-handling">Transaction Handling</h3>
 <p>By default your code will run in a database transaction provided by the calling service.  If you wish your database code to run outside of this transaction scope,  then the following code maybe used</p>
-<pre class="codehilite"><code class="language-csharp">using (var tx = new TransactionScope(TransactionScopeOption.Suppress))
-{
-    // ... your database code here...
-}</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">tx</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TransactionScope</span><span class="p">(</span><span class="n">TransactionScopeOption</span><span class="p">.</span><span class="n">Suppress</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="c1">// ... your database code here...</span>
+<span class="p">}</span>
+</pre></div>
 
 
 <hr />
@@ -960,7 +963,8 @@
 <hr />
 <h2 id="deployment">Deployment</h2>
 <p>Edit the file <strong>"ConfigurationFolder\PROACTIS.P2P.ClientCommitmentsService.exe.config"</strong> and ensure that the value for <strong>ClassName</strong> is set to blank.</p>
-<pre class="codehilite"><code class="language-xml">&lt;add key=&quot;ClassName&quot; value=&quot;&quot;/&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&quot;ClassName&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>Your dll should be complied (and named xyzCommitmentProcessor.dll) and then copied into your <strong>PROACTIS P2P/Plugins</strong>  (or <strong>Plugins/[database-title]</strong>) folder.</p>

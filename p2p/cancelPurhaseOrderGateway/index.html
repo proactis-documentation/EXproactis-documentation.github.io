@@ -972,31 +972,35 @@
 <p>This section of the document walks you through the cancellation of a purchase order.</p>
 <h3 id="authenticateuser-xml-document">AuthenticateUser XML Document</h3>
 <p>The xml document must start with the following to lines</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=”1.0” ?&gt;  
-  &lt;pro:AuthenticateUser xmlns:pro=”http://www.proactis.com/xml/xml-ns”&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=”1.0” ?&gt;</span>  
+  <span class="nt">&lt;pro:AuthenticateUser</span> <span class="na">xmlns:pro=</span><span class="s">”http://www.proactis.com/xml/xml-ns”</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <p>And finish with</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro: AuthenticateUser &gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="err">&lt;</span>/pro: AuthenticateUser &gt;
+</pre></div>
 
 
 <h3 id="control-block">Control Block</h3>
 <p>A control block must then be included so that the gateway knows which database and company to log into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
-              UserName=&quot;DAVIDBETTERIDGE&quot;
-              Password=&quot;mysecret&quot;
-              Company=&quot;MAIN&quot;
-              Department=&quot;SOLUTIONS&quot;
-              Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span> <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS&quot;</span>
+              <span class="na">UserName=</span><span class="s">&quot;DAVIDBETTERIDGE&quot;</span>
+              <span class="na">Password=</span><span class="s">&quot;mysecret&quot;</span>
+              <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+              <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+              <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>The XML gateway supports NT authentication, an example is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
-                 AuthenticationMethod=&quot;WINDOWS&quot;
-                 Company=&quot;MAIN&quot;
-                 Department=&quot;SOLUTIONS&quot;
-                 Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span>    <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS\_LIVE&quot;</span>
+                 <span class="na">AuthenticationMethod=</span><span class="s">&quot;WINDOWS&quot;</span>
+                 <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+                 <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+                 <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>

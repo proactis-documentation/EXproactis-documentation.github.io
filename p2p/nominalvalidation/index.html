@@ -917,7 +917,8 @@
 <p>Write an implementation of the <strong>grsCustInterfaces.INominals.NominalCheck</strong> method.</p>
 </li>
 </ul>
-<pre class="codehilite"><code class="language-C#">bool grsCustInterfaces.INominals.NominalCheck(string NominalsXML, string POXML, ref string ErrorNominals)</code></pre>
+<div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">grsCustInterfaces</span><span class="p">.</span><span class="n">INominals</span><span class="p">.</span><span class="n">NominalCheck</span><span class="p">(</span><span class="kt">string</span> <span class="n">NominalsXML</span><span class="p">,</span> <span class="kt">string</span> <span class="n">POXML</span><span class="p">,</span> <span class="k">ref</span> <span class="kt">string</span> <span class="n">ErrorNominals</span><span class="p">)</span>
+</pre></div>
 
 
 <h3 id="arguments">Arguments</h3>
@@ -951,18 +952,19 @@
 <p>The function should return True if all nominals are valid and False if one or more nominals are invalid.</p>
 <h3 id="nominals-xml">Nominals XML</h3>
 <p>Below is an example of the xml passed to the <strong>NominalsXML</strong> argument.</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:NominalCheck xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-    &lt;grs:Database grs:Server=&quot;Develop07&quot; grs:DatabaseName=&quot;PROACTISIII&quot;/&gt;
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:NominalCheck</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;grs:Database</span> <span class="na">grs:Server=</span><span class="s">&quot;Develop07&quot;</span> <span class="na">grs:DatabaseName=</span><span class="s">&quot;PROACTISIII&quot;</span><span class="nt">/&gt;</span>
 
-    &lt;grs:General grs:UserGUID=&quot;{02E0D6D9-B655-11D5-91D6-000629864A98}&quot; grs:CompanyGUID=&quot;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&quot;/&gt;
+    <span class="nt">&lt;grs:General</span> <span class="na">grs:UserGUID=</span><span class="s">&quot;{02E0D6D9-B655-11D5-91D6-000629864A98}&quot;</span> <span class="na">grs:CompanyGUID=</span><span class="s">&quot;{A2FEEDC5-978F-11D5-8C5E-0001021ABF9B}&quot;</span><span class="nt">/&gt;</span>
 
-    &lt;grs:Nominals&gt;
-    &lt;grs:Nominal grs:Coding=&quot;1720&quot; grs:Element1=&quot;1720&quot; grs:Element2=&quot;&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:El
-    ement8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
+    <span class="nt">&lt;grs:Nominals&gt;</span>
+    <span class="nt">&lt;grs:Nominal</span> <span class="na">grs:Coding=</span><span class="s">&quot;1720&quot;</span> <span class="na">grs:Element1=</span><span class="s">&quot;1720&quot;</span> <span class="na">grs:Element2=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element3=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element4=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element5=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element6=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element7=</span><span class="s">&quot;&quot;</span> <span class="err">grs:El</span>
+    <span class="na">ement8=</span><span class="s">&quot;&quot;</span> <span class="na">grs:ValidNominal=</span><span class="s">&quot;False&quot;</span><span class="nt">/&gt;</span>
 
-        &lt;grs:Nominal grs:Coding=&quot;4744.1100&quot; grs:Element1=&quot;4744&quot; grs:Element2=&quot;1100&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
-    &lt;/grs:Nominals&gt;
-&lt;/grs:NominalCheck&gt;</code></pre>
+        <span class="nt">&lt;grs:Nominal</span> <span class="na">grs:Coding=</span><span class="s">&quot;4744.1100&quot;</span> <span class="na">grs:Element1=</span><span class="s">&quot;4744&quot;</span> <span class="na">grs:Element2=</span><span class="s">&quot;1100&quot;</span> <span class="na">grs:Element3=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element4=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element5=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element6=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element7=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element8=</span><span class="s">&quot;&quot;</span> <span class="na">grs:ValidNominal=</span><span class="s">&quot;False&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/grs:Nominals&gt;</span>
+<span class="nt">&lt;/grs:NominalCheck&gt;</span>
+</pre></div>
 
 
 <h3 id="poxml">POXML</h3>
@@ -972,10 +974,11 @@
 </div>
 <h3 id="error-nominals">Error Nominals</h3>
 <p>The xml for the returned invalid nominals takes a similar structure to the NominalsXML argument.  For example:</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Nominals xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-   &lt;grs:Nominal grs:Coding=&quot;1720&quot; grs:Element1=&quot;1720&quot; grs:Element2=&quot;&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
-   &lt;grs:Nominal grs:Coding=&quot;4744.1100&quot; grs:Element1=&quot;4744&quot; grs:Element2=&quot;1100&quot; grs:Element3=&quot;&quot; grs:Element4=&quot;&quot; grs:Element5=&quot;&quot; grs:Element6=&quot;&quot; grs:Element7=&quot;&quot; grs:Element8=&quot;&quot; grs:ValidNominal=&quot;False&quot;/&gt;
-&lt;/grs:Nominals&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Nominals</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;grs:Nominal</span> <span class="na">grs:Coding=</span><span class="s">&quot;1720&quot;</span> <span class="na">grs:Element1=</span><span class="s">&quot;1720&quot;</span> <span class="na">grs:Element2=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element3=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element4=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element5=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element6=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element7=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element8=</span><span class="s">&quot;&quot;</span> <span class="na">grs:ValidNominal=</span><span class="s">&quot;False&quot;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;grs:Nominal</span> <span class="na">grs:Coding=</span><span class="s">&quot;4744.1100&quot;</span> <span class="na">grs:Element1=</span><span class="s">&quot;4744&quot;</span> <span class="na">grs:Element2=</span><span class="s">&quot;1100&quot;</span> <span class="na">grs:Element3=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element4=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element5=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element6=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element7=</span><span class="s">&quot;&quot;</span> <span class="na">grs:Element8=</span><span class="s">&quot;&quot;</span> <span class="na">grs:ValidNominal=</span><span class="s">&quot;False&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/grs:Nominals&gt;</span>
+</pre></div>
 
 
 <hr />

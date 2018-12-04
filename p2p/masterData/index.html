@@ -1171,12 +1171,14 @@
 <h2 id="xml-structure">XML structure</h2>
 <h3 id="opening-and-closing-tags">Opening and closing tags</h3>
 <p>The XML must start with the following two lines in order to correctly declare the XML namespace to be used ...</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot; ?&gt;  
-&lt;pro:Import xmlns:pro=&quot;http://www.proactis.com/xml/xml-ns&quot;&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>  
+<span class="nt">&lt;pro:Import</span> <span class="na">xmlns:pro=</span><span class="s">&quot;http://www.proactis.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <p>... and must be closed as follows ...</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:Import&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:Import&gt;</span>
+</pre></div>
 
 
 <h3 id="authentication">Authentication</h3>
@@ -1221,20 +1223,22 @@
 </tbody>
 </table>
 <p>An example of a control block for PROACTIS authentication is shown below.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Control Database=&quot;PROACTIS_LIVE&quot; 
-             UserName=&quot;IMPORT&quot; 
-             Password=&quot;mysecret&quot; 
-             Company=&quot;MAIN&quot; 
-             Version=&quot;1.0.0&quot;
-             ErrorHandlingMode=&quot;THROWTEXT&quot;/&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Control</span> <span class="na">Database=</span><span class="s">&quot;PROACTIS_LIVE&quot;</span> 
+             <span class="na">UserName=</span><span class="s">&quot;IMPORT&quot;</span> 
+             <span class="na">Password=</span><span class="s">&quot;mysecret&quot;</span> 
+             <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span> 
+             <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span>
+             <span class="na">ErrorHandlingMode=</span><span class="s">&quot;THROWTEXT&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>An example of a control block for WINDOWS authentication is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control Database=&quot;PROACTIS_LIVE&quot;
-              AuthenticationMethod=&quot;WINDOWS&quot;
-              Company=&quot;MAIN&quot;
-              Version=&quot;1.0.0&quot;
-              ErrorHandlingMode=&quot;THROWTEXT&quot;/&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span> <span class="na">Database=</span><span class="s">&quot;PROACTIS_LIVE&quot;</span>
+              <span class="na">AuthenticationMethod=</span><span class="s">&quot;WINDOWS&quot;</span>
+              <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+              <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span>
+              <span class="na">ErrorHandlingMode=</span><span class="s">&quot;THROWTEXT&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>The body of the request will depend on the object you want to maintain in Proactis. Examples for the various objects available are listed in the sections below. Please note that attributes in <strong>bold</strong> are mandatory.</p>
@@ -1249,11 +1253,12 @@
 <h2 id="exchange-rates">Exchange Rates</h2>
 <h3 id="quick-start">Quick start</h3>
 <p>The example below shows the xml required to load an exchange rate for a particular day. The currency code specified must exist as a valid currency in P2P for the target company.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:ExchangeRates&gt;
-   &lt;pro:ExchangeRate CurrencyCode=&quot;Euro&quot; 
-                     DateEffectiveFrom=&quot;2018-11-27&quot; 
-                     ExchangeRateHome1=&quot;0.6&quot; /&gt;
-&lt;/pro:ExchangeRates&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:ExchangeRates&gt;</span>
+   <span class="nt">&lt;pro:ExchangeRate</span> <span class="na">CurrencyCode=</span><span class="s">&quot;Euro&quot;</span> 
+                     <span class="na">DateEffectiveFrom=</span><span class="s">&quot;2018-11-27&quot;</span> 
+                     <span class="na">ExchangeRateHome1=</span><span class="s">&quot;0.6&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/pro:ExchangeRates&gt;</span>
+</pre></div>
 
 
 <h3 id="details">Details</h3>
@@ -1297,11 +1302,12 @@
 <h2 id="nominal-groups">Nominal Groups</h2>
 <h3 id="quick-start_1">Quick start</h3>
 <p>The xml below shows an example of how to create a new nominal group.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:NominalGroups&gt;
-    &lt;pro:NominalGroup ACTION=&quot;STORE&quot; 
-                      Code=&quot;3_DEPT&quot; 
-                      Description=&quot;Department&quot;/&gt;
-&lt;/pro:NominalGroups&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:NominalGroups&gt;</span>
+    <span class="nt">&lt;pro:NominalGroup</span> <span class="na">ACTION=</span><span class="s">&quot;STORE&quot;</span> 
+                      <span class="na">Code=</span><span class="s">&quot;3_DEPT&quot;</span> 
+                      <span class="na">Description=</span><span class="s">&quot;Department&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/pro:NominalGroups&gt;</span>
+</pre></div>
 
 
 <h3 id="details_1">Details</h3>
@@ -1382,13 +1388,14 @@
 <h2 id="nominal-group-entries">Nominal Group Entries</h2>
 <h3 id="quick-start_2">Quick start</h3>
 <p>The xml below shows an example of how to create a new nominal.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:NominalGroupEntries&gt;
-    &lt;pro:NominalGroupEntry ACTION=&quot;STORE&quot; 
-                           Code=&quot;00020&quot; 
-                           Description=&quot;Facilities&quot; 
-                           NominalGroup=&quot;3_DEPT&quot; 
-                           NominalSubGroup=&quot;4_COSTCENTRE&quot;/&gt;
-&lt;/pro:NominalGroupEntries&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:NominalGroupEntries&gt;</span>
+    <span class="nt">&lt;pro:NominalGroupEntry</span> <span class="na">ACTION=</span><span class="s">&quot;STORE&quot;</span> 
+                           <span class="na">Code=</span><span class="s">&quot;00020&quot;</span> 
+                           <span class="na">Description=</span><span class="s">&quot;Facilities&quot;</span> 
+                           <span class="na">NominalGroup=</span><span class="s">&quot;3_DEPT&quot;</span> 
+                           <span class="na">NominalSubGroup=</span><span class="s">&quot;4_COSTCENTRE&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/pro:NominalGroupEntries&gt;</span>
+</pre></div>
 
 
 <h3 id="details_2">Details</h3>
@@ -1487,90 +1494,91 @@
 <h2 id="suppliers">Suppliers</h2>
 <h3 id="quick-start_3">Quick start</h3>
 <p>The xml below shows an example of how to create a new supplier.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Suppliers&gt;
-   &lt;pro:Supplier 
-            Code=&quot;BOB001&quot; 
-            Title=&quot;Bob's Cleaning Company&quot;
-            External=&quot;YES&quot;
-            OneOffSupplier=&quot;NO&quot;
-            SalesTaxCountry=&quot;UK&quot;
-            SalesTaxNumber=&quot;1234567&quot;
-            SalesTaxRegistered=&quot;YES&quot;
-            DUNSNumber=&quot;123456789&quot;
-            CompanyRegistrationNumber=&quot;&quot;&gt;
-      &lt;pro:SupplierBranches&gt;
-         &lt;pro:SupplierBranch 
-                   ACTION=&quot;STORE&quot;
-                   Active=&quot;YES&quot;
-                   AddressLine1=&quot;82 Roman Rd&quot;
-                   AddressLine2=&quot;&quot;
-                   AddressLine3=&quot;&quot;
-                   AddressLine4=&quot;&quot;
-                   Country=&quot;UK&quot;
-                   County=&quot;East Yorkshire&quot;
-                   Email=&quot;bob@cleanyerwindows.com&quot;
-                   Fax=&quot;&quot;
-                   Tag=&quot;default&quot;
-                   InvoiceAddress=&quot;YES&quot;
-                   OrderAddress=&quot;YES&quot;
-                   OutputType=&quot;email&quot;      
-                   PostCode=&quot;HU14 6JB&quot;
-                   PostTown=&quot;HULL&quot;
-                   Phone=&quot;07550872378&quot;
-                   Title=&quot;default&quot; &gt;
-             &lt;pro:SupplierBranchContacts&gt;
-                &lt;pro:SupplierBranchContact 
-                           ACTION=&quot;STORE&quot;
-                           Email=&quot;bob@cleanyerwindows.com&quot;
-                           Fax=&quot;&quot;
-                           Name=&quot;Bob Higgins&quot;
-                           Phone=&quot;07550872378&quot;
-                           Tag=&quot;bob&quot;/&gt;
-             &lt;/pro:SupplierBranchContacts&gt;
-         &lt;/pro:SupplierBranch&gt;
-      &lt;/pro:SupplierBranches&gt;
-      &lt;pro:CompanySupplier 
-                 AccountingElement1=&quot;&quot;
-                 AccountingElement2=&quot;&quot;
-                 AccountingElement3=&quot;00020&quot;
-                 AccountingElement4=&quot;&quot;
-                 AccountingElement5=&quot;&quot;
-                 AccountingElement6=&quot;&quot;
-                 AccountingElement7=&quot;&quot;
-                 AccountingElement8=&quot;&quot;
-                 Active=&quot;YES&quot;
-                 AllowAutoInvoicing=&quot;NO&quot;
-                 AssessmentDate=&quot;2017-07-31&quot;
-                 AutoOutput=&quot;YES&quot;   
-                 Band1DefaultTaxCode=&quot;STD20&quot;
-                 BuyerMustReviewStockReplenishmentItems=&quot;YES&quot;
-                 CurrencyCode=&quot;GBP&quot;
-                 DefaultInvoiceBranchTag=&quot;default&quot;
-                 DefaultOrderBranchTag=&quot;default&quot;
-                 DocumentLevelValueMatching=&quot;NO&quot;
-                 InvoiceTray=&quot;Invoices&quot;
-                 InvoicingOnly=&quot;NO&quot;
-                 InvoicePriceToleranceAbs=&quot;10&quot;
-                 InvoicePriceTolerancePct=&quot;10&quot;
-                 InvoicesWithoutOrders=&quot;NO&quot;
-                 InvoicesWithoutReceipts=&quot;YES&quot;
-                 MandatoryOrderNumbersOnInvoice=&quot;YES&quot;
-                 NextAssessmentDate=&quot;2019-07-01&quot;
-                 PlazaOrganisationID=&quot;&quot;
-                 Reference1=&quot;&quot;
-                 Reference2=&quot;&quot;
-                 Reference3=&quot;&quot;
-                 Reference4=&quot;&quot;
-                 Reference5=&quot;&quot;
-                 Reference6=&quot;&quot;
-                 SupplierGrade=&quot;Standard&quot;&gt;
-         &lt;pro:CompanySupplierGroups&gt;
-            &lt;pro:CompanySupplierGroup ACTION=&quot;STORE&quot; Group=&quot;Facilities-Yorkshire&quot; /&gt;
-            &lt;pro:CompanySupplierGroup ACTION=&quot;STORE&quot; Group=&quot;Facilities&quot; /&gt;
-         &lt;/pro:CompanySupplierGroups&gt;
-      &lt;/pro:CompanySupplier&gt;
-   &lt;/pro:Supplier&gt;
-&lt;/pro:Suppliers&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Suppliers&gt;</span>
+   <span class="nt">&lt;pro:Supplier</span> 
+            <span class="na">Code=</span><span class="s">&quot;BOB001&quot;</span> 
+            <span class="na">Title=</span><span class="s">&quot;Bob&#39;s Cleaning Company&quot;</span>
+            <span class="na">External=</span><span class="s">&quot;YES&quot;</span>
+            <span class="na">OneOffSupplier=</span><span class="s">&quot;NO&quot;</span>
+            <span class="na">SalesTaxCountry=</span><span class="s">&quot;UK&quot;</span>
+            <span class="na">SalesTaxNumber=</span><span class="s">&quot;1234567&quot;</span>
+            <span class="na">SalesTaxRegistered=</span><span class="s">&quot;YES&quot;</span>
+            <span class="na">DUNSNumber=</span><span class="s">&quot;123456789&quot;</span>
+            <span class="na">CompanyRegistrationNumber=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;pro:SupplierBranches&gt;</span>
+         <span class="nt">&lt;pro:SupplierBranch</span> 
+                   <span class="na">ACTION=</span><span class="s">&quot;STORE&quot;</span>
+                   <span class="na">Active=</span><span class="s">&quot;YES&quot;</span>
+                   <span class="na">AddressLine1=</span><span class="s">&quot;82 Roman Rd&quot;</span>
+                   <span class="na">AddressLine2=</span><span class="s">&quot;&quot;</span>
+                   <span class="na">AddressLine3=</span><span class="s">&quot;&quot;</span>
+                   <span class="na">AddressLine4=</span><span class="s">&quot;&quot;</span>
+                   <span class="na">Country=</span><span class="s">&quot;UK&quot;</span>
+                   <span class="na">County=</span><span class="s">&quot;East Yorkshire&quot;</span>
+                   <span class="na">Email=</span><span class="s">&quot;bob@cleanyerwindows.com&quot;</span>
+                   <span class="na">Fax=</span><span class="s">&quot;&quot;</span>
+                   <span class="na">Tag=</span><span class="s">&quot;default&quot;</span>
+                   <span class="na">InvoiceAddress=</span><span class="s">&quot;YES&quot;</span>
+                   <span class="na">OrderAddress=</span><span class="s">&quot;YES&quot;</span>
+                   <span class="na">OutputType=</span><span class="s">&quot;email&quot;</span>      
+                   <span class="na">PostCode=</span><span class="s">&quot;HU14 6JB&quot;</span>
+                   <span class="na">PostTown=</span><span class="s">&quot;HULL&quot;</span>
+                   <span class="na">Phone=</span><span class="s">&quot;07550872378&quot;</span>
+                   <span class="na">Title=</span><span class="s">&quot;default&quot;</span> <span class="nt">&gt;</span>
+             <span class="nt">&lt;pro:SupplierBranchContacts&gt;</span>
+                <span class="nt">&lt;pro:SupplierBranchContact</span> 
+                           <span class="na">ACTION=</span><span class="s">&quot;STORE&quot;</span>
+                           <span class="na">Email=</span><span class="s">&quot;bob@cleanyerwindows.com&quot;</span>
+                           <span class="na">Fax=</span><span class="s">&quot;&quot;</span>
+                           <span class="na">Name=</span><span class="s">&quot;Bob Higgins&quot;</span>
+                           <span class="na">Phone=</span><span class="s">&quot;07550872378&quot;</span>
+                           <span class="na">Tag=</span><span class="s">&quot;bob&quot;</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;/pro:SupplierBranchContacts&gt;</span>
+         <span class="nt">&lt;/pro:SupplierBranch&gt;</span>
+      <span class="nt">&lt;/pro:SupplierBranches&gt;</span>
+      <span class="nt">&lt;pro:CompanySupplier</span> 
+                 <span class="na">AccountingElement1=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">AccountingElement2=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">AccountingElement3=</span><span class="s">&quot;00020&quot;</span>
+                 <span class="na">AccountingElement4=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">AccountingElement5=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">AccountingElement6=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">AccountingElement7=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">AccountingElement8=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">Active=</span><span class="s">&quot;YES&quot;</span>
+                 <span class="na">AllowAutoInvoicing=</span><span class="s">&quot;NO&quot;</span>
+                 <span class="na">AssessmentDate=</span><span class="s">&quot;2017-07-31&quot;</span>
+                 <span class="na">AutoOutput=</span><span class="s">&quot;YES&quot;</span>   
+                 <span class="na">Band1DefaultTaxCode=</span><span class="s">&quot;STD20&quot;</span>
+                 <span class="na">BuyerMustReviewStockReplenishmentItems=</span><span class="s">&quot;YES&quot;</span>
+                 <span class="na">CurrencyCode=</span><span class="s">&quot;GBP&quot;</span>
+                 <span class="na">DefaultInvoiceBranchTag=</span><span class="s">&quot;default&quot;</span>
+                 <span class="na">DefaultOrderBranchTag=</span><span class="s">&quot;default&quot;</span>
+                 <span class="na">DocumentLevelValueMatching=</span><span class="s">&quot;NO&quot;</span>
+                 <span class="na">InvoiceTray=</span><span class="s">&quot;Invoices&quot;</span>
+                 <span class="na">InvoicingOnly=</span><span class="s">&quot;NO&quot;</span>
+                 <span class="na">InvoicePriceToleranceAbs=</span><span class="s">&quot;10&quot;</span>
+                 <span class="na">InvoicePriceTolerancePct=</span><span class="s">&quot;10&quot;</span>
+                 <span class="na">InvoicesWithoutOrders=</span><span class="s">&quot;NO&quot;</span>
+                 <span class="na">InvoicesWithoutReceipts=</span><span class="s">&quot;YES&quot;</span>
+                 <span class="na">MandatoryOrderNumbersOnInvoice=</span><span class="s">&quot;YES&quot;</span>
+                 <span class="na">NextAssessmentDate=</span><span class="s">&quot;2019-07-01&quot;</span>
+                 <span class="na">PlazaOrganisationID=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">Reference1=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">Reference2=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">Reference3=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">Reference4=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">Reference5=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">Reference6=</span><span class="s">&quot;&quot;</span>
+                 <span class="na">SupplierGrade=</span><span class="s">&quot;Standard&quot;</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;pro:CompanySupplierGroups&gt;</span>
+            <span class="nt">&lt;pro:CompanySupplierGroup</span> <span class="na">ACTION=</span><span class="s">&quot;STORE&quot;</span> <span class="na">Group=</span><span class="s">&quot;Facilities-Yorkshire&quot;</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;pro:CompanySupplierGroup</span> <span class="na">ACTION=</span><span class="s">&quot;STORE&quot;</span> <span class="na">Group=</span><span class="s">&quot;Facilities&quot;</span> <span class="nt">/&gt;</span>
+         <span class="nt">&lt;/pro:CompanySupplierGroups&gt;</span>
+      <span class="nt">&lt;/pro:CompanySupplier&gt;</span>
+   <span class="nt">&lt;/pro:Supplier&gt;</span>
+<span class="nt">&lt;/pro:Suppliers&gt;</span>
+</pre></div>
 
 
 <h3 id="details_3">Details</h3>

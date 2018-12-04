@@ -1713,53 +1713,57 @@
 <p>Instead of creating files which are downloaded to the user's machine it also possible to define files using <em>xml</em> which are then converted into web pages.  The format of this xml is described in detail later in this document.</p>
 <h3 id="table-of-contents-tocxml">Table Of Contents (toc.xml)</h3>
 <p>This file holds a listing of topics and a link to the appropriate help contents..</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;grs:TableOfContents xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-    &lt;grs:HelpTopic grs:DisplayName=&quot;Getting started&quot; grs:ID=&quot;&quot; grs:AltText=&quot;Getting started with PROACTIS.&quot;/&gt;
-    &lt;grs:HelpTopic grs:External=&quot;True&quot;  grs:DisplayName=&quot;Writing help in Word&quot; grs:ID=&quot;PROACTIS.mht&quot; grs:AltText=&quot;Getting started with writing help in word.&quot;/&gt;
-    &lt;grs:HelpTopic grs:DisplayName=&quot;Logging In&quot; grs:ID=&quot;LoggingIn/LoggingIn&quot; grs:AltText=&quot;An explanation on how to login to PROACTIS.&quot;/&gt;
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;grs:TableOfContents</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Getting started&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Getting started with PROACTIS.&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:External=</span><span class="s">&quot;True&quot;</span>  <span class="na">grs:DisplayName=</span><span class="s">&quot;Writing help in Word&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;PROACTIS.mht&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Getting started with writing help in word.&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Logging In&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;LoggingIn/LoggingIn&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;An explanation on how to login to PROACTIS.&quot;</span><span class="nt">/&gt;</span>
 
-    &lt;grs:HelpTopic grs:DisplayName=&quot;Home&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;All about the PROACTIS Home section.&quot;/&gt;
-    &lt;grs:HelpTopic grs:DisplayName=&quot;Purchasing&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Purchasing section.&quot;&gt;
-        &lt;grs:HelpTopic grs:DisplayName=&quot;Requests&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Requisition sub-section.&quot;/&gt;
-        &lt;grs:HelpTopic grs:DisplayName=&quot;Orders&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Orders sub-section.&quot;&gt;
-            &lt;grs:HelpTopic grs:DisplayName=&quot;Creating an order&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;How to create a purchase order.&quot;/&gt;
-            &lt;grs:HelpTopic grs:DisplayName=&quot;Setting the order header&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Changing header information for a purchase order.&quot;/&gt;
-            &lt;grs:HelpTopic grs:DisplayName=&quot;Adding items&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;How to add items to a purchase order.&quot;/&gt;
-            &lt;grs:HelpTopic grs:DisplayName=&quot;Set the order footer&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Additional details that may appear at the foot of each purchase order.&quot;/&gt;
-            &lt;grs:HelpTopic grs:DisplayName=&quot;Submitting the order&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Tips on how to submit an order from PROACTIS&quot;/&gt;
-        &lt;/grs:HelpTopic&gt;
-        &lt;grs:HelpTopic grs:DisplayName=&quot;Receipting&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Receipting sub-section.&quot;/&gt;
-        &lt;grs:HelpTopic grs:External=&quot;True&quot; grs:DisplayName=&quot;Invoicing&quot; grs:ID=&quot;Invoice.doc&quot; grs:AltText=&quot;Using the PROACTIS Invoicing sub-section.&quot;/&gt;
-    &lt;/grs:HelpTopic&gt;
-    &lt;grs:HelpTopic grs:DisplayName=&quot;Reports&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Reports section.&quot;/&gt;
-    &lt;grs:HelpTopic grs:DisplayName=&quot;Authorisation&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Authorisation section.&quot;/&gt;
-    &lt;grs:HelpTopic grs:DisplayName=&quot;Admin&quot; grs:ID=&quot;NoTopicYet&quot; grs:AltText=&quot;Using the PROACTIS Admin section.&quot;/&gt;
-    &lt;grs:HelpTopic grs:DisplayName=&quot;Help System&quot; grs:ID=&quot;Help/Index&quot; grs:AltText=&quot;Find out how the help system works...&quot;&gt;
-        &lt;grs:HelpTopic grs:DisplayName=&quot;Adding New Help&quot; grs:ID=&quot;Help/AddingNewHelp&quot; grs:AltText=&quot;How to add a new help topic or context help.&quot;/&gt;
-        &lt;grs:HelpTopic grs:DisplayName=&quot;Troubleshooting The Help System&quot; grs:ID=&quot;Help/Troubleshooting&quot; grs:AltText=&quot;Troubleshot a problem with the Help system.&quot;/&gt;
-    &lt;/grs:HelpTopic&gt;
-    &lt;grs:HelpTopic grs:DisplayName=&quot;About&quot; grs:ID=&quot;About/About&quot; grs:AltText=&quot;About PROACTIS&quot;/&gt;
-&lt;/grs:TableOfContents&gt;</code></pre>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Home&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;All about the PROACTIS Home section.&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Purchasing&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Using the PROACTIS Purchasing section.&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Requests&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Using the PROACTIS Requisition sub-section.&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Orders&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Using the PROACTIS Orders sub-section.&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Creating an order&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;How to create a purchase order.&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Setting the order header&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Changing header information for a purchase order.&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Adding items&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;How to add items to a purchase order.&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Set the order footer&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Additional details that may appear at the foot of each purchase order.&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Submitting the order&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Tips on how to submit an order from PROACTIS&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/grs:HelpTopic&gt;</span>
+        <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Receipting&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Using the PROACTIS Receipting sub-section.&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:External=</span><span class="s">&quot;True&quot;</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Invoicing&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;Invoice.doc&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Using the PROACTIS Invoicing sub-section.&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/grs:HelpTopic&gt;</span>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Reports&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Using the PROACTIS Reports section.&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Authorisation&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Using the PROACTIS Authorisation section.&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Admin&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;NoTopicYet&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Using the PROACTIS Admin section.&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Help System&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;Help/Index&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Find out how the help system works...&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Adding New Help&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;Help/AddingNewHelp&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;How to add a new help topic or context help.&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;Troubleshooting The Help System&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;Help/Troubleshooting&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Troubleshot a problem with the Help system.&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/grs:HelpTopic&gt;</span>
+    <span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:DisplayName=</span><span class="s">&quot;About&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;About/About&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;About PROACTIS&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/grs:TableOfContents&gt;</span>
+</pre></div>
 
 
 <p>Help topics can be indented / embedded in a hierarchical structure as shown below.</p>
-<pre class="codehilite"><code class="language-xml">    &lt;grs:HelpTopic…….&gt;
-        &lt;grs:HelpTopic……./&gt;
-        &lt;grs:HelpTopic……./&gt;
-    &lt;/grs:HelpTopic&gt;</code></pre>
+<div class="codehilite"><pre><span></span>    <span class="nt">&lt;grs:HelpTopic</span><span class="err">…….</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;grs:HelpTopic</span><span class="err">…….</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;grs:HelpTopic</span><span class="err">…….</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/grs:HelpTopic&gt;</span>
+</pre></div>
 
 
 <p>To create a help topic that points to a user defined help topic saved as <em>HELPINFO.HTM</em> in the external directory the following format is required.</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:HelpTopic grs:External=&quot;True&quot;  grs:DisplayName=&quot;New Help Item&quot; grs:ID=&quot;HelpInfo.HTM&quot; grs:AltText=&quot;Tool tip about the help item.&quot;/&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:HelpTopic</span> <span class="na">grs:External=</span><span class="s">&quot;True&quot;</span>  <span class="na">grs:DisplayName=</span><span class="s">&quot;New Help Item&quot;</span> <span class="na">grs:ID=</span><span class="s">&quot;HelpInfo.HTM&quot;</span> <span class="na">grs:AltText=</span><span class="s">&quot;Tool tip about the help item.&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <h3 id="context-page-entries">Context Page Entries</h3>
 <p>The link between pages and help topics are maintained within the <strong>ExternalContext.XML</strong> file.</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;grs:ExternalContextLinks xmlns:grs=&quot;http://www.getrealsystems.com/xml/xml-ns&quot;&gt;
-    &lt;grs:ExternalContextLink grs:ContextPage=&quot;Secure/Logon.asp&quot;  grs:ID=&quot;PROACTIS.mht&quot; /&gt;
-&lt;/grs:ExternalContextLinks&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;grs:ExternalContextLinks</span> <span class="na">xmlns:grs=</span><span class="s">&quot;http://www.getrealsystems.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;grs:ExternalContextLink</span> <span class="na">grs:ContextPage=</span><span class="s">&quot;Secure/Logon.asp&quot;</span>  <span class="na">grs:ID=</span><span class="s">&quot;PROACTIS.mht&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/grs:ExternalContextLinks&gt;</span>
+</pre></div>
 
 
 <p>The ID attribute is the name of the user defined help topic saved in the external directory
@@ -1773,10 +1777,11 @@ The ContextPage attribute is the ID of the PROACTIS web site page. This Context 
 <hr />
 <h2 id="context-sensitive-help">Context Sensitive Help</h2>
 <p>As mentioned above, context sensitive help relates to specific pages, and when the help button is pressed, the help page that is displayed relates to page from which the help was requested. This is controlled through the page name, a unique name that is assigned to each and every web page. The page name may be seen as a comment at the top of the HTML source for each page, by right clicking in any blank area of a PROACTIS webpage, and selecting the view source option from the pop-up menu. An example of this can be seen below:</p>
-<pre class="codehilite"><code class="language-html">&lt;!-- Page Name: Home/Logon.asp --&gt;
-&lt;html&gt;
-    &lt;head&gt;
-      ...</code></pre>
+<div class="codehilite"><pre><span></span><span class="c">&lt;!-- Page Name: Home/Logon.asp --&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+      ...
+</pre></div>
 
 
 <p>Using this unique name, the help system looks for a related XML help file, and, if not found, defaults to a file called <strong>NoPageHelp.xml</strong>. This file holds the contents of the default message to be displayed when the proper help file cannot be found in the location specified, or if there is a problem when trying to load it.</p>
@@ -1811,12 +1816,13 @@ The ContextPage attribute is the ID of the PROACTIS web site page. This Context 
 <p>Since we have covered the help mechanism structure, we can now have a closer look at the definition of an xml help file, the file that holds the content of the help, the content that the user will see and interact with. As mentioned, each topic and page has its own help file, with the page help files kept in a folder structure that mimics the site structure, and topic help files are kept in user defined folders.</p>
 <h3 id="file-contents">File Contents</h3>
 <p>The help files are well-formed XML files. Each file is broken into three distinct sections; Title, Contents, and Related Documents, each of which will be discussed in more detail later. These three sections are all held together with a root element whose purpose is contain these sections, as well as confirm the help Type, ID and namespace. Again, the details of these will be discussed later. Each section in turn may contain child elements, links and paragraphs, for instance. Below, is an outline of a help file document, and with its sections displayed:</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=”1.0”?&gt;
-&lt;grs:Help&gt;
-    &lt;grs:Title&gt;
-    &lt;grs:Content&gt;
-    &lt;grs:RelatedDocuments&gt;
-&lt;/grs:Help&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=”1.0”?&gt;</span>
+<span class="nt">&lt;grs:Help&gt;</span>
+    <span class="nt">&lt;grs:Title&gt;</span>
+    <span class="nt">&lt;grs:Content&gt;</span>
+    <span class="nt">&lt;grs:RelatedDocuments&gt;</span>
+<span class="nt">&lt;/grs:Help&gt;</span>
+</pre></div>
 
 
 <h3 id="file-sections">File Sections</h3>
@@ -1827,18 +1833,20 @@ The ContextPage attribute is the ID of the PROACTIS web site page. This Context 
 <h2 id="grscontent">grs:Content</h2>
 <p>The <strong>&lt;grs:Content&gt;</strong> element defines the content that the user sees in the right hand pane of the help screen, barring the title at the top and the related documents at the bottom. It has no attributes and merely acts as a container for various formatting elements, such as the <strong>&lt;grs:Paragraph&gt;</strong> element. </p>
 <h3 id="format">Format</h3>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Content&gt;
-&lt;/grs:Content&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Content&gt;</span>
+<span class="nt">&lt;/grs:Content&gt;</span>
+</pre></div>
 
 
 <h3 id="position">Position</h3>
 <p><strong>&lt;grs:Content&gt;</strong> element always appears as a child of the <strong>&lt;grs:Help&gt;</strong> root element. It only ever appears once within the help document and usually contains numerous child elements.</p>
 <h3 id="content">Content</h3>
 <p>The following child elements are permissible in any order, and with any amount of occurrences, but never any text:</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Image&gt;
-&lt;grs:List&gt;
-&lt;grs:Note&gt;
-&lt;grs:Paragraph&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Image&gt;</span>
+<span class="nt">&lt;grs:List&gt;</span>
+<span class="nt">&lt;grs:Note&gt;</span>
+<span class="nt">&lt;grs:Paragraph&gt;</span>
+</pre></div>
 
 
 <h3 id="attributes">Attributes</h3>
@@ -1847,23 +1855,26 @@ The ContextPage attribute is the ID of the PROACTIS web site page. This Context 
 <h2 id="grshelp">grs:Help</h2>
 <p>The <strong>&lt;grs:Help&gt;</strong> element is the outermost element of the help file, and is also known as the root element. It contains a reference to the type of help that this file reflects and the ID of the help that it corresponds to. It also contains the Get Real Systems Ltd. namespace declaration, which is outside the scope of this document. However, the Get Real Systems Ltd. namespace declaration looks like this: <strong>xmlns:grs=”http://www.getrealsystems.com/xml/xml-ns”</strong></p>
 <h3 id="format_1">Format</h3>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Help 
-    grs:Type=help document type
-    grs:ID=identifier
-    xmlns:grs=”http://www.getrealsystems.com/xml/xml-ns” &gt;
-&lt;/grs:Help&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Help</span> 
+    <span class="na">grs:Type=</span><span class="s">help</span> <span class="err">document</span> <span class="err">type</span>
+    <span class="na">grs:ID=</span><span class="s">identifier</span>
+    <span class="na">xmlns:grs=</span><span class="s">”http://www.getrealsystems.com/xml/xml-ns”</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;/grs:Help&gt;</span>
+</pre></div>
 
 
 <h3 id="position_1">Position</h3>
 <p><strong>&lt;grs:Help&gt;</strong> element always appears as the outermost element of every help file. In other words, there are no other elements that appear outside this element, other than the XML processing instruction, which is outside the scope of this document. An example of the processing instruction can be seen below:</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=”1.0”?&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=”1.0”?&gt;</span>
+</pre></div>
 
 
 <h3 id="content_1">Content</h3>
 <p>The <strong>&lt;grs:Help&gt;</strong> element is allowed one each of the following child elements, but never any text:</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Title&gt;
-&lt;grs:Content&gt;
-&lt;grs:RelatedDocuments&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Title&gt;</span>
+<span class="nt">&lt;grs:Content&gt;</span>
+<span class="nt">&lt;grs:RelatedDocuments&gt;</span>
+</pre></div>
 
 
 <h3 id="attributes_1">Attributes</h3>
@@ -1892,11 +1903,12 @@ The ContextPage attribute is the ID of the PROACTIS web site page. This Context 
 <h2 id="grsimage">grs:Image</h2>
 <p>The <strong>&lt;grs:Image&gt;</strong> element is classed as a formatting element, in that it describes the content and how it is shown. It is intended to be used to show illustrations, such as screen shots, embedding them within the help file. It has no child elements, and no text nodes, in other words it must me an empty element.</p>
 <h3 id="format_2">Format</h3>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Image 
-    grs:AltText=mouse over text
-    grs:Border=image border
-    grs:Caption=image caption
-    grs:Source=image file location/&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Image</span> 
+    <span class="na">grs:AltText=</span><span class="s">mouse</span> <span class="err">over</span> <span class="err">text</span>
+    <span class="na">grs:Border=</span><span class="s">image</span> <span class="err">border</span>
+    <span class="na">grs:Caption=</span><span class="s">image</span> <span class="err">caption</span>
+    <span class="na">grs:Source=</span><span class="s">image</span> <span class="err">file</span> <span class="err">location</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <h3 id="position_2">Position</h3>
@@ -1939,20 +1951,22 @@ The ContextPage attribute is the ID of the PROACTIS web site page. This Context 
 <h2 id="grslink">grs:Link</h2>
 <p>This element allows the user to provide a link to either a page help document, a topic help document or an external link using the HTML standard anchor format. If the link type is set to either <strong>&lt;&lt;page&gt;&gt;</strong> or <strong>&lt;&lt;topic&gt;&gt;</strong> then the grs:ID attribute is used to construct the Help system’s custom hyperlinks, otherwise if the link type is set to <strong>&lt;&lt;external&gt;&gt;</strong> then the grs:HREF attribute is used to construct a standard HTML hyperlink.</p>
 <h3 id="format_3">Format</h3>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Link 
-    grs:AltText=mouse over text
-    grs:DisplayName=link text name
-    grs:ID=page or topic ID
-    grs:HREF=HTML anchor format HREF
-    grs:Type=link type /&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Link</span> 
+    <span class="na">grs:AltText=</span><span class="s">mouse</span> <span class="err">over</span> <span class="err">text</span>
+    <span class="na">grs:DisplayName=</span><span class="s">link</span> <span class="err">text</span> <span class="err">name</span>
+    <span class="na">grs:ID=</span><span class="s">page</span> <span class="err">or</span> <span class="err">topic</span> <span class="err">ID</span>
+    <span class="na">grs:HREF=</span><span class="s">HTML</span> <span class="err">anchor</span> <span class="err">format</span> <span class="err">HREF</span>
+    <span class="na">grs:Type=</span><span class="s">link</span> <span class="err">type</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <h3 id="position_3">Position</h3>
 <p><strong>&lt;grs:Link&gt;</strong> element may appear multiple times as a child of a the following:</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Paragraph&gt;
-&lt;grs:ListEntry&gt;
-&lt;grs:Note&gt;
-&lt;grs:RelatedDocuments&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Paragraph&gt;</span>
+<span class="nt">&lt;grs:ListEntry&gt;</span>
+<span class="nt">&lt;grs:Note&gt;</span>
+<span class="nt">&lt;grs:RelatedDocuments&gt;</span>
+</pre></div>
 
 
 <h3 id="content_3">Content</h3>
@@ -1998,9 +2012,10 @@ The ContextPage attribute is the ID of the PROACTIS web site page. This Context 
 <h2 id="grslist">grs:List</h2>
 <p>The <strong>&lt;grs:List&gt;</strong> element is considered to be a formatting type element, in that it appears as a child element within the <strong>&lt;grs:Content&gt;</strong> element, and describes the way that the content appears to the user. Its purpose is to provide either a bulleted or numbered list. The list gets converted into an HTML unordered, or bulleted, list (&lt;UL&gt;) or ordered, or numbered, list (&lt;OL&gt;).</p>
 <h3 id="format_4">Format</h3>
-<pre class="codehilite"><code class="language-xml">&lt;grs:List 
-    grs:Type=list type &gt;
-&lt;/grs:List&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:List</span> 
+    <span class="na">grs:Type=</span><span class="s">list</span> <span class="err">type</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;/grs:List&gt;</span>
+</pre></div>
 
 
 <h3 id="position_4">Position</h3>
@@ -2028,16 +2043,18 @@ The ContextPage attribute is the ID of the PROACTIS web site page. This Context 
 <h2 id="grslistentry">grs:ListEntry</h2>
 <p><strong>&lt;grs:ListEntry&gt;</strong> element describes each point in a list, and is classed as a formatting element. There is a separate element per point in the list, with each <strong>&lt;grs:ListEntry&gt;</strong> being converted into an individual HTML list item (&lt;LI&gt;). </p>
 <h3 id="format_5">Format</h3>
-<pre class="codehilite"><code class="language-xml">&lt;grs:ListEntry&gt;
-&lt;/grs:ListEntry&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:ListEntry&gt;</span>
+<span class="nt">&lt;/grs:ListEntry&gt;</span>
+</pre></div>
 
 
 <h3 id="position_5">Position</h3>
 <p><strong>&lt;grs:ListEntry&gt;</strong> element must be a child of <strong>&lt;grs:List&gt;</strong> element only.</p>
 <h3 id="content_5">Content</h3>
 <p>May contain multiple occurrences of the following:</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Link&gt;
-Text</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Link&gt;</span>
+Text
+</pre></div>
 
 
 <h3 id="attributes_5">Attributes</h3>
@@ -2047,16 +2064,18 @@ Text</code></pre>
 <p>The <strong>&lt;grs:Note&gt;</strong> element is classed as a formatting element, and is converted to the word ‘Note’ underlined and in italics, followed by a hyphen then the text of the note, thus:</p>
 <p><em>Note</em> – The text of the element goes here.</p>
 <h3 id="format_6">Format</h3>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Note&gt;
-&lt;/grs:Note&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Note&gt;</span>
+<span class="nt">&lt;/grs:Note&gt;</span>
+</pre></div>
 
 
 <h3 id="position_6">Position</h3>
 <p>The <strong>&lt;grs:Note&gt;</strong> element always appears as a child of the <strong>&lt;grs:Content&gt;</strong> element.</p>
 <h3 id="content_6">Content</h3>
 <p>May contain multiple occurrences of the following:</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Link&gt;
-Text</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Link&gt;</span>
+Text
+</pre></div>
 
 
 <h3 id="attributes_6">Attributes</h3>
@@ -2065,17 +2084,19 @@ Text</code></pre>
 <h2 id="grsparagraph">grs:Paragraph</h2>
 <p>This element is classed as a formatting element, and describes a paragraph within the help content. It may have a heading or not, and it may contain text and links, or just text or just links.</p>
 <h3 id="format_7">Format</h3>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Paragraph 
-    grs:Title=paragraph title &gt;
-&lt;/grs:Paragraph&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Paragraph</span> 
+    <span class="na">grs:Title=</span><span class="s">paragraph</span> <span class="err">title</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;/grs:Paragraph&gt;</span>
+</pre></div>
 
 
 <h3 id="position_7">Position</h3>
 <p>Always appears as a child of the <strong>&lt;grs:Content&gt;</strong> element, in any order, and any amount of times.</p>
 <h3 id="content_7">Content</h3>
 <p>May contain multiple occurrences of the following:</p>
-<pre class="codehilite"><code class="language-xml">&lt;grs:Link&gt;
-Text</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:Link&gt;</span>
+Text
+</pre></div>
 
 
 <h3 id="attributes_7">Attributes</h3>
@@ -2104,8 +2125,9 @@ Text</code></pre>
 <li>Related Links</li>
 </ol>
 <h3 id="format_8">Format</h3>
-<pre class="codehilite"><code class="language-xml">&lt;grs:RelatedDocuments&gt;
-&lt;/grs:RelatedDocuments&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;grs:RelatedDocuments&gt;</span>
+<span class="nt">&lt;/grs:RelatedDocuments&gt;</span>
+</pre></div>
 
 
 <h3 id="position_8">Position</h3>

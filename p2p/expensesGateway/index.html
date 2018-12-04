@@ -1391,41 +1391,46 @@
 <p>This section of the document walks you through the creation of a simple document.  All the available fields are described in complete detail, within the next section.</p>
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;pro:Import xmlns:pro=&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="nt">&lt;pro:Import</span> <span class="na">xmlns:pro=</span><span class="s">&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <p>And finish with</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:Import&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:Import&gt;</span>
+</pre></div>
 
 
 <h3 id="control-block">Control Block</h3>
 <p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
-              UserName=&quot;DAVIDBETTERIDGE&quot;
-              Password=&quot;mysecret&quot;
-              Company=&quot;MAIN&quot;
-              Department=&quot;SOLUTIONS&quot;
-              Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span> <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS&quot;</span>
+              <span class="na">UserName=</span><span class="s">&quot;DAVIDBETTERIDGE&quot;</span>
+              <span class="na">Password=</span><span class="s">&quot;mysecret&quot;</span>
+              <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+              <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+              <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>The XML gateway supports NT authentication, an example is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
-                 AuthenticationMethod=&quot;WINDOWS&quot;
-                 Company=&quot;MAIN&quot;
-                 Department=&quot;SOLUTIONS&quot;
-                 Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span>    <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS\_LIVE&quot;</span>
+                 <span class="na">AuthenticationMethod=</span><span class="s">&quot;WINDOWS&quot;</span>
+                 <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+                 <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+                 <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="expense-claims">Expense Claims</h3>
 <p>The next section contains the details of the expense claims to be imported.  The gateway allows multiple claims to be included in a single xml document.  At least one expense claim must be included.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:ExpenseClaim Template = &quot;EXP&quot;
-                  Title = &quot;Pen and Paper&quot; 
-                  ClaimDate=&quot;2017-08-18&quot;
-                  ClaimFor=&quot;Anderson&quot;
-                  SaveMethod=&quot;SUBMIT&quot; /&gt;  </code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:ExpenseClaim</span> <span class="na">Template =</span> <span class="s">&quot;EXP&quot;</span>
+                  <span class="na">Title =</span> <span class="s">&quot;Pen and Paper&quot;</span> 
+                  <span class="na">ClaimDate=</span><span class="s">&quot;2017-08-18&quot;</span>
+                  <span class="na">ClaimFor=</span><span class="s">&quot;Anderson&quot;</span>
+                  <span class="na">SaveMethod=</span><span class="s">&quot;SUBMIT&quot;</span> <span class="nt">/&gt;</span>  
+</pre></div>
 
 
 <h3 id="template">@Template</h3>
@@ -1434,32 +1439,35 @@
 <p>This attribute is optional and will default to today's date if missing.  Must be in the format yyyy-mm-dd</p>
 <h3 id="comments">Comments</h3>
 <p>Any number of comments may be added onto the claim.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Comments&gt;
-  &lt;pro:Comment&gt;&quot;Please pay quickly&quot;&lt;/pro:Comment&gt;
-  &lt;pro:Comment&gt;&quot;BarCode: 1232&quot; &lt;/pro:Comment&gt;
-&lt;/pro:Comments&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Comments&gt;</span>
+  <span class="nt">&lt;pro:Comment&gt;</span>&quot;Please pay quickly&quot;<span class="nt">&lt;/pro:Comment&gt;</span>
+  <span class="nt">&lt;pro:Comment&gt;</span>&quot;BarCode: 1232&quot; <span class="nt">&lt;/pro:Comment&gt;</span>
+<span class="nt">&lt;/pro:Comments&gt;</span>
+</pre></div>
 
 
 <h3 id="items">Items</h3>
 <p>The claim must contain one or more item lines.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Items&gt;
-  &lt;pro:Item PROACTISCode='LTP001'
-            Price='1002.35'
-            Quantity='1'
-            Description='Laptop'
-            Receipt='YES'
-            TaxReceipt='YES'
-            TaxCode='C1' /&gt;
-&lt;pro:Items&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Items&gt;</span>
+  <span class="nt">&lt;pro:Item</span> <span class="na">PROACTISCode=</span><span class="s">&#39;LTP001&#39;</span>
+            <span class="na">Price=</span><span class="s">&#39;1002.35&#39;</span>
+            <span class="na">Quantity=</span><span class="s">&#39;1&#39;</span>
+            <span class="na">Description=</span><span class="s">&#39;Laptop&#39;</span>
+            <span class="na">Receipt=</span><span class="s">&#39;YES&#39;</span>
+            <span class="na">TaxReceipt=</span><span class="s">&#39;YES&#39;</span>
+            <span class="na">TaxCode=</span><span class="s">&#39;C1&#39;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;pro:Items&gt;</span>
+</pre></div>
 
 
 <h3 id="nominals">Nominals</h3>
 <p>Each item on the claim must contain one or more nominals</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Nominals&gt;
-  &lt;pro:Nominal AccountingElement1='113'
-               NominalMask='Advertising'
-               Ratio='1'/&gt;
-&lt;/pro:Nominals&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Nominals&gt;</span>
+  <span class="nt">&lt;pro:Nominal</span> <span class="na">AccountingElement1=</span><span class="s">&#39;113&#39;</span>
+               <span class="na">NominalMask=</span><span class="s">&#39;Advertising&#39;</span>
+               <span class="na">Ratio=</span><span class="s">&#39;1&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/pro:Nominals&gt;</span>
+</pre></div>
 
 
 <h2 id="error-handling">Error Handling</h2>
@@ -1468,10 +1476,11 @@
 <p>Note: Nodes without this attribute have not been processed.</p>
 <p>The supplied XML is first validated against the <strong>ImportExpenseClaims.XSD</strong> schema.  If the xml fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block</p>
 <p>An example errors block is shown below</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Errors&gt;
-  &lt;pro:Error Number='-1072898030' 
-             Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ExpenseClaim'/&gt;
-&lt;/pro:Errors&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Errors&gt;</span>
+  <span class="nt">&lt;pro:Error</span> <span class="na">Number=</span><span class="s">&#39;-1072898030&#39;</span> 
+             <span class="na">Message=</span><span class="s">&#39;XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ExpenseClaim&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/pro:Errors&gt;</span>
+</pre></div>
 
 
 <h3 id="errorserror">Errors/Error</h3>
@@ -1543,7 +1552,8 @@
 <li>If the XML contains multiple expense claims, then as long as the control block is valid, it is possible for some expense claims to be imported and other claims to be rejected.</li>
 </ul>
 <p>Example</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:ExpenseClaim  Template='EXP' Status='OK' DocumentNumber='exp 52487'&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:ExpenseClaim</span>  <span class="na">Template=</span><span class="s">&#39;EXP&#39;</span> <span class="na">Status=</span><span class="s">&#39;OK&#39;</span> <span class="na">DocumentNumber=</span><span class="s">&#39;exp 52487&#39;</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <hr />

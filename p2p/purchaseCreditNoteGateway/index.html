@@ -1249,41 +1249,46 @@
 <p>This section of the document walks you through the creation of a simple credit note. </p>
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;pro:Import xmlns:pro=&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="nt">&lt;pro:Import</span> <span class="na">xmlns:pro=</span><span class="s">&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <p>And finish with</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:Import&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:Import&gt;</span>
+</pre></div>
 
 
 <h3 id="control-block">Control Block</h3>
 <p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
-              UserName=&quot;DAVIDBETTERIDGE&quot;
-              Password=&quot;mysecret&quot;
-              Company=&quot;MAIN&quot;
-              Department=&quot;SOLUTIONS&quot;
-              Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span> <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS&quot;</span>
+              <span class="na">UserName=</span><span class="s">&quot;DAVIDBETTERIDGE&quot;</span>
+              <span class="na">Password=</span><span class="s">&quot;mysecret&quot;</span>
+              <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+              <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+              <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>The XML gateway supports NT authentication, an example is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
-                 AuthenticationMethod=&quot;WINDOWS&quot;
-                 Company=&quot;MAIN&quot;
-                 Department=&quot;SOLUTIONS&quot;
-                 Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span>    <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS\_LIVE&quot;</span>
+                 <span class="na">AuthenticationMethod=</span><span class="s">&quot;WINDOWS&quot;</span>
+                 <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+                 <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+                 <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="credit-note">Credit Note</h3>
 <p>The next section contains the details of the Credit Notes to be imported.  The gateway allows multiple documents to be included in a single xml document.  At least one credit note must be included.</p>
-<pre class="codehilite"><code class="language-xml">          &lt;pro:CreditNote CreditNoteDate=&quot;2005-01-27&quot;              
-                          SupplierCreditNoteNumber=&quot;PR-234&quot; 
-                          Template=&quot;CRED&quot; 
-                          Tray=&quot;Standard&quot; 
-                          GrossValue=&quot;100&quot;&gt;</code></pre>
+<div class="codehilite"><pre><span></span>          <span class="nt">&lt;pro:CreditNote</span> <span class="na">CreditNoteDate=</span><span class="s">&quot;2005-01-27&quot;</span>              
+                          <span class="na">SupplierCreditNoteNumber=</span><span class="s">&quot;PR-234&quot;</span> 
+                          <span class="na">Template=</span><span class="s">&quot;CRED&quot;</span> 
+                          <span class="na">Tray=</span><span class="s">&quot;Standard&quot;</span> 
+                          <span class="na">GrossValue=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <h4 id="notes">Notes</h4>
@@ -1296,16 +1301,17 @@
 </ul>
 <h3 id="credit-note-items">Credit Note Items</h3>
 <p>Then the parent documents (credit notes and/or credit notes) and items against which the credit note will be matched are listed.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:ParentDocuments&gt;                       
-  &lt;pro:ParentDocument DocumentNumber=&quot;PORD10034&quot;&gt;
-    &lt;pro:Item Position=&quot;1&quot; Value=&quot;1&quot;/&gt;
-    &lt;pro:Item Position=&quot;2&quot; Price=&quot;1&quot; Quantity=&quot;1&quot;&gt;
-      &lt;pro:Nominals&gt;
-        &lt;pro:Nominal Code=&quot;ABC.XYZ&quot; Quantity=&quot;1&quot;/&gt;
-      &lt;/pro:Nominals&gt;
-    &lt;/pro:Item&gt; 
-  &lt;/pro:ParentDocument&gt;
-&lt;/pro:ParentDocuments&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:ParentDocuments&gt;</span>                       
+  <span class="nt">&lt;pro:ParentDocument</span> <span class="na">DocumentNumber=</span><span class="s">&quot;PORD10034&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pro:Item</span> <span class="na">Position=</span><span class="s">&quot;1&quot;</span> <span class="na">Value=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;pro:Item</span> <span class="na">Position=</span><span class="s">&quot;2&quot;</span> <span class="na">Price=</span><span class="s">&quot;1&quot;</span> <span class="na">Quantity=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;pro:Nominals&gt;</span>
+        <span class="nt">&lt;pro:Nominal</span> <span class="na">Code=</span><span class="s">&quot;ABC.XYZ&quot;</span> <span class="na">Quantity=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/pro:Nominals&gt;</span>
+    <span class="nt">&lt;/pro:Item&gt;</span> 
+  <span class="nt">&lt;/pro:ParentDocument&gt;</span>
+<span class="nt">&lt;/pro:ParentDocuments&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_1">Notes</h4>
@@ -1317,9 +1323,10 @@
 </ul>
 <h3 id="tax">Tax</h3>
 <p>As well as the parent documents, the credit note must also include the tax details.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:TaxDetails&gt;
-  &lt;pro:Tax Band='VAT' BandNumber='1' Code='STD' GrossValue='1.18' TaxValue='0.18'/&gt;
- &lt;/pro:TaxDetails&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:TaxDetails&gt;</span>
+  <span class="nt">&lt;pro:Tax</span> <span class="na">Band=</span><span class="s">&#39;VAT&#39;</span> <span class="na">BandNumber=</span><span class="s">&#39;1&#39;</span> <span class="na">Code=</span><span class="s">&#39;STD&#39;</span> <span class="na">GrossValue=</span><span class="s">&#39;1.18&#39;</span> <span class="na">TaxValue=</span><span class="s">&#39;0.18&#39;</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;/pro:TaxDetails&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_2">Notes</h4>
@@ -1329,14 +1336,15 @@
 </ul>
 <h3 id="supplier">Supplier</h3>
 <p>If the supplier is a one-off supplier, then their address details must also be set.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:SupplierAddress  Name='Accounts' 
-                      Line1='12 The close' 
-                      Line2='East Kettlewell' 
-                      Line3='' 
-                      Line4='' 
-                      Town='YORK' 
-                      County='North Yorkshire' 
-                      Country='UK'/&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:SupplierAddress</span>  <span class="na">Name=</span><span class="s">&#39;Accounts&#39;</span> 
+                      <span class="na">Line1=</span><span class="s">&#39;12 The close&#39;</span> 
+                      <span class="na">Line2=</span><span class="s">&#39;East Kettlewell&#39;</span> 
+                      <span class="na">Line3=</span><span class="s">&#39;&#39;</span> 
+                      <span class="na">Line4=</span><span class="s">&#39;&#39;</span> 
+                      <span class="na">Town=</span><span class="s">&#39;YORK&#39;</span> 
+                      <span class="na">County=</span><span class="s">&#39;North Yorkshire&#39;</span> 
+                      <span class="na">Country=</span><span class="s">&#39;UK&#39;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_3">Notes</h4>
@@ -1345,9 +1353,10 @@
 </ul>
 <h3 id="comments">Comments</h3>
 <p>It is possible to add one or more comments to an credit note</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Comments&gt;
-  &lt;pro:Comment&gt;Please pay quickly&lt;/pro:Comment&gt;
-&lt;/pro:Comments&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Comments&gt;</span>
+  <span class="nt">&lt;pro:Comment&gt;</span>Please pay quickly<span class="nt">&lt;/pro:Comment&gt;</span>
+<span class="nt">&lt;/pro:Comments&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_4">Notes</h4>
@@ -1356,14 +1365,15 @@
 </ul>
 <h3 id="references">References</h3>
 <p>It is also possible to set the reference fields on the credit</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:References&gt;
-          &lt;pro:Reference Caption='Bar code' 
-                         Value='345-223-33'
-          &lt;pro:Reference Position='2' 
-                         Value='BACS'
-          &lt;pro:Reference Code='Colour' 
-                         Value='Red'
-&lt;/pro:References&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:References&gt;</span>
+          <span class="nt">&lt;pro:Reference</span> <span class="na">Caption=</span><span class="s">&#39;Bar code&#39;</span> 
+                         <span class="na">Value=</span><span class="s">&#39;345-223-33&#39;</span>
+          <span class="err">&lt;pro:Reference</span> <span class="na">Position=</span><span class="s">&#39;2&#39;</span> 
+                         <span class="na">Value=</span><span class="s">&#39;BACS&#39;</span>
+          <span class="err">&lt;pro:Reference</span> <span class="na">Code=</span><span class="s">&#39;Colour&#39;</span> 
+                         <span class="na">Value=</span><span class="s">&#39;Red&#39;</span>
+<span class="err">&lt;/pro:References</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_5">Notes</h4>
@@ -1372,11 +1382,13 @@
 <li>Either the code, caption or the position can be specified</li>
 </ul>
 <p>The credit then finishes with a closing tag:</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:CreditNote&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:CreditNote&gt;</span>
+</pre></div>
 
 
 <p>Finally the XML must be closed as follows:</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:Import&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:Import&gt;</span>
+</pre></div>
 
 
 <hr />
@@ -1386,10 +1398,11 @@
 <p>Note: Nodes without this attribute have not been processed.</p>
 <p>he supplied XML is first validated against the <strong>ImportPurchaseCreditNotes.xsd</strong> schema.  If the credit note fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block</p>
 <p>An example errors block is shown below</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Errors&gt;
-  &lt;pro:Error Number='-1072898030' 
-             Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ParentDocument'/&gt;
-&lt;/pro:Errors&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Errors&gt;</span>
+  <span class="nt">&lt;pro:Error</span> <span class="na">Number=</span><span class="s">&#39;-1072898030&#39;</span> 
+             <span class="na">Message=</span><span class="s">&#39;XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ParentDocument&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/pro:Errors&gt;</span>
+</pre></div>
 
 
 <h3 id="errorserror">Errors/Error</h3>
@@ -1463,31 +1476,32 @@
 <hr />
 <h2 id="example-xml">Example XML</h2>
 <p>The example below shows a basic single credit note being imported.  The credit note will be matched against the purchase invoice PINV10034. </p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;pro:Import xmlns:pro=&quot;http://www.proactis.com/xml/xml-ns&quot;&gt;
-          &lt;pro:Control   Version=&quot;1.0.0&quot; 
-                         DatabaseName=&quot;DEMO&quot;
-                         UserName=&quot;sysadmin&quot;
-                         Password=&quot;mypassword&quot;/&gt;
-          &lt;pro:CreditNote CreditNoteDate=&quot;2005-01-27&quot;              
-                          SupplierCreditNoteNumber=&quot;CN-234&quot; 
-                          Template=&quot;CRED&quot; 
-                          GrossValue=&quot;1&quot;&gt;
-                          &lt;pro:ParentDocument&gt;
-                            &lt;pro:ParentDocument DocumentNumber=&quot;PINV10034&quot;&gt;
-                                    &lt;pro:Item         Position=&quot;1&quot; 
-                                                         Price=&quot;1&quot; 
-                                                        Quantity=&quot;1&quot;/&gt;
-                            &lt;/pro:ParentDocument&gt;
-                          &lt;/pro:ParentDocuments&gt;
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;pro:Import</span> <span class="na">xmlns:pro=</span><span class="s">&quot;http://www.proactis.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;pro:Control</span>   <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> 
+                         <span class="na">DatabaseName=</span><span class="s">&quot;DEMO&quot;</span>
+                         <span class="na">UserName=</span><span class="s">&quot;sysadmin&quot;</span>
+                         <span class="na">Password=</span><span class="s">&quot;mypassword&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;pro:CreditNote</span> <span class="na">CreditNoteDate=</span><span class="s">&quot;2005-01-27&quot;</span>              
+                          <span class="na">SupplierCreditNoteNumber=</span><span class="s">&quot;CN-234&quot;</span> 
+                          <span class="na">Template=</span><span class="s">&quot;CRED&quot;</span> 
+                          <span class="na">GrossValue=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+                          <span class="nt">&lt;pro:ParentDocument&gt;</span>
+                            <span class="nt">&lt;pro:ParentDocument</span> <span class="na">DocumentNumber=</span><span class="s">&quot;PINV10034&quot;</span><span class="nt">&gt;</span>
+                                    <span class="nt">&lt;pro:Item</span>         <span class="na">Position=</span><span class="s">&quot;1&quot;</span> 
+                                                         <span class="na">Price=</span><span class="s">&quot;1&quot;</span> 
+                                                        <span class="na">Quantity=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+                            <span class="nt">&lt;/pro:ParentDocument&gt;</span>
+                          <span class="nt">&lt;/pro:ParentDocuments&gt;</span>
 
-                          &lt;pro:TaxDetails&gt;
-                                    &lt;pro:Tax Band=&quot;VAT&quot; 
-                                             Code=&quot;Z&quot; 
-                                             GrossValue=&quot;1&quot;/&gt;
-                          &lt;/pro:TaxDetails&gt;
-          &lt;/pro:CreditNote&gt;
-&lt;/pro:Import&gt;</code></pre>
+                          <span class="nt">&lt;pro:TaxDetails&gt;</span>
+                                    <span class="nt">&lt;pro:Tax</span> <span class="na">Band=</span><span class="s">&quot;VAT&quot;</span> 
+                                             <span class="na">Code=</span><span class="s">&quot;Z&quot;</span> 
+                                             <span class="na">GrossValue=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+                          <span class="nt">&lt;/pro:TaxDetails&gt;</span>
+          <span class="nt">&lt;/pro:CreditNote&gt;</span>
+<span class="nt">&lt;/pro:Import&gt;</span>
+</pre></div>
 
 
 <hr />

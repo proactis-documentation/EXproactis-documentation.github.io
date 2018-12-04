@@ -1119,53 +1119,59 @@
 <p>This section of the document walks you through the creation of a simple internal invoice. </p>
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;pro:Import xmlns:pro=&quot;http://www.proactis.com/xml/xml-ns&quot;&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="nt">&lt;pro:Import</span> <span class="na">xmlns:pro=</span><span class="s">&quot;http://www.proactis.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <p>And finish with</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:Import&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:Import&gt;</span>
+</pre></div>
 
 
 <h3 id="control-block">Control Block</h3>
 <p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
-              UserName=&quot;DAVIDBETTERIDGE&quot;
-              Password=&quot;mysecret&quot;
-              Company=&quot;MAIN&quot;
-              Department=&quot;SOLUTIONS&quot;
-              Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span> <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS&quot;</span>
+              <span class="na">UserName=</span><span class="s">&quot;DAVIDBETTERIDGE&quot;</span>
+              <span class="na">Password=</span><span class="s">&quot;mysecret&quot;</span>
+              <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+              <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+              <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>The XML gateway supports NT authentication, an example is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
-                 AuthenticationMethod=&quot;WINDOWS&quot;
-                 Company=&quot;MAIN&quot;
-                 Department=&quot;SOLUTIONS&quot;
-                 Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span>    <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS\_LIVE&quot;</span>
+                 <span class="na">AuthenticationMethod=</span><span class="s">&quot;WINDOWS&quot;</span>
+                 <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+                 <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+                 <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="internal-invoice">Internal Invoice</h3>
 <p>The next section contains the details of the invoices to be imported.  The gateway allows multiple documents to be included in a single xml document.  At least one invoice must be included.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:InternalInvoice&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:InternalInvoice&gt;</span>
+</pre></div>
 
 
 <h3 id="order-items">Order Items</h3>
 <p>Then the order's items (and item details) to which the internal invoice relates are listed.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:OrderItems OrderNumber=&quot;PORD10035&quot;&gt;                 
-  &lt;pro:OrderItem Position=&quot;1&quot;
-                 Price=&quot;7.99&quot;
-                 Quantity=&quot;5&quot;
-                 Description=&quot;Test Internal Order Item&quot;&gt;
-    &lt;pro:OrderNominals&gt;
-      &lt;pro:OrderNominal    Code=&quot;ABC.123&quot;
-          Quantity=&quot;3&quot;
-          Price=&quot;7.99&quot;/&gt;
-      &lt;/pro:OrderNominals&gt;
-  &lt;/pro:OrderItem&gt;
-&lt;/pro:OrderItems&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:OrderItems</span> <span class="na">OrderNumber=</span><span class="s">&quot;PORD10035&quot;</span><span class="nt">&gt;</span>                 
+  <span class="nt">&lt;pro:OrderItem</span> <span class="na">Position=</span><span class="s">&quot;1&quot;</span>
+                 <span class="na">Price=</span><span class="s">&quot;7.99&quot;</span>
+                 <span class="na">Quantity=</span><span class="s">&quot;5&quot;</span>
+                 <span class="na">Description=</span><span class="s">&quot;Test Internal Order Item&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pro:OrderNominals&gt;</span>
+      <span class="nt">&lt;pro:OrderNominal</span>    <span class="na">Code=</span><span class="s">&quot;ABC.123&quot;</span>
+          <span class="na">Quantity=</span><span class="s">&quot;3&quot;</span>
+          <span class="na">Price=</span><span class="s">&quot;7.99&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/pro:OrderNominals&gt;</span>
+  <span class="nt">&lt;/pro:OrderItem&gt;</span>
+<span class="nt">&lt;/pro:OrderItems&gt;</span>
+</pre></div>
 
 
 <h4 id="notes">Notes</h4>
@@ -1177,24 +1183,26 @@
 </ul>
 <h3 id="invoice-items">Invoice Items</h3>
 <p>The invoice items are listed next in a similar format</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:InvoiceItems&gt;                   
-  &lt;pro:InvoiceItem BuyerItemCode=&quot;ABC&quot;
-                   SupplierItemCode=&quot;123&quot;
-                   Description=&quot;Test Internal Order Item&quot;
-                   Quantity=&quot;5&quot;
-                   Price=&quot;7.99&quot;&gt;
-    &lt;pro:InvoiceNominals&gt;
-      &lt;pro:InvoiceNominal Code=&quot;ABC.123&quot; Value=&quot;3&quot;/&gt;
-    &lt;/pro:InvoiceNominals&gt;
-   &lt;/pro:InvoiceItem&gt;
-&lt;/pro:InvoiceItems&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:InvoiceItems&gt;</span>                   
+  <span class="nt">&lt;pro:InvoiceItem</span> <span class="na">BuyerItemCode=</span><span class="s">&quot;ABC&quot;</span>
+                   <span class="na">SupplierItemCode=</span><span class="s">&quot;123&quot;</span>
+                   <span class="na">Description=</span><span class="s">&quot;Test Internal Order Item&quot;</span>
+                   <span class="na">Quantity=</span><span class="s">&quot;5&quot;</span>
+                   <span class="na">Price=</span><span class="s">&quot;7.99&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pro:InvoiceNominals&gt;</span>
+      <span class="nt">&lt;pro:InvoiceNominal</span> <span class="na">Code=</span><span class="s">&quot;ABC.123&quot;</span> <span class="na">Value=</span><span class="s">&quot;3&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/pro:InvoiceNominals&gt;</span>
+   <span class="nt">&lt;/pro:InvoiceItem&gt;</span>
+<span class="nt">&lt;/pro:InvoiceItems&gt;</span>
+</pre></div>
 
 
 <h3 id="comments">Comments</h3>
 <p>It is possible to add one or more comments to an invoice</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Comments&gt;
-  &lt;pro:Comment&gt;Please pay quickly&lt;/pro:Comment&gt;
-&lt;/pro:Comments&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Comments&gt;</span>
+  <span class="nt">&lt;pro:Comment&gt;</span>Please pay quickly<span class="nt">&lt;/pro:Comment&gt;</span>
+<span class="nt">&lt;/pro:Comments&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_1">Notes</h4>
@@ -1203,14 +1211,15 @@
 </ul>
 <h3 id="references">References</h3>
 <p>It is also possible to set the reference fields on the invoice</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:References&gt;
-          &lt;pro:Reference Caption='Bar code' 
-                         Value='345-223-33'
-          &lt;pro:Reference Position='2' 
-                         Value='BACS'
-          &lt;pro:Reference Code='Colour' 
-                         Value='Red'
-&lt;/pro:References&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:References&gt;</span>
+          <span class="nt">&lt;pro:Reference</span> <span class="na">Caption=</span><span class="s">&#39;Bar code&#39;</span> 
+                         <span class="na">Value=</span><span class="s">&#39;345-223-33&#39;</span>
+          <span class="err">&lt;pro:Reference</span> <span class="na">Position=</span><span class="s">&#39;2&#39;</span> 
+                         <span class="na">Value=</span><span class="s">&#39;BACS&#39;</span>
+          <span class="err">&lt;pro:Reference</span> <span class="na">Code=</span><span class="s">&#39;Colour&#39;</span> 
+                         <span class="na">Value=</span><span class="s">&#39;Red&#39;</span>
+<span class="err">&lt;/pro:References</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_2">Notes</h4>
@@ -1219,11 +1228,13 @@
 <li>Either the code, caption or the position can be specified</li>
 </ul>
 <p>The invoice then finishes with a closing tag:</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:InternalInvoice&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:InternalInvoice&gt;</span>
+</pre></div>
 
 
 <p>Finally the XML must be closed as follows:</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:InternalInvoice&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:InternalInvoice&gt;</span>
+</pre></div>
 
 
 <hr />
@@ -1232,9 +1243,10 @@
 <p>When a piece of data has been processed, then an extra attribute called status will be added to the node, this will contain the value OK or FAILED.  OK means the invoice was fully imported successfully.  FAILED means the invoice could not be imported. Note: Nodes without this attribute have not been processed.</p>
 <p>The supplied XML is first validated against the <strong>ImportInternalInvoices.XSD</strong> schema.  If the invoice fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block.</p>
 <p>An example errors block is shown below</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Errors&gt;
-  &lt;pro:Error Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}OrderItems'/&gt;
-&lt;/pro:Errors&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Errors&gt;</span>
+  <span class="nt">&lt;pro:Error</span> <span class="na">Message=</span><span class="s">&#39;XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}OrderItems&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/pro:Errors&gt;</span>
+</pre></div>
 
 
 <h3 id="errorserror">Errors/Error</h3>

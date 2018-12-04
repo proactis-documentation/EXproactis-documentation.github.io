@@ -1438,43 +1438,48 @@
 <p>This section of the document walks you through the creation of a simple order based invoice. </p>
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;pro:Import xmlns:pro=&quot;http://www.proactis.com/xml/xml-ns&quot;&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="nt">&lt;pro:Import</span> <span class="na">xmlns:pro=</span><span class="s">&quot;http://www.proactis.com/xml/xml-ns&quot;</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <p>And finish with</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:Import&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:Import&gt;</span>
+</pre></div>
 
 
 <h3 id="control-block">Control Block</h3>
 <p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
-              UserName=&quot;DAVIDBETTERIDGE&quot;
-              Password=&quot;mysecret&quot;
-              Company=&quot;MAIN&quot;
-              Department=&quot;SOLUTIONS&quot;
-              Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span> <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS&quot;</span>
+              <span class="na">UserName=</span><span class="s">&quot;DAVIDBETTERIDGE&quot;</span>
+              <span class="na">Password=</span><span class="s">&quot;mysecret&quot;</span>
+              <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+              <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+              <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>The XML gateway supports NT authentication, an example is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
-                 AuthenticationMethod=&quot;WINDOWS&quot;
-                 Company=&quot;MAIN&quot;
-                 Department=&quot;SOLUTIONS&quot;
-                 Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span>    <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS\_LIVE&quot;</span>
+                 <span class="na">AuthenticationMethod=</span><span class="s">&quot;WINDOWS&quot;</span>
+                 <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+                 <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+                 <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="invoice">Invoice</h3>
 <p>The next section contains the details of the invoices to be imported.  The gateway allows multiple documents to be included in a single xml document.  At least one invoice must be included.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Invoice  InvoiceDate='2003-08-27'              
-              SupplierInvoiceNumber='PR-234' 
-              Template='PINV' 
-              Tray='Standard' 
-              GrossValue='1'
-              Supplier='510632'
-              ImageReference='10'/&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Invoice</span>  <span class="na">InvoiceDate=</span><span class="s">&#39;2003-08-27&#39;</span>              
+              <span class="na">SupplierInvoiceNumber=</span><span class="s">&#39;PR-234&#39;</span> 
+              <span class="na">Template=</span><span class="s">&#39;PINV&#39;</span> 
+              <span class="na">Tray=</span><span class="s">&#39;Standard&#39;</span> 
+              <span class="na">GrossValue=</span><span class="s">&#39;1&#39;</span>
+              <span class="na">Supplier=</span><span class="s">&#39;510632&#39;</span>
+              <span class="na">ImageReference=</span><span class="s">&#39;10&#39;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <h4 id="notes">Notes</h4>
@@ -1498,16 +1503,17 @@
 </ul>
 <h3 id="invoice-items">Invoice Items</h3>
 <p>Then the orders and items against which the invoice will be matched are listed.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:ParentOrders&gt;                   
-  &lt;pro:ParentOrder    OrderNumber='PORD10034'&gt;
-    &lt;pro:Item    Position='1'   Value='1'/&gt;
-    &lt;pro:Item    Position='2'   Price='1'  Quantity='1'&gt;
-              &lt;pro:Nominals&gt;
-                      &lt;pro:Nominal   Code='ABC.XYZ'   Quantity='1' CommitmentDate='2005-12-18' /&gt;
-              &lt;/pro:Nominals&gt;
-    &lt;/pro:Item&gt; 
-&lt;/pro:ParentOrder&gt;
-&lt;/pro:ParentOrders&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:ParentOrders&gt;</span>                   
+  <span class="nt">&lt;pro:ParentOrder</span>    <span class="na">OrderNumber=</span><span class="s">&#39;PORD10034&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;pro:Item</span>    <span class="na">Position=</span><span class="s">&#39;1&#39;</span>   <span class="na">Value=</span><span class="s">&#39;1&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;pro:Item</span>    <span class="na">Position=</span><span class="s">&#39;2&#39;</span>   <span class="na">Price=</span><span class="s">&#39;1&#39;</span>  <span class="na">Quantity=</span><span class="s">&#39;1&#39;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;pro:Nominals&gt;</span>
+                      <span class="nt">&lt;pro:Nominal</span>   <span class="na">Code=</span><span class="s">&#39;ABC.XYZ&#39;</span>   <span class="na">Quantity=</span><span class="s">&#39;1&#39;</span> <span class="na">CommitmentDate=</span><span class="s">&#39;2005-12-18&#39;</span> <span class="nt">/&gt;</span>
+              <span class="nt">&lt;/pro:Nominals&gt;</span>
+    <span class="nt">&lt;/pro:Item&gt;</span> 
+<span class="nt">&lt;/pro:ParentOrder&gt;</span>
+<span class="nt">&lt;/pro:ParentOrders&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_1">Notes</h4>
@@ -1520,9 +1526,10 @@
 </ul>
 <h3 id="tax">Tax</h3>
 <p>As well as the purchase orders, the invoice must also include the tax details.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:TaxDetails&gt;
-  &lt;pro:Tax Band='VAT' BandNumber='1' Code='STD' GrossValue='1.18' TaxValue='0.18'/&gt;
- &lt;/pro:TaxDetails&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:TaxDetails&gt;</span>
+  <span class="nt">&lt;pro:Tax</span> <span class="na">Band=</span><span class="s">&#39;VAT&#39;</span> <span class="na">BandNumber=</span><span class="s">&#39;1&#39;</span> <span class="na">Code=</span><span class="s">&#39;STD&#39;</span> <span class="na">GrossValue=</span><span class="s">&#39;1.18&#39;</span> <span class="na">TaxValue=</span><span class="s">&#39;0.18&#39;</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;/pro:TaxDetails&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_2">Notes</h4>
@@ -1532,14 +1539,15 @@
 </ul>
 <h3 id="supplier">Supplier</h3>
 <p>If the supplier is a one-off supplier, then their address details must also be set.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:SupplierAddress  Name='Accounts' 
-                      Line1='12 The close' 
-                      Line2='East Kettlewell' 
-                      Line3='' 
-                      Line4='' 
-                      Town='YORK' 
-                      County='North Yorkshire' 
-                      Country='UK'/&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:SupplierAddress</span>  <span class="na">Name=</span><span class="s">&#39;Accounts&#39;</span> 
+                      <span class="na">Line1=</span><span class="s">&#39;12 The close&#39;</span> 
+                      <span class="na">Line2=</span><span class="s">&#39;East Kettlewell&#39;</span> 
+                      <span class="na">Line3=</span><span class="s">&#39;&#39;</span> 
+                      <span class="na">Line4=</span><span class="s">&#39;&#39;</span> 
+                      <span class="na">Town=</span><span class="s">&#39;YORK&#39;</span> 
+                      <span class="na">County=</span><span class="s">&#39;North Yorkshire&#39;</span> 
+                      <span class="na">Country=</span><span class="s">&#39;UK&#39;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_3">Notes</h4>
@@ -1548,9 +1556,10 @@
 </ul>
 <h3 id="comments">Comments</h3>
 <p>It is possible to add one or more comments to an invoice</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Comments&gt;
-  &lt;pro:Comment&gt;Please pay quickly&lt;/pro:Comment&gt;
-&lt;/pro:Comments&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Comments&gt;</span>
+  <span class="nt">&lt;pro:Comment&gt;</span>Please pay quickly<span class="nt">&lt;/pro:Comment&gt;</span>
+<span class="nt">&lt;/pro:Comments&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_4">Notes</h4>
@@ -1559,14 +1568,15 @@
 </ul>
 <h3 id="references">References</h3>
 <p>It is also possible to set the reference fields on the invoice</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:References&gt;
-          &lt;pro:Reference Caption='Bar code' 
-                         Value='345-223-33'
-          &lt;pro:Reference Position='2' 
-                         Value='BACS'
-          &lt;pro:Reference Code='Colour' 
-                         Value='Red'
-&lt;/pro:References&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:References&gt;</span>
+          <span class="nt">&lt;pro:Reference</span> <span class="na">Caption=</span><span class="s">&#39;Bar code&#39;</span> 
+                         <span class="na">Value=</span><span class="s">&#39;345-223-33&#39;</span>
+          <span class="err">&lt;pro:Reference</span> <span class="na">Position=</span><span class="s">&#39;2&#39;</span> 
+                         <span class="na">Value=</span><span class="s">&#39;BACS&#39;</span>
+          <span class="err">&lt;pro:Reference</span> <span class="na">Code=</span><span class="s">&#39;Colour&#39;</span> 
+                         <span class="na">Value=</span><span class="s">&#39;Red&#39;</span>
+<span class="err">&lt;/pro:References</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_5">Notes</h4>
@@ -1575,11 +1585,13 @@
 <li>Either the code, caption or the position can be specified</li>
 </ul>
 <p>The invoice then finishes with a closing tag:</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:Invoice&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:Invoice&gt;</span>
+</pre></div>
 
 
 <p>Finally the XML must be closed as follows:</p>
-<pre class="codehilite"><code class="language-xml">&lt;/pro:Import&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;/pro:Import&gt;</span>
+</pre></div>
 
 
 <hr />
@@ -1592,33 +1604,36 @@
 <h3 id="control-block_1">Control Block</h3>
 <p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
-              UserName=&quot;DAVIDBETTERIDGE&quot;
-              Password=&quot;mysecret&quot;
-              Company=&quot;MAIN&quot;
-              Department=&quot;SOLUTIONS&quot;
-              Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span> <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS&quot;</span>
+              <span class="na">UserName=</span><span class="s">&quot;DAVIDBETTERIDGE&quot;</span>
+              <span class="na">Password=</span><span class="s">&quot;mysecret&quot;</span>
+              <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+              <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+              <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>The XML gateway supports NT authentication, an example is shown below.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
-                 AuthenticationMethod=&quot;WINDOWS&quot;
-                 Company=&quot;MAIN&quot;
-                 Department=&quot;SOLUTIONS&quot;
-                 Version=&quot;1.0.0&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:Control</span>    <span class="na">DatabaseName=</span><span class="s">&quot;PROACTIS\_LIVE&quot;</span>
+                 <span class="na">AuthenticationMethod=</span><span class="s">&quot;WINDOWS&quot;</span>
+                 <span class="na">Company=</span><span class="s">&quot;MAIN&quot;</span>
+                 <span class="na">Department=</span><span class="s">&quot;SOLUTIONS&quot;</span>
+                 <span class="na">Version=</span><span class="s">&quot;1.0.0&quot;</span> <span class="nt">/&gt;</span>
+</pre></div>
 
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="invoice_1">Invoice</h3>
 <p>The next section contains the details of the invoices to be imported.  The gateway allows multiple documents to be included in a single xml document.  At least one invoice must be included.</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Invoice InvoiceDate=&quot;2003-08-27&quot;              
-            SupplierInvoiceNumber=&quot;PR-234&quot; 
-            Template=&quot;PINV&quot; 
-            Tray=&quot;Standard&quot; 
-            GrossValue=&quot;1&quot;
-            AuthorisationPool=&quot;PISA&quot;
-            Supplier=&quot;510632&quot;
-ImageReference=&quot;10&quot;/&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Invoice</span> <span class="na">InvoiceDate=</span><span class="s">&quot;2003-08-27&quot;</span>              
+            <span class="na">SupplierInvoiceNumber=</span><span class="s">&quot;PR-234&quot;</span> 
+            <span class="na">Template=</span><span class="s">&quot;PINV&quot;</span> 
+            <span class="na">Tray=</span><span class="s">&quot;Standard&quot;</span> 
+            <span class="na">GrossValue=</span><span class="s">&quot;1&quot;</span>
+            <span class="na">AuthorisationPool=</span><span class="s">&quot;PISA&quot;</span>
+            <span class="na">Supplier=</span><span class="s">&quot;510632&quot;</span>
+<span class="na">ImageReference=</span><span class="s">&quot;10&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_6">Notes</h4>
@@ -1636,12 +1651,13 @@ ImageReference=&quot;10&quot;/&gt;</code></pre>
 </ul>
 <h3 id="standalone-tax-details">Standalone Tax Details</h3>
 <p>The next section contains the summary Tax information.</p>
-<pre class="codehilite"><code class="language-xml"> &lt;pro:TaxDetails&gt;
-                  &lt;pro:Tax Band=&quot;UKVAT&quot; 
-                           BandNumber=&quot;1&quot;
-                           Code=&quot;ST&quot;
-                           GrossValue=&quot;11.75&quot;/&gt;
-          &lt;/pro:TaxDetails&gt; </code></pre>
+<div class="codehilite"><pre><span></span> <span class="nt">&lt;pro:TaxDetails&gt;</span>
+                  <span class="nt">&lt;pro:Tax</span> <span class="na">Band=</span><span class="s">&quot;UKVAT&quot;</span> 
+                           <span class="na">BandNumber=</span><span class="s">&quot;1&quot;</span>
+                           <span class="na">Code=</span><span class="s">&quot;ST&quot;</span>
+                           <span class="na">GrossValue=</span><span class="s">&quot;11.75&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;/pro:TaxDetails&gt;</span> 
+</pre></div>
 
 
 <h4 id="notes_7">Notes</h4>
@@ -1650,16 +1666,17 @@ ImageReference=&quot;10&quot;/&gt;</code></pre>
 </ul>
 <h3 id="standalone-line-detail">Standalone Line Detail</h3>
 <p>The line details can now be specified.  </p>
-<pre class="codehilite"><code class="language-xml">            &lt;pro:NonOrderItems&gt;
-                  &lt;pro:NonOrderItem SelectUsingPROACTISCode='TEST' 
-                                    SelectUsingDescription='A test item' 
-                                    SelectUsingSupplierItemCode='TEST001'
-                                    Price='1' 
-                                    Quantity='10'
-                                    Description='my  test item'
-                                    NetValue=''
-                                    UnitOfMeasure='each'
-                                  ShortCutEntry='ABC'&gt;</code></pre>
+<div class="codehilite"><pre><span></span>            <span class="nt">&lt;pro:NonOrderItems&gt;</span>
+                  <span class="nt">&lt;pro:NonOrderItem</span> <span class="na">SelectUsingPROACTISCode=</span><span class="s">&#39;TEST&#39;</span> 
+                                    <span class="na">SelectUsingDescription=</span><span class="s">&#39;A test item&#39;</span> 
+                                    <span class="na">SelectUsingSupplierItemCode=</span><span class="s">&#39;TEST001&#39;</span>
+                                    <span class="na">Price=</span><span class="s">&#39;1&#39;</span> 
+                                    <span class="na">Quantity=</span><span class="s">&#39;10&#39;</span>
+                                    <span class="na">Description=</span><span class="s">&#39;my  test item&#39;</span>
+                                    <span class="na">NetValue=</span><span class="s">&#39;&#39;</span>
+                                    <span class="na">UnitOfMeasure=</span><span class="s">&#39;each&#39;</span>
+                                  <span class="na">ShortCutEntry=</span><span class="s">&#39;ABC&#39;</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_8">Notes</h4>
@@ -1681,12 +1698,13 @@ ImageReference=&quot;10&quot;/&gt;</code></pre>
 </ol>
 <h3 id="standalone-line-nominals">Standalone Line Nominals</h3>
 <p>A line can optionally have its nominal coding specified.</p>
-<pre class="codehilite"><code class="language-xml">                &lt;pro:NonOrderItemNominals&gt;
-                        &lt;pro:NonOrderItemNominal AccountingElement1='1111'                                                                 
-                                                 AccountingElement2='AAAA' 
-                                                 NominalMask='DEFAULT' 
-                                                 ShortCutEntry='My entry' 
-                                                 Quantity='10'&gt;</code></pre>
+<div class="codehilite"><pre><span></span>                <span class="nt">&lt;pro:NonOrderItemNominals&gt;</span>
+                        <span class="nt">&lt;pro:NonOrderItemNominal</span> <span class="na">AccountingElement1=</span><span class="s">&#39;1111&#39;</span>                                                                 
+                                                 <span class="na">AccountingElement2=</span><span class="s">&#39;AAAA&#39;</span> 
+                                                 <span class="na">NominalMask=</span><span class="s">&#39;DEFAULT&#39;</span> 
+                                                 <span class="na">ShortCutEntry=</span><span class="s">&#39;My entry&#39;</span> 
+                                                 <span class="na">Quantity=</span><span class="s">&#39;10&#39;</span><span class="nt">&gt;</span>
+</pre></div>
 
 
 <h4 id="notes_9">Notes</h4>
@@ -1702,10 +1720,11 @@ ImageReference=&quot;10&quot;/&gt;</code></pre>
 <p>Note: Nodes without this attribute have not been processed.</p>
 <p>he supplied XML is first validated against the <strong>ImportPurchaseInvoices.xsd</strong> schema.  If the invoice fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block</p>
 <p>An example errors block is shown below</p>
-<pre class="codehilite"><code class="language-xml">&lt;pro:Errors&gt;
-  &lt;pro:Error Number='-1072898030' 
-             Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}Invoice'/&gt;
-&lt;/pro:Errors&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;pro:Errors&gt;</span>
+  <span class="nt">&lt;pro:Error</span> <span class="na">Number=</span><span class="s">&#39;-1072898030&#39;</span> 
+             <span class="na">Message=</span><span class="s">&#39;XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}Invoice&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/pro:Errors&gt;</span>
+</pre></div>
 
 
 <h3 id="errorserror">Errors/Error</h3>

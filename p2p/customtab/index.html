@@ -793,27 +793,30 @@
 <hr />
 <h1 id="please-wait-spinner">Please Wait Spinner</h1>
 <p>Whilst your tab is first loading the main site will be displaying the please wait spinner.  In order to remove the spinner the following javascript code should be added to the end of your first page</p>
-<pre class="codehilite"><code class="language-javascript">    &lt;script type=&quot;text/javascript&quot;&gt;
-        //Hide the spinner in the main window.
-        $().ready(function () {
-            parent.hideSpinner();
-        });
-    &lt;/script&gt;</code></pre>
+<div class="codehilite"><pre><span></span>    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+        <span class="c1">//Hide the spinner in the main window.</span>
+        <span class="nx">$</span><span class="p">().</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">parent</span><span class="p">.</span><span class="nx">hideSpinner</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
 
 
 <p>If you wish to re-display the spinner then the following javascript can be used</p>
-<pre class="codehilite"><code class="language-javascript">    &lt;script type=&quot;text/javascript&quot;&gt;
-        window.parent.showSpinner();
-    &lt;/script&gt;</code></pre>
+<div class="codehilite"><pre><span></span>    <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span><span class="o">&gt;</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">parent</span><span class="p">.</span><span class="nx">showSpinner</span><span class="p">();</span>
+    <span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
 
 
 <hr />
 <h1 id="user-role-security">User Role Security</h1>
 <p>By default all users have access to the new tab.  If you wish to restrict access to only certain users then the name of a user role (or a custom role) can be specified for the tab within the licence file.</p>
 <p>If you wish to create a custom role,  then you will also need to insert an entry into the <strong>DSDBA.Roles</strong> table with the same name.</p>
-<pre class="codehilite"><code class="language-sql">INSERT INTO DSDBA.Roles (GUID, Code, Description, Properties, CompanyGUID)
-SELECT newID(), 'MAY_BOOK_RESOURCES', 'Users may use the bookings tab', '', C.GUID
-  FROM DSDBA.Companies C</code></pre>
+<div class="codehilite"><pre><span></span><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">DSDBA</span><span class="p">.</span><span class="n">Roles</span> <span class="p">(</span><span class="n">GUID</span><span class="p">,</span> <span class="n">Code</span><span class="p">,</span> <span class="n">Description</span><span class="p">,</span> <span class="n">Properties</span><span class="p">,</span> <span class="n">CompanyGUID</span><span class="p">)</span>
+<span class="k">SELECT</span> <span class="n">newID</span><span class="p">(),</span> <span class="s1">&#39;MAY_BOOK_RESOURCES&#39;</span><span class="p">,</span> <span class="s1">&#39;Users may use the bookings tab&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="k">C</span><span class="p">.</span><span class="n">GUID</span>
+  <span class="k">FROM</span> <span class="n">DSDBA</span><span class="p">.</span><span class="n">Companies</span> <span class="k">C</span>
+</pre></div>
 
 
 <hr />

@@ -963,28 +963,29 @@ Unlike the previous versions it is now possible to configure the connections dir
 <h3 id="cxml-oci-returned-basket">cXML &amp; OCI Returned Basket</h3>
 <p>When the basket is returned from the supplier by default it is transformed into the correct P2P format by using an XSLT embedded within the product.  This can be replaced by your own transform by creating a file in the plugins folder called <strong>ReturnedPunchoutBasket_{supplierCode}.xslt</strong> Where <em>{supplierCode}</em> is the code of your supplier.
 The XSLT must generate XML in the following format:</p>
-<pre class="codehilite"><code class="language-xml">&lt;PurchaseOrder&gt;
-  &lt;PurchaseOrderHeader&gt;
-    &lt;SessionID&gt;&lt;/SessionID&gt;
-    &lt;Currency&gt;&lt;/Currency&gt;
-    &lt;TotalValue&gt;&lt;/TotalValue&gt;
-  &lt;/PurchaseOrderHeader&gt;
-  &lt;PunchOutDetail&gt;
-    &lt;Item&gt;
-      &lt;Product&gt;&lt;/Product&gt;
-      &lt;Quantity&gt;&lt;/Quantity&gt;
-      &lt;Description&gt;&lt;/Description&gt;
-      &lt;UnitOfMeasure&gt;&lt;/UnitOfMeasure&gt;
-      &lt;UnitValue&gt;&lt;/UnitValue&gt;
-      &lt;Currency&gt;&lt;/Currency&gt;
-      &lt;UNSPSCCode&gt;&lt;/UNSPSCCode&gt;
-      &lt;Supplier&gt;&lt;/Supplier&gt;
-      &lt;References&gt;
-        &lt;Reference name=&quot;&quot;&gt;&lt;/Reference&gt;
-      &lt;/References&gt;
-    &lt;/Item&gt;
-  &lt;/PunchOutDetail&gt;
-&lt;/PurchaseOrder&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;PurchaseOrder&gt;</span>
+  <span class="nt">&lt;PurchaseOrderHeader&gt;</span>
+    <span class="nt">&lt;SessionID&gt;&lt;/SessionID&gt;</span>
+    <span class="nt">&lt;Currency&gt;&lt;/Currency&gt;</span>
+    <span class="nt">&lt;TotalValue&gt;&lt;/TotalValue&gt;</span>
+  <span class="nt">&lt;/PurchaseOrderHeader&gt;</span>
+  <span class="nt">&lt;PunchOutDetail&gt;</span>
+    <span class="nt">&lt;Item&gt;</span>
+      <span class="nt">&lt;Product&gt;&lt;/Product&gt;</span>
+      <span class="nt">&lt;Quantity&gt;&lt;/Quantity&gt;</span>
+      <span class="nt">&lt;Description&gt;&lt;/Description&gt;</span>
+      <span class="nt">&lt;UnitOfMeasure&gt;&lt;/UnitOfMeasure&gt;</span>
+      <span class="nt">&lt;UnitValue&gt;&lt;/UnitValue&gt;</span>
+      <span class="nt">&lt;Currency&gt;&lt;/Currency&gt;</span>
+      <span class="nt">&lt;UNSPSCCode&gt;&lt;/UNSPSCCode&gt;</span>
+      <span class="nt">&lt;Supplier&gt;&lt;/Supplier&gt;</span>
+      <span class="nt">&lt;References&gt;</span>
+        <span class="nt">&lt;Reference</span> <span class="na">name=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/Reference&gt;</span>
+      <span class="nt">&lt;/References&gt;</span>
+    <span class="nt">&lt;/Item&gt;</span>
+  <span class="nt">&lt;/PunchOutDetail&gt;</span>
+<span class="nt">&lt;/PurchaseOrder&gt;</span>
+</pre></div>
 
 
 <p>An example XSLT document is available <a href="https://github.com/proactis-documentation/ExampleApplications/tree/master/P2P/Punchout/BasketResponses">here</a>.</p>
@@ -1008,9 +1009,10 @@ The XSLT must generate XML in the following format:</p>
 <li>It then loops through all fields which are named in the format NEW_xxxxx[n] where xxxxx is the name of a property and n is the item number.</li>
 <li>Each of these form fields are then added into the xml.  The result xml will have the following format:</li>
 </ol>
-<pre class="codehilite"><code class="language-xml">&lt;PurchaseOrder&gt;
-    &lt;line number=1 item+description=’red pen’ etc etc /&gt;
-&lt;/PurchaseOrder&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;PurchaseOrder&gt;</span>
+    <span class="nt">&lt;line</span> <span class="na">number=</span><span class="s">1</span> <span class="err">item+</span><span class="na">description=</span><span class="s">’red</span> <span class="err">pen’</span> <span class="err">etc</span> <span class="err">etc</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/PurchaseOrder&gt;</span>
+</pre></div>
 
 
 <h1 id="market-place">Market Place</h1>
@@ -1046,28 +1048,29 @@ Unlike previous versions of PROACTIS it is now possible to configure marketplace
 </ul>
 <p>When the basket is returned from the market place by default it is transformed into the correct format by using an XSLT embedded within the product.  It is possible to provide your own xslt by creating a file in the plugins folder called <strong>MarketPlaceResult_{marketPlaceName}.xslt</strong>.  Where <em>{marketPlaceName}</em> is the name of the configured marketplace.  <em>For example MarketPlaceResult_EGS.xslt</em></p>
 <p>The xslt needs to generate xml in the following format</p>
-<pre class="codehilite"><code class="language-xml">&lt;PurchaseOrder&gt;
-  &lt;PurchaseOrderHeader&gt;
-    &lt;SessionID&gt;&lt;/SessionID&gt;
-    &lt;Currency&gt;&lt;/Currency&gt;
-    &lt;TotalValue&gt;&lt;/TotalValue&gt;
-  &lt;/PurchaseOrderHeader&gt;
-  &lt;PunchOutDetail&gt;
-    &lt;Item&gt;
-      &lt;Product&gt;&lt;/Product&gt;
-      &lt;Quantity&gt;&lt;/Quantity&gt;
-      &lt;Description&gt;&lt;/Description&gt;
-      &lt;UnitOfMeasure&gt;&lt;/UnitOfMeasure&gt;
-      &lt;UnitValue&gt;&lt;/UnitValue&gt;
-      &lt;Currency&gt;&lt;/Currency&gt;
-      &lt;UNSPSCCode&gt;&lt;/UNSPSCCode&gt;
-      &lt;Supplier&gt;&lt;/Supplier&gt;
-      &lt;References&gt;
-        &lt;Reference name=&quot;&quot;&gt;&lt;/Reference&gt;
-      &lt;/References&gt;
-    &lt;/Item&gt;
-  &lt;/PunchOutDetail&gt;
-&lt;/PurchaseOrder&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;PurchaseOrder&gt;</span>
+  <span class="nt">&lt;PurchaseOrderHeader&gt;</span>
+    <span class="nt">&lt;SessionID&gt;&lt;/SessionID&gt;</span>
+    <span class="nt">&lt;Currency&gt;&lt;/Currency&gt;</span>
+    <span class="nt">&lt;TotalValue&gt;&lt;/TotalValue&gt;</span>
+  <span class="nt">&lt;/PurchaseOrderHeader&gt;</span>
+  <span class="nt">&lt;PunchOutDetail&gt;</span>
+    <span class="nt">&lt;Item&gt;</span>
+      <span class="nt">&lt;Product&gt;&lt;/Product&gt;</span>
+      <span class="nt">&lt;Quantity&gt;&lt;/Quantity&gt;</span>
+      <span class="nt">&lt;Description&gt;&lt;/Description&gt;</span>
+      <span class="nt">&lt;UnitOfMeasure&gt;&lt;/UnitOfMeasure&gt;</span>
+      <span class="nt">&lt;UnitValue&gt;&lt;/UnitValue&gt;</span>
+      <span class="nt">&lt;Currency&gt;&lt;/Currency&gt;</span>
+      <span class="nt">&lt;UNSPSCCode&gt;&lt;/UNSPSCCode&gt;</span>
+      <span class="nt">&lt;Supplier&gt;&lt;/Supplier&gt;</span>
+      <span class="nt">&lt;References&gt;</span>
+        <span class="nt">&lt;Reference</span> <span class="na">name=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;/Reference&gt;</span>
+      <span class="nt">&lt;/References&gt;</span>
+    <span class="nt">&lt;/Item&gt;</span>
+  <span class="nt">&lt;/PunchOutDetail&gt;</span>
+<span class="nt">&lt;/PurchaseOrder&gt;</span>
+</pre></div>
 
 
 <h2 id="troubleshooting">Troubleshooting</h2>
@@ -1077,7 +1080,8 @@ Unlike previous versions of PROACTIS it is now possible to configure marketplace
 <li>PartID</li>
 </ol>
 <p>If however either of these references already exist in <strong>dsdba.CompanyReferences</strong> table but without a category of 'global' then the following error will be reported.</p>
-<pre class="codehilite"><code>There is already a reference of type template with a code of ContractReference. This reference cannot be linked to an item.</code></pre>
+<div class="codehilite"><pre><span></span>There is already a reference of type template with a code of ContractReference. This reference cannot be linked to an item.
+</pre></div>
 
 
 <p>The solution is to either convert the reference field to a global one,  or drop a custom XSLT into the plugins folder which uses a different reference field.</p>

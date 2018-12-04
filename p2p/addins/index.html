@@ -740,11 +740,12 @@
 <p>If the folder doesn't already contain a file called <strong>Addins.xml</strong> then create the following file.  If the file does already exist then add your new page to it.</p>
 </li>
 </ol>
-<pre class="codehilite"><code class="language-xml">&lt;AddIns&gt;
-    &lt;Page Name=&quot;Purchasing/Orders/Plus/MultiLineEntry.asp&quot;&gt;
-        &lt;Link AddInURL=&quot;SampleOrderAddIn.aspx&quot; WindowWidth=&quot;900&quot; WindowHeight=&quot;600&quot; WindowName=&quot;OrderTaxReset&quot;&gt;Sample Order AddIn&lt;/Link&gt;
-    &lt;/Page&gt;
-&lt;/AddIns&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;AddIns&gt;</span>
+    <span class="nt">&lt;Page</span> <span class="na">Name=</span><span class="s">&quot;Purchasing/Orders/Plus/MultiLineEntry.asp&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Link</span> <span class="na">AddInURL=</span><span class="s">&quot;SampleOrderAddIn.aspx&quot;</span> <span class="na">WindowWidth=</span><span class="s">&quot;900&quot;</span> <span class="na">WindowHeight=</span><span class="s">&quot;600&quot;</span> <span class="na">WindowName=</span><span class="s">&quot;OrderTaxReset&quot;</span><span class="nt">&gt;</span>Sample Order AddIn<span class="nt">&lt;/Link&gt;</span>
+    <span class="nt">&lt;/Page&gt;</span>
+<span class="nt">&lt;/AddIns&gt;</span>
+</pre></div>
 
 
 <p>In the example above,  a link captioned <strong>Sample Order Addin</strong> will be added to the <strong>MultiLineEntry.asp</strong> page.  When this link is clicked a new window will open (900x600) which will display the URL <strong>SampleOrderAddIn.aspx</strong></p>
@@ -759,7 +760,8 @@
 <hr />
 <h1 id="css">CSS</h1>
 <p>In order to pick up some of the styling from the main site (such as the default font-family and font size for the page) the <strong>CustomSupport/Site.css</strong> style-sheet should be referenced.</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../../CustomSupport/Site.css&quot; /&gt;</code></pre>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../../CustomSupport/Site.css&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
 
 
 <hr />
@@ -771,12 +773,13 @@
 <p><strong>jquery-xxx.im.js</strong>: mandatory  </p>
 <p><strong>jquery.filerNode.js</strong>: mandatory if you wish to use the xml services exposed by the AddInClient class, for manipulating order/invoice xml. Otherwise can be left out. </p>
 <p><strong>kendo.xxx.min.js</strong>, Notifications.inc, Site.css: mandatory if you wish to use the same notification services and styling as the main web site for info, alert and error messages. Otherwise can be left out. </p>
-<pre class="codehilite"><code class="language-html">    &lt;script src=&quot;../../CustomSupport/jquery-2.2.4.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;../../CustomSupport/jquery.filerNode.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;../../CustomSupport/AddInClient.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;../../CustomSupport/kendo.core.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;../../CustomSupport/kendo.notification.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;../../CustomSupport/kendo.popup.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+<div class="codehilite"><pre><span></span>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../../CustomSupport/jquery-2.2.4.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../../CustomSupport/jquery.filerNode.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../../CustomSupport/AddInClient.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../../CustomSupport/kendo.core.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../../CustomSupport/kendo.notification.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../../CustomSupport/kendo.popup.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
 
 
 <hr />
