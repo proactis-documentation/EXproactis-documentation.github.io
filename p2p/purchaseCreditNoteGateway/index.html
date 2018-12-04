@@ -1,217 +1,1235 @@
+
+
+
+
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Technical documentation for the PROACTIS suite of products">
+      
+      
+      
         <meta name="author" content="David Betteridge">
-        
-        <link rel="shortcut icon" href="../../img/favicon.ico">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../..">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+    
+    
+      
         <title>Purchase Credit Notes - Technical Documentation</title>
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="../../css/highlight.css">
-        <link href="../../css/extra.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-	
-	<script src="../../js/jquery-1.10.2.min.js"></script>
-        <script src="../../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../../js/highlight.pack.js"></script> 
-    </head>
-
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-
-        <!-- Collapsed navigation -->
-        <div class="navbar-header">
-            <!-- Expander button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="../..">Technical Documentation</a>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#fb8c00">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial:300,400,400i,700|Ubuntu+Mono">
+        <style>body,input{font-family:"Arial","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Ubuntu Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="orange" data-md-color-accent="orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#purchase-credit-note-gateway" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Technical Documentation" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/logo.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Technical Documentation
+              </span>
+              <span class="md-header-nav__topic">
+                Purchase Credit Notes
+              </span>
+            
+          
         </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
 
-        <!-- Expanded navigation -->
-        <div class="navbar-collapse collapse">
-                <!-- Main navigation -->
-                <ul class="nav navbar-nav">
-                    <li >
-                        <a href="../..">PROACTIS</a>
-                    </li>
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">P2P <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            
-  <li class="dropdown-submenu">
-    <a href="#">Configuration</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="../applicationConfigurationSettings/">Application Configuration</a>
-</li>
-            
-<li >
-    <a href="../help/">On Line Help</a>
-</li>
-    </ul>
-  </li>
-                            
-<li >
-    <a href="../sso/">Single Sign On (SSO)</a>
-</li>
-                            
-<li >
-    <a href="../punchout/">PunchOut / Marketplaces</a>
-</li>
-                            
-<li >
-    <a href="../nominalvalidation/">Nominal Validation</a>
-</li>
-                            
-<li >
-    <a href="../budgetchecking/">Budget Checking</a>
-</li>
-                            
-<li >
-    <a href="../customtab/">Custom Tabs</a>
-</li>
-                            
-<li >
-    <a href="../addins/">Addins</a>
-</li>
-                            
-  <li class="dropdown-submenu">
-    <a href="#">Imaging Integration</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="../genericimaging/">Generic Imaging</a>
-</li>
-            
-<li >
-    <a href="../customimaging/">Custom Imaging</a>
-</li>
-    </ul>
-  </li>
-                            
-<li >
-    <a href="../commitments/">Commitment Posting</a>
-</li>
-                            
-<li >
-    <a href="../invoicePosting/">Invoice Posting</a>
-</li>
-                            
-  <li class="dropdown-submenu">
-    <a href="#">Import APIs</a>
-    <ul class="dropdown-menu">
-            
-<li >
-    <a href="../acceptanceGateway/">Acceptances</a>
-</li>
-            
-<li >
-    <a href="../cancelPurhaseOrderGateway/">Cancel Purchase Order</a>
-</li>
-            
-<li >
-    <a href="../expensesGateway/">Expenses</a>
-</li>
-            
-<li >
-    <a href="../internalInvoiceGateway/">Internal Invoices</a>
-</li>
-            
-<li class="active">
-    <a href="./">Purchase Credit Notes</a>
-</li>
-            
-<li >
-    <a href="../purchaseInvoiceGateway/">Purchase Invoices</a>
-</li>
-    </ul>
-  </li>
-                            
-<li >
-    <a href="../troubleshooting/">Troubleshooting</a>
-</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Spend Analytics <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            
-<li >
-    <a href="../../spendAnalytics/invoiceImport/">Invoice Import</a>
-</li>
-                        </ul>
-                    </li>
-                    <li >
-                        <a href="../../placeholder/">APF</a>
-                    </li>
-                    <li >
-                        <a href="../../placeholder/">S2C</a>
-                    </li>
-                    <li >
-                        <a href="../../placeholder/">DueNorth</a>
-                    </li>
-                    <li >
-                        <a href="../../placeholder/">System4</a>
-                    </li>
-                </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                        <i class="fa fa-search"></i> Search
-                    </a>
-                </li>
-                    <li >
-                        <a rel="next" href="../internalInvoiceGateway/">
-                            <i class="fa fa-arrow-left"></i> Previous
-                        </a>
-                    </li>
-                    <li >
-                        <a rel="prev" href="../purchaseInvoiceGateway/">
-                            Next <i class="fa fa-arrow-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/proactis-documentation/ExampleApplications">CodeExamples
-                        </a>
-                    </li>
-            </ul>
-        </div>
+  
+
+
+  <a href="https://github.com/proactis-documentation/ExampleApplications/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      CodeExamples
     </div>
-</div>
+  </a>
 
-        <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#purchase-credit-note-gateway">Purchase Credit Note Gateway</a></li>
-            <li><a href="#summary">Summary</a></li>
-            <li><a href="#limitations-of-the-gateway">Limitations of the Gateway</a></li>
-            <li><a href="#worked-example">Worked Example</a></li>
-            <li><a href="#error-handling">Error Handling</a></li>
-            <li><a href="#successful-response">Successful Response</a></li>
-            <li><a href="#example-xml">Example XML</a></li>
-            <li><a href="#troubleshooting">Troubleshooting</a></li>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Technical Documentation" class="md-nav__button md-logo">
+      
+        <img src="../../images/logo.png" width="48" height="48">
+      
+    </a>
+    Technical Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/proactis-documentation/ExampleApplications/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      CodeExamples
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../placeholder/" title="Invoice Capture" class="md-nav__link">
+      Invoice Capture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../placeholder/" title="Marketplace" class="md-nav__link">
+      Marketplace
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      P2P
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        P2P
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../budgetchecking/" title="Budget Checking" class="md-nav__link">
+      Budget Checking
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../commitments/" title="Commitment Posting" class="md-nav__link">
+      Commitment Posting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Configuration
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../applicationConfigurationSettings/" title="Application Configuration" class="md-nav__link">
+      Application Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../help/" title="Online Help" class="md-nav__link">
+      Online Help
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Imaging Integration
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        Imaging Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../genericimaging/" title="Generic Imaging" class="md-nav__link">
+      Generic Imaging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../customimaging/" title="Custom Imaging" class="md-nav__link">
+      Custom Imaging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../invoicePosting/" title="Invoice Posting" class="md-nav__link">
+      Invoice Posting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-6" type="checkbox" id="nav-3-6" checked>
+    
+    <label class="md-nav__link" for="nav-3-6">
+      Import APIs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-6">
+        Import APIs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../acceptanceGateway/" title="Acceptances" class="md-nav__link">
+      Acceptances
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cancelPurhaseOrderGateway/" title="Cancel Purchase Order" class="md-nav__link">
+      Cancel Purchase Order
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../expensesGateway/" title="Expenses" class="md-nav__link">
+      Expenses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../internalInvoiceGateway/" title="Internal Invoices" class="md-nav__link">
+      Internal Invoices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../masterData/" title="Master Data" class="md-nav__link">
+      Master Data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Purchase Credit Notes
+      </label>
+    
+    <a href="./" title="Purchase Credit Notes" class="md-nav__link md-nav__link--active">
+      Purchase Credit Notes
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-of-the-gateway" title="Limitations of the Gateway" class="md-nav__link">
+    Limitations of the Gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example" title="Worked Example" class="md-nav__link">
+    Worked Example
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml-document" title="XML Document" class="md-nav__link">
+    XML Document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-block" title="Control Block" class="md-nav__link">
+    Control Block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credit-note" title="Credit Note" class="md-nav__link">
+    Credit Note
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credit-note-items" title="Credit Note Items" class="md-nav__link">
+    Credit Note Items
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_1" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tax" title="Tax" class="md-nav__link">
+    Tax
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_2" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supplier" title="Supplier" class="md-nav__link">
+    Supplier
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_3" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" title="Comments" class="md-nav__link">
+    Comments
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_4" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_5" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" title="Error Handling" class="md-nav__link">
+    Error Handling
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errorserror" title="Errors/Error" class="md-nav__link">
+    Errors/Error
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_6" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errorhandlingmodes" title="ErrorHandlingModes" class="md-nav__link">
+    ErrorHandlingModes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#successful-response" title="Successful Response" class="md-nav__link">
+    Successful Response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note" title="Note" class="md-nav__link">
+    Note
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-xml" title="Example XML" class="md-nav__link">
+    Example XML
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
     </ul>
-</div></div>
-                <div class="col-md-9" role="main">
+  
+</nav>
+    
+  </li>
 
-<h1 id="purchase-credit-note-gateway">Purchase Credit Note Gateway</h1>
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../purchaseInvoiceGateway/" title="Purchase Invoices" class="md-nav__link">
+      Purchase Invoices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../purchaseOrders/" title="Purchase Orders" class="md-nav__link">
+      Purchase Orders
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../punchout/" title="PunchOut and Marketplaces" class="md-nav__link">
+      PunchOut and Marketplaces
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nominalvalidation/" title="Nominal Validation" class="md-nav__link">
+      Nominal Validation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sso/" title="Single Sign On (SSO)" class="md-nav__link">
+      Single Sign On (SSO)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-11" type="checkbox" id="nav-3-11">
+    
+    <label class="md-nav__link" for="nav-3-11">
+      Web site customisation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-11">
+        Web site customisation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../addins/" title="Addins" class="md-nav__link">
+      Addins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../customtab/" title="Custom Tabs" class="md-nav__link">
+      Custom Tabs
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Source to Contract
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Source to Contract
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../s2c/srm/" title="Supplier Management" class="md-nav__link">
+      Supplier Management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../s2c/contracts/" title="Contract Management" class="md-nav__link">
+      Contract Management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../s2c/sourcing/" title="Sourcing" class="md-nav__link">
+      Sourcing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../s2c/users/" title="Users" class="md-nav__link">
+      Users
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-of-the-gateway" title="Limitations of the Gateway" class="md-nav__link">
+    Limitations of the Gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example" title="Worked Example" class="md-nav__link">
+    Worked Example
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml-document" title="XML Document" class="md-nav__link">
+    XML Document
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-block" title="Control Block" class="md-nav__link">
+    Control Block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credit-note" title="Credit Note" class="md-nav__link">
+    Credit Note
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credit-note-items" title="Credit Note Items" class="md-nav__link">
+    Credit Note Items
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_1" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tax" title="Tax" class="md-nav__link">
+    Tax
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_2" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supplier" title="Supplier" class="md-nav__link">
+    Supplier
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_3" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments" title="Comments" class="md-nav__link">
+    Comments
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_4" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_5" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" title="Error Handling" class="md-nav__link">
+    Error Handling
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errorserror" title="Errors/Error" class="md-nav__link">
+    Errors/Error
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes_6" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errorhandlingmodes" title="ErrorHandlingModes" class="md-nav__link">
+    ErrorHandlingModes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#successful-response" title="Successful Response" class="md-nav__link">
+    Successful Response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note" title="Note" class="md-nav__link">
+    Note
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-xml" title="Example XML" class="md-nav__link">
+    Example XML
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" title="Troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/proactis-documentation/ExampleApplications/edit/master/docs/p2p/purchaseCreditNoteGateway.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="purchase-credit-note-gateway">Purchase Credit Note Gateway</h1>
 <h2 id="summary">Summary</h2>
 <p>This document describes the structure of the XML file used for importing Purchase Credit Notes into PROACTIS.  It is assumed that the reader of the document is familiar both with XML and PROACTIS invoicing.</p>
 <p>The document also describes the validation rules, which must be passed in order for the credit note to be imported, and the current limitations of the credit note gateway.</p>
@@ -231,43 +1249,42 @@
 <p>This section of the document walks you through the creation of a simple credit note. </p>
 <h3 id="xml-document">XML Document</h3>
 <p>The xml document must start with the following to lines</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
-&lt;pro:Import xmlns:pro=&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;
-</code></pre>
+<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;pro:Import xmlns:pro=&quot;[http://www.proactis.com/xml/xml-ns](http://www.proactis.com/xml/xml-ns)&quot;&gt;</code></pre>
+
 
 <p>And finish with</p>
-<pre><code class="xml">&lt;/pro:Import&gt;
-</code></pre>
+<pre class="codehilite"><code class="language-xml">&lt;/pro:Import&gt;</code></pre>
+
 
 <h3 id="control-block">Control Block</h3>
 <p>A control block must then be included so that the gateway knows which database and company to import the documents into.  This has the same structure as the control block for the other XML gateways.</p>
 <p>An example control block is shown below.</p>
-<pre><code class="xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
+<pre class="codehilite"><code class="language-xml"> &lt;pro:Control DatabaseName=&quot;PROACTIS&quot;
               UserName=&quot;DAVIDBETTERIDGE&quot;
               Password=&quot;mysecret&quot;
               Company=&quot;MAIN&quot;
               Department=&quot;SOLUTIONS&quot;
-              Version=&quot;1.0.0&quot; /&gt;
-</code></pre>
+              Version=&quot;1.0.0&quot; /&gt;</code></pre>
+
 
 <p>The XML gateway supports NT authentication, an example is shown below.</p>
-<pre><code class="xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
+<pre class="codehilite"><code class="language-xml"> &lt;pro:Control    DatabaseName=&quot;PROACTIS\_LIVE&quot;
                  AuthenticationMethod=&quot;WINDOWS&quot;
                  Company=&quot;MAIN&quot;
                  Department=&quot;SOLUTIONS&quot;
-                 Version=&quot;1.0.0&quot; /&gt;
-</code></pre>
+                 Version=&quot;1.0.0&quot; /&gt;</code></pre>
+
 
 <p>NB: The value of the <strong>AuthenticationMethod</strong> field can be WINDOWS or PROACTIS (which must be expressed in Upper Case).  If this field is missing, the gateway will default to PROACTIS and work as before.</p>
 <h3 id="credit-note">Credit Note</h3>
 <p>The next section contains the details of the Credit Notes to be imported.  The gateway allows multiple documents to be included in a single xml document.  At least one credit note must be included.</p>
-<pre><code class="xml">          &lt;pro:CreditNote CreditNoteDate=&quot;2005-01-27&quot;              
+<pre class="codehilite"><code class="language-xml">          &lt;pro:CreditNote CreditNoteDate=&quot;2005-01-27&quot;              
                           SupplierCreditNoteNumber=&quot;PR-234&quot; 
                           Template=&quot;CRED&quot; 
                           Tray=&quot;Standard&quot; 
-                          GrossValue=&quot;100&quot;&gt;
+                          GrossValue=&quot;100&quot;&gt;</code></pre>
 
-</code></pre>
 
 <h4 id="notes">Notes</h4>
 <ul>
@@ -279,7 +1296,7 @@
 </ul>
 <h3 id="credit-note-items">Credit Note Items</h3>
 <p>Then the parent documents (credit notes and/or credit notes) and items against which the credit note will be matched are listed.</p>
-<pre><code class="xml"> &lt;pro:ParentDocuments&gt;                       
+<pre class="codehilite"><code class="language-xml"> &lt;pro:ParentDocuments&gt;                       
   &lt;pro:ParentDocument DocumentNumber=&quot;PORD10034&quot;&gt;
     &lt;pro:Item Position=&quot;1&quot; Value=&quot;1&quot;/&gt;
     &lt;pro:Item Position=&quot;2&quot; Price=&quot;1&quot; Quantity=&quot;1&quot;&gt;
@@ -288,8 +1305,8 @@
       &lt;/pro:Nominals&gt;
     &lt;/pro:Item&gt; 
   &lt;/pro:ParentDocument&gt;
-&lt;/pro:ParentDocuments&gt;
-</code></pre>
+&lt;/pro:ParentDocuments&gt;</code></pre>
+
 
 <h4 id="notes_1">Notes</h4>
 <ul>
@@ -300,10 +1317,10 @@
 </ul>
 <h3 id="tax">Tax</h3>
 <p>As well as the parent documents, the credit note must also include the tax details.</p>
-<pre><code class="xml">&lt;pro:TaxDetails&gt;
+<pre class="codehilite"><code class="language-xml">&lt;pro:TaxDetails&gt;
   &lt;pro:Tax Band='VAT' BandNumber='1' Code='STD' GrossValue='1.18' TaxValue='0.18'/&gt;
- &lt;/pro:TaxDetails&gt;
-</code></pre>
+ &lt;/pro:TaxDetails&gt;</code></pre>
+
 
 <h4 id="notes_2">Notes</h4>
 <ul>
@@ -312,15 +1329,15 @@
 </ul>
 <h3 id="supplier">Supplier</h3>
 <p>If the supplier is a one-off supplier, then their address details must also be set.</p>
-<pre><code class="xml">&lt;pro:SupplierAddress  Name='Accounts' 
+<pre class="codehilite"><code class="language-xml">&lt;pro:SupplierAddress  Name='Accounts' 
                       Line1='12 The close' 
                       Line2='East Kettlewell' 
                       Line3='' 
                       Line4='' 
                       Town='YORK' 
                       County='North Yorkshire' 
-                      Country='UK'/&gt;
-</code></pre>
+                      Country='UK'/&gt;</code></pre>
+
 
 <h4 id="notes_3">Notes</h4>
 <ul>
@@ -328,10 +1345,10 @@
 </ul>
 <h3 id="comments">Comments</h3>
 <p>It is possible to add one or more comments to an credit note</p>
-<pre><code class="xml">&lt;pro:Comments&gt;
+<pre class="codehilite"><code class="language-xml">&lt;pro:Comments&gt;
   &lt;pro:Comment&gt;Please pay quickly&lt;/pro:Comment&gt;
-&lt;/pro:Comments&gt;
-</code></pre>
+&lt;/pro:Comments&gt;</code></pre>
+
 
 <h4 id="notes_4">Notes</h4>
 <ul>
@@ -339,15 +1356,15 @@
 </ul>
 <h3 id="references">References</h3>
 <p>It is also possible to set the reference fields on the credit</p>
-<pre><code class="xml">&lt;pro:References&gt;
+<pre class="codehilite"><code class="language-xml">&lt;pro:References&gt;
           &lt;pro:Reference Caption='Bar code' 
                          Value='345-223-33'
           &lt;pro:Reference Position='2' 
                          Value='BACS'
           &lt;pro:Reference Code='Colour' 
                          Value='Red'
-&lt;/pro:References&gt;
-</code></pre>
+&lt;/pro:References&gt;</code></pre>
+
 
 <h4 id="notes_5">Notes</h4>
 <ul>
@@ -355,12 +1372,12 @@
 <li>Either the code, caption or the position can be specified</li>
 </ul>
 <p>The credit then finishes with a closing tag:</p>
-<pre><code class="xml">&lt;/pro:CreditNote&gt;
-</code></pre>
+<pre class="codehilite"><code class="language-xml">&lt;/pro:CreditNote&gt;</code></pre>
+
 
 <p>Finally the XML must be closed as follows:</p>
-<pre><code class="xml">&lt;/pro:Import&gt;
-</code></pre>
+<pre class="codehilite"><code class="language-xml">&lt;/pro:Import&gt;</code></pre>
+
 
 <hr />
 <h2 id="error-handling">Error Handling</h2>
@@ -369,11 +1386,11 @@
 <p>Note: Nodes without this attribute have not been processed.</p>
 <p>he supplied XML is first validated against the <strong>ImportPurchaseCreditNotes.xsd</strong> schema.  If the credit note fails validation then the details are of the failure are appended to the supplied xml in the form of an errors block</p>
 <p>An example errors block is shown below</p>
-<pre><code class="xml">&lt;pro:Errors&gt;
+<pre class="codehilite"><code class="language-xml">&lt;pro:Errors&gt;
   &lt;pro:Error Number='-1072898030' 
              Message='XML is not valid according to the schema. Element content is incomplete according to the DTD/Schema. Expecting: {http://www.proactis.com/xml/xml-ns}ParentDocument'/&gt;
-&lt;/pro:Errors&gt;
-</code></pre>
+&lt;/pro:Errors&gt;</code></pre>
+
 
 <h3 id="errorserror">Errors/Error</h3>
 <table>
@@ -446,7 +1463,7 @@
 <hr />
 <h2 id="example-xml">Example XML</h2>
 <p>The example below shows a basic single credit note being imported.  The credit note will be matched against the purchase invoice PINV10034. </p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre class="codehilite"><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;pro:Import xmlns:pro=&quot;http://www.proactis.com/xml/xml-ns&quot;&gt;
           &lt;pro:Control   Version=&quot;1.0.0&quot; 
                          DatabaseName=&quot;DEMO&quot;
@@ -470,8 +1487,8 @@
                                              GrossValue=&quot;1&quot;/&gt;
                           &lt;/pro:TaxDetails&gt;
           &lt;/pro:CreditNote&gt;
-&lt;/pro:Import&gt;
-</code></pre>
+&lt;/pro:Import&gt;</code></pre>
+
 
 <hr />
 <h2 id="troubleshooting">Troubleshooting</h2>
@@ -486,40 +1503,89 @@ An error has occurred which could not be handled by the gateway.  Please check t
 <p><strong>Error</strong>
 Element content is invalid according to the DTD/Schema.</p>
 <p><strong>Solution</strong>
-The supplied credit note XML is not in the required format.   Check that the structure of the XML matches the xsd schema.</p></div>
-        </div>
+The supplied credit note XML is not in the required format.   Check that the structure of the XML matches the xsd schema.</p>
+                
+                  
+                
+              
+              
+                
 
-        <footer class="col-md-12">
-            <hr>
-                <p>(C) PROACTIS Group Ltd - All Rights Reserved</p>
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>var base_url = '../..';</script>
-        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
-        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-            </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
+
+              
+            </article>
+          </div>
         </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../masterData/" title="Master Data" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Master Data
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../purchaseInvoiceGateway/" title="Purchase Invoices" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Purchase Invoices
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
     </div>
-</div>
-
-    </body>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            &copy; Proactis Ltd - All Rights Reserved
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.905597d0.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
 </html>
